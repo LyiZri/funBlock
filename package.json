@@ -104,6 +104,10 @@
   "dependencies": {
     "@types/lodash": "^4.14.168",
     "dayjs": "^1.10.4",
-    "reactjs-popup": "^2.0.4"
+    "node-sass": "^7.0.1",
+    "react-scripts": "^5.0.1",
+    "reactjs-popup": "^2.0.4",
+    "sass": "^1.52.1",
+    "sass-loader": "^10.1.0"
   }
 }

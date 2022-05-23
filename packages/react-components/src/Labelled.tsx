@@ -125,8 +125,6 @@ export default React.memo(styled(Labelled)`
             .text {
               line-height: 1;
               padding: 0.47rem 0;
-              position:absolute;
-              top:3rem;
             }
           }
 
@@ -138,7 +136,7 @@ export default React.memo(styled(Labelled)`
           > .delete.icon,
           > .dropdown.icon,
           > .search.icon {
-            top: 1.75rem;
+            top: 1.35rem;
           }
         }
 

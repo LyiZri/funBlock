@@ -19,6 +19,7 @@ import { useTranslation } from "../translate";
 import Grouping from "./Grouping";
 import Item from "./Item";
 import NodeInfo from "./NodeInfo";
+import './index.scss'
 
 interface Props {
   className?: string;
@@ -148,7 +149,7 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
   const isLoading = !apiProps.isApiReady || !apiProps.isApiConnected;
 
   return (
-    <div className={`${className}${isLoading ? " isLoading" : ""}`}>
+    <div className={`${className}${isLoading ? " isLoading" : ""} left-menu-parent`}>
       <div className="menuContainer">
         <div className="menuSection">
           <ul className="menuItems">
@@ -179,76 +180,4 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
   );
 }
 
-export default React.memo(styled(Menu)`
-  width: 8rem;
-  float: left;
-  clear: both;
-  padding: 0;
-  z-index: 220;
-  position: relative;
-  background: #fff;
-  border-top-right-radius: 2rem;
-  margin-top: 2rem;
-  text-align: center;
-  & .menuContainer {
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    max-width: var(--width-full);
-    margin: 0 auto;
-  }
-
-  &.isLoading {
-    background: #999 !important;
-
-    .menuActive {
-      background: var(--bg-page);
-    }
-
-    &:before {
-      filter: grayscale(1);
-    }
-
-    .menuItems {
-      filter: grayscale(1);
-    }
-  }
-
-  .menuSection {
-    align-items: center;
-    display: flex;
-  }
-
-  .menuActive {
-    background: var(--bg-tabs);
-    border-bottom: none;
-    border-radius: 0.25rem 0.25rem 0 0;
-    color: var(--color-text);
-    padding: 1rem 1.5rem;
-    margin: 0 1rem -1px;
-    z-index: 1;
-
-    .ui--Icon {
-      margin-right: 0.5rem;
-    }
-  }
-
-  .menuItems {
-    flex: 1 1;
-    list-style: none;
-    margin: 0 1rem 0 0;
-    padding: 0;
-
-    > li {
-      // display: inline-block;
-    }
-
-    > li + li {
-      margin-left: 0.375rem;
-    }
-  }
-
-  .ui--NodeInfo {
-    align-self: center;
-  }
-`);
+export default React.memo(Menu);

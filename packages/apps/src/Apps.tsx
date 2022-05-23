@@ -19,7 +19,7 @@ import WarmUp from './WarmUp';
 import LeftMenu from './LeftMenu';
 export const PORTAL_ID = 'portals';
 
-function Apps ({ className = '' }: Props): React.ReactElement<Props> {
+function Apps({ className = '' }: Props): React.ReactElement<Props> {
   const { theme } = useContext<ThemeDef>(ThemeContext);
   const { systemChain, systemName } = useApi();
 
@@ -32,17 +32,17 @@ function Apps ({ className = '' }: Props): React.ReactElement<Props> {
     <>
       <GlobalStyle uiHighlight={uiHighlight} />
       <div className={`apps--Wrapper theme--${theme} ${className}`}>
-        
+
         <Menu />
         <div className='pageContent'>
-        <LeftMenu/>
-        <AccountSidebar>
-          <Signer>
-            <Content />
-          </Signer>
-          <ConnectingOverlay />
-          <div id={PORTAL_ID} />
-        </AccountSidebar>
+          <LeftMenu />
+          <AccountSidebar>
+            <Signer>
+              <Content />
+            </Signer>
+            <ConnectingOverlay />
+            <div id={PORTAL_ID} />
+          </AccountSidebar>
         </div>
       </div>
       <WarmUp />
@@ -59,5 +59,6 @@ export default React.memo(styled(Apps)`
   .pageContent{
     display:flex;
     jusitify-content:spance-between;
+    height:calc(100vh - 2rem - 58px)
   }
 `);
