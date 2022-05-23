@@ -119,11 +119,11 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
   const groupRef = useRef({
     accounts: t("Accounts"),
     developer: t("Developer"),
-    governance: t("Governance"),
+    // governance: t("Governance"),
     network: t("Network"),
     applications: t("Applications"),
     settings: t("Settings"),
-    storage: t("Storage"),
+    // storage: t("Storage"),
     csmStaking: t("Profit Data"),
   });
 
@@ -155,7 +155,7 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
             <ul className="menuItems">
               {visibleGroups.map(
                 ({ name, routes }): React.ReactNode => (
-                  <Grouping
+                  name && <Grouping
                     isActive={activeRoute && activeRoute.group === name.toLowerCase()}
                     key={name}
                     name={name}

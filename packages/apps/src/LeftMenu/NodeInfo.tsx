@@ -37,7 +37,6 @@ export default React.memo(styled(NodeInfo)`
   line-height: 1.2;
   padding: 0 0 0 1rem;
   text-align: left;
-
   > div {
     margin-bottom: .5rem;
 

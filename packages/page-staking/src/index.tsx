@@ -36,7 +36,7 @@ const transformElection = {
 
 export const validatorApy: Record<string, number> = {};
 
-function StakingApp ({ basePath, className = '' }: Props): React.ReactElement<Props> {
+function StakingApp({ basePath, className = '' }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api } = useApi();
   const { hasAccounts } = useAccounts();
@@ -102,7 +102,7 @@ function StakingApp ({ basePath, className = '' }: Props): React.ReactElement<Pr
   return (
     <main className={`staking--App ${className}`}>
       <HelpOverlay md={basicMd as string} />
-      <Tabs
+      {/* <Tabs
         basePath={basePath}
         hidden={
           hasAccounts
@@ -110,7 +110,7 @@ function StakingApp ({ basePath, className = '' }: Props): React.ReactElement<Pr
             : HIDDEN_ACC
         }
         items={items}
-      />
+      /> */}
       <Summary
         isVisible={pathname === basePath}
         stakingOverview={stakingOverview}
@@ -176,6 +176,7 @@ function StakingApp ({ basePath, className = '' }: Props): React.ReactElement<Pr
 }
 
 export default React.memo(styled(StakingApp)(({ theme }: ThemeProps) => `
+  padding-top:3rem;
   .staking--hidden {
     display: none;
   }

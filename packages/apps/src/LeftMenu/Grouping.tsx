@@ -18,7 +18,7 @@ interface Props extends Group {
 const SHA_COL = 'rgba(34, 36, 38, 0.12)';
 const SHA_OFF = '5px';
 
-function Grouping ({ className = '', isActive, name, routes }: Props): React.ReactElement<Props> {
+function Grouping({ className = '', isActive, name, routes }: Props): React.ReactElement<Props> {
   if (routes.length === 1) {
     return (
       <Item
@@ -34,14 +34,14 @@ function Grouping ({ className = '', isActive, name, routes }: Props): React.Rea
       <div className={`groupHdr ${!isActive ? 'highlight--color-contrast' : ''}`}>
         {/* <Icon icon='caret-down' /> */}
       </div>
-        <div>{name}</div>
+      <div>{name}</div>
       <ul className='groupMenu'>
         {routes.map((route): React.ReactNode => (
           <Item
             key={route.name}
             route={route}
           />
-          ))}
+        ))}
       </ul>
     </li>
   );
@@ -83,13 +83,22 @@ export default React.memo(styled(Grouping)`
     overflow: hidden;
     padding: 0;
     position: absolute;
-    top: 2.9rem;
+    top: 1.5rem;
     z-index: 250;
     padding:1rem;
-
     > li {
       z-index: 1;
       list-style:none;
+      display:inline-block;
+      margin-bottom:.5rem;
+      > a {
+        color:white!important;
+        width:100%;
+        text-align:left;
+      }
+    }
+    > li:last-child{
+      margin-bottom:0;
     }
 
     &::before {
@@ -114,10 +123,10 @@ export default React.memo(styled(Grouping)`
       margin-top:0;
       position:absolute;
       left:6rem;
-      top:-2rem;
+      top:0rem;
       > li:hover {
         a{
-          color:#fff !important;
+          color:red !important;
         }
       }
     }
