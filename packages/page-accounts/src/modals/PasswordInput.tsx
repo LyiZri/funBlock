@@ -13,7 +13,7 @@ type Props = {
   onEnter: () => void;
 }
 
-function PasswordInput ({ onChange, onEnter }: Props): React.ReactElement {
+function PasswordInput({ onChange, onEnter }: Props): React.ReactElement {
   const { t } = useTranslation();
   const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\S]{8,}$/);
   const [{ isPass1Valid, password1 }, setPassword1] = useState({ isPass1Valid: false, password1: '' });
@@ -57,9 +57,9 @@ function PasswordInput ({ onChange, onEnter }: Props): React.ReactElement {
         onEnter={onEnter}
         value={password1}
       />
-      <div className='columnsHint'>
-      {t<string>('The password and password confirmation for this account. This is required to authenticate any transactions made and to encrypt the keypair.')}
-      </div>
+      <p className='need-padd-left'>
+        {t<string>('The password and password confirmation for this account. This is required to authenticate any transactions made and to encrypt the keypair.')}
+      </p>
       <Password
         className='full'
         help={t<string>('Verify the password entered above.')}
@@ -69,9 +69,9 @@ function PasswordInput ({ onChange, onEnter }: Props): React.ReactElement {
         onEnter={onEnter}
         value={password2}
       />
-      <div className='columnsHint'>
-      {t<string>('Ensure you are using a strong password for proper account protection.')}
-      </div>
+      <p className='need-padd-left'>
+        {t<string>('Ensure you are using a strong password for proper account protection.')}
+      </p>
       <PasswordStrength value={password1} />
     </Modal.Columns>
   );

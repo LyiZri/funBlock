@@ -14,6 +14,7 @@ import Accounts from './Accounts';
 import { useTranslation } from './translate';
 import useCounter from './useCounter';
 import Vanity from './Vanity';
+import './index.css'
 
 export { useCounter };
 
@@ -39,11 +40,11 @@ function AccountsApp ({ basePath, onStatusChange }: Props): React.ReactElement<P
   return (
     <main className='accounts--App'>
       <HelpOverlay md={basicMd as string} />
-      <Tabs
+      {/* <Tabs
         basePath={basePath}
         hidden={(hasAccounts && !isIpfs) ? undefined : HIDDEN_ACC}
         items={tabsRef.current}
-      />
+      /> */}
       <Switch>
         <Route path={`${basePath}/vanity`}>
           <Vanity

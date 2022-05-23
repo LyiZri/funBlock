@@ -11,6 +11,7 @@ const webpack = require('webpack');
 
 const findPackages = require('../../scripts/findPackages.cjs');
 const { isEmpty } = require('lodash');
+const { exclude } = require('query-string');
 
 function mapChunks (name, regs, inc) {
   return regs.reduce((result, test, index) => ({
@@ -80,6 +81,15 @@ function createWebpack (context, mode = 'production') {
               ? MiniCssExtractPlugin.loader
               : require.resolve('style-loader'),
             require.resolve('css-loader')
+          ]
+        },
+        {
+          exclude:/(node_modules)/,
+          test:/\.scss$/,
+          use:[
+            require.resolve('style-loader'),
+            require.resolve('css-loader'),
+            require.resolve('sass-loader')
           ]
         },
         {

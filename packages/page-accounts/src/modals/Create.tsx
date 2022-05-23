@@ -41,7 +41,7 @@ type SeedType = 'bip' | 'raw' | 'dev';
 interface AddressState {
   address: string | null;
   derivePath: string;
-  deriveValidation? : DeriveValidationOutput
+  deriveValidation?: DeriveValidationOutput
   isSeedValid: boolean;
   pairType: PairType;
   seed: string;
@@ -62,7 +62,7 @@ interface DeriveValidationOutput {
 const DEFAULT_PAIR_TYPE = 'sr25519';
 const STEPS_COUNT = 3;
 
-function getSuri (seed: string, derivePath: string, pairType: PairType): string {
+function getSuri(seed: string, derivePath: string, pairType: PairType): string {
   return pairType === 'ed25519-ledger'
     ? u8aToHex(hdLedger(seed, derivePath).secretKey.slice(0, 32))
     : pairType === 'ethereum'
@@ -70,7 +70,7 @@ function getSuri (seed: string, derivePath: string, pairType: PairType): string 
       : `${seed}${derivePath}`;
 }
 
-function deriveValidate (seed: string, seedType: SeedType, derivePath: string, pairType: PairType): DeriveValidationOutput {
+function deriveValidate(seed: string, seedType: SeedType, derivePath: string, pairType: PairType): DeriveValidationOutput {
   try {
     const { password, path } = keyExtractSuri(pairType === 'ethereum' ? `${seed}/${derivePath}` : `${seed}${derivePath}`);
     let result: DeriveValidationOutput = {};
@@ -100,21 +100,21 @@ function deriveValidate (seed: string, seedType: SeedType, derivePath: string, p
   }
 }
 
-function isHexSeed (seed: string): boolean {
+function isHexSeed(seed: string): boolean {
   return isHex(seed) && seed.length === 66;
 }
 
-function rawValidate (seed: string): boolean {
+function rawValidate(seed: string): boolean {
   return ((seed.length > 0) && (seed.length <= 32)) || isHexSeed(seed);
 }
 
-function addressFromSeed (seed: string, derivePath: string, pairType: PairType): string {
+function addressFromSeed(seed: string, derivePath: string, pairType: PairType): string {
   return keyring
     .createFromUri(getSuri(seed, derivePath, pairType), {}, pairType === 'ed25519-ledger' ? 'ed25519' : pairType)
     .address;
 }
 
-function newSeed (seed: string | undefined | null, seedType: SeedType): string {
+function newSeed(seed: string | undefined | null, seedType: SeedType): string {
   switch (seedType) {
     case 'bip':
       return mnemonicGenerate();
@@ -125,7 +125,7 @@ function newSeed (seed: string | undefined | null, seedType: SeedType): string {
   }
 }
 
-function generateSeed (_seed: string | undefined | null, derivePath: string, seedType: SeedType, pairType: PairType = DEFAULT_PAIR_TYPE): AddressState {
+function generateSeed(_seed: string | undefined | null, derivePath: string, seedType: SeedType, pairType: PairType = DEFAULT_PAIR_TYPE): AddressState {
   const seed = newSeed(_seed, seedType);
   const address = addressFromSeed(seed, derivePath, pairType);
 
@@ -140,7 +140,7 @@ function generateSeed (_seed: string | undefined | null, derivePath: string, see
   };
 }
 
-function updateAddress (seed: string, derivePath: string, seedType: SeedType, pairType: PairType): AddressState {
+function updateAddress(seed: string, derivePath: string, seedType: SeedType, pairType: PairType): AddressState {
   let address: string | null = null;
   let deriveValidation: DeriveValidationOutput = deriveValidate(seed, seedType, derivePath, pairType);
   let isSeedValid = seedType === 'raw'
@@ -168,13 +168,13 @@ function updateAddress (seed: string, derivePath: string, seedType: SeedType, pa
   };
 }
 
-export function downloadAccount ({ json, pair }: CreateResult): void {
+export function downloadAccount({ json, pair }: CreateResult): void {
   const blob = new Blob([JSON.stringify(json)], { type: 'application/json; charset=utf-8' });
 
   FileSaver.saveAs(blob, `${pair.address}.json`);
 }
 
-function createAccount (seed: string, derivePath: string, pairType: PairType, { genesisHash, name, tags = [] }: CreateOptions, password: string, success: string): ActionStatus {
+function createAccount(seed: string, derivePath: string, pairType: PairType, { genesisHash, name, tags = [] }: CreateOptions, password: string, success: string): ActionStatus {
   // we will fill in all the details below
   const status = { action: 'create' } as ActionStatus;
 
@@ -199,7 +199,7 @@ function createAccount (seed: string, derivePath: string, pairType: PairType, { 
   return status;
 }
 
-function Create ({ className = 'createModal', onClose, onStatusChange, seed: propsSeed, type: propsType }: Props): React.ReactElement<Props> {
+function Create({ className = 'createModal', onClose, onStatusChange, seed: propsSeed, type: propsType }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api, isDevelopment, isEthereum } = useApi();
   const { isLedgerEnabled } = useLedger();
@@ -297,8 +297,8 @@ function Create ({ className = 'createModal', onClose, onStatusChange, seed: pro
     },
     [api, derivePath, isDevelopment, isValid, name, onClose, onStatusChange, pairType, password, seed, t]
   );
-    console.log('classname=========',className);
-    
+  console.log('classname=========', className);
+
   return (
     <Modal
       className={className}
@@ -349,10 +349,10 @@ function Create ({ className = 'createModal', onClose, onStatusChange, seed: pro
                 options={seedOpt.current}
               />
             </TextArea>
-            <div className='columnsHint'>
-              {t<string>('The secret seed value for this account. Ensure that you keep this in a safe place, with access to the seed you can re-create the account.')}
-            </div>
           </Modal.Columns>
+          <p className='need-padd-left'>
+            {t<string>('The secret seed value for this account. Ensure that you keep this in a safe place, with access to the seed you can re-create the account.')}
+          </p>
           <Expander
             className='accounts--Creator-advanced'
             isPadded
@@ -375,6 +375,9 @@ function Create ({ className = 'createModal', onClose, onStatusChange, seed: pro
                 tabIndex={-1}
               />
             </Modal.Columns>
+            <p className='need-padd-left'>
+              {t<string>('If you are moving accounts between applications, ensure that you use the correct type.')}
+            </p>
             {pairType === 'ed25519-ledger'
               ? (
                 <CreateSuriLedger
@@ -388,36 +391,45 @@ function Create ({ className = 'createModal', onClose, onStatusChange, seed: pro
                 //     ? t<string>('The derivation path is only relevant when deriving keys from a mnemonic.')
                 //     : t<string>('The derivation path allows you to create different accounts from the same base mnemonic.')
                 // }>
-                <Modal.Columns>
-                  {(pairType !== 'ethereum' || seedType !== 'raw') && (
-                    <Input
-                      help={(pairType === 'ethereum' ? t<string>('You can set a custom derivation path for this account using the following syntax "m/<purpose>/<coin_type>/<account>/<change>/<address_index>') : t<string>('You can set a custom derivation path for this account using the following syntax "/<soft-key>//<hard-key>". The "/<soft-key>" and "//<hard-key>" may be repeated and mixed`. An optional "///<password>" can be used with a mnemonic seed, and may only be specified once.'))}
-                      isDisabled={pairType === 'ethereum' && seedType === 'raw'}
-                      isError={!!deriveValidation?.error}
-                      label={t<string>('secret derivation path')}
-                      onChange={_onChangePath}
-                      placeholder={
-                        pairType === 'ethereum'
-                          ? ETH_DEFAULT_PATH
-                          : seedType === 'raw'
-                            ? pairType === 'sr25519'
-                              ? t<string>('//hard/soft')
-                              : t<string>('//hard')
-                            : pairType === 'sr25519'
-                              ? t<string>('//hard/soft///password')
-                              : t<string>('//hard///password')
-                      }
-                      tabIndex={-1}
-                      value={derivePath}
-                    />
-                  )}
-                  {deriveValidation?.error && (
-                    <MarkError content={errorIndex.current[deriveValidation.error] || deriveValidation.error} />
-                  )}
-                  {deriveValidation?.warning && (
-                    <MarkWarning content={errorIndex.current[deriveValidation.warning]} />
-                  )}
-                </Modal.Columns>
+                <>
+                  <Modal.Columns>
+                    {(pairType !== 'ethereum' || seedType !== 'raw') && (
+                      <Input
+                        help={(pairType === 'ethereum' ? t<string>('You can set a custom derivation path for this account using the following syntax "m/<purpose>/<coin_type>/<account>/<change>/<address_index>') : t<string>('You can set a custom derivation path for this account using the following syntax "/<soft-key>//<hard-key>". The "/<soft-key>" and "//<hard-key>" may be repeated and mixed`. An optional "///<password>" can be used with a mnemonic seed, and may only be specified once.'))}
+                        isDisabled={pairType === 'ethereum' && seedType === 'raw'}
+                        isError={!!deriveValidation?.error}
+                        label={t<string>('secret derivation path')}
+                        onChange={_onChangePath}
+                        placeholder={
+                          pairType === 'ethereum'
+                            ? ETH_DEFAULT_PATH
+                            : seedType === 'raw'
+                              ? pairType === 'sr25519'
+                                ? t<string>('//hard/soft')
+                                : t<string>('//hard')
+                              : pairType === 'sr25519'
+                                ? t<string>('//hard/soft///password')
+                                : t<string>('//hard///password')
+                        }
+                        tabIndex={-1}
+                        value={derivePath}
+                      />
+                    )}
+                    {deriveValidation?.error && (
+                      <MarkError content={errorIndex.current[deriveValidation.error] || deriveValidation.error} />
+                    )}
+                    {deriveValidation?.warning && (
+                      <MarkWarning content={errorIndex.current[deriveValidation.warning]} />
+                    )}
+                  </Modal.Columns>
+                  <p className='need-padd-left'>
+                    {
+                      pairType === 'ethereum' && seedType === 'raw'
+                        ? t<string>('The derivation path is only relevant when deriving keys from a mnemonic.')
+                        : t<string>('The derivation path allows you to create different accounts from the same base mnemonic.')
+                    }
+                  </p>
+                </>
               )}
           </Expander>
           <Modal.Columns>
@@ -443,9 +455,9 @@ function Create ({ className = 'createModal', onClose, onStatusChange, seed: pro
               placeholder={t<string>('new account')}
               value={name}
             />
-            <div className="columnHint">
+            <p className="need-padd-left">
               {t<string>('The name for this account and how it will appear under your addresses. With an on-chain identity, it can be made available to others.')}
-            </div>
+            </p>
           </Modal.Columns>
           <PasswordInput
             onChange={_onPasswordChange}
@@ -525,24 +537,21 @@ export default React.memo(styled(Create)`
   }
   @media only screen and (min-width: 1024px){
     .ijhooM > div:nth-child(1), .ijhooM > div:only-child {
-      -webkit-flex: 0 100%;
-      -ms-flex: 0 65%;
-      /* flex: 0 65%; */
-      max-width: 96%;
+      flex: 0 1;
     }
 }
   .ui--CopyButton.copyMoved {
     position: absolute;
     right: 10.25rem;
-    top: 3.15rem;
+    top: 1.45rem;
     z-index:2;
   }
   && .TextAreaWithDropdown {
     textarea {
-      width: 80%;
+      width: 88%;
     }
     .ui.buttons {
-      width: 20%;
+      width: 12%;
     }
   }
   

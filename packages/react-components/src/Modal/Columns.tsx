@@ -10,9 +10,9 @@ function Columns ({ children, className = '', hint }: ColumnsProps): React.React
   return (
     <div className={`ui--Modal-Columns ${className}`}>
       <div>{children}</div>
-      {hint && (
+      {/* {hint && (
         <div>{hint}</div>
-      )}
+      )} */}
     </div>
   );
 }
@@ -42,7 +42,7 @@ export default React.memo(styled(Columns)`
     @media only screen and (min-width: 1024px) {
       &:nth-child(1),
       &:only-child {
-        flex: 0 65%;
+        flex: 0 100%;
       }
 
       &:nth-child(2) {
