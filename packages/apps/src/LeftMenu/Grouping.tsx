@@ -18,7 +18,7 @@ interface Props extends Group {
 const SHA_COL = 'rgba(34, 36, 38, 0.12)';
 const SHA_OFF = '5px';
 
-function Grouping ({ className = '', isActive, name, routes }: Props): React.ReactElement<Props> {
+function Grouping({ className = '', isActive, name, routes }: Props): React.ReactElement<Props> {
   if (routes.length === 1) {
     return (
       <Item
@@ -34,14 +34,14 @@ function Grouping ({ className = '', isActive, name, routes }: Props): React.Rea
       <div className={`groupHdr ${!isActive ? 'highlight--color-contrast' : ''}`}>
         {/* <Icon icon='caret-down' /> */}
       </div>
-        <div>{name}</div>
+      <div>{name}</div>
       <ul className='groupMenu'>
         {routes.map((route): React.ReactNode => (
           <Item
             key={route.name}
             route={route}
           />
-          ))}
+        ))}
       </ul>
     </li>
   );
@@ -57,11 +57,12 @@ export default React.memo(styled(Grouping)`
     font-weight: 400;
     line-height: 1.214rem;
     width:3.143rem;
-    height:2.57rem;
+    height:2.87rem;
     margin:0 auto;
-    margin-top:2.5rem;
+    margin-top:1.5rem;
     background-color: var(--bg-tabs);
     opacity:0.5;
+    margin-bottom:.5rem!important;
     > .ui--Icon {
       margin-left: 0.75rem;
     }
@@ -71,7 +72,7 @@ export default React.memo(styled(Grouping)`
     opacity:1;
     font-size: 1rem;
     font-weight: 400;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .groupMenu {
@@ -82,13 +83,22 @@ export default React.memo(styled(Grouping)`
     overflow: hidden;
     padding: 0;
     position: absolute;
-    top: 2.9rem;
+    top: 1.5rem;
     z-index: 250;
     padding:1rem;
-
     > li {
       z-index: 1;
       list-style:none;
+      display:inline-block;
+      margin-bottom:.5rem;
+      > a {
+        color:white!important;
+        width:100%;
+        text-align:left;
+      }
+    }
+    > li:last-child{
+      margin-bottom:0;
     }
 
     &::before {
@@ -113,10 +123,10 @@ export default React.memo(styled(Grouping)`
       margin-top:0;
       position:absolute;
       left:6rem;
-      top:-2rem;
+      top:0rem;
       > li:hover {
         a{
-          color:#fff !important;
+          color:red !important;
         }
       }
     }

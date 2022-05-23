@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import Queries from './Queries';
 import Selection from './Selection';
 
-function StorageApp ({ basePath, className = '' }: Props): React.ReactElement<Props> {
+function StorageApp({ basePath, className = '' }: Props): React.ReactElement<Props> {
   const [queue, setQueue] = useState<QueryTypes[]>([]);
 
   const _onAdd = useCallback(
@@ -38,6 +38,7 @@ function StorageApp ({ basePath, className = '' }: Props): React.ReactElement<Pr
 }
 
 export default React.memo(styled(StorageApp)`
+  padding-top:2rem;
   .storage--actionrow {
     align-items: flex-start;
     display: flex;

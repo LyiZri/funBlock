@@ -9,7 +9,6 @@ import type { Group, Groups, ItemRoute } from "./types";
 
 import React, { useMemo, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import styled from "styled-components";
 
 import createRoutes from "@polkadot/apps-routing";
 import { useAccounts, useApi, useCall } from "@polkadot/react-hooks";
@@ -120,11 +119,11 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
   const groupRef = useRef({
     accounts: t("Accounts"),
     developer: t("Developer"),
-    governance: t("Governance"),
+    // governance: t("Governance"),
     network: t("Network"),
     applications: t("Applications"),
     settings: t("Settings"),
-    storage: t("Storage"),
+    // storage: t("Storage"),
     csmStaking: t("Profit Data"),
   });
 
@@ -151,28 +150,30 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
   return (
     <div className={`${className}${isLoading ? " isLoading" : ""} left-menu-parent`}>
       <div className="menuContainer">
-        <div className="menuSection">
-          <ul className="menuItems">
-            {visibleGroups.map(
-              ({ name, routes }): React.ReactNode => (
-                <Grouping
-                  isActive={activeRoute && activeRoute.group === name.toLowerCase()}
-                  key={name}
-                  name={name}
-                  routes={routes}
-                />
-              )
-            )}
-          </ul>
-        </div>
-        <div className="menuSection">
-          <ul className="menuItems">
-            {externalRef.current.map(
-              (route): React.ReactNode => (
-                <Item className="external" isLink isToplevel key={route.name} route={route} />
-              )
-            )}
-          </ul>
+        <div>
+          <div className="menuSection">
+            <ul className="menuItems">
+              {visibleGroups.map(
+                ({ name, routes }): React.ReactNode => (
+                  name && <Grouping
+                    isActive={activeRoute && activeRoute.group === name.toLowerCase()}
+                    key={name}
+                    name={name}
+                    routes={routes}
+                  />
+                )
+              )}
+            </ul>
+          </div>
+          <div className="menuSection">
+            <ul className="menuItems">
+              {externalRef.current.map(
+                (route): React.ReactNode => (
+                  <Item className="external" isLink isToplevel key={route.name} route={route} />
+                )
+              )}
+            </ul>
+          </div>
         </div>
         <NodeInfo />
       </div>

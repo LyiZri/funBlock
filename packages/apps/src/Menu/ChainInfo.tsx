@@ -109,6 +109,7 @@ export default React.memo(styled(ChainInfo)`
           font-size: 0.75rem;
           line-height: 1.2;
           letter-spacing: -0.01em;
+          white-space:nowrap;
       }
     }
   }

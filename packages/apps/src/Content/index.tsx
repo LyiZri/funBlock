@@ -98,9 +98,14 @@ export default React.memo(styled(Content)`
   width: 100%;
   background:#fff;
   margin-left:1.5rem;
+<<<<<<< HEAD
   margin-top:2rem;
+=======
+  height:100%;
+>>>>>>> d9e06b3da9646bc9718c68d2ecfab7c57fe42ec7
   overflow:auto;
   border-radius:2rem;
+  background:white;
   .connecting {
     padding: 3.5rem 0;
   }

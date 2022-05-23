@@ -127,7 +127,7 @@ export default (_theme: ThemeDef): string => `
     box-shadow: none;
     color: var(--color-text);
     font: var(--font-sans);
-
+    margin-top:3rem!important;
     > .actions,
     > .content {
       background: transparent;

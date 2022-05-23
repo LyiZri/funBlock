@@ -84,9 +84,9 @@ export default React.memo(styled(Head)`
       border-left: 1px solid var(--border-table);
     }
 
-    &:last-child {
-      border-right: 1px solid var(--border-table);
-    }
+    // &:last-child {
+    //   border-right: 1px solid var(--border-table);
+    // }
 
     &.address {
       padding-left: 3rem;

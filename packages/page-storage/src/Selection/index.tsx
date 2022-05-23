@@ -46,10 +46,10 @@ function Selection ({ basePath, onAdd }: Props): React.ReactElement<Props> {
 
   return (
     <>
-      <Tabs
+      {/* <Tabs
         basePath={basePath}
         items={itemsRef.current}
-      />
+      /> */}
       <Switch>
         <Route path={`${basePath}/constants`}><Consts onAdd={_onAdd} /></Route>
         <Route path={`${basePath}/raw`}><Raw onAdd={_onAdd} /></Route>

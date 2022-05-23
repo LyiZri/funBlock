@@ -30,9 +30,8 @@ function Item({
 
   return (
     <li
-      className={`ui--MenuItem ${className}${count ? " withCounter" : ""} ${isLink ? "isLink" : ""} ${
-        isToplevel ? "topLevel  highlight--color-contrast" : ""
-      }`}
+      className={`ui--MenuItem ${className}${count ? " withCounter" : ""} ${isLink ? "isLink" : ""} ${isToplevel ? "topLevel  highlight--color-contrast" : ""
+        }`}
     >
       <a
         href={Modal ? undefined : href || `#/${name}`}
@@ -61,7 +60,7 @@ export default React.memo(styled(Item)`
     font-weight: 400;
     line-height: 1.214rem;
     border-radius: 0.15rem;
-
+    text-align:center;
     a {
       line-height: 1.214rem;
       border-radius: 0.25rem;
@@ -90,11 +89,12 @@ export default React.memo(styled(Item)`
       font-weight: 400;
       line-height: 1.214rem;
       width: 3.143rem;
-      height: 2.57rem;
+      height: 2.87rem;
       margin: 0 auto;
-      margin-top: 2.5rem;
+      margin-top: 1.5rem;
       background-color: var(--bg-tabs);
-      opacity: 0.5;
+      margin-bottom:.5rem!important;
+      opacity: 0.5; 
       > .ui--Icon {
         margin-left: 0.75rem;
       }

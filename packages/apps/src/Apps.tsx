@@ -17,6 +17,7 @@ import Content from './Content';
 import Menu from './Menu';
 import WarmUp from './WarmUp';
 import LeftMenu from './LeftMenu';
+import './app.scss'
 export const PORTAL_ID = 'portals';
 
 function Apps({ className = '' }: Props): React.ReactElement<Props> {
@@ -36,13 +37,15 @@ function Apps({ className = '' }: Props): React.ReactElement<Props> {
         <Menu />
         <div className='pageContent'>
           <LeftMenu />
-          <AccountSidebar>
-            <Signer>
-              <Content />
-            </Signer>
-            <ConnectingOverlay />
-            <div id={PORTAL_ID} />
-          </AccountSidebar>
+          <div className='content-view'>
+            <AccountSidebar>
+              <Signer>
+                <Content />
+              </Signer>
+              <ConnectingOverlay />
+              <div id={PORTAL_ID} />
+            </AccountSidebar>
+          </div>
         </div>
       </div>
       <WarmUp />
@@ -59,6 +62,5 @@ export default React.memo(styled(Apps)`
   .pageContent{
     display:flex;
     jusitify-content:spance-between;
-    height:calc(100vh - 2rem - 58px)
   }
 `);

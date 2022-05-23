@@ -52,7 +52,7 @@ export default React.memo(styled(HelpOverlay)`
 
   > .help-button {
     position: absolute;
-    right: 0rem;
+    right: 1rem;
     top: 0rem;
     z-index: 10;
   }

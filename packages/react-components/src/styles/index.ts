@@ -99,11 +99,11 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
 
   .highlight--bg-faint,
   .highlight--bg-light {
-    background: var(--bg-table);
+    background: white;
     position: relative;
 
     &:before {
-      background: ${getHighlight(uiHighlight)};
+      background: white;
       bottom: 0;
       content: ' ';
       left: 0;
@@ -196,7 +196,7 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
     &.withoutLink:not(.isDisabled) {
       .ui--Icon {
         background: ${getHighlight(uiHighlight)};
-        color: ${getContrast(uiHighlight)};
+        color: white;
       }
     }
 
@@ -217,7 +217,7 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
     &:hover:not(.isDisabled):not(.isReadOnly),
     &.isSelected {
       background: ${getHighlight(uiHighlight)};
-      color: ${getContrast(uiHighlight)};
+      color: white;
       text-shadow: none;
 
       &:not(.isIcon),
@@ -234,14 +234,13 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
     &.withoutLink:not(.isDisabled) {
       &:hover {
         .ui--Icon {
-          color: ${getContrast(uiHighlight)};
+          color: white;
         }
       }
 
       .ui--Icon {
         background: transparent;
         color: inherit;
-        color: ${getHighlight(uiHighlight)};
       }
     }
   }
