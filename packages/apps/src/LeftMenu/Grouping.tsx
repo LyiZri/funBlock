@@ -57,11 +57,12 @@ export default React.memo(styled(Grouping)`
     font-weight: 400;
     line-height: 1.214rem;
     width:3.143rem;
-    height:2.57rem;
+    height:2.87rem;
     margin:0 auto;
-    margin-top:2.5rem;
+    margin-top:1.5rem;
     background-color: var(--bg-tabs);
     opacity:0.5;
+    margin-bottom:.5rem!important;
     > .ui--Icon {
       margin-left: 0.75rem;
     }
@@ -71,7 +72,7 @@ export default React.memo(styled(Grouping)`
     opacity:1;
     font-size: 1rem;
     font-weight: 400;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .groupMenu {

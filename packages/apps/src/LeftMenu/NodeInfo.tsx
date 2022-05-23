@@ -18,7 +18,7 @@ function NodeInfo ({ className = '' }: Props): React.ReactElement<Props> {
   const { api, isApiReady } = useApi();
 
   return (
-    <div className={`${className} media--1400 highlight--color-contrast ui--NodeInfo`}>
+    <div className={`${className} highlight--color-contrast ui--NodeInfo`}>
       {isApiReady && (
         <div>
           <NodeName />&nbsp;
@@ -36,10 +36,10 @@ export default React.memo(styled(NodeInfo)`
   font-size: 0.9rem;
   line-height: 1.2;
   padding: 0 0 0 1rem;
-  text-align: right;
+  text-align: left;
 
   > div {
-    margin-bottom: -0.125em;
+    margin-bottom: .5rem;
 
     > div {
       display: inline-block;

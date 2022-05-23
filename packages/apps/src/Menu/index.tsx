@@ -241,9 +241,8 @@ export default React.memo(styled(Menu)`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
     width: 100%;
-    max-width: var(--width-full);
     margin: 0 auto;
   }
 
