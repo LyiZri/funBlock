@@ -23,14 +23,14 @@ function Main ({ events, headers }: Props): React.ReactElement<Props> {
     <>
       {/* <Query /> */}
       <Summary />
-      <Columar>
+      {/* <Columar> */}
         <Columar.Column>
           <BlockHeaders headers={headers} />
         </Columar.Column>
         <Columar.Column>
           <Events events={events} />
         </Columar.Column>
-      </Columar>
+      {/* </Columar> */}
     </>
   );
 }
