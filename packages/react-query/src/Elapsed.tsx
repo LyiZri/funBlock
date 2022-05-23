@@ -93,6 +93,7 @@ function Elapsed ({ children, className = '', value }: Props): React.ReactElemen
 }
 
 export default React.memo(styled(Elapsed)`
+  font-size:22px;
   .digit {
     display: inline-block;
     width: 1ch;

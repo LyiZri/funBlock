@@ -99,7 +99,6 @@ export default React.memo(styled(Content)`
   background:#fff;
   margin-left:1.5rem;
   margin-top:2rem;
-  height:80%;
   overflow:auto;
   border-radius:2rem;
   .connecting {

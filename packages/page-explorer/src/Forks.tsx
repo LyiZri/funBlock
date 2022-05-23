@@ -397,6 +397,7 @@ export default React.memo(styled(Forks)`
   table {
     border-collapse: separate;
     border-spacing: 0.25rem;
+    border:0;
     font: var(--font-mono);
 
     td {

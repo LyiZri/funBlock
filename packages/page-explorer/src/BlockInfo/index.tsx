@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 import { useBestNumber } from '@polkadot/react-hooks';
 import { isHex } from '@polkadot/util';
-
+import './index.scss'
 import Query from '../Query';
 import BlockByHash from './ByHash';
 import BlockByNumber from './ByNumber';
@@ -35,13 +35,13 @@ function Entry (): React.ReactElement | null {
     : BlockByNumber;
 
   return (
-    <>
+    <div className='blockinfo-content'>
       <Query />
       <Component
         key={stateValue}
         value={stateValue}
       />
-    </>
+    </div>
   );
 }
 

@@ -24,7 +24,6 @@ function BlockHeaders ({ headers }: Props): React.ReactElement<Props> {
   return (
     <Table
       empty={t<string>('No blocks available')}
-      header={headerRef.current}
     >
       {headers
         .filter((header) => !!header)

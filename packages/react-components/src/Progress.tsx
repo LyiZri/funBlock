@@ -75,9 +75,9 @@ function Progress ({ className = '', isDisabled, total, value }: Props): React.R
 export default React.memo(styled(Progress)`
   border-radius: 100%;
   clip-path: circle(50%);
-  height: 4rem;
+  height: 108px;
   position: relative;
-  width: 4rem;
+  width: 108px;
 
   &.isDisabled {
     filter: grayscale(100%);
