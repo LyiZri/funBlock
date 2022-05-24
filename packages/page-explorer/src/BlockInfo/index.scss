@@ -1,4 +1,12 @@
-.blockinfo-content{
-    padding: 40px 35px;
-    background: #fff;
+.content-box-bg {
+  padding: 35px 39px;
+  background-color: #f2f2f7;
+  border-radius: 20px;
+
+  table {
+    border-radius: 20px;
+  }
+  .blockinfo-columar{
+      padding: 0;
+  }
 }

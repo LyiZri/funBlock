@@ -1,20 +1,21 @@
 // Copyright 2017-2021 @polkadot/app-explorer authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { KeyedEvent } from '@polkadot/react-query/types';
+import type { KeyedEvent } from "@polkadot/react-query/types";
 
-import React, { useContext, useRef } from 'react';
-import { Route, Switch } from 'react-router';
+import React, { useContext, useRef } from "react";
+import { Route, Switch } from "react-router";
 
-import Tabs from '@polkadot/react-components/Tabs';
-import { useApi } from '@polkadot/react-hooks';
-import { BlockAuthorsContext, EventsContext } from '@polkadot/react-query';
+import Tabs from "@polkadot/react-components/Tabs";
+import { useApi } from "@polkadot/react-hooks";
+import { BlockAuthorsContext, EventsContext } from "@polkadot/react-query";
 
-import BlockInfo from './BlockInfo';
-import Forks from './Forks';
-import Main from './Main';
-import NodeInfo from './NodeInfo';
-import { useTranslation } from './translate';
+import BlockInfo from "./BlockInfo";
+import Forks from "./Forks";
+import Main from "./Main";
+import NodeInfo from "./NodeInfo";
+import { useTranslation } from "./translate";
+import styled from "styled-components";
 
 interface Props {
   basePath: string;
@@ -22,9 +23,9 @@ interface Props {
   newEvents?: KeyedEvent[];
 }
 
-const HIDDESN_NOBABE = ['forks'];
+const HIDDESN_NOBABE = ["forks"];
 
-function ExplorerApp ({ basePath, className }: Props): React.ReactElement<Props> {
+function ExplorerApp({ basePath, className }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api } = useApi();
   const { lastHeaders } = useContext(BlockAuthorsContext);
@@ -33,23 +34,23 @@ function ExplorerApp ({ basePath, className }: Props): React.ReactElement<Props>
   const itemsRef = useRef([
     {
       isRoot: true,
-      name: 'chain',
-      text: t<string>('Chain info')
+      name: "chain",
+      text: t<string>("Chain info"),
     },
     {
       hasParams: true,
-      name: 'query',
-      text: t<string>('Block details')
+      name: "query",
+      text: t<string>("Block details"),
     },
     {
-      name: 'forks',
-      text: t<string>('Forks')
+      name: "forks",
+      text: t<string>("Forks"),
     },
     {
-      name: 'node',
-      text: t<string>('Node info')
-    }
-  ]);  
+      name: "node",
+      text: t<string>("Node info"),
+    },
+  ]);
   return (
     <main className={className}>
       {/* <Tabs
@@ -58,19 +59,26 @@ function ExplorerApp ({ basePath, className }: Props): React.ReactElement<Props>
         items={itemsRef.current}
       /> */}
       <Switch>
-        <Route path={`${basePath}/forks`}><Forks /></Route>
-        <Route path={`${basePath}/query/:value`}><BlockInfo /></Route>
-        <Route path={`${basePath}/query`}><BlockInfo /></Route>
-        <Route path={`${basePath}/node`}><NodeInfo /></Route>
+        <Route path={`${basePath}/forks`}>
+          <Forks />
+        </Route>
+        <Route path={`${basePath}/query/:value`}>
+          <BlockInfo />
+        </Route>
+        <Route path={`${basePath}/query`}>
+          <BlockInfo />
+        </Route>
+        <Route path={`${basePath}/node`}>
+          <NodeInfo />
+        </Route>
         <Route>
-          <Main
-            events={events}
-            headers={lastHeaders}
-            />
+          <Main events={events} headers={lastHeaders} />
         </Route>
       </Switch>
     </main>
   );
 }
 
-export default React.memo(ExplorerApp);
+export default React.memo(styled(ExplorerApp)`
+  padding: 40px;
+`);

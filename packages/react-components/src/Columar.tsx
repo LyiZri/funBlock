@@ -65,7 +65,6 @@ ColumarStyled.Column = React.memo(styled(Column)`
   max-width: 100%;
   flex: 1 1;
   margin: auto;
-  padding: 0 0.75rem;
 
   &:first-child {
     padding-left: 0;

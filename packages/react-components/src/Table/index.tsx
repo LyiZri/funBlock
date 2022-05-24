@@ -70,7 +70,7 @@ export default React.memo(styled(Table)`
     position: relative;
     width: 100%;
     z-index: 1;
-
+    border-radius:20px;
     &.isFixed {
       table-layout: fixed;
     }

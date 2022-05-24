@@ -113,7 +113,7 @@ function BlockByHash ({ className = '', error, value }: Props): React.ReactEleme
             events={events}
             value={getBlock.block.extrinsics}
           />
-          <Columar>
+          <Columar className='blockinfo-columar'>
             <Columar.Column>
               <Events
                 eventClassName='explorer--BlockByHash-block'

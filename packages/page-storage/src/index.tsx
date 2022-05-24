@@ -1,22 +1,19 @@
 // Copyright 2017-2021 @polkadot/app-storage authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { AppProps as Props } from '@polkadot/react-components/types';
-import type { QueryTypes } from './types';
+import type { AppProps as Props } from "@polkadot/react-components/types";
+import type { QueryTypes } from "./types";
 
-import React, { useCallback, useState } from 'react';
-import styled from 'styled-components';
+import React, { useCallback, useState } from "react";
+import styled from "styled-components";
 
-import Queries from './Queries';
-import Selection from './Selection';
+import Queries from "./Queries";
+import Selection from "./Selection";
 
-function StorageApp({ basePath, className = '' }: Props): React.ReactElement<Props> {
+function StorageApp({ basePath, className = "" }: Props): React.ReactElement<Props> {
   const [queue, setQueue] = useState<QueryTypes[]>([]);
 
-  const _onAdd = useCallback(
-    (query: QueryTypes) => setQueue((queue: QueryTypes[]) => [query, ...queue]),
-    []
-  );
+  const _onAdd = useCallback((query: QueryTypes) => setQueue((queue: QueryTypes[]) => [query, ...queue]), []);
 
   const _onRemove = useCallback(
     (id: number) => setQueue((queue: QueryTypes[]) => queue.filter((item) => item.id !== id)),
@@ -25,20 +22,26 @@ function StorageApp({ basePath, className = '' }: Props): React.ReactElement<Pro
 
   return (
     <main className={`storage--App ${className}`}>
-      <Selection
-        basePath={basePath}
-        onAdd={_onAdd}
-      />
-      <Queries
-        onRemove={_onRemove}
-        value={queue}
-      />
+      <div className="storage-content-bg">
+        <Selection basePath={basePath} onAdd={_onAdd} />
+        <Queries onRemove={_onRemove} value={queue} />
+      </div>
     </main>
   );
 }
 
 export default React.memo(styled(StorageApp)`
-  padding-top:2rem;
+  padding-top: 2rem;
+  padding: 29px 38px;
+  .storage-content-bg {
+    padding: 59px 44px;
+    background: #f2f2f7;
+    border-radius: 20px;
+  }
+  .ui.selection.dropdown {
+    background: none;
+    border:none;
+  }
   .storage--actionrow {
     align-items: flex-start;
     display: flex;

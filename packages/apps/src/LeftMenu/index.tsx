@@ -18,7 +18,7 @@ import { useTranslation } from "../translate";
 import Grouping from "./Grouping";
 import Item from "./Item";
 import NodeInfo from "./NodeInfo";
-import './index.scss'
+import "./index.scss";
 
 interface Props {
   className?: string;
@@ -154,14 +154,15 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
           <div className="menuSection">
             <ul className="menuItems">
               {visibleGroups.map(
-                ({ name, routes }): React.ReactNode => (
-                  name && <Grouping
-                    isActive={activeRoute && activeRoute.group === name.toLowerCase()}
-                    key={name}
-                    name={name}
-                    routes={routes}
-                  />
-                )
+                ({ name, routes }): React.ReactNode =>
+                  name && (
+                    <Grouping
+                      isActive={activeRoute && activeRoute.group === name.toLowerCase()}
+                      key={name}
+                      name={name}
+                      routes={routes}
+                    />
+                  )
               )}
             </ul>
           </div>

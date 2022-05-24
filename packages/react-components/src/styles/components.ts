@@ -6,7 +6,6 @@ import type { ThemeDef } from '../types';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default (_theme: ThemeDef): string => `
   .ui--output {
-    background: var(--bg-input);
     border-radius: 4px;
     border: 1px dashed #eee;
     box-sizing: border-box;
@@ -16,7 +15,7 @@ export default (_theme: ThemeDef): string => `
     padding: 0.75rem 1rem;
     position: relative;
     word-break: break-all;
-
+    margin-top:14px;
     &.error {
       background: var(--bg-input-error);
     }
