@@ -36,17 +36,12 @@ function Columar ({ children, className = '', is60 }: Props): React.ReactElement
 }
 
 const ColumarStyled = React.memo(styled(Columar)`
-  display: flex;
   flex-wrap: wrap;
-
-  &.is50 {
-    .ui--Column {
-      @media (min-width: 1025px) {
-        max-width: 50%;
-        min-width: 50%;
-      }
-    }
-  }
+  height:100%;
+  width:100%;
+  background:#F2F2F7;
+  border-radius:20px;
+  padding:25px 40px;
 
   &.is60 {
     .ui--Column:first-child {
@@ -69,8 +64,7 @@ ColumarStyled.Column = React.memo(styled(Column)`
   box-sizing: border-box;
   max-width: 100%;
   flex: 1 1;
-  margin: 0;
-  padding: 0 0.75rem;
+  margin: auto;
 
   &:first-child {
     padding-left: 0;
@@ -78,11 +72,6 @@ ColumarStyled.Column = React.memo(styled(Column)`
 
   &:last-child {
     padding-right: 0;
-  }
-
-  @media (min-width: 1025px) {
-    max-width: 50%;
-    min-width: 50%;
   }
 `);
 

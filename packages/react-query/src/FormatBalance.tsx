@@ -100,7 +100,7 @@ export default React.memo(styled(FormatBalance)`
   display: inline-block;
   vertical-align: baseline;
   white-space: nowrap;
-
+  font-size:22px;
   * {
     vertical-align: baseline !important;
   }
@@ -118,12 +118,6 @@ export default React.memo(styled(FormatBalance)`
 
   .ui--FormatBalance-value {
     text-align: right;
-
-    > .ui--FormatBalance-postfix {
-      font-weight: var(--font-weight-light);
-      opacity: 0.7;
-      vertical-align: baseline;
-    }
   }
 
   > .ui--Button {

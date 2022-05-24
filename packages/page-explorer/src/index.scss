@@ -1,0 +1,30 @@
+.chain-info-page-switch {
+  height: 51px;
+  width: 273px;
+  margin: auto;
+  border-radius: 40px;
+  background-color: #E4E4FB;
+  color: #B8B7C8;
+  text-align: center;
+  line-height: 51px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  .switch-choose {
+    background-color: #827CF8;
+    color: #101010;
+    border-radius: 40px;
+    width: 50%;
+  }
+
+  .switch-unchoose {
+    width: 50%;
+  }
+}
+
+.main-content-box {
+  background-color: #fff;
+  padding: 15px 65px;
+  border-radius: 20px;
+}

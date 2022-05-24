@@ -12,6 +12,7 @@ import { BN_HUNDRED, formatNumber, isUndefined } from "@polkadot/util";
 
 import Labelled from "./Labelled";
 import Progress from "./Progress";
+import "./CardSummary.scss";
 
 interface ProgressProps {
   hideGraph?: boolean;
@@ -28,10 +29,19 @@ interface Props {
   help?: React.ReactNode;
   label: React.ReactNode;
   progress?: ProgressProps;
-  icon?:string;
+  icon?: string;
+  childrenIsTop?: boolean;
 }
 
-function CardSummary({ children, className = "", help, label, progress,icon='' }: Props): React.ReactElement<Props> | null {
+function CardSummary({
+  children,
+  className = "",
+  help,
+  label,
+  progress,
+  icon = "",
+  childrenIsTop = true,
+}: Props): React.ReactElement<Props> | null {
   const value = progress && progress.value;
   const total = progress && progress.total;
   const left =
@@ -51,46 +61,57 @@ function CardSummary({ children, className = "", help, label, progress,icon='' }
 
   return (
     <article className={className}>
-      {icon.length!=0&&<div className="iconBox"></div>}
-      {children}
-      <Labelled help={help} isSmall label={label}>
-        {progress && !progress.hideValue && (
-          <>
-            {isTimed && !children && <BlockToTime value={progress.total} />}
-            <div className={isTimed ? "isSecondary" : "isPrimary"}>
-              {!left || isUndefined(progress.total) ? (
-                "-"
-              ) : !isTimed || progress.isPercent || !progress.value ? (
-                `${left}${progress.isPercent ? "" : "/"}${progress.isPercent ? "%" : formatNumber(progress.total)}`
-              ) : (
-                <BlockToTime className="timer" value={progress.total.sub(progress.value)} />
-              )}
-            </div>
-          </>
-        )}
-      </Labelled>
-      {progress && !progress.hideGraph && <Progress {...progress} />}
-
+      {icon.length != 0 && <div className="iconBox"></div>}
+      <div className="epoch-flex">
+        {progress && !progress.hideGraph && <Progress {...progress} />}
+        <div>
+          {childrenIsTop && <div>{ children }</div>}
+          <Labelled help={help} isSmall label={label}>
+            {progress && !progress.hideValue && (
+              <>
+                {isTimed && !children && <BlockToTime className="epoch-timer" value={progress.total} />}
+                <div className={isTimed ? "isSecondary" : "isPrimary"}>
+                  {!left || isUndefined(progress.total) ? (
+                    "-"
+                  ) : !isTimed || progress.isPercent || !progress.value ? (
+                    `${left}${progress.isPercent ? "" : "/"}${progress.isPercent ? "%" : formatNumber(progress.total)}`
+                  ) : (
+                    <BlockToTime className="timer" value={progress.total.sub(progress.value)} />
+                  )}
+                </div>
+              </>
+            )}
+          </Labelled>
+          {!childrenIsTop && <div className="childrenIsNotTop">{children}</div>}
+        </div>
+      </div>
     </article>
   );
 }
 
 export default React.memo(styled(CardSummary)`
   align-items: center;
-  background: rgba(229, 229, 251, 100) !important;
+  background: #827cf8;
   border: none !important;
   border-radius: 1rem;
   box-shadow: none !important;
   color: var(--color-summary);
-  display: flex;
   flex: 0 1 auto;
   flex-flow: row wrap;
   justify-content: flex-end;
   padding: 1rem 3.5rem;
-  .iconBox{
-    height:73px;
-    width:73px;
-    background:#fff;
+  text-align: center;
+  .childrenIsNotTop {
+    color: #fff;
+    font-size: 18px;
+  }
+  .epoch-timer {
+    font-size: 16px;
+  }
+  .iconBox {
+    height: 73px;
+    width: 73px;
+    background: #fff;
   }
   .ui--FormatBalance .balance-postfix {
     opacity: 1;
@@ -129,6 +150,7 @@ export default React.memo(styled(CardSummary)`
 
       .timer {
         min-width: 8rem;
+        font-size: 16px;
       }
     }
   }

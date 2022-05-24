@@ -69,7 +69,7 @@ export default React.memo(styled(Head)`
     white-space: nowrap;
 
     h1, h2 {
-      font-size: 1.75rem;
+      font-size: 18px;
     }
 
     h1 {

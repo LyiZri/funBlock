@@ -33,18 +33,9 @@ export default React.memo(styled(Body)`
   position: relative;
 
   td {
-    border-bottom: 1px solid var(--border-table);
     padding: 0.5rem 1rem;
     text-align: left;
     vertical-align: middle;
-
-    &:first-child {
-      border-left: 1px solid var(--border-table);
-    }
-
-    &:last-child {
-      border-right: 1px solid var(--border-table);
-    }
 
     label {
       display: block !important;
@@ -197,7 +188,6 @@ export default React.memo(styled(Body)`
 
     &:last-child {
       td {
-        border-bottom: 1px solid var(--border-table);
 
         &:first-child {
           border-bottom-left-radius: 0.25rem;
@@ -214,7 +204,6 @@ export default React.memo(styled(Body)`
     }
 
     &.noBorder td {
-      border-bottom: 1px solid transparent;
       padding-bottom: 0 !important;
     }
 

@@ -3,7 +3,6 @@
 
 export default `
   .rx--updated {
-    background: #ffffe0 !important;
     transition: all 0.7s ease-out;
   }
 `;

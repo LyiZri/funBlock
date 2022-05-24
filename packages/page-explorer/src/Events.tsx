@@ -25,14 +25,13 @@ function Events ({ className = '', emptyLabel, eventClassName, events, label }: 
   const { t } = useTranslation();
 
   const header = useMemo(() => [
-    [label || t<string>('recent events'), 'start']
+    [label || t<string>(''), 'start']
   ], [label, t]);
 
   return (
     <Table
       className={className}
       empty={emptyLabel || t<string>('No events available')}
-      header={header}
     >
       {events && events.map(({ blockHash, blockNumber, indexes, key, record }): React.ReactNode => (
         <tr

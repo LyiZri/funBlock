@@ -111,6 +111,5 @@ export default React.memo(styled(Content)`
     margin-right: auto;
     margin-left: auto;
     width: 100%;
-    padding: 0 1.5rem;
   }
 `);
