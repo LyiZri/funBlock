@@ -30,7 +30,7 @@ function Item({
 
   return (
     <li
-      className={`ui--MenuItem ${className}${count ? " withCounter" : ""} ${isLink ? "isLink" : ""} ${isToplevel ? "topLevel  highlight--color-contrast" : ""
+      className={`ui--MenuItem ${className} ${isLink ? "isLink" : ""} ${isToplevel ? "topLevel  highlight--color-contrast" : ""
         }`}
     >
       <a
@@ -43,7 +43,7 @@ function Item({
         {logo && <img src={logo as string}/>} */}
         {isToplevel === true && <div className="groupHdr"></div>}
         {text}
-        {!!count && <Badge color={"white"} info={count} />}
+        {/* {!!count && <Badge color={"white"} info={count} />} */}
       </a>
       {Modal && isModalVisible && <Modal onClose={toggleModal} />}
     </li>

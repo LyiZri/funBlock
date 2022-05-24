@@ -118,6 +118,7 @@ export default React.memo(styled(FormatBalance)`
 
   .ui--FormatBalance-value {
     text-align: right;
+    font-size:12px;
   }
 
   > .ui--Button {
