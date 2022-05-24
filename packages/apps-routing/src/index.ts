@@ -29,7 +29,7 @@ import parachains from './parachains';
 // import poll from './poll';
 // import rpc from './rpc';
 import settings from './settings';
-import settlements from './settlements';
+// import settlements from './settlements';
 // import signing from './signing';
 import society from './society';
 import splore from './splore';
@@ -78,7 +78,7 @@ export default function create (t: TFunction): Routes {
     // appsSwitchSwap(t),
     settings(t),
     merchants(t),
-    settlements(t),
+    // settlements(t),
     splore(t),
     // benefit(t),
     candy(t),

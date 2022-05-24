@@ -150,7 +150,7 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
   return (
     <div className={`${className}${isLoading ? " isLoading" : ""} left-menu-parent`}>
       <div className="menuContainer">
-        <div>
+        <div style={{marginBottom:'2rem'}}>
           <div className="menuSection">
             <ul className="menuItems">
               {visibleGroups.map(

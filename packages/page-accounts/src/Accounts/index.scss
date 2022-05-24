@@ -1,0 +1,33 @@
+.accounts-parent-box {
+  background-color: #eee;
+  padding: 32px;
+  border-radius: 20px;
+  position: relative;
+  .icon-mine-search {
+    position: absolute;
+    left: 1rem;
+    font-size: 1.2rem;
+    top: 1.1rem;
+    z-index: 200;
+  }
+  .ui--Table {
+    margin-bottom: 0;
+    .filter--tags {
+      background-color: #eee;
+      .ui--Input {
+        margin-bottom: 0;
+        input {
+          border-radius: 16px;
+          border-color: rgba(0, 0, 0, 0);
+          padding: 1rem !important;
+          padding-left: 3rem!important;
+        }
+      }
+    }
+    .test-mask {
+      width: 100%;
+      height: 2rem;
+      background-color: #eee;
+    }
+  }
+}

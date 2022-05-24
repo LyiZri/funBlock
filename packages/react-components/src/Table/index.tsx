@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Body from './Body';
 import Foot from './Foot';
 import Head from './Head';
+import './index.scss'
 
 interface TableProps {
   children: React.ReactNode;
@@ -70,7 +71,7 @@ export default React.memo(styled(Table)`
     position: relative;
     width: 100%;
     z-index: 1;
-
+    border:0!important;
     &.isFixed {
       table-layout: fixed;
     }

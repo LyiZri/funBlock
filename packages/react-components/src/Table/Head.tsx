@@ -27,7 +27,7 @@ function Head ({ className = '', filter, header, isEmpty }: Props): React.ReactE
           <th colSpan={100}>{filter}</th>
         </tr>
       )}
-      <tr>
+      <tr className='with-redius-header'>
         {header.filter((h): h is HeaderDef => !!h).map(([label, className = 'default', colSpan = 1, onClick], index) =>
           <th
             className={className}

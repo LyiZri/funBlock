@@ -7,10 +7,10 @@ import type { AccountId, ProxyDefinition, ProxyType, Voting } from '@polkadot/ty
 import type { Delegation, SortedAccount } from '../types';
 
 import BN from 'bn.js';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { Button, Input, Table } from '@polkadot/react-components';
+import { Button, Input, Table,Icon } from '@polkadot/react-components';
 import { useAccounts, useApi, useCall, useFavorites, useIpfs, useLedger, useLoadingDelay, useToggle } from '@polkadot/react-hooks';
 import { FormatBalance } from '@polkadot/react-query';
 import { BN_ZERO } from '@polkadot/util';
@@ -27,6 +27,7 @@ import Account from './Account';
 import AccountMainnet from './AccountMainnet';
 import BannerClaims from './BannerClaims';
 import BannerExtension from './BannerExtension';
+import './index.scss'
 
 interface Balances {
   accounts: Record<string, BN>;
@@ -45,7 +46,7 @@ interface Props {
 
 const STORE_FAVS = 'accounts:favorites';
 
-function Overview ({ className = '', onStatusChange }: Props): React.ReactElement<Props> {
+function Overview({ className = '', onStatusChange }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api, systemChain } = useApi();
   const { allAccounts, hasAccounts } = useAccounts();
@@ -80,7 +81,7 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
     [t('accounts'), 'start', 3],
     // [t('parent'), 'address media--1400'],
     // [t('type'), 'address media--1400'],
-    [t('tags'), 'start'],
+    [t('parent'), 'start'],
     [t('transactions'), 'start'],
     [t('HEIM'), 'expand'],
     [t('CSM'), 'expand'],
@@ -92,11 +93,14 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
     [t('accounts'), 'start', 3],
     // [t('parent'), 'address media--1400'],
     // [t('type'), 'address media--1400'],
-    [t('tags'), 'start'],
+    [t('parent'), 'start'],
     [t('transactions'), 'start'],
+    [t('tags'), 'start'],
     [t('balances'), 'expand'],
     [],
-    [undefined, 'media--1400']
+    [undefined, 'media--1400'],
+    [undefined],
+    [undefined],
   ]);
 
   useEffect((): void => {
@@ -167,23 +171,28 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
         {balanceTotal && <FormatBalance value={balanceTotal} />}
       </td>
       <td />
+      <td />
       <td className='media--1400' />
     </tr>
   ), [balanceTotal, isMainnet]);
 
-  const filter = useMemo(() => (
-    <div className='filter--tags'>
-      <Input
-        autoFocus
-        isFull
-        label={t<string>('filter by name or tags')}
-        onChange={setFilter}
-        value={filterOn}
-      />
-    </div>
+  const filter = useMemo((): ReactNode => (
+    <>
+      <div className='filter--tags'>
+        <Icon icon="search" className="icon-mine-search"/>
+        <Input
+          autoFocus
+          isFull
+          onChange={setFilter}
+          value={filterOn}
+          placeholder="filter by name or tags"
+        />
+      </div>
+      <div className='test-mask'></div>
+    </>
   ), [filterOn, t]);
-    console.log('sortedAccountsWithDelegation:',sortedAccountsWithDelegation);
-    
+  console.log('sortedAccountsWithDelegation:', sortedAccountsWithDelegation);
+
   return (
     <div className={className}>
       {isCreateOpen && (
@@ -261,38 +270,41 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
       </Button.Group>
       <BannerExtension />
       <BannerClaims />
-      <Table
-        empty={!isLoading && sortedAccountsWithDelegation && t<string>("You don't have any accounts. Some features are currently hidden and will only become available once you have accounts.")}
-        filter={filter}
-        footer={footer}
-        header={headerRef.current}
-      >
-        {!isLoading && sortedAccountsWithDelegation?.map(({ account, delegation, isFavorite }, index): React.ReactNode => isMainnet
-          ? (
-            <AccountMainnet
-              account={account}
-              delegation={delegation}
-              filter={filterOn}
-              isFavorite={isFavorite}
-              key={`${index}:${account.address}`}
-              proxy={proxies?.[index]}
-              setBalance={_setBalance}
-              toggleFavorite={toggleFavorite}
-            />
-          )
-          : (
-            <Account
-              account={account}
-              delegation={delegation}
-              filter={filterOn}
-              isFavorite={isFavorite}
-              key={`${index}:${account.address}`}
-              proxy={proxies?.[index]}
-              setBalance={_setBalance}
-              toggleFavorite={toggleFavorite}
-            />
-          ))}
-      </Table>
+      <div className='accounts-parent-box'>
+        <filter/>
+        <Table
+          empty={!isLoading && sortedAccountsWithDelegation && t<string>("You don't have any accounts. Some features are currently hidden and will only become available once you have accounts.")}
+          filter={filter}
+          footer={footer}
+          header={headerRef.current}
+        >
+          {!isLoading && sortedAccountsWithDelegation?.map(({ account, delegation, isFavorite }, index): React.ReactNode => isMainnet
+            ? (
+              <AccountMainnet
+                account={account}
+                delegation={delegation}
+                filter={filterOn}
+                isFavorite={isFavorite}
+                key={`${index}:${account.address}`}
+                proxy={proxies?.[index]}
+                setBalance={_setBalance}
+                toggleFavorite={toggleFavorite}
+              />
+            )
+            : (
+              <Account
+                account={account}
+                delegation={delegation}
+                filter={filterOn}
+                isFavorite={isFavorite}
+                key={`${index}:${account.address}`}
+                proxy={proxies?.[index]}
+                setBalance={_setBalance}
+                toggleFavorite={toggleFavorite}
+              />
+            ))}
+        </Table>
+      </div>
     </div>
   );
 }

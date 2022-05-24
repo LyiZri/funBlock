@@ -624,7 +624,6 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
       <td className='number'>
         <PreClaimHEIM18 value={address} />
       </td>
-
       <td className='button'>
         {/* {isFunction(api.api.tx.balances?.transfer) && (
           <Button

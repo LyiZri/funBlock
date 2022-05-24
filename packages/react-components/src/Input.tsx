@@ -17,6 +17,7 @@ interface Props {
   defaultValue?: string | null;
   help?: React.ReactNode;
   icon?: React.ReactNode;
+  iconPosition?:string;
   inputClassName?: string;
   isAction?: boolean;
   isDisabled?: boolean;

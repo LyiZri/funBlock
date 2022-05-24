@@ -4,9 +4,9 @@
 import type { TFunction } from "i18next";
 import type { Route, Routes } from "@polkadot/apps-routing/types";
 import type { ApiProps } from "@polkadot/react-api/types";
-import type { AccountId } from "@polkadot/types/interfaces";
+// import type { AccountId } from "@polkadot/types/interfaces";
 import type { Group, Groups, ItemRoute } from "../LeftMenu/types";
-import { Tabs } from "@polkadot/react-components";
+import { HelpOverlay, Tabs } from "@polkadot/react-components";
 import Query from '../../../page-explorer/src/Query'
 import NotFound from '../Content/NotFound'
 import React, { useMemo, useRef } from "react";
@@ -20,6 +20,7 @@ import { useAccounts, useApi, useCall } from "@polkadot/react-hooks";
 import { findMissingApis } from "../endpoint";
 import { useTranslation } from "../translate";
 import ChainInfo from "./ChainInfo";
+import basicMd from './md/basic.md';
 // import Grouping from './Grouping';
 // import Item from './Item';
 // import NodeInfo from './NodeInfo';
@@ -40,23 +41,23 @@ const NOT_FOUND: Route = {
 };
 const disabledLog = new Map<string, string>();
 
-function createExternals(t: TFunction): ItemRoute[] {
-  return [
-    {
-      href: "https://github.com/mannheim-network",
-      icon: "code-branch",
-      name: "github",
-      text: t<string>("nav.github", "GitHub", { ns: "apps-routing" }),
-    },
-    {
-      href: "https://github.com/mannheim-network/wiki",
-      icon: "book",
-      name: "wiki",
-      text: t<string>("nav.wiki", "Wiki", { ns: "apps-routing" }),
-    },
-    // { href: 'https://wiki.crust.network/docs/en/crustWallet', icon: 'wallet', name: 'wallet', text: t<string>('nav.Wallet', 'Wallet', { ns: 'apps-routing' }) }
-  ];
-}
+// function createExternals(t: TFunction): ItemRoute[] {
+//   return [
+//     {
+//       href: "https://github.com/mannheim-network",
+//       icon: "code-branch",
+//       name: "github",
+//       text: t<string>("nav.github", "GitHub", { ns: "apps-routing" }),
+//     },
+//     {
+//       href: "https://github.com/mannheim-network/wiki",
+//       icon: "book",
+//       name: "wiki",
+//       text: t<string>("nav.wiki", "Wiki", { ns: "apps-routing" }),
+//     },
+//     // { href: 'https://wiki.crust.network/docs/en/crustWallet', icon: 'wallet', name: 'wallet', text: t<string>('nav.Wallet', 'Wallet', { ns: 'apps-routing' }) }
+//   ];
+// }
 
 function logDisabled(route: string, message: string): void {
   if (!disabledLog.get(route)) {
@@ -66,117 +67,117 @@ function logDisabled(route: string, message: string): void {
   }
 }
 
-function checkVisible(
-  name: string,
-  { api, isApiConnected, isApiReady }: ApiProps,
-  hasAccounts: boolean,
-  hasSudo: boolean,
-  { isHidden, needsAccounts, needsApi, needsSudo }: Route["display"]
-): boolean {
-  if (isHidden) {
-    return false;
-  } else if (needsAccounts && !hasAccounts) {
-    return false;
-  } else if (!needsApi) {
-    return true;
-  } else if (!isApiReady || !isApiConnected) {
-    return false;
-  } else if (needsSudo && !hasSudo) {
-    logDisabled(name, "Sudo key not available");
+// function checkVisible(
+//   name: string,
+//   { api, isApiConnected, isApiReady }: ApiProps,
+//   hasAccounts: boolean,
+//   hasSudo: boolean,
+//   { isHidden, needsAccounts, needsApi, needsSudo }: Route["display"]
+// ): boolean {
+//   if (isHidden) {
+//     return false;
+//   } else if (needsAccounts && !hasAccounts) {
+//     return false;
+//   } else if (!needsApi) {
+//     return true;
+//   } else if (!isApiReady || !isApiConnected) {
+//     return false;
+//   } else if (needsSudo && !hasSudo) {
+//     logDisabled(name, "Sudo key not available");
 
-    return false;
-  }
+//     return false;
+//   }
 
-  const notFound = findMissingApis(api, needsApi);
+//   const notFound = findMissingApis(api, needsApi);
 
-  if (notFound.length !== 0) {
-    logDisabled(name, `API not available: ${notFound.toString()}`);
-  }
+//   if (notFound.length !== 0) {
+//     logDisabled(name, `API not available: ${notFound.toString()}`);
+//   }
 
-  return notFound.length === 0;
-}
+//   return notFound.length === 0;
+// }
 
-function extractGroups(
-  routing: Routes,
-  groupNames: Record<string, string>,
-  apiProps: ApiProps,
-  hasAccounts: boolean,
-  hasSudo: boolean
-): Group[] {
-  return Object.values(
-    routing.reduce((all: Groups, route): Groups => {
-      if (!all[route.group]) {
-        all[route.group] = { name: groupNames[route.group], routes: [route] };
-      } else {
-        all[route.group].routes.push(route);
-      }
-      return all;
-    }, {})
-  )
-    .map(
-      ({ name, routes }): Group => ({
-        name,
-        routes: routes.filter(({ display, name }) => checkVisible(name, apiProps, hasAccounts, hasSudo, display)),
-      })
-    )
-    .filter(({ routes }) => routes.length);
-}
+// function extractGroups(
+//   routing: Routes,
+//   groupNames: Record<string, string>,
+//   apiProps: ApiProps,
+//   hasAccounts: boolean,
+//   hasSudo: boolean
+// ): Group[] {
+//   return Object.values(
+//     routing.reduce((all: Groups, route): Groups => {
+//       if (!all[route.group]) {
+//         all[route.group] = { name: groupNames[route.group], routes: [route] };
+//       } else {
+//         all[route.group].routes.push(route);
+//       }
+//       return all;
+//     }, {})
+//   )
+//     .map(
+//       ({ name, routes }): Group => ({
+//         name,
+//         routes: routes.filter(({ display, name }) => checkVisible(name, apiProps, hasAccounts, hasSudo, display)),
+//       })
+//     )
+//     .filter(({ routes }) => routes.length);
+// }
 
 function Menu({ className = "" }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
-  const { allAccounts, hasAccounts } = useAccounts();
+  // const { allAccounts, hasAccounts } = useAccounts();
   const apiProps = useApi();
-  const sudoKey = useCall<AccountId>(apiProps.isApiReady && apiProps.api.query.sudo?.key);
+  // const sudoKey = useCall<AccountId>(apiProps.isApiReady && apiProps.api.query.sudo?.key);
   const location = useLocation();
 
-  const externalRef = useRef(createExternals(t));
-  const groupRef = useRef({
-    accounts: t("Accounts"),
-    developer: t("Developer"),
-    governance: t("Governance"),
-    network: t("Network"),
-    applications: t("Applications"),
-    settings: t("Settings"),
-    storage: t("Storage"),
-    csmStaking: t("Profit Data"),
-  });
+  // const externalRef = useRef(createExternals(t));
+  // const groupRef = useRef({
+  //   accounts: t("Accounts"),
+  //   developer: t("Developer"),
+  //   governance: t("Governance"),
+  //   network: t("Network"),
+  //   applications: t("Applications"),
+  //   settings: t("Settings"),
+  //   storage: t("Storage"),
+  //   csmStaking: t("Profit Data"),
+  // });
 
-  const items = [
-    {
-      isRoot: true,
-      name: "chain",
-      text: t<string>("Chain info"),
-    },
-    {
-      hasParams: true,
-      name: "query",
-      text: t<string>("Block details"),
-    },
-    {
-      name: "forks",
-      text: t<string>("Forks"),
-    },
-    {
-      name: "node",
-      text: t<string>("Node info"),
-    },
-  ];
-  const routeRef = useRef(createRoutes(t));
+  // const items = [
+  //   {
+  //     isRoot: true,
+  //     name: "chain",
+  //     text: t<string>("Chain info"),
+  //   },
+  //   {
+  //     hasParams: true,
+  //     name: "query",
+  //     text: t<string>("Block details"),
+  //   },
+  //   {
+  //     name: "forks",
+  //     text: t<string>("Forks"),
+  //   },
+  //   {
+  //     name: "node",
+  //     text: t<string>("Node info"),
+  //   },
+  // ];
+  // const routeRef = useRef(createRoutes(t));
 
-  const hasSudo = useMemo(
-    () => !!sudoKey && allAccounts.some((address) => sudoKey.eq(address)),
-    [allAccounts, sudoKey]
-  );
+  // const hasSudo = useMemo(
+  //   () => !!sudoKey && allAccounts.some((address) => sudoKey.eq(address)),
+  //   [allAccounts, sudoKey]
+  // );
 
-  const visibleGroups = useMemo(
-    () => extractGroups(routeRef.current, groupRef.current, apiProps, hasAccounts, hasSudo),
-    [apiProps, hasAccounts, hasSudo]
-  );
+  // const visibleGroups = useMemo(
+  //   () => extractGroups(routeRef.current, groupRef.current, apiProps, hasAccounts, hasSudo),
+  //   [apiProps, hasAccounts, hasSudo]
+  // );
 
-  const activeRoute = useMemo(
-    () => routeRef.current.find((route) => location.pathname.startsWith(`/${route.name}`)) || null,
-    [location]
-  );
+  // const activeRoute = useMemo(
+  //   () => routeRef.current.find((route) => location.pathname.startsWith(`/${route.name}`)) || null,
+  //   [location]
+  // );
 
   const isLoading = !apiProps.isApiReady || !apiProps.isApiConnected;
   const { name } = useMemo((): Route => {
@@ -184,19 +185,19 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
 
     return createRoutes(t).find((route) => !!(route && app.startsWith(route.name))) || NOT_FOUND;
   }, [location, t]);
-  console.log('name=======',name,getItems(name));
-  
+  console.log('name=======', name, getItems(name));
+
   return (
     <div className={`${className}${isLoading ? " isLoading" : ""}`}>
       <div className="menuContainer">
         <ChainInfo />
         {
-          name.length!=0 &&
-        <Tabs basePath={`/${name}`} hidden={undefined} isRoot items={getItems(name)} />
+          name.length != 0 &&
+          <Tabs basePath={`/${name}`} hidden={undefined} isRoot items={getItems(name)} />
         }
         {
-          ( location.pathname=='/explorer/query'|| location.pathname == '/explorer') &&
-          <Query/>}
+          (location.pathname == '/explorer/query' || location.pathname == '/explorer') &&
+          <Query />}
         {/* <div className='menuSection'>
           <ul className='menuItems'>
             {visibleGroups.map(({ name, routes }): React.ReactNode => (
@@ -222,7 +223,9 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
             ))}
           </ul>
         </div>
-        <NodeInfo/> */}
+        <NodeInfo/> */
+          <HelpOverlay md={basicMd as string} />
+        }
       </div>
     </div>
   );

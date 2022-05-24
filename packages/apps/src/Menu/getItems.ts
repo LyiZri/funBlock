@@ -95,6 +95,22 @@ export function getItems(bathPath: string): IItems[] {
           text: t<string>('Submission')
         }
       ]
+    case 'settings':
+      return [
+        {
+          isRoot: true,
+          name: 'general',
+          text: t<string>('General')
+        }
+      ]
+    case 'calendar':
+      return [
+        {
+          isRoot: true,
+          name: 'view',
+          text: t<string>('Upcoming events')
+        }
+      ]
     default:
       return [{
         isRoot: true,

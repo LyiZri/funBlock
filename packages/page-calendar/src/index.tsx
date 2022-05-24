@@ -6,11 +6,11 @@ import type { DateState } from './types';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { Tabs } from '@polkadot/react-components';
+// import { Tabs } from '@polkadot/react-components';
 
 import Day from './Day';
 import Month from './Month';
-import { useTranslation } from './translate';
+// import { useTranslation } from './translate';
 import UpcomingEvents from './UpcomingEvents';
 import useScheduled from './useScheduled';
 import { getDateState, nextMonth, prevMonth } from './util';
@@ -22,18 +22,18 @@ interface Props {
 
 const NOW_INC = 30 * 1000;
 
-function CalendarApp ({ basePath, className }: Props): React.ReactElement<Props> {
-  const { t } = useTranslation();
+function CalendarApp({ basePath, className }: Props): React.ReactElement<Props> {
+  // const { t } = useTranslation();
   const scheduled = useScheduled();
   const [now, setNow] = useState(() => new Date());
   const [dateState, setDateState] = useState(() => getDateState(now, now));
   const [allEventsView, setAllEventsView] = useState(false);
 
-  const itemsRef = useRef([{
-    isRoot: true,
-    name: 'view',
-    text: t<string>('Upcoming events')
-  }]);
+  // const itemsRef = useRef([{
+  //   isRoot: true,
+  //   name: 'view',
+  //   text: t<string>('Upcoming events')
+  // }]);
 
   useEffect((): () => void => {
     const intervalId = setInterval(() => setNow(new Date()), NOW_INC);
@@ -116,10 +116,10 @@ function CalendarApp ({ basePath, className }: Props): React.ReactElement<Props>
 
   return (
     <main className={className}>
-      <Tabs
+      {/* <Tabs
         basePath={basePath}
         items={itemsRef.current}
-      />
+      /> */}
       <div className='calendarFlex'>
         <Month
           hasNextMonth={hasNextMonth}
@@ -159,6 +159,7 @@ function CalendarApp ({ basePath, className }: Props): React.ReactElement<Props>
 }
 
 export default React.memo(styled(CalendarApp)`
+  padding-top:3rem;
   .calendarFlex {
     align-items: flex-start;
     display: flex;
