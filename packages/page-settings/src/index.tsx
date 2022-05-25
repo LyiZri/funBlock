@@ -21,63 +21,18 @@ import './index.scss';
 export { useCounter };
 
 function SettingsApp ({ basePath, onStatusChange }: Props): React.ReactElement<Props> {
-  // const { t } = useTranslation();
-  // const { isApiConnected, isApiReady } = useApi();
-  // const numExtensions = useCounter();
-
-  // const items = useMemo(() => [
-  //   {
-  //     isRoot: true,
-  //     name: 'general',
-  //     text: t<string>('General')
-  //   },
-  //   {
-  //     count: numExtensions,
-  //     name: 'metadata',
-  //     text: t<string>('Metadata')
-  //   },
-  //   {
-  //     name: 'developer',
-  //     text: t<string>('Developer')
-  //   },
-  //   {
-  //     name: 'i18n',
-  //     text: t<string>('Translate')
-  //   }
-  // ], [numExtensions, t]);
-
-  // const hidden = useMemo(
-  //   () => (isApiConnected && isApiReady)
-  //     ? []
-  //     : ['metadata', 'i18n'],
-  //   [isApiConnected, isApiReady]
-  // );
 
   return (
     <main className='settings--App'>
+      <div className='setting-contetn-bg'>
+
       <HelpOverlay md={md as string} />
-      {/* <Tabs
-        basePath={basePath}
-        hidden={hidden}
-        items={items}
-      /> */}
       <Switch>
-        {/* <Route path={`${basePath}/developer`}>
-          <Developer
-            basePath={basePath}
-            onStatusChange={onStatusChange}
-          />
-        </Route>
-        <Route path={`${basePath}/i18n`}>
-          <I18n />
-        </Route>
-        <Route path={`${basePath}/metadata`}>
-          <Metadata />
-        </Route> */}
         <Route>
           <General />
         </Route>
       </Switch>
+        </div>
     </main>
   );
 }

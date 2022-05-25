@@ -1,3 +1,44 @@
-.settings--App{
-    padding-top: 3rem;
+.settings--App {
+  padding: 20px 33px;
+
+  .setting-contetn-bg {
+    background-color: #f2f2f7;
+    padding: 46px 41px;
+    border-radius: 20px;
+
+    .ui--row {
+      margin-bottom: 12px;
+    }
+
+    .ui--Labelled-content {
+      padding: 18px 8px;
+    }
+
+    .ui.selection.dropdown {
+      border: none;
+      background: none;
+    }
+
+    &:not(.isOuter) {
+      label {
+        left: 7.25rem !important;
+      }
+    }
+
+    .test-genral {
+      &:not(.isOuter) {
+        label {
+          left: 4.15rem !important;
+        }
+      }
+    }
+    .ui--Dropdown-item {
+      display: flex;
+
+      .ui--Dropdown-name {
+        margin-left: 13px !important;
+      }
+    }
+  }
 }
+
