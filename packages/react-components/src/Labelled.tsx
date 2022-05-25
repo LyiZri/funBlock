@@ -126,7 +126,6 @@ export default React.memo(styled(Labelled)`
         border-radius: 20px;
         input {
           background: none;
-          border: none;
         }
         .ui.selection.dropdown {
           &:not(.floating) {

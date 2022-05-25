@@ -161,6 +161,7 @@ export default React.memo(styled(Expander)`
 
       span {
         white-space: normal;
+        font-size:12px;
       }
     }
 

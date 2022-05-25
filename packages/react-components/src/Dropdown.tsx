@@ -139,9 +139,6 @@ const Dropdown = React.memo(styled(BaseDropdown)`
 
     .ui--Dropdown-icon {
       height: 32px;
-      left: 0;
-      position: absolute;
-      top: -9px;
       width: 32px;
 
       &.opaque {
@@ -151,6 +148,7 @@ const Dropdown = React.memo(styled(BaseDropdown)`
 
     .ui--Dropdown-name {
       margin-left: 3rem;
+      line-height:32px;
     }
   }
 
