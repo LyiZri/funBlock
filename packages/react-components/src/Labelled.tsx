@@ -132,6 +132,8 @@ export default React.memo(styled(Labelled)`
           &:not(.floating) {
             padding-left: 1.45rem;
             padding-top: 1.75rem;
+            border:0;
+            border-radius:20px;
           }
 
           &.floating {

@@ -7,10 +7,10 @@ import type { AccountId, ProxyDefinition, ProxyType, Voting } from '@polkadot/ty
 import type { Delegation, SortedAccount } from '../types';
 
 import BN from 'bn.js';
-import React, { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { Button, Input, Table,Icon } from '@polkadot/react-components';
+import { Button, Input, Table, Icon } from '@polkadot/react-components';
 import { useAccounts, useApi, useCall, useFavorites, useIpfs, useLedger, useLoadingDelay, useToggle } from '@polkadot/react-hooks';
 import { FormatBalance } from '@polkadot/react-query';
 import { BN_ZERO } from '@polkadot/util';
@@ -80,8 +80,8 @@ function Overview({ className = '', onStatusChange }: Props): React.ReactElement
   const headerRef = !isMainnet ? useRef([
     [t('accounts'), 'start', 3],
     // [t('parent'), 'address media--1400'],
-    // [t('type'), 'address media--1400'],
-    [t('parent'), 'start'],
+    [t('type'), 'address media--1400'],
+    // [t('tags'), 'start'],
     [t('transactions'), 'start'],
     [t('HEIM'), 'expand'],
     [t('CSM'), 'expand'],
@@ -91,16 +91,13 @@ function Overview({ className = '', onStatusChange }: Props): React.ReactElement
     [undefined, 'media--1400']
   ]) : useRef([
     [t('accounts'), 'start', 3],
-    // [t('parent'), 'address media--1400'],
-    // [t('type'), 'address media--1400'],
-    [t('parent'), 'start'],
-    [t('transactions'), 'start'],
+    [t('parent'), 'address media--1400'],
+    [t('type'), 'address media--1400'],
     [t('tags'), 'start'],
-    [t('balances'), 'expand'],
+    [t('transactions'), 'start'],
+    [t('HEIM'), 'expand'],
     [],
-    [undefined, 'media--1400'],
-    [undefined],
-    [undefined],
+    [undefined, 'media--1400']
   ]);
 
   useEffect((): void => {
@@ -171,27 +168,25 @@ function Overview({ className = '', onStatusChange }: Props): React.ReactElement
         {balanceTotal && <FormatBalance value={balanceTotal} />}
       </td>
       <td />
-      <td />
       <td className='media--1400' />
     </tr>
   ), [balanceTotal, isMainnet]);
 
-  const filter = useMemo((): ReactNode => (
+  const filter = useMemo(() => (
     <>
       <div className='filter--tags'>
-        <Icon icon="search" className="icon-mine-search"/>
+        <Icon icon="search" className="icon-mine-search" />
         <Input
           autoFocus
           isFull
+          placeholder='filter by name or tags'
           onChange={setFilter}
           value={filterOn}
-          placeholder="filter by name or tags"
         />
       </div>
       <div className='test-mask'></div>
     </>
   ), [filterOn, t]);
-  console.log('sortedAccountsWithDelegation:', sortedAccountsWithDelegation);
 
   return (
     <div className={className}>
@@ -271,7 +266,6 @@ function Overview({ className = '', onStatusChange }: Props): React.ReactElement
       <BannerExtension />
       <BannerClaims />
       <div className='accounts-parent-box'>
-        <filter/>
         <Table
           empty={!isLoading && sortedAccountsWithDelegation && t<string>("You don't have any accounts. Some features are currently hidden and will only become available once you have accounts.")}
           filter={filter}
@@ -305,6 +299,7 @@ function Overview({ className = '', onStatusChange }: Props): React.ReactElement
             ))}
         </Table>
       </div>
+
     </div>
   );
 }
@@ -313,7 +308,6 @@ export default React.memo(styled(Overview)`
   .filter--tags {
     .ui--Dropdown {
       padding-left: 0;
-
       label {
         left: 1.55rem;
       }

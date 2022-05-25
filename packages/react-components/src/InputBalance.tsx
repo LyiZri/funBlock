@@ -39,7 +39,7 @@ interface Props {
 const BN_TEN_THOUSAND = new BN(10_000);
 const DEFAULT_BITLENGTH = BitLengthOption.CHAIN_SPEC as BitLength;
 
-function reformat (value: string | BN, isDisabled?: boolean): string {
+function reformat(value: string | BN, isDisabled?: boolean): string {
   if (isBn(value)) {
     // format for 4 decimals (align with util)
     const valStr = value
@@ -68,7 +68,7 @@ function reformat (value: string | BN, isDisabled?: boolean): string {
   return formatBalance(value, { forceUnit: '-', withSi: false }).replace(',', isDisabled ? ',' : '');
 }
 
-function InputBalance ({ autoFocus, children, className = '', defaultValue: inDefault, help, isDisabled, isError, isFull, isWarning, isZeroable, label, labelExtra, maxValue, onChange, onEnter, onEscape, placeholder, value, withEllipsis, withLabel, withMax }: Props): React.ReactElement<Props> {
+function InputBalance({ autoFocus, children, className = '', defaultValue: inDefault, help, isDisabled, isError, isFull, isWarning, isZeroable, label, labelExtra, maxValue, onChange, onEnter, onEscape, placeholder, value, withEllipsis, withLabel, withMax }: Props): React.ReactElement<Props> {
   const defaultValue = useMemo(
     () => inDefault ? reformat(inDefault, isDisabled) : undefined,
     [inDefault, isDisabled]
@@ -105,14 +105,19 @@ function InputBalance ({ autoFocus, children, className = '', defaultValue: inDe
 }
 
 export default React.memo(styled(InputBalance)`
+  margin-bottom:1rem;
+  // .ui--Labelled-content
   &&:not(.isSmall) .labelExtra {
     right: 6.5rem;
   }
-
+  .ui.action.input.ui--Input > input {
+    border:0;
+  }
   .ui.action.input.ui--Input > .buttons {
     align-items: stretch;
-
     .ui--SiDropdown.ui.button.compact.floating.selection.dropdown {
+      border:0;
+      border-radius:0 20px 20px 0;
       &.disabled {
         border-style: solid;
         opacity: 1 !important;

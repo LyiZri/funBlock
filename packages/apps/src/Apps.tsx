@@ -33,7 +33,6 @@ function Apps({ className = '' }: Props): React.ReactElement<Props> {
     <>
       <GlobalStyle uiHighlight={uiHighlight} />
       <div className={`apps--Wrapper theme--${theme} ${className}`}>
-
         <Menu />
         <div className='pageContent'>
           <LeftMenu />

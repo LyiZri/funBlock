@@ -624,6 +624,7 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
       <td className='number'>
         <PreClaimHEIM18 value={address} />
       </td>
+
       <td className='button'>
         {/* {isFunction(api.api.tx.balances?.transfer) && (
           <Button
@@ -703,7 +704,6 @@ export default React.memo(styled(Account)`
     width: 100%;
     min-height: 1.5rem;
   }
-
   .devBadge {
     opacity: 0.65;
   }
