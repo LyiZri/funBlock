@@ -122,7 +122,7 @@ function CrustPinner ({ className, user }: Props): React.ReactElement<Props> {
         const cidObj = CID.parse(cid);
 
         isValid = CID.asCID(cidObj) != null;
-      } catch (error) {
+      } catch (error:any) {
         // eslint-disable-next-line
         console.log(`Invalid CID: ${error.message}`);
       }

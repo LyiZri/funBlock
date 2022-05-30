@@ -101,6 +101,9 @@ export default React.memo(styled(CardSummary)`
   justify-content: flex-end;
   padding: 1rem 3.5rem;
   text-align: center;
+  display:flex;
+  align-items:center;
+  min-height:205px;
   .childrenIsNotTop {
     color: #fff;
     font-size: 18px;
