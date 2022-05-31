@@ -43,9 +43,7 @@ function BlockToTime({
           </span>
         ))}
         {children}
-        <span className="block-time-lable">
-        {label || ""}
-        </span>
+        <span className="block-time-lable">{label || ""}</span>
       </div>
     </div>
   );

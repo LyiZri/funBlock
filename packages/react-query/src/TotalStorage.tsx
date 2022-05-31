@@ -1,23 +1,23 @@
 // Copyright 2017-2020 @polkadot/react-query authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import BN from 'bn.js';
-import React from 'react';
+import BN from "bn.js";
+import React from "react";
 
-import { useApi, useCall } from '@polkadot/react-hooks';
-import './index.scss'
-import { FormatCapacity } from '.';
+import { useApi, useCall } from "@polkadot/react-hooks";
+import "./index.scss";
+import { FormatCapacity } from ".";
 
 interface Props {
   children?: React.ReactNode;
   className?: string;
   label?: React.ReactNode;
-  hasBg?:boolean
+  hasBg?: boolean;
 }
 
-function TotalStorage ({ children, className = '', label,hasBg=false }: Props): React.ReactElement<Props> {
+function TotalStorage({ children, className = "", label, hasBg = false }: Props): React.ReactElement<Props> {
   const { api, systemChain } = useApi();
-  const isMaxwell = systemChain === 'Crust Maxwell';
+  const isMaxwell = systemChain === "Crust Maxwell";
   const reportedFilesSize = useCall<BN>(api.query.storage?.reportedFilesSize);
   const free = useCall<BN>(api.query.storage?.free);
   let totalStorage = new BN(0);
@@ -31,14 +31,9 @@ function TotalStorage ({ children, className = '', label,hasBg=false }: Props): 
   }
 
   return (
-    <div className={`${className} ${hasBg?"totalStorage-background":""}`}>
-      <span className='totalStorage-title'>
-        {label || ''}
-      </span>
-      <FormatCapacity
-        value={totalStorage}
-        withSi
-      />
+    <div className={`${className} ${hasBg ? "totalStorage-background" : ""}`}>
+      <span className="totalStorage-title">{label || ""}</span>
+      <FormatCapacity value={totalStorage} withSi />
       {children}
     </div>
   );

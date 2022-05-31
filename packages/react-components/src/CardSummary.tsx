@@ -31,6 +31,7 @@ interface Props {
   progress?: ProgressProps;
   icon?: string;
   childrenIsTop?: boolean;
+  hasBack?: boolean;
 }
 
 function CardSummary({
@@ -41,6 +42,7 @@ function CardSummary({
   progress,
   icon = "",
   childrenIsTop = false,
+  hasBack = true,
 }: Props): React.ReactElement<Props> | null {
   const value = progress && progress.value;
   const total = progress && progress.total;
@@ -60,28 +62,32 @@ function CardSummary({
   const isTimed = progress && progress.withTime && !isUndefined(progress.total);
 
   return (
-    <article className={className}>
+    <article className={`${className} ${hasBack ? "no-back" : ""}`}>
       {icon.length != 0 && <div className="iconBox"></div>}
       <div className="epoch-flex">
         {progress && !progress.hideGraph && <Progress {...progress} />}
         <div>
           {childrenIsTop && <div>{children}</div>}
-          <Labelled help={help} isSmall label={label}>
-            {progress && !progress.hideValue && (
-              <>
-                {isTimed && !children && <BlockToTime className="epoch-timer" value={progress.total} />}
-                <div className={isTimed ? "isSecondary" : "isPrimary"}>
-                  {!left || isUndefined(progress.total) ? (
-                    "-"
-                  ) : !isTimed || progress.isPercent || !progress.value ? (
-                    `${left}${progress.isPercent ? "" : "/"}${progress.isPercent ? "%" : formatNumber(progress.total)}`
-                  ) : (
-                    <BlockToTime className="timer" value={progress.total.sub(progress.value)} />
-                  )}
-                </div>
-              </>
-            )}
-          </Labelled>
+          {label && (
+            <Labelled help={help} isSmall label={label}>
+              {progress && !progress.hideValue && (
+                <>
+                  {isTimed && !children && <BlockToTime className="epoch-timer" value={progress.total} />}
+                  <div className={isTimed ? "isSecondary" : "isPrimary"}>
+                    {!left || isUndefined(progress.total) ? (
+                      "-"
+                    ) : !isTimed || progress.isPercent || !progress.value ? (
+                      `${left}${progress.isPercent ? "" : "/"}${
+                        progress.isPercent ? "%" : formatNumber(progress.total)
+                      }`
+                    ) : (
+                      <BlockToTime className="timer" value={progress.total.sub(progress.value)} />
+                    )}
+                  </div>
+                </>
+              )}
+            </Labelled>
+          )}
           {!childrenIsTop && <div className="childrenIsNotTop">{children}</div>}
         </div>
       </div>
@@ -104,6 +110,10 @@ export default React.memo(styled(CardSummary)`
   display: flex;
   align-items: center;
   min-height: 205px;
+  .no-back {
+    padding: 0 !important;
+    background: none !important;
+  }
   .childrenIsNotTop {
     color: #fff;
     font-size: 18px;

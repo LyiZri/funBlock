@@ -14,7 +14,7 @@ const pkgJson = require('../../package.json') as { version: string };
 
 const uiInfo = `apps v${pkgJson.version}`;
 
-function NodeInfo ({ className = '' }: Props): React.ReactElement<Props> {
+function NodeInfo({ className = '' }: Props): React.ReactElement<Props> {
   const { api, isApiReady } = useApi();
 
   return (
@@ -35,11 +35,11 @@ export default React.memo(styled(NodeInfo)`
   background: transparent;
   font-size: 0.9rem;
   line-height: 1.2;
-  padding: 0 0 0 1rem;
+  padding: 0 0 0 1.8rem;
   text-align: left;
   > div {
     margin-bottom: .5rem;
-
+    color:#57566B;
     > div {
       display: inline-block;
     }

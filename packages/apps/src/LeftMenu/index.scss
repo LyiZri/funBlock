@@ -1,8 +1,8 @@
 .left-menu-parent {
-  background-color: white;
-  width: 8rem;
+  background-color: #151319;
+  width: 150px;
   min-width: 8rem;
-  height: calc(100vh - 56px - 2rem);
+  height: calc(100vh - 100px - 2rem);
   margin-top: 2rem;
   border-radius: 0 20px 20px 0;
 //   overflow: auto;
@@ -22,6 +22,12 @@
       justify-content: center;
       flex-direction: column;
       align-items: center;
+    }
+    li:hover{
+      color:white;
+      .groupHdr{
+        background-color: rgba(0,0,0,0);
+      }
     }
   }
   .menuItems {
