@@ -449,7 +449,7 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
     color: var(--color-label);
     display: block;
     font: var(--font-sans);
-    font-size: 1rem;
+    font-size: 22px;
     font-weight: var(--font-weight-normal);
   }
 

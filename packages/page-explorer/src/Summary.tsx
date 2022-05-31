@@ -7,7 +7,6 @@ import { CardSummary, SummaryBox } from "@polkadot/react-components";
 import { useApi } from "@polkadot/react-hooks";
 import { BestFinalized, BestNumber, BlockToTime, TimeNow, TotalIssuance, TotalStorage } from "@polkadot/react-query";
 import { BN_ONE } from "@polkadot/util";
-
 import ClaimPot from "./ClaimPot";
 import SummarySession from "./SummarySession";
 import { useTranslation } from "./translate";
@@ -21,11 +20,11 @@ function Summary(): React.ReactElement {
   return (
     <SummaryBox>
       <section className="first-section">
-        <CardSummary className={"first"} label={t<string>("last block")} icon={"1"}>
+        <CardSummary childrenIsTop={true} className={"first"} label={t<string>("last block")}>
           <TimeNow />
         </CardSummary>
-        <CardSummary label={t<string>("target")} icon={"1"}>
-          <BlockToTime value={BN_ONE} />
+        <CardSummary childrenIsTop={true}>
+          <BlockToTime label={"target"} hasCircle={true} value={BN_ONE} />
         </CardSummary>
       </section>
       <section className="second-section">
@@ -45,15 +44,14 @@ function Summary(): React.ReactElement {
           </CardSummary>
         )}
 
-        
         <CardSummary label={t<string>("best")}>
           <BestNumber />
         </CardSummary>
       </section>
       <section className="third-section">
         {api.query.storage && (
-          <CardSummary className="total-storage-card" label={t<string>("total storage")} icon={"1"}>
-            <TotalStorage />
+          <CardSummary className="total-storage-card" label={t<string>("total storage")}>
+            <TotalStorage hasBg={true}/>
           </CardSummary>
         )}
         <SummarySession withEra={false} />

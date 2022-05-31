@@ -5,16 +5,17 @@ import BN from 'bn.js';
 import React from 'react';
 
 import { useApi, useCall } from '@polkadot/react-hooks';
-
+import './index.scss'
 import { FormatCapacity } from '.';
 
 interface Props {
   children?: React.ReactNode;
   className?: string;
   label?: React.ReactNode;
+  hasBg?:boolean
 }
 
-function TotalStorage ({ children, className = '', label }: Props): React.ReactElement<Props> {
+function TotalStorage ({ children, className = '', label,hasBg=false }: Props): React.ReactElement<Props> {
   const { api, systemChain } = useApi();
   const isMaxwell = systemChain === 'Crust Maxwell';
   const reportedFilesSize = useCall<BN>(api.query.storage?.reportedFilesSize);
@@ -30,8 +31,10 @@ function TotalStorage ({ children, className = '', label }: Props): React.ReactE
   }
 
   return (
-    <div className={className}>
-      {label || ''}
+    <div className={`${className} ${hasBg?"totalStorage-background":""}`}>
+      <span className='totalStorage-title'>
+        {label || ''}
+      </span>
       <FormatCapacity
         value={totalStorage}
         withSi

@@ -6,7 +6,7 @@ import type { ApiPromise } from "@polkadot/api";
 import BN from "bn.js";
 import React from "react";
 import styled from "styled-components";
-
+import "./index.scss";
 import { useBlockTime } from "@polkadot/react-hooks";
 
 interface Props {
@@ -16,6 +16,7 @@ interface Props {
   isInline?: boolean;
   label?: React.ReactNode;
   value?: BN;
+  hasCircle?: boolean;
 }
 
 function BlockToTime({
@@ -25,6 +26,7 @@ function BlockToTime({
   isInline,
   label,
   value,
+  hasCircle = false,
 }: Props): React.ReactElement<Props> | null {
   const [, text] = useBlockTime(value, api);
 
@@ -33,14 +35,18 @@ function BlockToTime({
   }
 
   return (
-    <div className={`${className}${isInline ? " isInline" : ""}`}>
-      {label || ""}
-      {text.split(" ").map((v, index) => (
-        <span className={index % 2 ? "timeUnits" : undefined} key={index}>
-          {v}
+    <div className={`${className}${isInline ? " isInline" : ""} ${hasCircle ? "block-time-circle" : ""}`}>
+      <div className="block-time-content">
+        {text.split(" ").map((v, index) => (
+          <span className={index % 2 ? "timeUnits" : undefined} key={index}>
+            {v}
+          </span>
+        ))}
+        {children}
+        <span className="block-time-lable">
+        {label || ""}
         </span>
-      ))}
-      {children}
+      </div>
     </div>
   );
 }

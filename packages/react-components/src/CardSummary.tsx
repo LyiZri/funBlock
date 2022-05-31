@@ -40,7 +40,7 @@ function CardSummary({
   label,
   progress,
   icon = "",
-  childrenIsTop = true,
+  childrenIsTop = false,
 }: Props): React.ReactElement<Props> | null {
   const value = progress && progress.value;
   const total = progress && progress.total;
@@ -65,7 +65,7 @@ function CardSummary({
       <div className="epoch-flex">
         {progress && !progress.hideGraph && <Progress {...progress} />}
         <div>
-          {childrenIsTop && <div>{ children }</div>}
+          {childrenIsTop && <div>{children}</div>}
           <Labelled help={help} isSmall label={label}>
             {progress && !progress.hideValue && (
               <>
@@ -91,7 +91,7 @@ function CardSummary({
 
 export default React.memo(styled(CardSummary)`
   align-items: center;
-  background: #827cf8;
+  background: black;
   border: none !important;
   border-radius: 1rem;
   box-shadow: none !important;
@@ -101,9 +101,9 @@ export default React.memo(styled(CardSummary)`
   justify-content: flex-end;
   padding: 1rem 3.5rem;
   text-align: center;
-  display:flex;
-  align-items:center;
-  min-height:205px;
+  display: flex;
+  align-items: center;
+  min-height: 205px;
   .childrenIsNotTop {
     color: #fff;
     font-size: 18px;

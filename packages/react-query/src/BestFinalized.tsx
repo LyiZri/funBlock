@@ -23,7 +23,7 @@ function BestFinalized ({ children, className = '', label }: Props): React.React
     <div className={className}>
       {label || ''}{
         bestNumberFinalized
-          ? <Digits className='color-black' value={formatNumber(bestNumberFinalized)} />
+          ? <Digits value={formatNumber(bestNumberFinalized)} />
           : '-'
       }{children}
     </div>

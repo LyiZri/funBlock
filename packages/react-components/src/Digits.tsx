@@ -29,8 +29,8 @@ function Digits({ className = "", value }: Props): React.ReactElement<Props> {
 export default React.memo(styled(Digits)`
   display: inline-block;
   white-space: nowrap;
-  color: #827cf8;
-  font-size: 22px;
+  color: var(--color-summary);
+  font-size: 44px;
   font-weight: 600;
   .group {
     display: inline-block;
