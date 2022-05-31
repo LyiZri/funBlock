@@ -51,19 +51,13 @@ export default React.memo(styled(Tab)`
   position: relative;
   display: flex;
   align-items: center;
-  color: #8B8B8B;
+  color: white;
   padding: 0 1.5rem;
   height: 100%;
   font-size: 1rem;
-  font-weight: 600;
-
-
+  font-weight: 400;
     &:hover {
-      color:#1E1E1E;
-
-      .tabLinkText::after{
-        background-color: #827CF8;
-      }
+      color:#925CFF;
     }
 
     &:hover .tabLinkText::after,
@@ -77,14 +71,23 @@ export default React.memo(styled(Tab)`
       left: 50%;
       transform: translateX(-50%);
     }
-
   &.tabLinkActive {
-    color: #544CF4 !important;
     font-weight: 600;
-
     &:hover {
       cursor: default;
+      color:white;
     }
+  }
+  &.tabLinkActive::after {
+    content: '';
+    position: absolute;
+    width: 3.14rem;
+    height: 4px;
+    border-radius:2px;
+    bottom: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    background:#925CFF;
   }
 
   .tabLinkText {
@@ -92,6 +95,8 @@ export default React.memo(styled(Tab)`
     height: 100%;
     display: flex;
     align-items: center;
+    font-size:18px;
+    font-weight:400;
   }
 
   .tabCounter {

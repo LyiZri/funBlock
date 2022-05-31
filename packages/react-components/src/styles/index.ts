@@ -23,17 +23,17 @@ const VERY_DARK = 16;
 
 const defaultHighlight = '#f19135'; // '#f19135'; // #999
 
-function getHighlight (uiHighlight: string | undefined): string {
+function getHighlight(uiHighlight: string | undefined): string {
   return (uiHighlight || defaultHighlight);
 }
 
-function countBrightness (uiHighlight: string | undefined): number {
+function countBrightness(uiHighlight: string | undefined): number {
   const hc = getHighlight(uiHighlight).replace('#', '').toLowerCase();
 
   return PARTS.reduce((b, p, index) => b + (parseInt(hc.substr(p, 2), 16) * FACTORS[index]), 0);
 }
 
-function getContrast (uiHighlight: string | undefined): string {
+function getContrast(uiHighlight: string | undefined): string {
   const brightness = countBrightness(uiHighlight);
 
   return brightness > BRIGHTNESS
@@ -41,7 +41,7 @@ function getContrast (uiHighlight: string | undefined): string {
     : 'rgba(55, 55, 5, 1)';
 }
 
-function getMenuHoverContrast (uiHighlight: string | undefined): string {
+function getMenuHoverContrast(uiHighlight: string | undefined): string {
   const brightness = countBrightness(uiHighlight);
 
   if (brightness < VERY_DARK) {
@@ -69,7 +69,7 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
   }
 
   .highlight--bg {
-    background: red !important;
+    background: rgba(146,92,255,.8) !important;
   }
 
   .highlight--bg-contrast {
@@ -123,7 +123,7 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
   }
 
   .highlight--border {
-    border-color: red !important;
+    border-color: #925CFF !important;
   }
 
   .highlight--color {

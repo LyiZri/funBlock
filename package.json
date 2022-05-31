@@ -103,6 +103,7 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.168",
+    "antd": "^4.20.7",
     "dayjs": "^1.10.4",
     "node-sass": "^7.0.1",
     "react-scripts": "^5.0.1",

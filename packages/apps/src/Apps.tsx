@@ -5,6 +5,9 @@ import type { BareProps as Props, ThemeDef } from '@polkadot/react-components/ty
 
 import React, { useContext, useMemo } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import AppBg from './assets/images/app_bg.png';
+
+const ApBg: any = AppBg;
 
 import AccountSidebar from '@polkadot/app-accounts/Sidebar';
 import { getSystemChainColor } from '@polkadot/apps-config';
@@ -53,13 +56,15 @@ function Apps({ className = '' }: Props): React.ReactElement<Props> {
 }
 
 export default React.memo(styled(Apps)`
-  background: var(--bg-page);
+  background-image: url(${ApBg});
+  background-size:100% 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   .pageContent{
     display:flex;
-    jusitify-content:spance-between;
+    box-sizing:border-box;
+    jusitify-content:space-between;
   }
 `);

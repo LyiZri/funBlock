@@ -191,6 +191,8 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
     <div className={`${className}${isLoading ? " isLoading" : ""}`}>
       <div className="menuContainer">
         <ChainInfo />
+        <p className="page-name">{name.slice(0,1).toUpperCase()}{name.slice(1).toLowerCase()}</p>
+        
         {
           name.length != 0 &&
           <Tabs basePath={`/${name}`} hidden={undefined} isRoot items={getItems(name)} />
@@ -236,22 +238,29 @@ export default React.memo(styled(Menu)`
   padding: 0;
   z-index: 220;
   position: relative;
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-  background: #fff;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  background: #1A1B24;
+  height:100px;
+  display:flex;
+  align-items:center;
   & .menuContainer {
     flex-direction: row;
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 0 2rem;
+    padding: 0 40px;
     width: 100%;
     margin: 0 auto;
   }
-
+  .page-name{
+    margin-bottom:0;
+    font-size:19px;
+    margin-left:100px;
+    color:#925CFF;
+  }
   &.isLoading {
-    background: #999 !important;
-
+    // background: #999 !important;
     .menuActive {
       background: var(--bg-page);
     }

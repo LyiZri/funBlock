@@ -17,7 +17,7 @@ interface Props {
   className?: string;
 }
 
-function ChainInfo ({ className }: Props): React.ReactElement<Props> {
+function ChainInfo({ className }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api, isApiReady } = useApi();
   const runtimeVersion = useCall<RuntimeVersion>(isApiReady && api.rpc.state.subscribeRuntimeVersion);
@@ -70,9 +70,10 @@ export default React.memo(styled(ChainInfo)`
     }
 
     img {
-      height: 3rem;
+      height: 64px;
       margin-right: 0.5rem;
-      width: 3rem;
+      width: 64px;
+      background:white;
     }
 
     .ui--Icon.dropdown,
@@ -91,24 +92,24 @@ export default React.memo(styled(ChainInfo)`
       flex: 1;
       padding-right: 0.5rem;
       text-align: right;
-
+      paddinle-left:.5rem;
       .chain {
         max-width: 16rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        color:#4A4D5E;
       }
-
       .chain, .bestNumber {
-        font-size: 0.9rem;
+        font-size: 18px;
         line-height: 1.2;
       }
-
       .runtimeVersion {
-          font-size: 0.75rem;
+          font-size:14px;
           line-height: 1.2;
           letter-spacing: -0.01em;
           white-space:nowrap;
+          color:#7F7F8A;
       }
     }
   }
