@@ -85,17 +85,18 @@ function Content({ className }: Props): React.ReactElement<Props> {
 }
 
 export default React.memo(styled(Content)`
-  flex-grow: 1;
+  flex: 1;
   overflow: hidden auto;
   padding: 0 0 1rem 0;
   position: relative;
-  width: 100%;
-  background:#fff;
-  margin-left:1.5rem;
+  margin:0 64px;
   height:100%;
   overflow:auto;
   border-radius:2rem;
   background:rgba(0,0,0,0);
+  &::-webkit-scrollbar{
+    display:none;
+  }
   .connecting {
     padding: 3.5rem 0;
   }
