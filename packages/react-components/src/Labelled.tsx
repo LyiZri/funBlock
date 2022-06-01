@@ -93,7 +93,7 @@ export default React.memo(styled(Labelled)`
         .labelExtra {
           position: absolute;
           text-align: left;
-          top: 0.5rem;
+          top: 1.5rem;
           z-index: 1;
         }
 
@@ -122,17 +122,16 @@ export default React.memo(styled(Labelled)`
         box-sizing: border-box;
         flex: 1 1;
         min-width: 0;
-        background: #fff;
+        background: #2C2B30;
         border-radius: 20px;
         input {
-          background: none;
+          background: #2C2B30;
         }
         .ui.selection.dropdown {
           &:not(.floating) {
             padding-left: 1.45rem;
-            padding-top: 1.75rem;
+            padding-top: 3.75rem;
             border:0;
-            border-radius:20px;
           }
 
           &.floating {

@@ -1,0 +1,21 @@
+.need-white-mine {
+  .ui--Labelled {
+    .ui--Labelled-content {
+      .input {
+        input {
+          padding-top: 3.75rem !important;
+          padding-bottom: 1rem;
+          background-color: white !important;
+        }
+      }
+    }
+  }
+}
+.warning-mine {
+//   article {
+//     border-radius: 0;
+//   }
+  article.warning::before {
+    background-color: #fdeddb;
+  }
+}

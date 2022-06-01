@@ -11,7 +11,7 @@ const emptyColor = '#99999';
 // alphabetical
 const chainBitCountry = '#191a2e';
 const chainCrab = '#7C30DD';
-const chainRubik = '#7C7CDB';
+const chainRubik = '#925CFF';
 // const chainCrust = '#ff8812';
 // const chainCrustMaxwell = '#2E333B';
 

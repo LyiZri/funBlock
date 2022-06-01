@@ -80,7 +80,6 @@ export default React.memo(styled(Table)`
     tr {
       max-width: 100%;
       width: 100%;
-
       td,
       &:not(.filter) th {
         &:first-child {

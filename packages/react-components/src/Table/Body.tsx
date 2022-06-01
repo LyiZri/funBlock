@@ -171,11 +171,14 @@ export default React.memo(styled(Body)`
   }
 
   tr {
+    background:#2C2B30!important;
     &:nth-child(odd):not(.isEven),
     &:nth-child(even).isOdd {
       background: var(--bg-table);
     }
-
+    >td{
+      color:#A3A4A7!important;
+    }
     &:first-child {
       td:first-child {
         border-top-left-radius: 0.25rem;

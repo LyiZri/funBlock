@@ -62,6 +62,7 @@ function BannerExtension(): React.ReactElement | null {
           yourBrowser: stringUpperFirst(browserName)
         }
       })}</p>
+      <p></p>
       <ul>{availableExtensions[browserName].map(({ desc, link, name }): React.ReactNode => (
         <li key={name}>
           {/* <a

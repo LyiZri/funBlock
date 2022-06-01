@@ -122,14 +122,16 @@ export default (_theme: ThemeDef): string => `
   }
 
   .ui.modal {
-    background: var(--bg-page);
+    background: #2C2B30;
     box-shadow: none;
     color: var(--color-text);
     font: var(--font-sans);
     margin-top:3rem!important;
+    border-radius:18px;
     > .actions,
     > .content {
       background: transparent;
+      padding:0 60px;
     }
 
     > .actions {
@@ -142,12 +144,12 @@ export default (_theme: ThemeDef): string => `
     > .header:not(.ui) {
       background: transparent;
       border-bottom: none;
-      color: var(--color-summary);
+      color:white;
       font: var(--font-sans);
       font-size: 1.75rem;
       font-weight: var(--font-weight-normal);
       line-height: 1.25rem;
-      padding: 0.75rem 1.5rem 0;
+      padding: 40px 60px 10px;
       text-transform: lowercase;
 
       > label {
@@ -156,6 +158,7 @@ export default (_theme: ThemeDef): string => `
 
       > h1 {
         line-height: 1;
+        color:white;
       }
     }
 
@@ -201,7 +204,7 @@ export default (_theme: ThemeDef): string => `
 
   /* modals aligned to top, not center */
   .ui.dimmer {
-    background-color: rgba(96, 96, 96, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     justify-content: flex-start;
   }
 

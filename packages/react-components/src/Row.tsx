@@ -85,7 +85,8 @@ export const styles = `
     font-size: 1em;
     padding: 0;
     margin-bottom: 0.25rem;
-    color:#7d7d7d;
+    color:#A3A4A7;
+    transform:translateY(3px);
   }
 
   .ui--Row-name {
@@ -100,6 +101,7 @@ export const styles = `
     text-transform: uppercase;
     overflow: hidden;
     text-overflow: inherit;
+    color:white;
   }
 
   .ui--Row-icon {

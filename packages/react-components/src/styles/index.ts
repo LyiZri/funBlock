@@ -287,14 +287,13 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
   }
 
   article {
-    background: var(--bg-table);
-    border-radius: 0.25rem;
+    background: #151319;
     box-sizing: border-box;
     margin: 0.25rem;
     padding: 1.25rem;
     position: relative;
     text-align: left;
-
+    overflow:hidden;
     > ul {
       margin: 0;
       padding: 0;
@@ -305,10 +304,9 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
       line-height: 1.5rem;
       font-size:0.8rem;
       margin-left: 2.25rem;
-      padding: 0.75rem 1rem;
+      padding: 46px 76px;
       position: relative;
       z-index: 5;
-
       &:before {
         border-radius: 0.25rem;
         bottom: 0;
@@ -323,7 +321,7 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
 
     &.mark {
       margin: 0.5rem 0 0.5rem 2.25rem;
-      padding: 0.5rem 1rem !important;
+      padding: 1rem 2rem;
     }
 
     &.nomargin {
@@ -335,9 +333,8 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
     }
 
     &.centered {
-      margin: 1.5rem auto;
-      max-width: 75rem;
-
+      margin: 30px 0;
+      width:100%;
       &+.ui--Button-Group {
         margin-top: 2rem;
       }
@@ -370,7 +367,7 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
 
     &.warning {
       &:before {
-        background: #FFF1D7;
+        background: #151319;
       }
 
       border-color: rgba(255, 196, 12, 1);

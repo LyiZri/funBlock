@@ -23,6 +23,7 @@ import CreateConfirmation from './CreateConfirmation';
 import CreateSuriLedger from './CreateSuriLedger';
 import ExternalWarning from './ExternalWarning';
 import PasswordInput from './PasswordInput';
+import './index.scss'
 
 const ETH_DEFAULT_PATH = "m/44'/60'/0'/0/0";
 
@@ -394,26 +395,28 @@ function Create({ className = 'createModal', onClose, onStatusChange, seed: prop
                 <>
                   <Modal.Columns>
                     {(pairType !== 'ethereum' || seedType !== 'raw') && (
-                      <Input
-                        help={(pairType === 'ethereum' ? t<string>('You can set a custom derivation path for this account using the following syntax "m/<purpose>/<coin_type>/<account>/<change>/<address_index>') : t<string>('You can set a custom derivation path for this account using the following syntax "/<soft-key>//<hard-key>". The "/<soft-key>" and "//<hard-key>" may be repeated and mixed`. An optional "///<password>" can be used with a mnemonic seed, and may only be specified once.'))}
-                        isDisabled={pairType === 'ethereum' && seedType === 'raw'}
-                        isError={!!deriveValidation?.error}
-                        label={t<string>('secret derivation path')}
-                        onChange={_onChangePath}
-                        placeholder={
-                          pairType === 'ethereum'
-                            ? ETH_DEFAULT_PATH
-                            : seedType === 'raw'
-                              ? pairType === 'sr25519'
-                                ? t<string>('//hard/soft')
-                                : t<string>('//hard')
-                              : pairType === 'sr25519'
-                                ? t<string>('//hard/soft///password')
-                                : t<string>('//hard///password')
-                        }
-                        tabIndex={-1}
-                        value={derivePath}
-                      />
+                      <div className="need-white-mine">
+                        <Input
+                          help={(pairType === 'ethereum' ? t<string>('You can set a custom derivation path for this account using the following syntax "m/<purpose>/<coin_type>/<account>/<change>/<address_index>') : t<string>('You can set a custom derivation path for this account using the following syntax "/<soft-key>//<hard-key>". The "/<soft-key>" and "//<hard-key>" may be repeated and mixed`. An optional "///<password>" can be used with a mnemonic seed, and may only be specified once.'))}
+                          isDisabled={pairType === 'ethereum' && seedType === 'raw'}
+                          isError={!!deriveValidation?.error}
+                          label={t<string>('secret derivation path')}
+                          onChange={_onChangePath}
+                          placeholder={
+                            pairType === 'ethereum'
+                              ? ETH_DEFAULT_PATH
+                              : seedType === 'raw'
+                                ? pairType === 'sr25519'
+                                  ? t<string>('//hard/soft')
+                                  : t<string>('//hard')
+                                : pairType === 'sr25519'
+                                  ? t<string>('//hard/soft///password')
+                                  : t<string>('//hard///password')
+                          }
+                          tabIndex={-1}
+                          value={derivePath}
+                        />
+                      </div>
                     )}
                     {deriveValidation?.error && (
                       <MarkError content={errorIndex.current[deriveValidation.error] || deriveValidation.error} />
@@ -433,7 +436,9 @@ function Create({ className = 'createModal', onClose, onStatusChange, seed: prop
               )}
           </Expander>
           <Modal.Columns>
-            <ExternalWarning />
+            <div className='warning-mine'>
+              <ExternalWarning />
+            </div>
             <div className='saveToggle'>
               <Checkbox
                 label={<>{t<string>('I have saved my mnemonic seed safely')}</>}
@@ -445,16 +450,19 @@ function Create({ className = 'createModal', onClose, onStatusChange, seed: prop
         </>}
         {step === 2 && <>
           <Modal.Columns>
-            <Input
-              autoFocus
-              help={t<string>('Name given to this account. You can edit it. To use the account to validate or nominate, it is a good practice to append the function of the account in the name, e.g "name_you_want - stash".')}
-              isError={!isNameValid}
-              label={t<string>('name')}
-              onChange={_onChangeName}
-              onEnter={_onCommit}
-              placeholder={t<string>('new account')}
-              value={name}
-            />
+            <div className="need-white-mine">
+              <Input
+                autoFocus
+                help={t<string>('Name given to this account. You can edit it. To use the account to validate or nominate, it is a good practice to append the function of the account in the name, e.g "name_you_want - stash".')}
+                isError={!isNameValid}
+                label={t<string>('name')}
+                onChange={_onChangeName}
+                onEnter={_onCommit}
+                placeholder={t<string>('new account')}
+                value={name}
+              />
+            </div>
+
             <p className="need-padd-left">
               {t<string>('The name for this account and how it will appear under your addresses. With an on-chain identity, it can be made available to others.')}
             </p>
@@ -464,7 +472,9 @@ function Create({ className = 'createModal', onClose, onStatusChange, seed: prop
             onEnter={_onCommit}
           />
           <Modal.Columns>
-            <ExternalWarning />
+            <div className='warning-mine'>
+              <ExternalWarning />
+            </div>
           </Modal.Columns>
         </>}
         {step === 3 && address && (
@@ -543,7 +553,7 @@ export default React.memo(styled(Create)`
   .ui--CopyButton.copyMoved {
     position: absolute;
     right: 10.25rem;
-    top: 1.45rem;
+    top: 1.85rem;
     z-index:2;
   }
   && .TextAreaWithDropdown {
@@ -563,6 +573,7 @@ export default React.memo(styled(Create)`
 
       > label {
         font-weight: var(--font-weight-normal);
+        color:white;
       }
     }
   }

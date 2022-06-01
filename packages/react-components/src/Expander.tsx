@@ -158,7 +158,7 @@ export default React.memo(styled(Expander)`
       text-overflow: ellipsis;
       vertical-align: middle;
       white-space: nowrap;
-
+      color:white;
       span {
         white-space: normal;
         font-size:12px;
@@ -168,6 +168,7 @@ export default React.memo(styled(Expander)`
     .ui--Icon {
       margin-left: 0.75rem;
       vertical-align: middle;
+      color:white;
     }
 
     .ui--LabelHelp {

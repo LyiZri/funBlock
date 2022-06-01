@@ -1,11 +1,11 @@
 table {
   background-color: rgba(0, 0, 0, 0) !important;
-  border-radius: 0 0 16px 16px;
+  border-radius: 16px;
 }
 .with-redius-header {
 //   background-color: red !important;
   th{
-      background-color: white;
+      background-color: #2C2B30;
   }
   th:first-child {
     border-top-left-radius: 16px;
