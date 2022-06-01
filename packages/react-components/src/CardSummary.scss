@@ -25,3 +25,26 @@
     }
   }
 }
+.progress-epoch-box{
+  width: 50%;
+  margin-left: 30px;
+  .progress-box-title{
+    
+    font-size: 48px;
+    color: #fff;
+    width: 100%;
+    text-align: right;
+  }
+  .progress-box-content{
+    margin-top: 67px;
+    text-align: left;
+    width: 100%;
+    font-size: 36px;
+    color: #7f7f8a;
+    line-height: 50px;
+    .epoch-timer,.block-time-content{
+      font-size: 36px;
+  }
+  }
+}
+  

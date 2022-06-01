@@ -1,14 +1,14 @@
 // Copyright 2017-2021 @polkadot/react-components authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { UInt } from '@polkadot/types';
+import type { UInt } from "@polkadot/types";
 
-import BN from 'bn.js';
-import React from 'react';
-import styled from 'styled-components';
-
-import { bnToBn } from '@polkadot/util';
-
+import BN from "bn.js";
+import React from "react";
+import styled from "styled-components";
+import { Progress as ProgressAntd } from "antd";
+import { bnToBn } from "@polkadot/util";
+import "./index.scss";
 interface Props {
   className?: string;
   isDisabled?: boolean;
@@ -18,26 +18,26 @@ interface Props {
 
 interface RotateProps {
   angle: string;
-  type: 'first' | 'second';
+  type: "first" | "second";
 }
 
-function DivClip ({ angle, type }: RotateProps): React.ReactElement<RotateProps> {
+function DivClip({ angle, type }: RotateProps): React.ReactElement<RotateProps> {
   return (
     <div className={`clip1 ${type}`}>
-      <div
-        className='highlight--bg'
-        style={{ transform: `rotate(${angle}deg)` }}
-      />
+      <div className="highlight--bg" style={{ transform: `rotate(${angle}deg)` }} />
     </div>
   );
 }
 
 const Clip = React.memo(DivClip);
 
-function Progress ({ className = '', isDisabled, total, value }: Props): React.ReactElement<Props> | null {
+function Progress({ className = "", isDisabled, total, value }: Props): React.ReactElement<Props> | null {
   const _total = bnToBn(total || 0);
   const angle = _total.gtn(0)
-    ? (bnToBn(value || 0).muln(36000).div(_total).toNumber() / 100)
+    ? bnToBn(value || 0)
+        .muln(36000)
+        .div(_total)
+        .toNumber() / 100
     : 0;
 
   if (angle < 0) {
@@ -45,10 +45,26 @@ function Progress ({ className = '', isDisabled, total, value }: Props): React.R
   }
 
   const drawAngle = angle % 360;
+  console.log(Math.floor((angle * 100) / 360));
 
   return (
-    <div className={`ui--Progress${isDisabled ? ' isDisabled' : ''} ${className}`}>
-      <div className='background highlight--bg' />
+    <div className={`ui--Progress${isDisabled ? " isDisabled" : ""} ${className}`}>
+      <div className="progress-box">
+        <ProgressAntd
+          className="progress-antd-box"
+          type="circle"
+          strokeColor={{ "0%": "#203AFF", "50%": "#C000FF", "100%": "#203AFF" }}
+          percent={Math.floor((angle * 100) / 360)}
+          width={212}
+          showInfo={false}
+          strokeWidth={15}
+          trailColor={"#141b57"}
+          strokeLinecap="square"
+        />
+                <span className="percent-format">{Math.floor((angle * 100) / 360)}%</span>
+
+      </div>
+      {/* <div className='background highlight--bg' />
       <Clip
         angle={
           drawAngle <= 180
@@ -67,7 +83,7 @@ function Progress ({ className = '', isDisabled, total, value }: Props): React.R
       />
       <div className='inner'>
         <div>{Math.floor(angle * 100 / 360)}%</div>
-      </div>
+      </div> */}
     </div>
   );
 }
@@ -75,10 +91,17 @@ function Progress ({ className = '', isDisabled, total, value }: Props): React.R
 export default React.memo(styled(Progress)`
   border-radius: 100%;
   clip-path: circle(50%);
-  height: 108px;
+  height: 100%;
   position: relative;
-  width: 108px;
-
+  width: 100%;
+  padding:10px;
+  .progress-antd-box {
+    position: relative;
+  }
+  .percent-format {
+    display: block;
+    positon: absolute;
+  }
   &.isDisabled {
     filter: grayscale(100%);
     opacity: 0.25;

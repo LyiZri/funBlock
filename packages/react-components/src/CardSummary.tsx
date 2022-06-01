@@ -31,7 +31,6 @@ interface Props {
   progress?: ProgressProps;
   icon?: string;
   childrenIsTop?: boolean;
-  hasBack?: boolean;
 }
 
 function CardSummary({
@@ -42,7 +41,6 @@ function CardSummary({
   progress,
   icon = "",
   childrenIsTop = false,
-  hasBack = true,
 }: Props): React.ReactElement<Props> | null {
   const value = progress && progress.value;
   const total = progress && progress.total;
@@ -60,60 +58,53 @@ function CardSummary({
   }
 
   const isTimed = progress && progress.withTime && !isUndefined(progress.total);
+  console.log("prgress===", progress);
 
   return (
-    <article className={`${className} ${hasBack ? "no-back" : ""}`}>
+    <article className={`${className}`}>
       {icon.length != 0 && <div className="iconBox"></div>}
       <div className="epoch-flex">
         {progress && !progress.hideGraph && <Progress {...progress} />}
         <div>
           {childrenIsTop && <div>{children}</div>}
-          {label && (
-            <Labelled help={help} isSmall label={label}>
-              {progress && !progress.hideValue && (
-                <>
-                  {isTimed && !children && <BlockToTime className="epoch-timer" value={progress.total} />}
-                  <div className={isTimed ? "isSecondary" : "isPrimary"}>
-                    {!left || isUndefined(progress.total) ? (
-                      "-"
-                    ) : !isTimed || progress.isPercent || !progress.value ? (
-                      `${left}${progress.isPercent ? "" : "/"}${
-                        progress.isPercent ? "%" : formatNumber(progress.total)
-                      }`
-                    ) : (
-                      <BlockToTime className="timer" value={progress.total.sub(progress.value)} />
-                    )}
-                  </div>
-                </>
-              )}
-            </Labelled>
-          )}
+          {label && <Labelled help={help} isSmall label={label}></Labelled>}
           {!childrenIsTop && <div className="childrenIsNotTop">{children}</div>}
         </div>
       </div>
+      {progress && !progress.hideValue && (
+        <div className="progress-epoch-box">
+          <div className="progress-box-title">Epoch</div>
+          <div className="progress-box-content">
+            {isTimed && !children && <BlockToTime className="epoch-timer" value={progress.total} />}
+            <div className={isTimed ? "isSecondary" : "isPrimary"}>
+              {!left || isUndefined(progress.total) ? (
+                "-"
+              ) : !isTimed || progress.isPercent || !progress.value ? (
+                `${left}${progress.isPercent ? "" : "/"}${progress.isPercent ? "%" : formatNumber(progress.total)}`
+              ) : (
+                <BlockToTime className="timer" value={progress.total.sub(progress.value)} />
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </article>
   );
 }
 
 export default React.memo(styled(CardSummary)`
   align-items: center;
-  background: black;
+  background: none;
   border: none !important;
   border-radius: 1rem;
   box-shadow: none !important;
   color: var(--color-summary);
   flex: 0 1 auto;
   flex-flow: row wrap;
-  justify-content: flex-end;
-  padding: 1rem 3.5rem;
   text-align: center;
   display: flex;
   align-items: center;
   min-height: 205px;
-  .no-back {
-    padding: 0 !important;
-    background: none !important;
-  }
   .childrenIsNotTop {
     color: #fff;
     font-size: 18px;
@@ -131,7 +122,6 @@ export default React.memo(styled(CardSummary)`
   }
 
   .ui--Progress {
-    margin: 0.5rem 0.125rem 0.125rem 0.75rem;
   }
 
   > .ui--Labelled {

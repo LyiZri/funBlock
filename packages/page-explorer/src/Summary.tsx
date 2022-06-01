@@ -50,7 +50,7 @@ function Summary(): React.ReactElement {
       </section>
       <section className="third-section">
         {api.query.storage && (
-          <CardSummary hasBack={false} className="total-storage-card">
+          <CardSummary className="total-storage-card">
             <TotalStorage label={"Total storage"} hasBg={true} />
           </CardSummary>
         )}
@@ -63,5 +63,9 @@ function Summary(): React.ReactElement {
 export default React.memo(styled(Summary)`
   .total-storage-card {
     padding: 0px;
+  }
+  .no-back {
+    padding: 0 !important;
+    background: none !important;
   }
 `);

@@ -15,7 +15,7 @@ export const colorBtnPrimary = colorBtnDefault; // '#2e86ab';
 /* button text color */
 export const colorBtnText = "#f9f8f7";
 
-export const colorLink = "#7C7CDB";
+export const colorLink = "#925CFF";
 
 export default `
   .theme--dark,
