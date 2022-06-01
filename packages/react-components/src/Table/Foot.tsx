@@ -24,7 +24,7 @@ function Foot ({ className = '', footer, isEmpty }: Props): React.ReactElement<P
 
 export default React.memo(styled(Foot)`
   td {
-    color: var(--color-table-foot);
+    color: #925CFF;
     font: var(--font-sans);
     font-weight: var(--font-weight-normal);
     padding: 0.75rem 1rem 0.25rem;
@@ -34,6 +34,6 @@ export default React.memo(styled(Foot)`
   }
 
   tr {
-    background: var(--bg-page);
+    background: rgba(0,0,0,0);
   }
 `);

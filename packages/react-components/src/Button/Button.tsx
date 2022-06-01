@@ -67,7 +67,7 @@ export default React.memo(styled(Button)`
 
   &.hasLabel {
     padding: 0.7rem 1.1rem 0.7rem ${1.1 - ICON_PADDING}rem;
-
+    color:white;
     .ui--Icon {
       margin-right: 0.425rem !important;
     }

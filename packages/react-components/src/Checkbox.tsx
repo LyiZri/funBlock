@@ -46,6 +46,7 @@ export default React.memo(styled(Checkbox)`
 
   &:not(.isDisabled) {
     cursor: pointer;
+    color:#925CFF;
   }
 
   > label {
@@ -63,7 +64,7 @@ export default React.memo(styled(Checkbox)`
   }
 
   .ui--Icon {
-    border: 1px solid var(--color-checkbox);
+    border: 1px solid #808080;
     border-radius: 0.125rem;
   }
 `);

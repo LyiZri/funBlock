@@ -471,7 +471,7 @@ export default React.memo<Props>(styled(CrustPinner)`
         outline: none;
 
         &:focus {
-          border-color: #85b7d9;
+          border-color: white;
         }
       }
 

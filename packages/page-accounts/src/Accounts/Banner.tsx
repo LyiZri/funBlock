@@ -10,7 +10,7 @@ interface Props {
   type: 'warning' | 'error';
 }
 
-function Banner ({ children, className = '', type }: Props): React.ReactElement<Props> | null {
+function Banner({ children, className = '', type }: Props): React.ReactElement<Props> | null {
   return (
     <article className={`${className} ${type} centered`}>
       <div className='box'>
@@ -22,6 +22,22 @@ function Banner ({ children, className = '', type }: Props): React.ReactElement<
 
 export default React.memo(styled(Banner)`
   .box {
-    padding: 0 0.5rem;
+    // padding: 0 0.5rem;
+    >p{
+      color:#A3A4A7;
+      font-size:18px;
+      margin-bottom:16px;
+    }
+    > ul{
+      >li{
+        font-size:18px;
+        color:#A3A4A7;
+        margin-bottom:16px;
+        margin-left:20px;
+      }
+      >li::marker{
+        display:none;
+      }
+    }
   }
 `);

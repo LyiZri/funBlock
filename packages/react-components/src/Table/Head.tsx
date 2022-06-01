@@ -63,7 +63,7 @@ export default React.memo(styled(Head)`
   th {
     font: var(--font-sans);
     font-weight: var(--font-weight-normal);
-    padding: 0.5rem 1rem 0.25rem;
+    padding: 30px 1rem 20px;
     text-align: right;
     vertical-align: baseline;
     white-space: nowrap;
@@ -81,7 +81,7 @@ export default React.memo(styled(Head)`
     }
 
     &:first-child {
-      border-left: 1px solid var(--border-table);
+      // border-left: 1px solid var(--border-table);
     }
 
     // &:last-child {
@@ -120,22 +120,24 @@ export default React.memo(styled(Head)`
 
     &.start {
       text-align: left;
+      >h1{
+        color:white;
+      }
     }
   }
 
   tr {
-    background: var(--bg-table);
+    background: #151319;
 
     &:first-child {
       th {
-        border-top: 1px solid var(--border-table);
+        // border-top: 1px solid var(--border-table);
       }
     }
 
     &.filter {
       .ui.input {
-        background: transparent;
-
+        background: #151319;
         &:first-child {
           margin-top: -1px;
         }
@@ -148,7 +150,7 @@ export default React.memo(styled(Head)`
 
     &:not(.filter) {
       th {
-        color: var(--color-table-head);
+        color: white;
       }
     }
   }

@@ -63,7 +63,7 @@ export default React.memo(styled(TextArea)`
       color: var(--color-text);
       display: block;
       outline: none;
-      padding: 2.75rem 3rem 0rem 1.5rem;
+      padding: 4rem 3rem 0rem 1.5rem;
       resize: none;
       width: 100%;
 
@@ -92,7 +92,7 @@ export default React.memo(styled(TextArea)`
       align-items: center;
       justify-content: center;
       & > .dropdown.icon {
-        top: 1.9rem;
+        top: 2.6rem;
         right:1rem;
       }
     }
