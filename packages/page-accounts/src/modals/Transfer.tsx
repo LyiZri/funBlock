@@ -23,11 +23,11 @@ interface Props {
   senderId?: string;
 }
 
-function isRefcount (accountInfo: AccountInfoWithProviders | AccountInfoWithRefCount): accountInfo is AccountInfoWithRefCount {
+function isRefcount(accountInfo: AccountInfoWithProviders | AccountInfoWithRefCount): accountInfo is AccountInfoWithRefCount {
   return !!(accountInfo as AccountInfoWithRefCount).refcount;
 }
 
-async function checkPhishing (_senderId: string | null, recipientId: string | null): Promise<[string | null, string | null]> {
+async function checkPhishing(_senderId: string | null, recipientId: string | null): Promise<[string | null, string | null]> {
   return [
     // not being checked atm
     // senderId
@@ -40,7 +40,7 @@ async function checkPhishing (_senderId: string | null, recipientId: string | nu
   ];
 }
 
-function Transfer ({ className = '', onClose, recipientId: propRecipientId, senderId: propSenderId }: Props): React.ReactElement<Props> {
+function Transfer({ className = '', onClose, recipientId: propRecipientId, senderId: propSenderId }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api } = useApi();
   const [amount, setAmount] = useState<BN | undefined>(BN_ZERO);
@@ -143,31 +143,37 @@ function Transfer ({ className = '', onClose, recipientId: propRecipientId, send
           <Modal.Columns hint={t<string>('If the recipient account is new, the balance needs to be more than the existential deposit. Likewise if the sending account balance drops below the same value, the account will be removed from the state.')}>
             {canToggleAll && isAll
               ? (
-                <InputBalance
-                  autoFocus
-                  defaultValue={maxTransfer}
-                  help={t<string>('The full account balance to be transferred, minus the transaction fees')}
-                  isDisabled
-                  key={maxTransfer?.toString()}
-                  label={t<string>('transferrable minus fees')}
-                />
+                <div className="need-white-mine">
+                  <InputBalance
+                    autoFocus
+                    defaultValue={maxTransfer}
+                    help={t<string>('The full account balance to be transferred, minus the transaction fees')}
+                    isDisabled
+                    key={maxTransfer?.toString()}
+                    label={t<string>('transferrable minus fees')}
+                  />
+                </div>
               )
               : (
                 <>
-                  <InputBalance
-                    autoFocus
-                    help={t<string>('Type the amount you want to transfer. Note that you can select the unit on the right e.g sending 1 milli is equivalent to sending 0.001.')}
-                    isError={!hasAvailable}
-                    isZeroable
-                    label={t<string>('amount')}
-                    onChange={setAmount}
-                  />
-                  <InputBalance
-                    defaultValue={api.consts.balances.existentialDeposit}
-                    help={t<string>('The minimum amount that an account should have to be deemed active')}
-                    isDisabled
-                    label={t<string>('existential deposit')}
-                  />
+                  <div className="need-white-mine">
+                    <InputBalance
+                      autoFocus
+                      help={t<string>('Type the amount you want to transfer. Note that you can select the unit on the right e.g sending 1 milli is equivalent to sending 0.001.')}
+                      isError={!hasAvailable}
+                      isZeroable
+                      label={t<string>('amount')}
+                      onChange={setAmount}
+                    />
+                  </div>
+                  <div className="need-white-mine">
+                    <InputBalance
+                      defaultValue={api.consts.balances.existentialDeposit}
+                      help={t<string>('The minimum amount that an account should have to be deemed active')}
+                      isDisabled
+                      label={t<string>('existential deposit')}
+                    />
+                  </div>
                 </>
               )
             }
@@ -194,10 +200,14 @@ function Transfer ({ className = '', onClose, recipientId: propRecipientId, send
               />
             )}
             {!isProtected && !noReference && (
-              <MarkWarning content={t<string>('There is an existing reference count on the sender account. As such the account cannot be reaped from the state.')} />
+              <div className='warning-mine' style={{marginTop:'2rem'}}>
+                <MarkWarning content={t<string>('There is an existing reference count on the sender account. As such the account cannot be reaped from the state.')} />
+              </div>
             )}
             {noFees && (
-              <MarkWarning content={t<string>('The transaction, after application of the transfer fees, will drop the available balance below the existential deposit. As such the transfer will fail. The account needs more free funds to cover the transaction fees.')} />
+              <div className='warning-mine' style={{marginTop:'2rem'}}>
+                <MarkWarning content={t<string>('The transaction, after application of the transfer fees, will drop the available balance below the existential deposit. As such the transfer will fail. The account needs more free funds to cover the transaction fees.')} />
+              </div>
             )}
           </Modal.Columns>
         </div>

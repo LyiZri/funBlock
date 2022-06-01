@@ -117,12 +117,13 @@ export default React.memo(styled(InputBalance)`
     align-items: stretch;
     .ui--SiDropdown.ui.button.compact.floating.selection.dropdown {
       border:0;
-      border-radius:0 20px 20px 0;
+      background:white;
+      border-top-left-radius: 0!important;
+      border-bottom-left-radius: 0!important;
       &.disabled {
         border-style: solid;
         opacity: 1 !important;
       }
-
       > div.text:first-child {
         font-size: 0.9em;
         position: absolute;

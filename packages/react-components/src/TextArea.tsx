@@ -86,8 +86,8 @@ export default React.memo(styled(TextArea)`
     & > .ui.buttons > .ui.button.floating.selection.dropdown {
       border: 1px solid #DDE1EB;
       border-left: none;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      border-top-left-radius: 0!important;
+      border-bottom-left-radius: 0!important;
       display: flex;
       align-items: center;
       justify-content: center;

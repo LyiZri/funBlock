@@ -23,7 +23,7 @@ import CreateConfirmation from './CreateConfirmation';
 import CreateSuriLedger from './CreateSuriLedger';
 import ExternalWarning from './ExternalWarning';
 import PasswordInput from './PasswordInput';
-import './index.scss'
+// import './index.scss'
 
 const ETH_DEFAULT_PATH = "m/44'/60'/0'/0/0";
 
@@ -544,6 +544,7 @@ export default React.memo(styled(Create)`
     width:43rem;
     break-word:break;
     margin-top:.75rem;
+    color:#A3A4A7;
   }
   @media only screen and (min-width: 1024px){
     .ijhooM > div:nth-child(1), .ijhooM > div:only-child {

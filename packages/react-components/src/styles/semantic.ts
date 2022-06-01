@@ -39,7 +39,7 @@ export default (_theme: ThemeDef): string => `
 
   .ui.dropdown {
     &.disabled {
-      background: transparent;
+      background: white;
       border-style: dashed;
       opacity: 1;
 
@@ -173,11 +173,11 @@ export default (_theme: ThemeDef): string => `
   }
 
   .ui.popup {
-    background: var(--bg-menu);
+    background: #2C2B30;
     color: var(--color-text);
-
+    border-color:#201f23;
     .ui.text.menu .item {
-      color: var(--color-text) !important;
+      color: white;
 
       &.disabled {
         opacity: 0.3;
@@ -185,7 +185,7 @@ export default (_theme: ThemeDef): string => `
     }
 
     &&::before {
-      background: var(--bg-menu);
+      background: #2C2B30;
     }
   }
 
