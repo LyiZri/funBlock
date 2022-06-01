@@ -27,7 +27,7 @@ function BestNumber({ children, className = "", isFinalized, label, withPound }:
     <div className={className}>
       {label || ""}
       {withPound && "#"}
-      {bestNumber ? <Digits className="color-black" value={formatNumber(bestNumber)} /> : "-"}
+      {bestNumber ? <Digits value={formatNumber(bestNumber)} /> : "-"}
       {children}
     </div>
   );

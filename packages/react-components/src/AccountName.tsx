@@ -206,12 +206,9 @@ export default React.memo(styled(AccountName)`
       align-items: center;
       display: inline-flex;
       font-weight: var(--font-weight-normal) !important;
-      filter: grayscale(100%);
       line-height: 1;
-      opacity: 0.6;
       overflow: hidden;
       text-overflow: ellipsis;
-
       &:not(.isAddress) {
         text-transform: uppercase;
       }

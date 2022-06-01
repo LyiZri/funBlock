@@ -1,0 +1,21 @@
+.progress-box {
+  width: 251px;
+  height: 251px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 25px 10px #212642;
+  background-color: #000;
+    padding: 20px;
+  .percent-format {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-size: 64px;
+    white-space: normal;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -12,6 +12,7 @@ import { Elapsed } from "@polkadot/react-query";
 import { BN_ONE, formatNumber } from "@polkadot/util";
 
 import { useTranslation } from "./translate";
+import styled from "styled-components";
 
 interface Props {
   className?: string;
@@ -30,14 +31,14 @@ function SummarySession({ className, withEra = true, withSession = true }: Props
   const activeEraStart = sessionInfo?.activeEraStart.unwrapOr(null);
 
   return (
-    <>
+    <div className={className}>
       {sessionInfo && (
         <>
           {withSession &&
             (sessionInfo.sessionLength.gt(BN_ONE) ? (
               <CardSummary
                 className={className}
-                label={sessionLabel}
+                label={''}
                 progress={{
                   total: sessionInfo.sessionLength,
                   value: sessionInfo.sessionProgress,
@@ -75,8 +76,14 @@ function SummarySession({ className, withEra = true, withSession = true }: Props
             ))}
         </>
       )}
-    </>
+    </div>
   );
 }
 
-export default React.memo(SummarySession);
+export default React.memo(styled(SummarySession)`
+  background: #000;
+  height: 316px;
+  width: 750px;
+  margin-top:22px;
+  border-radius: 30px;
+`);

@@ -1,0 +1,68 @@
+.time-circle{
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        top: -55px;
+        right: -47px;
+    background: url(../assets/circle1.gif);
+    // animation: timeCircleRotate  2s linear infinite;
+   
+}
+@keyframes timeCircleRotate{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+.block-time-circle{
+    width: 202px;
+    height: 202px;
+    background: url(../assets/circle2.png);
+    position: relative;
+    left: 50px;
+    text-align: center;
+    .block-time-content{
+        text-align: center;
+        position: absolute;
+        top: 50px;
+        left:67px;
+    }
+    .block-time-lable{
+        display: block;
+        color: #7f7f8a;
+        font-size: 22px;
+    }
+    span{
+        font-size: 62px;
+    }
+    .timeUnits{
+        font-size: 62px !important;
+    }
+    span + span{
+        padding: 0 !important;
+    }
+}
+.totalStorage-background{
+    background:url(../assets/total_storage.png);
+    width: 778px;
+    height: 316px;
+    text-align: left;
+    padding: 33px 83px;
+    .totalStorage-title{
+        display: block;
+        font-size: 32px;
+        color: #7f7f8a;
+    }
+    .ui--FormatBalance-postfix{
+        font-size: 82px !important;
+    }
+    .ui--FormatBalance-unit{
+        font-size: 82px !important;
+    }
+    .ui--FormatBalance-value{
+        display: block;
+        margin-top: 32px;
+    }
+}

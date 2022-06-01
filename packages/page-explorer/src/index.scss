@@ -12,7 +12,7 @@
   margin-bottom: 25px;
 
   .switch-choose {
-    background-color: #827CF8;
+    background: linear-gradient( #C000FF 0%, #8400AF 27%, #3D0051 61%, #110016 84%, #000000 96%);
     color: #101010;
     border-radius: 40px;
     width: 50%;
@@ -31,6 +31,6 @@
 
 .main-box {
   .ui--FormatBalance-value {
-    font-size: 22px !important;
+    font-size: 40px !important;
   }
 }

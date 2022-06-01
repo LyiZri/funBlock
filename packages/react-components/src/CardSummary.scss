@@ -1,12 +1,9 @@
 .first-section {
-  width: 40%;
 
   article {
     max-height: 250px;
     max-width: 224px;
     margin: auto;
-    padding: 45px 73px;
-
     .iconBox {
       margin-bottom: 36px;
     }
@@ -14,40 +11,40 @@
 }
 
 .second-section {
-  width: 50%;
   flex-wrap: wrap;
   justify-content: space-evenly;
 
   article {
-    min-width: 40%;
+    min-width: 271px;
     max-height: 112px;
-    max-width: 40%;
+    max-width: 271px;
+    background: none;
 
     .color-black {
       color: black !important;
     }
   }
 }
-
-.third-section {
-  width: 40%;
-
-  .total-storage-card {
-    min-width: 377px;
-    max-width: 377px;
-    max-height: 167px;
+.progress-epoch-box{
+  width: 50%;
+  margin-left: 30px;
+  .progress-box-title{
+    
+    font-size: 48px;
+    color: #fff;
+    width: 100%;
+    text-align: right;
   }
-
-  article {
-    min-width: 335px;
-    max-width: 335px;
-    max-height: 167px;
-    display: flex;
-    justify-content: space-evenly;
-
-    .epoch-flex {
-      display: flex;
-      justify-content: space-evenly;
-    }
+  .progress-box-content{
+    margin-top: 67px;
+    text-align: left;
+    width: 100%;
+    font-size: 36px;
+    color: #7f7f8a;
+    line-height: 50px;
+    .epoch-timer,.block-time-content{
+      font-size: 36px;
+  }
   }
 }
+  
