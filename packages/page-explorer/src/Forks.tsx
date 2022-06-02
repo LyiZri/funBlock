@@ -10,7 +10,7 @@ import styled from "styled-components";
 import { CardSummary, IdentityIcon, SummaryBox } from "@polkadot/react-components";
 import { useApi } from "@polkadot/react-hooks";
 import { formatNumber } from "@polkadot/util";
-
+import './index.scss'
 import { useTranslation } from "./translate";
 
 interface LinkHeader {
@@ -349,16 +349,23 @@ function Forks({ className }: Props): React.ReactElement<Props> | null {
   }
 
   return (
-    <div>
+    <div className="Forks">
       <div className={className}>
         <SummaryBox>
           <section>
-            <CardSummary label={t<string>("blocks")} childrenIsTop={false}>
-              {formatNumber(countRef.current.numBlocks)}
+            <div className="forks-card first">
+              <header>Blocks</header>
+              <p>{formatNumber(countRef.current.numBlocks)}</p>
+            </div>
+            <div className="forks-card">
+              <header>Forks</header>
+              <p>{formatNumber(countRef.current.numForks)}</p>
+            </div>
+
+            {/* <CardSummary label={t<string>("blocks")} childrenIsTop={false}>
             </CardSummary>
             <CardSummary label={t<string>("forks")} childrenIsTop={false}>
-              {formatNumber(countRef.current.numForks)}
-            </CardSummary>
+            </CardSummary> */}
           </section>
         </SummaryBox>
         <table>
@@ -371,13 +378,32 @@ function Forks({ className }: Props): React.ReactElement<Props> | null {
 
 export default React.memo(styled(Forks)`
   margin-bottom: 1.5rem;
-  background: #f2f2f7;
   border-radius: 20px;
   padding: 35px 40px;
+  .forks-card {
+    width: 407px;
+    height: 190px;
+    padding: 30px 36px;
+    header {
+      color: #a3a4a7;
+      width: 100%;
+      font-size:30px;
+      text-align: left;
+    }
+    p {
+      width: 100%;
+      color: 100%;
+      text-align: center;
+      font-size: 64px;
+    }
+  }
   table {
     border-collapse: separate;
     border-spacing: 0.25rem;
     border: 0;
+    padding: 36px;
+    border-radius: 20px;
+    background-color: #000 !important;
     font: var(--font-mono);
 
     td {
@@ -395,6 +421,7 @@ export default React.memo(styled(Forks)`
       }
 
       .contents {
+        color: #a3a4a7;
         .hash,
         .parent {
           margin: 0 auto;
@@ -416,7 +443,7 @@ export default React.memo(styled(Forks)`
       }
 
       &.header {
-        background: #fff;
+        background: #f4f4fb;
         border: 1px solid #e6e6e6;
         border-radius: 0.25rem;
 

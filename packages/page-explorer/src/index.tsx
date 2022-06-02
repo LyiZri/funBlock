@@ -80,5 +80,5 @@ function ExplorerApp({ basePath, className }: Props): React.ReactElement<Props> 
 }
 
 export default React.memo(styled(ExplorerApp)`
-  padding: 40px;
+
 `);

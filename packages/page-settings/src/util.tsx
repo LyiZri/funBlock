@@ -90,7 +90,7 @@ export function createIdenticon ({ info, text, value }: Option, overrides: strin
           : (
             <IdentityIcon
               className='ui--Dropdown-icon'
-              size={32}
+              size={70}
               theme={theme}
               value='5F9999K9UgTUgSsbXZQcEmRMvQqwJoBUHMv9e1k2MdgghuRA'
             />

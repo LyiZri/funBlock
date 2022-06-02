@@ -124,6 +124,7 @@ export default React.memo(styled(Labelled)`
         min-width: 0;
         background: #2C2B30;
         border-radius: 20px;
+        border:1px dashed #3c3f49;
         input {
           background: #2C2B30;
         }

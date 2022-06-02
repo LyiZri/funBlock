@@ -33,7 +33,7 @@ function isCodec (value?: AccountId | AccountIndex | Address | string | Uint8Arr
   return !!(value && (value as AccountId).toHuman);
 }
 
-function IdentityIcon ({ className = '', prefix, size = 24, theme, value }: Props): React.ReactElement<Props> {
+function IdentityIcon ({ className = '', prefix, size = 47, theme, value }: Props): React.ReactElement<Props> {
   const { isEthereum, systemName } = useApi();
   const { t } = useTranslation();
   const { queueAction } = useContext(StatusContext);

@@ -1,12 +1,12 @@
 // Copyright 2017-2021 @polkadot/react-components authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { isString } from '@polkadot/util';
+import { isString } from "@polkadot/util";
 
-import Spinner from '../Spinner';
+import Spinner from "../Spinner";
 
 interface Props {
   children?: React.ReactNode;
@@ -15,15 +15,15 @@ interface Props {
   emptySpinner?: React.ReactNode;
 }
 
-function Body ({ children, className = '', empty, emptySpinner }: Props): React.ReactElement<Props> {  
+function Body({ children, className = "", empty, emptySpinner }: Props): React.ReactElement<Props> {
   return (
     <tbody className={className}>
       {children || (
-        <tr><td colSpan={100}>{
-          isString(empty)
-            ? <div className='empty'>{empty}</div>
-            : empty || <Spinner label={emptySpinner} />
-        }</td></tr>
+        <tr>
+          <td colSpan={100}>
+            {isString(empty) ? <div className="empty">{empty}</div> : empty || <Spinner label={emptySpinner} />}
+          </td>
+        </tr>
       )}
     </tbody>
   );
@@ -92,13 +92,12 @@ export default React.memo(styled(Body)`
         text-align: right;
       }
 
-      .ui--Expander+.ui--Expander {
+      .ui--Expander + .ui--Expander {
         margin-top: 0.375rem;
       }
     }
 
     &.hash {
-      font: var(--font-mono);
     }
 
     &.links {
@@ -122,9 +121,7 @@ export default React.memo(styled(Body)`
     &.relative {
       position: relative;
     }
-
     &.overflow {
-      max-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -171,13 +168,9 @@ export default React.memo(styled(Body)`
   }
 
   tr {
-    background:#2C2B30!important;
     &:nth-child(odd):not(.isEven),
-    &:nth-child(even).isOdd {
-      background: var(--bg-table);
-    }
-    >td{
-      color:#A3A4A7!important;
+    > td {
+      color: #a3a4a7 !important;
     }
     &:first-child {
       td:first-child {
@@ -191,7 +184,6 @@ export default React.memo(styled(Body)`
 
     &:last-child {
       td {
-
         &:first-child {
           border-bottom-left-radius: 0.25rem;
         }
@@ -219,8 +211,8 @@ export default React.memo(styled(Body)`
       box-shadow: none !important;
     }
 
-    .ui.toggle.checkbox input:checked~.box:before,
-    .ui.toggle.checkbox input:checked~label:before {
+    .ui.toggle.checkbox input:checked ~ .box:before,
+    .ui.toggle.checkbox input:checked ~ label:before {
       background-color: #eee !important;
     }
   }

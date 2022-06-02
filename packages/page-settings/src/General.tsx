@@ -87,7 +87,8 @@ function General({ className = "" }: Props): React.ReactElement<Props> {
           label={t<string>("address prefix")}
           onChange={_handleChange("prefix")}
           options={prefixOptions}
-        />
+        >
+          </Dropdown>
       </div>
       <div className="ui--row">
         <Dropdown

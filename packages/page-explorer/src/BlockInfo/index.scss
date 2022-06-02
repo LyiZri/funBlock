@@ -1,11 +1,40 @@
 .content-box-bg {
   padding: 35px 39px;
-  background-color: #f2f2f7;
+  background-color: none;
   border-radius: 20px;
-
+    .start,.address{
+      font-size: 24px;
+    }
   table {
     border-radius: 20px;
+    padding: 36px;
+    background-color:#000 !important;
+    .with-redius-header{
+      th{
+        background: #000;
+        padding: 0;
+        h1{
+          font-size: 32px;
+        }
+      }
+    }
+    tr{
+      background: #000 !important;
+      .ui--Labelled:not(.isSmall) >  .ui--Labelled-content{
+        background: #000;
+      }
+    }
+    label{
+      color: #fff;
+    }
+    .ui--Labelled:not(.isSmall) > .ui--Labelled-content .ui.input > input{
+      padding-top: 2.75rem;
+    }
+    .ui--Param-composite{
+      padding-bottom: 10px;
+    }
   }
+  .hightlight--bg-faint
   .blockinfo-columar{
       padding: 0;
   }

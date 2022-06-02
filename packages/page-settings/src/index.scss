@@ -2,7 +2,7 @@
   padding: 20px 33px;
 
   .setting-contetn-bg {
-    background-color: #f2f2f7;
+    background-color: #000;
     padding: 46px 41px;
     border-radius: 20px;
 
@@ -21,7 +21,9 @@
 
     &:not(.isOuter) {
       label {
-        left: 7.25rem !important;
+        left: 10.25rem !important;
+        font-size: 22px;
+        color: #a3a4a7;
       }
     }
 
@@ -37,8 +39,22 @@
 
       .ui--Dropdown-name {
         margin-left: 13px !important;
+        font-size: 30px;
+      }
+      .ui--Dropdown-icon{
+        width: 70px;
+        height: 70px;
       }
     }
+    .ui--Labelled-content{
+      .text{
+        font-size: 30px;
+        color: #fff;
+      }
+    }
+  }
+  .ui--Button{
+    font-size: 24px;
   }
 }
 

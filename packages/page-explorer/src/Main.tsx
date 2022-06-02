@@ -26,25 +26,25 @@ function Main({ events, headers }: Props): React.ReactElement<Props> {
       {/* <Query /> */}
       <Summary />
       <Columar>
-      <div className="main-content-box">
-      <div className="chain-info-page-switch">
-        <div className={`${isBlock == 0 ? "switch-choose" : "switch-unchoose"}`} onClick={() => setIsBlock(0)}>
-          recent blocks
-        </div>
-        <div className={`${isBlock == 1 ? "switch-choose" : "switch-unchoose"}`} onClick={() => setIsBlock(1)}>
-          recent events
-        </div>
-      </div>
-        {isBlock == 0 && (
-          <Columar.Column>
-            <BlockHeaders headers={headers} />
-          </Columar.Column>
-        )}
-        {isBlock == 1 && (
-          <Columar.Column>
-            <Events events={events} />
-          </Columar.Column>
-        )}
+        <div className="main-content-box">
+          <div className="chain-info-page-switch">
+            <div className={`${isBlock == 0 ? "switch-choose" : "switch-unchoose"}`} onClick={() => setIsBlock(0)}>
+              recent blocks
+            </div>
+            <div className={`${isBlock == 1 ? "switch-choose" : "switch-unchoose"}`} onClick={() => setIsBlock(1)}>
+              recent events
+            </div>
+          </div>
+          {isBlock == 0 && (
+            <Columar.Column>
+              <BlockHeaders headers={headers} />
+            </Columar.Column>
+          )}
+          {isBlock == 1 && (
+            <Columar.Column>
+              <Events events={events} />
+            </Columar.Column>
+          )}
         </div>
       </Columar>
     </div>

@@ -39,7 +39,7 @@ const ColumarStyled = React.memo(styled(Columar)`
   flex-wrap: wrap;
   height:100%;
   width:100%;
-  background:#F2F2F7;
+  background:#000;
   border-radius:20px;
   padding:25px 40px;
 

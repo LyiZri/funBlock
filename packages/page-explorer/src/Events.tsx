@@ -32,6 +32,7 @@ function Events ({ className = '', emptyLabel, eventClassName, events, label }: 
     <Table
       className={className}
       empty={emptyLabel || t<string>('No events available')}
+      header={header}
     >
       {events && events.map(({ blockHash, blockNumber, indexes, key, record }): React.ReactNode => (
         <tr

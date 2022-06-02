@@ -25,7 +25,7 @@ function Holder({ children, className = "", withBorder, withPadding }: Props): R
 
 export default React.memo(styled(Holder)`
   &.withBorder {
-    border-left: 0.25rem solid #f2f2f2;
+    border-left: 0.25rem solid #3C3F49;
   }
 
   &.withoutBorder {

@@ -1,8 +1,13 @@
 .first-section {
-
+  .first{
+    width: 213px;
+    .epoch-flex{
+      margin-left: 14px;
+    }
+  }
   article {
     max-height: 250px;
-    max-width: 224px;
+    max-width: 270px;
     margin: auto;
     .iconBox {
       margin-bottom: 36px;
@@ -17,7 +22,6 @@
   article {
     min-width: 271px;
     max-height: 112px;
-    max-width: 271px;
     background: none;
 
     .color-black {

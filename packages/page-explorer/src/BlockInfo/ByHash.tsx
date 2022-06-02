@@ -113,19 +113,19 @@ function BlockByHash ({ className = '', error, value }: Props): React.ReactEleme
             events={events}
             value={getBlock.block.extrinsics}
           />
-          <Columar className='blockinfo-columar'>
-            <Columar.Column>
               <Events
                 eventClassName='explorer--BlockByHash-block'
                 events={events?.filter(({ record: { phase } }) => !phase.isApplyExtrinsic)}
                 label={t<string>('system events')}
               />
+          {/* <Columar className='blockinfo-columar'>
+            <Columar.Column>
             </Columar.Column>
             <Columar.Column>
+            </Columar.Column>
+          </Columar> */}
               <Logs value={getHeader.digest.logs} />
               <Justifications value={getBlock.justifications} />
-            </Columar.Column>
-          </Columar>
         </>
       )}
     </div>

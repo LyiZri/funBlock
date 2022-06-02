@@ -1,19 +1,22 @@
 .chain-info-page-switch {
-  height: 51px;
-  width: 273px;
+  height: 64px;
+  width: 495px;
   margin: auto;
   border-radius: 40px;
   background-color: #E4E4FB;
-  color: #B8B7C8;
+  background: url(../assets/chooseBarBack.png) 100%;
+  color: #fff;
   text-align: center;
-  line-height: 51px;
+  line-height: 64px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  font-size: 28px;
 
   .switch-choose {
-    background: linear-gradient( #C000FF 0%, #8400AF 27%, #3D0051 61%, #110016 84%, #000000 96%);
-    color: #101010;
+    // background: linear-gradient( #C000FF 0%, #8400AF 27%, #3D0051 61%, #110016 84%, #000000 96%);
+    background: url(../assets/chooseBar.png) 100%;
+    color: #fff;
     border-radius: 40px;
     width: 50%;
   }
@@ -24,13 +27,63 @@
 }
 
 .main-content-box {
-  background-color: #fff;
-  padding: 15px 65px;
   border-radius: 20px;
+
+  .number {
+    font-size: 32px;
+  }
+
+  .overflow {
+    font-size: 24px;
+    width: 527px !important;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 50px;
+  }
+
+  table {
+    tr {
+      background: #000 !important;
+      
+    }
+  }
+
+  .isAddress {
+    font-size: 24px;
+  }
 }
 
 .main-box {
   .ui--FormatBalance-value {
     font-size: 40px !important;
+  }
+}
+article{
+  label{
+    color: #7f7f8a;
+    font-size: 26px;
+  }
+}
+.forks-card{
+  background:url(../assets/forks_card_bg.png);
+  margin-right: 42px;
+}
+.Forks{
+  table{
+    tr{
+      font-size: 24px;
+      td{
+
+        .contents{
+          font-size: 20px;
+          .parent{
+            font-size: 20px;
+            line-height: 1.75rem;
+          }
+        }
+      }
+    }
   }
 }
