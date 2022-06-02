@@ -85,6 +85,7 @@ function InputAddressMulti ({ available, availableLabel, className = '', default
             ))}
           </div>
         </div>
+        <div className='label-mine'></div>
         <div className='ui--InputAddressMulti-column'>
           <label>{availableLabel}</label>
           <div className='ui--InputAddressMulti-items'>
@@ -127,15 +128,20 @@ export default React.memo(styled(InputAddressMulti)`
     flex-direction: row-reverse;
     justify-content: space-between;
     width: 100%;
-
+    .label-mine{
+      width:1rem;
+    }
     .ui--InputAddressMulti-column {
       display: flex;
       flex-direction: column;
       min-height: 15rem;
       max-height: 15rem;
       width: 50%;
-      padding: 0.25rem 0.5rem;
-
+      // padding: 0.25rem 0.5rem;
+      label{
+        color:white;
+        margin:1rem 0;
+      }
       .ui--InputAddressMulti-items {
         padding: 0.5rem 0;
         background: var(--bg-input);

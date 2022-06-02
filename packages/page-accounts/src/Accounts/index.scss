@@ -10,12 +10,12 @@
     top: 1.45rem;
     font-weight: 200;
     z-index: 200;
-    color:#925CFF;
+    color: #925cff;
   }
   .ui--Table {
     margin-bottom: 0;
     .filter--tags {
-      background-color:#151319;
+      background-color: #151319;
       .ui--Input {
         margin-bottom: 0;
         input {
@@ -23,7 +23,7 @@
           height: 60px;
           border-color: rgba(0, 0, 0, 0);
           padding: 1rem !important;
-          padding-left: 3.2rem!important;
+          padding-left: 3.2rem !important;
           font-size: 18px;
         }
       }
@@ -34,4 +34,34 @@
       background-color: #151319;
     }
   }
+}
+
+.need-white-mine {
+  .ui--Labelled {
+    .ui--Labelled-content {
+      .input {
+        input {
+          padding-top: 3.75rem !important;
+          padding-bottom: 1rem;
+          background-color: white !important;
+        }
+      }
+      .ui--InputFile {
+        padding-top: 3.75rem !important;
+        padding-bottom: 1rem;
+        background-color: white !important;
+      }
+    }
+  }
+}
+.warning-mine {
+  article.warning::before {
+    background-color: #fdeddb;
+  }
+}
+.columnsHint{
+  color:#A3A4A7;
+}
+label{
+  color: #A3A4A7!important;
 }

@@ -137,7 +137,7 @@ export default React.memo(styled(Labelled)`
 
           &.floating {
             > .dropdown.icon {
-              top: 1.25rem;
+              top: 2.25rem;
             }
 
             .text {

@@ -81,6 +81,7 @@ export default React.memo(styled(Tags)`
 
     label {
       display: inline-block !important;
+      color:#A3A4A7;
     }
   }
 `);

@@ -44,7 +44,7 @@ const BOOL_OPTIONS = [
   { text: 'Yes', value: true }
 ];
 
-function VanityApp ({ className = '', onStatusChange }: Props): React.ReactElement<Props> {
+function VanityApp({ className = '', onStatusChange }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { isEthereum } = useApi();
   const results = useRef<GeneratorResult[]>([]);
@@ -185,28 +185,32 @@ function VanityApp ({ className = '', onStatusChange }: Props): React.ReactEleme
   return (
     <div className={className}>
       <div className='ui--row'>
-        <Input
-          autoFocus
-          className='medium'
-          help={t<string>('Type here what you would like your address to contain. This tool will generate the keys and show the associated addresses that best match your search. You can use "?" as a wildcard for a character.')}
-          isDisabled={isRunning}
-          isError={!isMatchValid}
-          label={t<string>('Search for')}
-          onChange={_onChangeMatch}
-          onEnter={_toggleStart}
-          value={match}
-        />
-        <Dropdown
-          className='medium'
-          help={t<string>('Should the search be case sensitive, e.g if you select "no" your search for "Some" may return addresses containing "somE" or "sOme"...')}
-          isDisabled={isRunning}
-          label={t<string>('case sensitive')}
-          onChange={setWithCase}
-          options={BOOL_OPTIONS}
-          value={withCase}
-        />
+        <div className='need-white-mine'>
+          <Input
+            autoFocus
+            className='medium'
+            help={t<string>('Type here what you would like your address to contain. This tool will generate the keys and show the associated addresses that best match your search. You can use "?" as a wildcard for a character.')}
+            isDisabled={isRunning}
+            isError={!isMatchValid}
+            label={t<string>('Search for')}
+            onChange={_onChangeMatch}
+            onEnter={_toggleStart}
+            value={match}
+          />
+        </div>
+        <div className='van-mine-dropdown'>
+          <Dropdown
+            className='medium'
+            help={t<string>('Should the search be case sensitive, e.g if you select "no" your search for "Some" may return addresses containing "somE" or "sOme"...')}
+            isDisabled={isRunning}
+            label={t<string>('case sensitive')}
+            onChange={setWithCase}
+            options={BOOL_OPTIONS}
+            value={withCase}
+          />
+        </div>
       </div>
-      <div className='ui--row'>
+      <div className='ui--row' style={{ marginTop: '1rem' }}>
         <Dropdown
           className='medium'
           defaultValue={type}
@@ -234,7 +238,9 @@ function VanityApp ({ className = '', onStatusChange }: Props): React.ReactEleme
       </Button.Group>
       {matches.length !== 0 && (
         <>
-          <article className='warning centered'>{t<string>('Ensure that you utilized the "Save" functionality before using a generated address to receive funds. Without saving the address any funds and the associated seed any funds sent to it will be lost.')}</article>
+          <div className='warning-mine'>
+            <article className='warning centered'>{t<string>('Ensure that you utilized the "Save" functionality before using a generated address to receive funds. Without saving the address any funds and the associated seed any funds sent to it will be lost.')}</article>
+          </div>
           <Table
             className='vanity--App-matches'
             empty={t<string>('No matches found')}

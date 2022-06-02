@@ -5,17 +5,19 @@
         input {
           padding-top: 3.75rem !important;
           padding-bottom: 1rem;
-          background-color: white !important;
+          // background-color: white !important;
         }
       }
     }
   }
 }
 .warning-mine {
-//   article {
-//     border-radius: 0;
-//   }
   article.warning::before {
     background-color: #fdeddb;
+  }
+}
+.van-mine-dropdown{
+  .ui.selection.dropdown{
+    min-height: 6.1rem!important;
   }
 }

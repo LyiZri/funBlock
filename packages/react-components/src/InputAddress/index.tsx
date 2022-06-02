@@ -303,7 +303,7 @@ const ExportedComponent = withMulti(
       > .text > .ui--KeyPair {
         .ui--IdentityIcon {
           left: -2.75rem;
-          top: -1.05rem;
+          top: -2.05rem;
 
           > div,
           img,

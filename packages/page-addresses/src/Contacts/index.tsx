@@ -17,7 +17,7 @@ type SortedAddress = { address: string; isFavorite: boolean };
 
 const STORE_FAVS = 'accounts:favorites';
 
-function Overview ({ className = '', onStatusChange }: Props): React.ReactElement<Props> {
+function Overview({ className = '', onStatusChange }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { allAddresses } = useAddresses();
   const [isCreateOpen, toggleCreate] = useToggle(false);
@@ -58,6 +58,7 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
         onChange={setFilter}
         value={filterOn}
       />
+      <div className='filter-mine-mask'></div>
     </div>
   ), [filterOn, t]);
 
@@ -76,21 +77,23 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
           onStatusChange={onStatusChange}
         />
       )}
-      <Table
-        empty={!isLoading && sortedAddresses && t<string>('no addresses saved yet, add any existing address')}
-        filter={filter}
-        header={headerRef.current}
-      >
-        {!isLoading && sortedAddresses?.map(({ address, isFavorite }): React.ReactNode => (
-          <Address
-            address={address}
-            filter={filterOn}
-            isFavorite={isFavorite}
-            key={address}
-            toggleFavorite={toggleFavorite}
-          />
-        ))}
-      </Table>
+      <div className='contract-mine-box'>
+        <Table
+          empty={!isLoading && sortedAddresses && t<string>('no addresses saved yet, add any existing address')}
+          filter={filter}
+          header={headerRef.current}
+        >
+          {!isLoading && sortedAddresses?.map(({ address, isFavorite }): React.ReactNode => (
+            <Address
+              address={address}
+              filter={filterOn}
+              isFavorite={isFavorite}
+              key={address}
+              toggleFavorite={toggleFavorite}
+            />
+          ))}
+        </Table>
+      </div>
     </div>
   );
 }

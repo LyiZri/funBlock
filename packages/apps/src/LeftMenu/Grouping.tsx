@@ -105,8 +105,8 @@ export default React.memo(styled(Grouping)`
   }
 
   .groupMenu {
-    border-radius: 20px;
-    box-shadow: 0 ${SHA_OFF} ${SHA_OFF} -${SHA_OFF} ${SHA_COL}, ${SHA_OFF} 0 ${SHA_OFF} -${SHA_OFF} ${SHA_COL}, -${SHA_OFF} 0 ${SHA_OFF} -${SHA_OFF} ${SHA_COL};
+    border-radius: 12px;
+    box-shadow:0px 15px 30px -15px rgba(146,92,255,0.5);
     display: none;
     margin: 0;
     overflow: hidden;

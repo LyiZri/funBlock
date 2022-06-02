@@ -29,7 +29,7 @@ interface CreateOptions {
 const MAX_SIGNATORIES = 16;
 const BN_TWO = new BN(2);
 
-function createMultisig (signatories: string[], threshold: BN | number, { genesisHash, name, tags = [] }: CreateOptions, success: string): ActionStatus {
+function createMultisig(signatories: string[], threshold: BN | number, { genesisHash, name, tags = [] }: CreateOptions, success: string): ActionStatus {
   // we will fill in all the details below
   const status = { action: 'create' } as ActionStatus;
 
@@ -48,7 +48,7 @@ function createMultisig (signatories: string[], threshold: BN | number, { genesi
   return status;
 }
 
-function Multisig ({ className = '', onClose, onStatusChange }: Props): React.ReactElement<Props> {
+function Multisig({ className = '', onClose, onStatusChange }: Props): React.ReactElement<Props> {
   const { api, isDevelopment } = useApi();
   const { t } = useTranslation();
   const availableSignatories = useKnownAddresses();
@@ -104,6 +104,7 @@ function Multisig ({ className = '', onClose, onStatusChange }: Props): React.Re
           />
         </Modal.Columns>
         <Modal.Columns hint={t<string>('The threshold for approval should be less or equal to the number of signatories for this multisig.')}>
+          <div className="need-white-mine">
           <InputNumber
             help={t<string>('The threshold for this multisig')}
             isError={!isThresholdValid}
@@ -111,17 +112,21 @@ function Multisig ({ className = '', onClose, onStatusChange }: Props): React.Re
             onChange={_onChangeThreshold}
             value={threshold}
           />
+          </div>
         </Modal.Columns>
         <Modal.Columns hint={t<string>('The name is for unique identification of the account in your owner lists.')}>
-          <Input
-            autoFocus
-            className='full'
-            help={t<string>('Name given to this multisig. You can edit it at any later point in time.')}
-            isError={!isNameValid}
-            label={t<string>('name')}
-            onChange={_onChangeName}
-            placeholder={t<string>('multisig name')}
-          />
+          <div className="need-white-mine">
+            <Input
+              autoFocus
+              className='full'
+              help={t<string>('Name given to this multisig. You can edit it at any later point in time.')}
+              isError={!isNameValid}
+              label={t<string>('name')}
+              onChange={_onChangeName}
+              placeholder={t<string>('multisig name')}
+            />
+          </div>
+
         </Modal.Columns>
       </Modal.Content>
       <Modal.Actions onCancel={onClose}>

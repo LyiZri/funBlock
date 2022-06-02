@@ -6,28 +6,29 @@ import type { AppProps as Props } from '@polkadot/react-components/types';
 import React, { useRef } from 'react';
 import { Route, Switch } from 'react-router';
 
-import { Tabs } from '@polkadot/react-components';
+// import { Tabs } from '@polkadot/react-components';
 
 import Contacts from './Contacts';
-import { useTranslation } from './translate';
+// import { useTranslation } from './translate';
+import './index.scss'
 
 function AddressesApp ({ basePath, onStatusChange }: Props): React.ReactElement<Props> {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
-  const itemsRef = useRef([
-    {
-      isRoot: true,
-      name: 'contacts',
-      text: t<string>('My contacts')
-    }
-  ]);
+  // const itemsRef = useRef([
+  //   {
+  //     isRoot: true,
+  //     name: 'contacts',
+  //     text: t<string>('My contacts')
+  //   }
+  // ]);
 
   return (
     <main>
-      <Tabs
+      {/* <Tabs
         basePath={basePath}
         items={itemsRef.current}
-      />
+      /> */}
       <Switch>
         <Route>
           <Contacts

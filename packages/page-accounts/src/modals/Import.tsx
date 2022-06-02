@@ -15,6 +15,7 @@ import styled from 'styled-components';
 
 import { useTranslation } from '../translate';
 import ExternalWarning from './ExternalWarning';
+// import './index.scss'
 
 interface Props extends ModalProps {
   className?: string;
@@ -29,7 +30,7 @@ interface PassState {
 
 const acceptedFormats = ['application/json', 'text/plain'].join(', ');
 
-function parseFile (file: Uint8Array, genesisHash?: string | null): KeyringPair | null {
+function parseFile(file: Uint8Array, genesisHash?: string | null): KeyringPair | null {
   try {
     return keyring.createFromJson(JSON.parse(u8aToString(file)) as KeyringPair$Json, { genesisHash });
   } catch (error) {
@@ -39,7 +40,7 @@ function parseFile (file: Uint8Array, genesisHash?: string | null): KeyringPair 
   return null;
 }
 
-function Import ({ className = '', onClose, onStatusChange }: Props): React.ReactElement<Props> {
+function Import({ className = '', onClose, onStatusChange }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api, isDevelopment } = useApi();
   const [isBusy, setIsBusy] = useState(false);
@@ -111,15 +112,17 @@ function Import ({ className = '', onClose, onStatusChange }: Props): React.Reac
           />
         </Modal.Columns>
         <Modal.Columns>
-          <InputFile
-            accept={acceptedFormats}
-            className='full'
-            help={t<string>('Select the JSON key file that was downloaded when you created the account. This JSON file contains your private key encrypted with your password.')}
-            isError={!pair}
-            label={t<string>('backup file')}
-            onChange={_onChangeFile}
-            withLabel
-          />
+          <div className="need-white-mine">
+            <InputFile
+              accept={acceptedFormats}
+              className='full'
+              help={t<string>('Select the JSON key file that was downloaded when you created the account. This JSON file contains your private key encrypted with your password.')}
+              isError={!pair}
+              label={t<string>('backup file')}
+              onChange={_onChangeFile}
+              withLabel
+            />
+          </div>
           {differentGenesis && (
             <MarkWarning content={t<string>('The network from which this account was originally generated is different than the network you are currently connected to. Once imported ensure you toggle the "allow on any network" option for the account to keep it visible on the current network.')} />
           )}
@@ -128,22 +131,26 @@ function Import ({ className = '', onClose, onStatusChange }: Props): React.Reac
           </div>
         </Modal.Columns>
         <Modal.Columns>
-          <Password
-            autoFocus
-            className='full'
-            help={t<string>('Type the password chosen at the account creation. It was used to encrypt your account\'s private key in the backup file.')}
-            isError={!isPassValid}
-            label={t<string>('password')}
-            onChange={_onChangePass}
-            onEnter={_onSave}
-            value={password}
-          />
+          <div className="need-white-mine">
+            <Password
+              autoFocus
+              className='full'
+              help={t<string>('Type the password chosen at the account creation. It was used to encrypt your account\'s private key in the backup file.')}
+              isError={!isPassValid}
+              label={t<string>('password')}
+              onChange={_onChangePass}
+              onEnter={_onSave}
+              value={password}
+            />
+          </div>
           <div className='columnsHint'>
             {t<string>('The password previously used to encrypt this account.')}
           </div>
         </Modal.Columns>
         <Modal.Columns>
-          <ExternalWarning />
+          <div className='warning-mine'>
+            <ExternalWarning />
+          </div>
         </Modal.Columns>
       </Modal.Content>
       <Modal.Actions onCancel={onClose}>

@@ -28,7 +28,7 @@ interface NameState {
   name: string;
 }
 
-function Create ({ onClose, onStatusChange }: Props): React.ReactElement<Props> {
+function Create({ onClose, onStatusChange }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api, isEthereum } = useApi();
   const [{ isNameValid, name }, setName] = useState<NameState>({ isNameValid: false, name: '' });
@@ -125,28 +125,33 @@ function Create ({ onClose, onStatusChange }: Props): React.ReactElement<Props> 
               : undefined
           }
         >
-          <Input
-            autoFocus
-            className='full'
-            help={t<string>('Paste here the address of the contact you want to add to your address book.')}
-            isError={!isAddressValid}
-            label={t<string>('address')}
-            onChange={_onChangeAddress}
-            onEnter={_onCommit}
-            placeholder={t<string>('new address')}
-            value={addressInput}
-          />
-          <Input
-            className='full'
-            help={t<string>('Type the name of your contact. This name will be used across all the apps. It can be edited later on.')}
-            isError={!isNameValid}
-            label={t<string>('name')}
-            onChange={_onChangeName}
-            onEnter={_onCommit}
-            value={name}
-          />
+          <div className='need-white-mine'>
+            <Input
+              autoFocus
+              className='full'
+              help={t<string>('Paste here the address of the contact you want to add to your address book.')}
+              isError={!isAddressValid}
+              label={t<string>('address')}
+              onChange={_onChangeAddress}
+              onEnter={_onCommit}
+              placeholder={t<string>('new address')}
+              value={addressInput}
+            />
+          </div>
+          <div className='need-white-mine' style={{ marginTop: '1rem' }}>
+            <Input
+              className='full'
+              help={t<string>('Type the name of your contact. This name will be used across all the apps. It can be edited later on.')}
+              isError={!isNameValid}
+              label={t<string>('name')}
+              onChange={_onChangeName}
+              onEnter={_onCommit}
+              value={name}
+            />
+          </div>
         </AddressRow>
       </Modal.Content>
+      <div style={{marginTop:'3rem'}}></div>
       <Modal.Actions onCancel={onClose}>
         <Button
           icon='save'
@@ -154,6 +159,7 @@ function Create ({ onClose, onStatusChange }: Props): React.ReactElement<Props> 
           label={t<string>('Save')}
           onClick={_onCommit}
         />
+        <div style={{height:'1rem'}}></div>
       </Modal.Actions>
     </Modal>
   );

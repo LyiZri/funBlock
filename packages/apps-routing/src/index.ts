@@ -5,10 +5,10 @@ import type { TFunction } from 'i18next';
 import type { Routes } from './types';
 
 import accounts from './accounts';
-// import addresses from './addresses';
+import addresses from './addresses';
 // import appsSwitchSwap from './appsSwitchSwap';
 import assets from './assets';
-// import benefit from './benefit';
+import benefit from './benefit';
 import bounties from './bounties';
 // import bridge from './bridge';
 import calendar from './calendar';
@@ -46,7 +46,7 @@ import treasury from './treasury';
 export default function create (t: TFunction): Routes {
   return [
     accounts(t),
-    // addresses(t),
+    addresses(t),
     explorer(t),
     // claims(t),
     // bridge(t),
@@ -80,7 +80,7 @@ export default function create (t: TFunction): Routes {
     merchants(t),
     // settlements(t),
     splore(t),
-    // benefit(t),
+    benefit(t),
     candy(t),
     // sworkerVersion(t)
   ];

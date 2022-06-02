@@ -15,6 +15,7 @@ import Accounts from './Accounts';
 import useCounter from './useCounter';
 import Vanity from './Vanity';
 import './index.css'
+import './index.scss'
 
 export { useCounter };
 
