@@ -1,0 +1,38 @@
+.need-white-mine {
+  .ui--Labelled {
+    .ui--Labelled-content {
+      //   overflow: hidden;
+      .input {
+        input {
+          padding-top: 3.75rem !important;
+          padding-bottom: 1rem;
+          // background-color: white !important;
+        }
+      }
+    }
+  }
+}
+.contract-mine-box {
+  padding: 2rem;
+  background-color: #151319;
+  border-radius: 16px;
+  .ui--Table {
+    margin-bottom: 0;
+    thead {
+      .filter--tags {
+        .ui--Labelled-content {
+          background-color: rgba(0, 0, 0, 0);
+        }
+        input {
+          border-radius: 20px;
+          margin-top: 3px;
+        }
+        .filter-mine-mask {
+          width: 100%;
+          height: 1.5rem;
+          background-color: #151319;
+        }
+      }
+    }
+  }
+}

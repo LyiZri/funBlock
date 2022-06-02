@@ -92,7 +92,7 @@ export default React.memo(styled(Content)`
   margin:0 64px;
   height:100%;
   overflow:auto;
-  border-radius:2rem;
+  // border-radius:2rem;
   background:rgba(0,0,0,0);
   &::-webkit-scrollbar{
     display:none;

@@ -11,7 +11,7 @@ interface IItems {
 interface IProps {
   bathPath: string;
 }
-export function getItems(bathPath: string): IItems[] {  
+export function getItems(bathPath: string): IItems[] {
   const { t } = useTranslation();
   switch (bathPath) {
     case "explorer":
@@ -43,9 +43,22 @@ export function getItems(bathPath: string): IItems[] {
           text: t<string>("My contacts"),
         },
       ];
+    case "benefit":
+      return [
+        {
+          isRoot: true,
+          name: 'reportWworks',
+          text: t<string>('Work report')
+        },
+        {
+          name: 'storageMarket',
+          text: t<string>('Storage')
+        }
+      ]
     case "accounts":
       return [
         {
+
           isRoot: true,
           name: "overview",
           text: t<string>("My accounts"),
