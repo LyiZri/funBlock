@@ -21,6 +21,8 @@ function Banner({ children, className = '', type }: Props): React.ReactElement<P
 }
 
 export default React.memo(styled(Banner)`
+  border-radius:16px;
+  box-shadow:0px 2px 30px 0 rgba(241,79,158,0.1);
   .box {
     // padding: 0 0.5rem;
     >p{

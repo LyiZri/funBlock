@@ -1,0 +1,111 @@
+.ui.modal {
+  .content {
+    padding: 0 80px !important;
+  }
+}
+.need-top-expander {
+  .mine-password {
+    display: none;
+    margin-top: 1rem;
+    .ui--Labelled-content {
+      background-color: white !important;
+      border-radius: 0.25rem !important;
+    }
+    input {
+      z-index: 100;
+      background-color: white !important;
+      margin-top: 1.5rem !important;
+      border: 0;
+    }
+    .isOverlay {
+      z-index: 200;
+      position: relative;
+      margin-top: 3rem;
+      margin-right: -1rem;
+    }
+  }
+  .ui--Labelled {
+    padding-left: 0 !important;
+  }
+  .mine-expander-remark {
+    color: #a3a4a7;
+    font-size: 14px;
+    margin-top: 6px;
+  }
+  .pay-info-mine {
+    color: white;
+    font-size: 18px;
+  }
+  .warning-mine {
+    margin-top: 1.8rem;
+    margin-bottom: 1rem;
+    .warning {
+      margin: 0;
+    }
+  }
+  .ui--IdentityIcon {
+    display: none;
+  }
+  label {
+    left: 1.7rem !important;
+    z-index: 300 !important;
+  }
+  input {
+    margin-top: 1.2rem !important;
+    z-index: 200;
+    padding-left: 1.8rem !important;
+  }
+  .name {
+    margin-top: 0.5rem;
+  }
+  .address {
+    margin-top: 1rem;
+  }
+  .ui--Expander {
+    margin-top: 2rem;
+    .ui--Expander-content {
+      // display: none;
+      .ui.dropdown {
+        padding-left: 1.7rem !important;
+        // padding-top: 1rem !important;
+        z-index: 100;
+      }
+      .ui--Param-composite:last-child {
+        background-color: white;
+        border-radius: 0.25rem;
+        margin-top: 1.5rem;
+        .ui--Labelled-content {
+          background-color: white;
+        }
+        input {
+          background-color: white;
+          transform: translateY(0.25rem);
+        }
+        .buttons {
+          .text {
+            font-size: 16px !important;
+            top: 60% !important;
+          }
+        }
+      }
+      .withoutBorder {
+        margin-left: 0;
+      }
+      .ui--Labelled {
+        padding-left: 0;
+      }
+    }
+    .ui--KeyPair {
+    }
+  }
+  .mine-inp-balance {
+    // display: none;
+    margin-top: 1rem;
+    .ui--Input {
+      background-color: white!important;
+      input {
+        background-color: white!important;
+      }
+    }
+  }
+}

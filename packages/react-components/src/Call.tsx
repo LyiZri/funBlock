@@ -48,17 +48,17 @@ interface Extracted {
   values: Value[];
 }
 
-function isExtrinsic (value: IExtrinsic | IMethod): value is IExtrinsic {
+function isExtrinsic(value: IExtrinsic | IMethod): value is IExtrinsic {
   return !!(value as IExtrinsic).signature;
 }
 
 // This is no doubt NOT the way to do things - however there is no other option
-function getRawSignature (value: IExtrinsic): ExtrinsicSignature | undefined {
+function getRawSignature(value: IExtrinsic): ExtrinsicSignature | undefined {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   return (value as any)._raw?.signature?.multiSignature as ExtrinsicSignature;
 }
 
-function extractState (value: IExtrinsic | IMethod, withHash?: boolean, withSignature?: boolean): Extracted {
+function extractState(value: IExtrinsic | IMethod, withHash?: boolean, withSignature?: boolean): Extracted {
   const params = GenericCall.filterOrigin(value.meta).map(({ name, type }): Param => ({
     name: name.toString(),
     type: getTypeDef(type.toString())
@@ -85,7 +85,7 @@ function extractState (value: IExtrinsic | IMethod, withHash?: boolean, withSign
   return { hash, params, signature, signatureType, values };
 }
 
-function Call ({ children, className = '', labelHash, labelSignature, mortality, onError, tip, value, withBorder, withHash, withSignature }: Props): React.ReactElement<Props> {
+function Call({ children, className = '', labelHash, labelSignature, mortality, onError, tip, value, withBorder, withHash, withSignature }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const [{ hash, params, signature, signatureType, values }, setExtracted] = useState<Extracted>({ hash: null, params: [], signature: null, signatureType: null, values: [] });
 
@@ -94,53 +94,56 @@ function Call ({ children, className = '', labelHash, labelSignature, mortality,
   }, [value, withHash, withSignature]);
 
   return (
-    <div className={`ui--Extrinsic ${className}`}>
-      <Params
-        isDisabled
-        onError={onError}
-        params={params}
-        registry={value.registry}
-        values={values}
-        withBorder={withBorder}
-      />
-      {children}
-      <div className='ui--Extrinsic--toplevel'>
-        {signature && (
-          <Output
-            className='hash'
-            label={labelSignature || t<string>('signature {{type}}', { replace: { type: signatureType ? `(${signatureType})` : '' } })}
-            value={signature}
-            withCopy
-          >
-          </Output>
-        )}
-        {hash && (
-          <Output
-            className='hash'
-            label={labelHash || t<string>('extrinsic hash')}
-            value={hash}
-            withCopy
-          >
-          </Output>
-        )}
-        {mortality && (
-          <Static
-            className='mortality'
-            label={t<string>('lifetime')}
-          >
-            {mortality}
-          </Static>
-        )}
-        {tip?.gtn(0) && (
-          <Static
-            className='tip'
-            label={t<string>('tip')}
-          >
-            <FormatBalance value={tip} />
-          </Static>
-        )}
+    <>
+      <div className={`ui--Extrinsic ${className}`}>
+        <Params
+          isDisabled
+          onError={onError}
+          params={params}
+          registry={value.registry}
+          values={values}
+          withBorder={withBorder}
+        />
+        {children}
+        <div className='ui--Extrinsic--toplevel'>
+          {signature && (
+            <Output
+              className='hash'
+              label={labelSignature || t<string>('signature {{type}}', { replace: { type: signatureType ? `(${signatureType})` : '' } })}
+              value={signature}
+              withCopy
+            >
+            </Output>
+          )}
+          {hash && (
+            <Output
+              className='hash'
+              label={labelHash || t<string>('extrinsic hash')}
+              value={hash}
+              withCopy
+            >
+            </Output>
+          )}
+          {mortality && (
+            <Static
+              className='mortality'
+              label={t<string>('lifetime')}
+            >
+              {mortality}
+            </Static>
+          )}
+          {tip?.gtn(0) && (
+            <Static
+              className='tip'
+              label={t<string>('tip')}
+            >
+              <FormatBalance value={tip} />
+            </Static>
+          )}
+        </div>
       </div>
-    </div>
+    </>
+
   );
 }
 

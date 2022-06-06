@@ -7,9 +7,9 @@ import BN from 'bn.js';
 import React from 'react';
 import styled from 'styled-components';
 
-import { Call, Expander, Modal } from '@polkadot/react-components';
+import { Call, Expander, Modal, MarkWarning } from '@polkadot/react-components';
 
-import PaymentInfo from './PaymentInfo';
+import PaymentInfoMine from './mine_payInfo';
 import { useTranslation } from './translate';
 
 interface Props {
@@ -35,20 +35,28 @@ function Transaction({ className, currentItem: { accountId, extrinsic, isUnsigne
   return (
     <Modal.Columns
       className={className}
-      hint={t<string>('The details of the transaction including the type, the description (as available from the chain metadata) as well as any parameters and fee estimations (as available) for the specific type of call.')}
     >
       <Expander
         className='tx-details'
         summary={<>{t<string>('Sending transaction')} <span className='highlight'>{sendtext}</span></>}
         summaryMeta={meta}
       >
+        <PaymentInfoMine accountId={accountId}
+          className='tx-details'
+          extrinsic={extrinsic}
+          isSendable={isSendable}
+          tip={tip} />
         <Call
           onError={onError}
           value={extrinsic}
           withBorder={false}
         />
+        <p className='mine-expander-remark'>The details of the transaction including the type, the description (as available from the chain metadata) as well as any parameters and fee estimations (as available) for the specific type of call.</p>
+        <div className='warning-mine'>
+          <MarkWarning content={t<string>('The transaction, after application of the transfer fees, will drop the available balance below the existential deposit. As such the transfer will fail. The account needs more free funds to cover the transaction fees.')} />
+        </div>
       </Expander>
-      {!isUnsigned && !payload && (
+      {/* {!isUnsigned && !payload && (
         <PaymentInfo
           accountId={accountId}
           className='tx-details'
@@ -56,7 +64,7 @@ function Transaction({ className, currentItem: { accountId, extrinsic, isUnsigne
           isSendable={isSendable}
           tip={tip}
         />
-      )}
+      )} */}
     </Modal.Columns>
   );
 }

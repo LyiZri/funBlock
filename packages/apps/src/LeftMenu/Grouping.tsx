@@ -115,7 +115,7 @@ export default React.memo(styled(Grouping)`
     top: 1.5rem;
     z-index: 250;
     padding:1rem;
-    left:9rem;
+    left:3rem;
     > li {
       z-index: 1;
       list-style:none;

@@ -89,7 +89,7 @@ export default React.memo(styled(Content)`
   overflow: hidden auto;
   padding: 0 0 1rem 0;
   position: relative;
-  margin:0 64px;
+  padding:0 64px;
   height:100%;
   overflow:auto;
   // border-radius:2rem;

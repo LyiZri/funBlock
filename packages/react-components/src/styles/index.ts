@@ -265,7 +265,8 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
     .ui--Toggle.isChecked {
       &:not(.isRadio) {
         .ui--Toggle-Slider {
-          background: ${getHighlight(uiHighlight)} !important;
+          background: linear-gradient(171deg, #AC5BF3 0%, #755BF6 10%, #755BF6 46%, #AC5BF3 71%, #CF5BF0 90%, #DC5BF0 100%);
+          // background: ${getHighlight(uiHighlight)} !important;
 
           &:before {
             border-color: ${getHighlight(uiHighlight)} !important;

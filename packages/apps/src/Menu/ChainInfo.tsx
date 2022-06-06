@@ -101,11 +101,11 @@ export default React.memo(styled(ChainInfo)`
         color:#4A4D5E;
       }
       .chain, .bestNumber {
-        font-size: 18px;
+        font-size: 22px;
         line-height: 1.2;
       }
       .runtimeVersion {
-          font-size:14px;
+          font-size:16px;
           line-height: 1.2;
           letter-spacing: -0.01em;
           white-space:nowrap;

@@ -14,7 +14,7 @@ import StorageMarket from './StorageMarket';
 import WorkReport from './WorkReport';
 import './index.scss'
 
-const HIDDEN_ACC = ['vanity'];
+// const HIDDEN_ACC = ['vanity'];
 
 function BenifitApp ({ basePath, onStatusChange }: Props): React.ReactElement<Props> {
   // const { t } = useTranslation();
