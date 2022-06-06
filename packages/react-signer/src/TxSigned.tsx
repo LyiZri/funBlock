@@ -47,7 +47,7 @@ const EMPTY_INNER: InnerTx = { innerHash: null, innerTx: null };
 
 let qrId = 0;
 
-function unlockAccount ({ isUnlockCached, signAddress, signPassword }: AddressProxy): string | null {
+function unlockAccount({ isUnlockCached, signAddress, signPassword }: AddressProxy): string | null {
   let publicKey;
 
   try {
@@ -72,7 +72,7 @@ function unlockAccount ({ isUnlockCached, signAddress, signPassword }: AddressPr
   return null;
 }
 
-async function signAndSend (queueSetTxStatus: QueueTxMessageSetStatus, currentItem: QueueTx, tx: SubmittableExtrinsic<'promise'>, pairOrAddress: KeyringPair | string, options: Partial<SignerOptions>): Promise<void> {
+async function signAndSend(queueSetTxStatus: QueueTxMessageSetStatus, currentItem: QueueTx, tx: SubmittableExtrinsic<'promise'>, pairOrAddress: KeyringPair | string, options: Partial<SignerOptions>): Promise<void> {
   currentItem.txStartCb && currentItem.txStartCb();
 
   try {
@@ -85,7 +85,7 @@ async function signAndSend (queueSetTxStatus: QueueTxMessageSetStatus, currentIt
     const unsubscribe = await tx.send(handleTxResults('signAndSend', queueSetTxStatus, currentItem, (): void => {
       unsubscribe();
     }));
-  } catch (error) {
+  } catch (error: any) {
     console.error('signAndSend: error:', error);
     queueSetTxStatus(currentItem.id, 'error', {}, error);
 
@@ -93,14 +93,14 @@ async function signAndSend (queueSetTxStatus: QueueTxMessageSetStatus, currentIt
   }
 }
 
-async function signAsync (queueSetTxStatus: QueueTxMessageSetStatus, { id, txFailedCb = NOOP, txStartCb = NOOP }: QueueTx, tx: SubmittableExtrinsic<'promise'>, pairOrAddress: KeyringPair | string, options: Partial<SignerOptions>): Promise<string | null> {
+async function signAsync(queueSetTxStatus: QueueTxMessageSetStatus, { id, txFailedCb = NOOP, txStartCb = NOOP }: QueueTx, tx: SubmittableExtrinsic<'promise'>, pairOrAddress: KeyringPair | string, options: Partial<SignerOptions>): Promise<string | null> {
   txStartCb();
 
   try {
     await tx.signAsync(pairOrAddress, options);
 
     return tx.toJSON();
-  } catch (error) {
+  } catch (error: any) {
     console.error('signAsync: error:', error);
     queueSetTxStatus(id, 'error', undefined, error);
 
@@ -110,7 +110,7 @@ async function signAsync (queueSetTxStatus: QueueTxMessageSetStatus, { id, txFai
   return null;
 }
 
-async function wrapTx (api: ApiPromise, currentItem: QueueTx, { isMultiCall, multiRoot, proxyRoot, signAddress }: AddressProxy): Promise<SubmittableExtrinsic<'promise'>> {
+async function wrapTx(api: ApiPromise, currentItem: QueueTx, { isMultiCall, multiRoot, proxyRoot, signAddress }: AddressProxy): Promise<SubmittableExtrinsic<'promise'>> {
   let tx = currentItem.extrinsic as SubmittableExtrinsic<'promise'>;
 
   if (proxyRoot) {
@@ -146,7 +146,7 @@ async function wrapTx (api: ApiPromise, currentItem: QueueTx, { isMultiCall, mul
   return tx;
 }
 
-async function extractParams (api: ApiPromise, address: string, options: Partial<SignerOptions>, getLedger: () => Ledger, setQrState: (state: QrState) => void): Promise<['qr' | 'signing', string, Partial<SignerOptions>]> {
+async function extractParams(api: ApiPromise, address: string, options: Partial<SignerOptions>, getLedger: () => Ledger, setQrState: (state: QrState) => void): Promise<['qr' | 'signing', string, Partial<SignerOptions>]> {
   const pair = keyring.getPair(address);
   const { meta: { accountOffset, addressOffset, isExternal, isHardware, isInjected, isProxied, source } } = pair;
 
@@ -167,7 +167,7 @@ async function extractParams (api: ApiPromise, address: string, options: Partial
   return ['signing', address, { ...options, signer: new AccountSigner(api.registry, pair) }];
 }
 
-function tryExtract (address: string | null): AddressFlags {
+function tryExtract(address: string | null): AddressFlags {
   try {
     return extractExternal(address);
   } catch {
@@ -175,7 +175,7 @@ function tryExtract (address: string | null): AddressFlags {
   }
 }
 
-function TxSigned ({ className, currentItem, requestAddress }: Props): React.ReactElement<Props> | null {
+function TxSigned({ className, currentItem, requestAddress }: Props): React.ReactElement<Props> | null {
   const { t } = useTranslation();
   const { api } = useApi();
   const { getLedger } = useLedger();
@@ -371,8 +371,11 @@ function TxSigned ({ className, currentItem, requestAddress }: Props): React.Rea
                   passwordError={passwordError}
                   requestAddress={requestAddress}
                 />
+                <p className='mine-expander-remark'>The sending account that will be used to send this transaction. Any applicable fees will be paid by this account.<br /><br /></p>
                 {!currentItem.payload && (
-                  <Tip onChange={setTip} />
+                  <>
+                    <Tip onChange={setTip} />
+                  </>
                 )}
                 {!isSubmit && (
                   <SignFields

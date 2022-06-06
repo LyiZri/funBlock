@@ -123,7 +123,7 @@ export default React.memo(styled(Expander)`
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-
+  paddint:0 2rem;
   &:not(.isExpanded) .ui--Expander-content {
     display: none;
   }

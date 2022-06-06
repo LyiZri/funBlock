@@ -14,7 +14,7 @@ interface Props {
   onChange: (tip: BN) => void;
 }
 
-function Tip ({ className, onChange }: Props): React.ReactElement<Props> | null {
+function Tip({ className, onChange }: Props): React.ReactElement<Props> | null {
   const { t } = useTranslation();
   const [tip, setTip] = useState(BN_ZERO);
   const [showTip, setShowTip] = useState(false);
@@ -39,13 +39,17 @@ function Tip ({ className, onChange }: Props): React.ReactElement<Props> | null 
         value={showTip}
       />
       {showTip && (
-        <InputBalance
-          help={t<string>('Add a tip to this extrinsic, paying the block author for greater priority')}
-          isZeroable
-          label={t<string>('Tip (optional)')}
-          onChange={setTip}
-        />
+        <div className='mine-inp-balance'>
+          <InputBalance
+            // help={t<string>('Add a tip to this extrinsic, paying the block author for greater priority')}
+            isZeroable
+            label={t<string>('Tip (optional)')}
+            onChange={setTip}
+          />
+          <p className='mine-expander-remark'>Adding an optional tip to the transaction could allow for higher priority, especially when the chain is busy.<br /></p>
+        </div>
       )}
+
     </Modal.Columns>
   );
 }

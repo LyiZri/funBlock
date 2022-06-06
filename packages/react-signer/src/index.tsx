@@ -16,6 +16,7 @@ import { assert, isFunction, loggerFormat } from '@polkadot/util';
 import { useTranslation } from './translate';
 import TxSigned from './TxSigned';
 import TxUnsigned from './TxUnsigned';
+import './index.scss'
 
 interface ItemState {
   count: number;
@@ -27,7 +28,7 @@ interface ItemState {
 
 const AVAIL_STATUS = ['queued', 'qr', 'signing'];
 
-async function submitRpc (api: ApiPromise, { method, section }: DefinitionRpcExt, values: any[]): Promise<QueueTxResult> {
+async function submitRpc(api: ApiPromise, { method, section }: DefinitionRpcExt, values: any[]): Promise<QueueTxResult> {
   try {
     const rpc = api.rpc as Record<string, Record<string, (...params: unknown[]) => Promise<unknown>>>;
 
@@ -51,7 +52,7 @@ async function submitRpc (api: ApiPromise, { method, section }: DefinitionRpcExt
   }
 }
 
-async function sendRpc (api: ApiPromise, queueSetTxStatus: QueueTxMessageSetStatus, { id, rpc, values = [] }: QueueTx): Promise<void> {
+async function sendRpc(api: ApiPromise, queueSetTxStatus: QueueTxMessageSetStatus, { id, rpc, values = [] }: QueueTx): Promise<void> {
   if (rpc) {
     queueSetTxStatus(id, 'sending');
 
@@ -62,7 +63,7 @@ async function sendRpc (api: ApiPromise, queueSetTxStatus: QueueTxMessageSetStat
   }
 }
 
-function extractCurrent (txqueue: QueueTx[]): ItemState {
+function extractCurrent(txqueue: QueueTx[]): ItemState {
   const available = txqueue.filter(({ status }) => AVAIL_STATUS.includes(status));
   const currentItem = available[0] || null;
   let isRpc = false;
@@ -85,7 +86,7 @@ function extractCurrent (txqueue: QueueTx[]): ItemState {
   };
 }
 
-function Signer ({ children, className = '' }: Props): React.ReactElement<Props> {
+function Signer({ children, className = '' }: Props): React.ReactElement<Props> {
   const { api } = useApi();
   const { t } = useTranslation();
   const { queueSetTxStatus, txqueue } = useContext(StatusContext);
@@ -113,10 +114,13 @@ function Signer ({ children, className = '' }: Props): React.ReactElement<Props>
           {currentItem.isUnsigned
             ? <TxUnsigned currentItem={currentItem} />
             : (
-              <TxSigned
-                currentItem={currentItem}
-                requestAddress={requestAddress}
-              />
+              <div className='need-top-expander'>
+                <TxSigned
+                  currentItem={currentItem}
+                  requestAddress={requestAddress}
+                />
+              </div>
+              // <></>
             )
           }
         </Modal>

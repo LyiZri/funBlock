@@ -20,6 +20,7 @@ import GroupOwner from './GroupOwner';
 import Summary from './Summary';
 import JoinGroup from '../modals/JoinGroup';
 import QuitGroup from '../modals/QuitGroup';
+import './index.scss'
 
 interface Balances {
   accounts: Record<string, BN>;
@@ -190,51 +191,54 @@ function WorkReport({ className = '' }: Props): React.ReactElement<Props> {
           onSuccess={getGroups}
         />
       )}
-      <h2>
-        {t<string>('Lock HEIM to reduce the transaction fees of work reporting')}
-      </h2>
-      <Banner type='warning'>
-        <p>{t<string>('Group Owners can reduce the transaction fees of work reporting for Group miners by locking HEIM. For each 3HEIM locked up, the transaction fees can be reduced once for each Era. If the number of reduced transaction fees is exceeded, the transaction fee of Group members will be charged normally.')}</p>
-      </Banner>
-      <Button.Group>
-        <Button
-          icon='plus'
-          label={t<string>('Create group')}
-          onClick={toggleCreate}
-        />
-        <Button
-          icon='users'
-          label={t<string>('Join group')}
-          onClick={toggleJoinGroup}
-        />
-        <Button
-          icon='sign-in-alt'
-          label={t<string>('Quit group')}
-          onClick={toggleQuitGroup}
-        />
-      </Button.Group>
+      <div className='oper-and-title'>
+        <h2>
+          {t<string>('Lock HEIM to reduce the transaction fees of work reporting')}
+        </h2>
+        <Button.Group>
+          <Button
+            icon='plus'
+            label={t<string>('Create group')}
+            onClick={toggleCreate}
+          />
+          <Button
+            icon='users'
+            label={t<string>('Join group')}
+            onClick={toggleJoinGroup}
+          />
+          <Button
+            icon='sign-in-alt'
+            label={t<string>('Quit group')}
+            onClick={toggleQuitGroup}
+          />
+        </Button.Group>
+      </div>
       <Summary isLoading={isLoading} summaryInfo={{
         unlocking,
         totalLockup
       }} />
-
-      <Table
-        empty={(!hasAccounts || (!isLoading)) && t<string>("You don't have group accounts. Some features are currently hidden and will only become available once you have group accounts.")}
-        header={headerRef.current}
-        filer={filter}
-      >
-        {!isLoading && ownOwners?.map(({ account, delegation, isFavorite }, index): React.ReactNode => (
-          <GroupOwner
-            account={account}
-            delegation={delegation}
-            filter={filterOn}
-            isFavorite={isFavorite}
-            key={account.address}
-            setBalance={_setBalance}
-            toggleFavorite={toggleFavorite}
-          />
-        ))}
-      </Table>
+      <Banner type='warning'>
+        <p>{t<string>('Group Owners can reduce the transaction fees of work reporting for Group miners by locking HEIM. For each 3HEIM locked up, the transaction fees can be reduced once for each Era. If the number of reduced transaction fees is exceeded, the transaction fee of Group members will be charged normally.')}</p>
+      </Banner>
+      <div className='benefit-mine-table'>
+        <Table
+          empty={(!hasAccounts || (!isLoading)) && t<string>("You don't have group accounts. Some features are currently hidden and will only become available once you have group accounts.")}
+          header={headerRef.current}
+          filer={filter}
+        >
+          {!isLoading && ownOwners?.map(({ account, delegation, isFavorite }, index): React.ReactNode => (
+            <GroupOwner
+              account={account}
+              delegation={delegation}
+              filter={filterOn}
+              isFavorite={isFavorite}
+              key={account.address}
+              setBalance={_setBalance}
+              toggleFavorite={toggleFavorite}
+            />
+          ))}
+        </Table>
+      </div>
     </div>
   );
 }

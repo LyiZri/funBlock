@@ -29,7 +29,7 @@ function Password ({ autoFocus, children, className = '', defaultValue, help, is
   return (
     <Input
       autoFocus={autoFocus}
-      className={`ui--Password ${className}`}
+      className={`ui--Password ${className} mine-password`}
       defaultValue={defaultValue}
       help={help}
       isDisabled={isDisabled}

@@ -24,7 +24,7 @@ interface Props {
   tip?: BN;
 }
 
-function PaymentInfo ({ accountId, className = '', extrinsic }: Props): React.ReactElement<Props> | null {
+function PaymentInfoMine ({ accountId, className = '', extrinsic }: Props): React.ReactElement<Props> | null {
   const { t } = useTranslation();
   const { api } = useApi();
   const [dispatchInfo, setDispatchInfo] = useState<RuntimeDispatchInfo | null>(null);
@@ -52,20 +52,10 @@ function PaymentInfo ({ accountId, className = '', extrinsic }: Props): React.Re
   //   return formatBalance(dispatchInfo.partialFee, { withSiFull: true })
   // }
   return (
-    <>
-      <Expander
-        className={className}
-        summary={
-          <Trans i18nKey='feesForSubmission'>
-            Fees of <span className='highlight'>{formatBalance(dispatchInfo.partialFee, { withSiFull: true })}</span> will be applied to the submission
-          </Trans>
-        }
-      />
-      {api.consts.balances && api.tx.balances?.transfer && !api.tx.balances?.transfer.is(extrinsic) && balances?.accountId.eq(accountId) && balances.availableBalance.sub(dispatchInfo.partialFee).lte(api.consts.balances.existentialDeposit) && (
-        <MarkWarning content={t<string>('The account does not have enough free funds (excluding locked/bonded/reserved) available to cover the transaction fees without dropping the balance below the account existential amount.')} />
-      )}
-    </>
+    <p className='pay-info-mine'>
+      Fees of <span className='highlight'>{formatBalance(dispatchInfo.partialFee, { withSiFull: true })}</span> will be applied to the submission
+    </p>
   );
 }
 
-export default React.memo(PaymentInfo);
+export default React.memo(PaymentInfoMine);

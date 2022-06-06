@@ -10,18 +10,20 @@ interface Props {
   type: 'warning' | 'error';
 }
 
-function Banner ({ children, className = '', type }: Props): React.ReactElement<Props> | null {
+function Banner({ children, className = '', type }: Props): React.ReactElement<Props> | null {
   return (
-    <article className={`${className} ${type} left`}>
-      <div className='box'>
-        {children}
-      </div>
-    </article>
+    <div className='benefit-mine-warning'>
+      <article className={`${className} ${type} left`}>
+        <div className='box'>
+          {children}
+        </div>
+      </article>
+    </div>
   );
 }
 
 export default React.memo(styled(Banner)`
   .box {
-    padding: 0 0.5rem;
+    // padding: 0 0.5rem;
   }
 `);
