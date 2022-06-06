@@ -19,3 +19,18 @@
     transform: translate(-50%, -50%);
   }
 }
+.epoch-flex{
+    .progress-box{
+        .percent-format{
+            left: 0%;
+        }
+    }
+}
+.prgress-double-box{
+  position: relative;
+  .progress-second-antd-box{
+    position: absolute;
+    top: 21%;
+    left: 8%;
+  }
+}

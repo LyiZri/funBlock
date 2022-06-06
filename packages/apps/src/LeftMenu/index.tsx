@@ -138,8 +138,6 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
     () => extractGroups(routeRef.current, groupRef.current, apiProps, hasAccounts, hasSudo),
     [apiProps, hasAccounts, hasSudo]
   );
-  console.log("cisibleGroups===", visibleGroups);
-
   const activeRoute = useMemo(
     () => routeRef.current.find((route) => location.pathname.startsWith(`/${route.name}`)) || null,
     [location]

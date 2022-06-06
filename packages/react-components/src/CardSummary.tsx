@@ -31,6 +31,7 @@ interface Props {
   progress?: ProgressProps;
   icon?: string;
   childrenIsTop?: boolean;
+  isDouble?:boolean
 }
 
 function CardSummary({
@@ -41,6 +42,7 @@ function CardSummary({
   progress,
   icon = "",
   childrenIsTop = false,
+  isDouble=false
 }: Props): React.ReactElement<Props> | null {
   const value = progress && progress.value;
   const total = progress && progress.total;
@@ -58,13 +60,11 @@ function CardSummary({
   }
 
   const isTimed = progress && progress.withTime && !isUndefined(progress.total);
-  console.log("prgress===", progress);
-
   return (
     <article className={`${className} ${progress?"programBox":""}`}>
       {icon.length != 0 && <div className="iconBox"></div>}
       <div className="epoch-flex">
-        {progress && !progress.hideGraph && <Progress {...progress} />}
+        {progress && !progress.hideGraph && <Progress isDouble={isDouble} {...progress} />}
         <div>
           {childrenIsTop && <div>{children}</div>}
           {!progress && label && <Labelled help={help} isSmall label={label}></Labelled>}
@@ -108,7 +108,10 @@ export default React.memo(styled(CardSummary)`
   margin-top: 22px;
   .childrenIsNotTop {
     color: #fff;
-    font-size: 18px;
+    font-size: 36px;
+  }
+  .ui--FormatBalance-value{
+    font-size:36px
   }
   .epoch-timer {
     font-size: 16px;

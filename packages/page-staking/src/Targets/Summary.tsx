@@ -61,6 +61,7 @@ function Summary ({ avgStaked, lowStaked, minNominated, numNominators, numValida
       : undefined,
     [avgStaked, lowStaked]
   );
+console.log("progress:::::====",progressStake);
 
   return (
     <SummaryBox>
@@ -69,6 +70,7 @@ function Summary ({ avgStaked, lowStaked, minNominated, numNominators, numValida
           <CardSummary
             label={t<string>('total effective stake / totalIssuance')}
             progress={progressStake}
+            isDouble={true}
           >
             <FormatBalance
               value={totalStaked}
@@ -94,6 +96,7 @@ function Summary ({ avgStaked, lowStaked, minNominated, numNominators, numValida
           <CardSummary
             label={`${t<string>('lowest / avg staked')}`}
             progress={progressAvg}
+            isDouble={true}
           >
             <FormatBalance
               value={lowStaked}

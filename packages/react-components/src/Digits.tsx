@@ -29,7 +29,7 @@ function Digits({ className = "", value }: Props): React.ReactElement<Props> {
 export default React.memo(styled(Digits)`
   display: inline-block;
   white-space: nowrap;
-  font-size: 44px;
+  font-size: 34px;
   .group {
     display: inline-block;
 

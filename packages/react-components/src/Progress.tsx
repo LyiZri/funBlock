@@ -14,6 +14,7 @@ interface Props {
   isDisabled?: boolean;
   total?: UInt | BN | number | null;
   value?: UInt | BN | number | null;
+  isDouble?: boolean;
 }
 
 interface RotateProps {
@@ -31,7 +32,13 @@ function DivClip({ angle, type }: RotateProps): React.ReactElement<RotateProps> 
 
 const Clip = React.memo(DivClip);
 
-function Progress({ className = "", isDisabled, total, value }: Props): React.ReactElement<Props> | null {
+function Progress({
+  className = "",
+  isDouble = false,
+  isDisabled,
+  total,
+  value,
+}: Props): React.ReactElement<Props> | null {
   const _total = bnToBn(total || 0);
   const angle = _total.gtn(0)
     ? bnToBn(value || 0)
@@ -45,25 +52,62 @@ function Progress({ className = "", isDisabled, total, value }: Props): React.Re
   }
 
   const drawAngle = angle % 360;
-  console.log(Math.floor((angle * 100) / 360));
 
   return (
     <div className={`ui--Progress${isDisabled ? " isDisabled" : ""} ${className}`}>
-      <div className="progress-box">
-        <ProgressAntd
-          className="progress-antd-box"
-          type="circle"
-          strokeColor={{ "0%": "#203AFF", "50%": "#C000FF", "100%": "#203AFF" }}
-          percent={Math.floor((angle * 100) / 360)}
-          width={150}
-          showInfo={false}
-          strokeWidth={15}
-          trailColor={"#141b57"}
-          strokeLinecap="square"
-        />
-                <span className="percent-format">{Math.floor((angle * 100) / 360)}%</span>
+      {/* 判断是一段进度条还是两条 */}
+      {!isDouble && (
+        <div className="progress-box">
+          <ProgressAntd
+            className="progress-antd-box"
+            type="circle"
+            strokeColor={{ "0%": "#203AFF", "50%": "#C000FF", "100%": "#203AFF" }}
+            percent={Math.floor((angle * 100) / 360)}
+            width={150}
+            showInfo={false}
+            strokeWidth={15}
+            trailColor={"#141b57"}
+            strokeLinecap="square"
+          />
+          <span className="percent-format">{Math.floor((angle * 100) / 360)}%</span>
+        </div>
+      )}
+      {
+        isDouble &&(
+          <div className="prgress-double-box">
+          <ProgressAntd
+            className="progress-first-antd-box"
+            type="circle"
+            strokeColor={{ "0%": "#FF230E", "100%": "#FFA400" }}
+            percent={
+              Math.floor((angle * 100) / 180)
+            }
+            width={165}
+            showInfo={false}
+            strokeWidth={5}
+            trailColor={"#43444b"}
+            strokeLinecap="square"
+            >
 
-      </div>
+            </ProgressAntd>
+          <ProgressAntd
+            className="progress-second-antd-box"
+            type="circle"
+            strokeColor={{ "0%": "#203AFF", "50%": "#C000FF", "100%": "#203AFF" }}
+            percent={
+              drawAngle>180?
+              Math.floor((angle * 100) / 180)
+              :0
+            }
+            width={100}
+            showInfo={false}
+            strokeWidth={8}
+            trailColor={"#43444b"}
+            strokeLinecap="square"
+            />
+          </div>
+        )
+      }
       {/* <div className='background highlight--bg' />
       <Clip
         angle={
@@ -90,11 +134,10 @@ function Progress({ className = "", isDisabled, total, value }: Props): React.Re
 
 export default React.memo(styled(Progress)`
   border-radius: 100%;
-  clip-path: circle(50%);
   height: 100%;
   position: relative;
   width: 100%;
-  padding:10px;
+  padding: 10px;
   .progress-antd-box {
     position: relative;
   }
