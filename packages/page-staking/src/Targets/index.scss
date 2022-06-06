@@ -1,0 +1,46 @@
+.double-progress-box {
+  display: flex;
+.progress-content-box{
+    margin-top: 50px;
+}
+  .progress-label-box {
+    display: flex;
+    margin-bottom: 20px;
+    p {
+      font-size: 16px;
+
+      .lable-title {
+        display: flex;
+      }
+    }
+
+    .ui--FormatBalance {
+      .ui--FormatBalance-value {
+        font-size: 20px;
+      }
+    }
+
+    .label-point {
+      width: 8px;
+      height: 8px;
+      line-height: 16px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 15px;
+    }
+
+    .first {
+      background: linear-gradient(90deg, #203AFF 0%, #c000ff 100%);
+    }
+
+    .second {
+      background: linear-gradient(90deg, #ff006a 0%, #FF0040 100%);
+    }
+    .third{
+        background: linear-gradient(90deg, #FFA400 0%, #FF230E 100%);
+    }
+    .fouth{
+        background: linear-gradient(90deg, #1F71E2 0%, #18FFFB 100%);
+    }
+  }
+}
