@@ -38,7 +38,7 @@ function SummarySession({ className, withEra = true, withSession = true }: Props
             (sessionInfo.sessionLength.gt(BN_ONE) ? (
               <CardSummary
                 className={className}
-                label={''}
+                label={'Epoch'}
                 progress={{
                   total: sessionInfo.sessionLength,
                   value: sessionInfo.sessionProgress,
@@ -57,7 +57,7 @@ function SummarySession({ className, withEra = true, withSession = true }: Props
             (sessionInfo.sessionLength.gt(BN_ONE) ? (
               <CardSummary
                 className={className}
-                label={eraLabel}
+                label={"era"}
                 progress={{
                   total: forcing.isForceAlways ? sessionInfo.sessionLength : sessionInfo.eraLength,
                   value: forcing.isForceAlways ? sessionInfo.sessionProgress : sessionInfo.eraProgress,
@@ -81,9 +81,15 @@ function SummarySession({ className, withEra = true, withSession = true }: Props
 }
 
 export default React.memo(styled(SummarySession)`
-  background: #000;
-  height: 316px;
-  width: 750px;
+  height: 275px;
   margin-top:22px;
   border-radius: 30px;
+  display:flex;
+  .programBox{
+    background:black;
+    width:600px;
+  }
+  .programBox:first-child{
+    margin-right:100px;
+  }
 `);

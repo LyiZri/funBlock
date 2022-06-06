@@ -61,19 +61,19 @@ function CardSummary({
   console.log("prgress===", progress);
 
   return (
-    <article className={`${className}`}>
+    <article className={`${className} ${progress?"programBox":""}`}>
       {icon.length != 0 && <div className="iconBox"></div>}
       <div className="epoch-flex">
         {progress && !progress.hideGraph && <Progress {...progress} />}
         <div>
           {childrenIsTop && <div>{children}</div>}
-          {label && <Labelled help={help} isSmall label={label}></Labelled>}
+          {!progress && label && <Labelled help={help} isSmall label={label}></Labelled>}
           {!childrenIsTop && <div className="childrenIsNotTop">{children}</div>}
         </div>
       </div>
       {progress && !progress.hideValue && (
         <div className="progress-epoch-box">
-          <div className="progress-box-title">Epoch</div>
+          <div className="progress-box-title">{label}</div>
           <div className="progress-box-content">
             {isTimed && !children && <BlockToTime className="epoch-timer" value={progress.total} />}
             <div className={isTimed ? "isSecondary" : "isPrimary"}>
@@ -104,7 +104,8 @@ export default React.memo(styled(CardSummary)`
   text-align: center;
   display: flex;
   align-items: center;
-  min-height: 205px;
+  min-height: 150px;
+  margin-top: 22px;
   .childrenIsNotTop {
     color: #fff;
     font-size: 18px;

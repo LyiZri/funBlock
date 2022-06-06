@@ -35,7 +35,7 @@ export default React.memo(styled(StorageApp)`
   padding: 29px 38px;
   .storage-content-bg {
     padding: 59px 44px;
-    background: #f2f2f7;
+    background: #000;
     border-radius: 20px;
   }
   .ui.selection.dropdown {

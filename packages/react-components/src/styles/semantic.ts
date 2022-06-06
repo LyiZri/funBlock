@@ -1,14 +1,16 @@
 // Copyright 2017-2021 @polkadot/react-components authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { ThemeDef } from '../types';
+import type { ThemeDef } from "../types";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default (_theme: ThemeDef): string => `
   .ui.hidden.divider {
     margin: 0.5rem 0;
   }
-
+  .ui.action.input.ui--Input > .buttons .ui--SiDropdown.ui.button.compact.floating.selection.dropdown{
+    background:#000 !important;
+  }
   .ui.dropdown {
     display: block;
     min-width: 0;
@@ -39,7 +41,7 @@ export default (_theme: ThemeDef): string => `
 
   .ui.dropdown {
     &.disabled {
-      background: white;
+      background: #000;
       border-style: dashed;
       opacity: 1;
 
@@ -54,9 +56,9 @@ export default (_theme: ThemeDef): string => `
     }
 
     .menu {
-      background: var(--bg-input);
+      background: #000;
       color: var(--color-text);
-
+      border-color:#000 !important;
       > .item {
         border-color: transparent !important;
         color: var(--color-text) !important;
@@ -81,7 +83,9 @@ export default (_theme: ThemeDef): string => `
       }
     }
   }
-
+  .ui.selection.dropdown{
+    background:#000;
+  }
   .ui.input {
     width: 100%;
 

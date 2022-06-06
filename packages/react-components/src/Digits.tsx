@@ -30,7 +30,6 @@ export default React.memo(styled(Digits)`
   display: inline-block;
   white-space: nowrap;
   font-size: 44px;
-  font-weight: 600;
   .group {
     display: inline-block;
 

@@ -159,7 +159,6 @@ function CalendarApp({ basePath, className }: Props): React.ReactElement<Props> 
 }
 
 export default React.memo(styled(CalendarApp)`
-  padding-top:3rem;
   .calendarFlex {
     align-items: flex-start;
     display: flex;

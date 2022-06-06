@@ -2,7 +2,7 @@
         width: 310px;
         height: 300px;
         position: absolute;
-        top: -55px;
+        top: -46px;
         right: -37px;
     background: url(../assets/circle1.gif);
     // animation: timeCircleRotate  2s linear infinite;
@@ -46,8 +46,9 @@
 }
 .totalStorage-background{
     background:url(../assets/total_storage.png);
-    width: 778px;
-    height: 316px;
+    width: 600px;
+    height: 275px;
+    border-radius: 20px;
     text-align: left;
     padding: 33px 83px;
     .totalStorage-title{
@@ -56,10 +57,10 @@
         color: #7f7f8a;
     }
     .ui--FormatBalance-postfix{
-        font-size: 82px !important;
+        font-size: 64px !important;
     }
     .ui--FormatBalance-unit{
-        font-size: 82px !important;
+        font-size: 64px !important;
     }
     .ui--FormatBalance-value{
         display: block;

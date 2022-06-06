@@ -162,7 +162,7 @@ export default React.memo(styled(Labelled)`
         .ui.input > input,
         .ui--output {
           padding-left: 1.45rem;
-          padding-top: 1.75rem;
+          padding-top: 2.75rem;
         }
 
         .ui--Messages {

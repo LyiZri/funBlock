@@ -217,7 +217,7 @@ export default React.memo(styled(PreClaimHEIM18)`
     .ui--LockedVote {
       font-size: 0.75rem;
       margin-left: 2.25rem;
-      margin-top: -0.5rem;
+      margin-top: 0.5rem;
       text-align: left;
     }
   }
