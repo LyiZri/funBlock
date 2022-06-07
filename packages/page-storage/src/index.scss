@@ -13,6 +13,8 @@
     }
     .ui.selection.dropdown:focus, .ui.input > input:focus, .ui.selection.dropdown > input:focus{
         color: #fff;
-
+    }
+    .ui.dropdown .menu > .item{
+        color: #fff !important;
     }
 }
