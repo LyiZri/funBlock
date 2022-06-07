@@ -4,6 +4,10 @@
   }
 }
 .need-top-expander {
+  .ui--Labelled-content {
+    border: 0 !important;
+    margin-bottom: 0 !important;
+  }
   .mine-password {
     display: none;
     margin-top: 1rem;
@@ -102,9 +106,10 @@
     // display: none;
     margin-top: 1rem;
     .ui--Input {
-      background-color: white!important;
+      background-color: white !important;
+      border-radius: 0.25rem;
       input {
-        background-color: white!important;
+        background-color: white !important;
       }
     }
   }
