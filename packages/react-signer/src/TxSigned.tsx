@@ -407,6 +407,7 @@ function TxSigned({ className, currentItem, requestAddress }: Props): React.Reac
                     <p className='mine-expander-remark'>The call hash as calculated for this transaction</p>
                     <br />
                     <br />
+                    
                   </Modal.Columns>
                 )}
               </>

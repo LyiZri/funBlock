@@ -71,7 +71,7 @@ function JoinGroup({ className = '', onClose, recipientId: propRecipientId, send
                 onChange={setSenderId}
                 type='account'
               />
-              {isDisable && (<MarkError content={t<string>('Please wait for miner account to report the first work report and then join the group')} />)}
+              {isDisable && (<div className='join-mine-warning'><MarkError content={t<string>('Please wait for miner account to report the first work report and then join the group')} /></div>)}
             </Modal.Columns>
           </Modal.Content>
         </div>

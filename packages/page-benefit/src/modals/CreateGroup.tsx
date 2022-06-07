@@ -21,7 +21,7 @@ interface Props {
   onSuccess: () => void;
 }
 
-function CreateGroup ({ className = '', onClose, onSuccess, senderId: propSenderId }: Props): React.ReactElement<Props> {
+function CreateGroup({ className = '', onClose, onSuccess, senderId: propSenderId }: Props): React.ReactElement<Props> {
   const ownStashes = useOwnStashInfos();
   const { t } = useTranslation();
   const { api } = useApi();
@@ -73,21 +73,23 @@ function CreateGroup ({ className = '', onClose, onSuccess, senderId: propSender
         <div className={className}>
           <Modal.Content>
             <Modal.Columns hint={t<string>('The transferred balance will be subtracted (along with fees) from the sender account.')}>
-              <InputAddress
-                defaultValue={propSenderId}
-                filter={stashes}
-                help={t<string>('The account you will register')}
-                isDisabled={!!propSenderId}
-                label={t<string>('send from account')}
-                labelExtra={
-                  <Available
-                    label={t<string>('transferrable')}
-                    params={senderId}
-                  />
-                }
-                onChange={setSenderId}
-                type='account'
-              />
+              <div className='need-bottom-inp'>
+                <InputAddress
+                  defaultValue={propSenderId}
+                  filter={stashes}
+                  help={t<string>('The account you will register')}
+                  isDisabled={!!propSenderId}
+                  label={t<string>('send from account')}
+                  labelExtra={
+                    <Available
+                      label={t<string>('transferrable')}
+                      params={senderId}
+                    />
+                  }
+                  onChange={setSenderId}
+                  type='account'
+                />
+              </div>
             </Modal.Columns>
 
           </Modal.Content>
