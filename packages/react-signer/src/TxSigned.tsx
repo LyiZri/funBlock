@@ -396,7 +396,7 @@ function TxSigned({ className, currentItem, requestAddress }: Props): React.Reac
                   </Modal.Columns>
                 )}
                 {isSubmit && innerHash && (
-                  <Modal.Columns hint={t('The call hash as calculated for this transaction')}>
+                  <Modal.Columns>
                     <Output
                       isDisabled
                       isTrimmed
@@ -404,6 +404,9 @@ function TxSigned({ className, currentItem, requestAddress }: Props): React.Reac
                       value={innerHash}
                       withCopy
                     />
+                    <p className='mine-expander-remark'>The call hash as calculated for this transaction</p>
+                    <br />
+                    <br />
                   </Modal.Columns>
                 )}
               </>

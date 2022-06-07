@@ -27,7 +27,7 @@ async function send (queueSetTxStatus: QueueTxMessageSetStatus, currentItem: Que
     const unsubscribe = await tx.send(handleTxResults('send', queueSetTxStatus, currentItem, (): void => {
       unsubscribe();
     }));
-  } catch (error) {
+  } catch (error:any) {
     console.error('send: error:', error);
     queueSetTxStatus(currentItem.id, 'error', {}, error);
 
