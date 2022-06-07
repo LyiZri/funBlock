@@ -104,4 +104,7 @@
   .ui.selection.dropdown{
     background: none;
   }
+  .ui.dropdown > .text:not(.default){
+    color: #fff !important;
+  }
 }

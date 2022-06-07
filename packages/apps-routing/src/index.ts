@@ -11,7 +11,7 @@ import assets from './assets';
 import benefit from './benefit';
 import bounties from './bounties';
 // import bridge from './bridge';
-import calendar from './calendar';
+// import calendar from './calendar';
 import candy from './candy';
 // import claims from './claims';
 import contracts from './contracts';
@@ -62,7 +62,7 @@ export default function create (t: TFunction): Routes {
     gilt(t),
     assets(t),
     society(t),
-    calendar(t),
+    // calendar(t),
     contracts(t),
     storageUser(t),
     storage(t),
