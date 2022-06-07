@@ -8,7 +8,7 @@ import { Button, InputAddressSimple } from '@polkadot/react-components';
 
 import { useTranslation } from '../translate';
 import Validator from './Validator';
-
+import './index.scss'
 interface Props {
   className?: string;
 }

@@ -12,7 +12,7 @@ import styled from 'styled-components';
 
 interface Props {
   className?: string;
-  color?: 'gray' | 'green' | 'normal' | 'orange' | 'red' | 'transparent' | 'white';
+  color?: 'gray' | 'green' | 'normal' | 'orange' | 'red' | 'transparent' | 'white'|'purple';
   icon: IconProp | 'ipfs';
   isSpinning?: boolean;
   onClick?: () => void;
@@ -53,7 +53,9 @@ export default React.memo(styled(Icon)`.
   &.greenColor {
     color: green;
   }
-
+  &.purpleColor{
+    color: #925CFF;
+  }
   &.orangeColor {
     color: darkorange;
   }

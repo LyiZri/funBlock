@@ -1,0 +1,12 @@
+.staking--App{
+    position: relative;
+    .staking--queryInput{
+        .ui--InputAddressSimpleIcon{
+            top:4rem;
+            left:0.5rem;
+        }
+    }
+    .ui--Labelled:not(.isSmall) > .ui--Labelled-content .ui--InputFile, .iWMblP.ui--Labelled:not(.isSmall) > .ui--Labelled-content .ui.input > input, .iWMblP.ui--Labelled:not(.isSmall) > .ui--Labelled-content .ui--output{
+        padding-bottom: 5rem;
+    }
+}

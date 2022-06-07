@@ -53,7 +53,7 @@ function InputAddressSimple ({ autoFocus, children, className = '', defaultValue
       </Input>
       <IdentityIcon
         className='ui--InputAddressSimpleIcon'
-        size={32}
+        size={48}
         value={address}
       />
     </div>

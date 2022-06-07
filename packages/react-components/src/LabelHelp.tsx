@@ -24,6 +24,7 @@ function LabelHelp ({ className = '', help, icon = 'question-circle' }: Props): 
     <div className={`ui--LabelHelp ${className}`}>
       <Icon
         icon={icon}
+        color="purple"
         tooltip={trigger}
       />
       <Tooltip

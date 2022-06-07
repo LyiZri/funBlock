@@ -75,6 +75,7 @@ export default React.memo(styled(HelpOverlay)`
 
     .help-button {
       text-align: right;
+      color:#fff
     }
 
     .help-content {
@@ -83,6 +84,7 @@ export default React.memo(styled(HelpOverlay)`
 
     &.open {
       right: 0;
+      background:#000;
     }
   }
 `);

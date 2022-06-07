@@ -47,7 +47,7 @@ function Labelled({
         isOuter ? " isOuter" : ""
       } ${className}`}
     >
-      <label>
+      <label className={`${help?"helpLable":""}`}>
         {withEllipsis ? <div className="withEllipsis">{label}</div> : label}
         {help && <LabelHelp help={help} />}
       </label>
@@ -67,7 +67,10 @@ export default React.memo(styled(Labelled)`
       top: 0.9rem;
       right: 0.5rem;
     }
-
+    .helpLable{
+      font-size:24px;
+      line-height:36px;
+    }
     .withEllipsis {
       display: inline;
       overflow: hidden;
@@ -124,7 +127,7 @@ export default React.memo(styled(Labelled)`
         flex: 1 1;
         min-width: 0;
         background: #2C2B30;
-        border-radius: 20px;
+        border-radius: 8px;
         border:1px dashed #3c3f49;
         margin-bottom:10px;
         input {
@@ -156,7 +159,7 @@ export default React.memo(styled(Labelled)`
           > .delete.icon,
           > .dropdown.icon,
           > .search.icon {
-            top: 1.35rem;
+            top: 3.35rem;
           }
         }
 
