@@ -18,6 +18,7 @@ import Banner from '../Banner';
 import Summary from './Summary';
 import Merchant from './Merchant';
 import Filtering from './Filtering';
+import './index.scss'
 interface Balances {
   accounts: Record<string, BN>;
   balanceTotal?: BN;
@@ -35,7 +36,7 @@ interface Props {
 
 const STORE_FAVS = 'accounts:favorites';
 
-function StorageMarket ({ className = '' }: Props): React.ReactElement<Props> {
+function StorageMarket({ className = '' }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api } = useApi();
   const { allAccounts, hasAccounts } = useAccounts();
@@ -60,7 +61,8 @@ function StorageMarket ({ className = '' }: Props): React.ReactElement<Props> {
     [t('Unlocking')],
     [t('Maximum Receivable Income')],
     [t('Order Discount Ratio')],
-    [t('Settlement Free Funds (Current Era)')],
+    [t('Settlement Free(Current)')],
+    // Settlement Free Funds (Current Era)
     []
   ]);
 
@@ -180,34 +182,36 @@ function StorageMarket ({ className = '' }: Props): React.ReactElement<Props> {
         totalLockup,
         reductionQuota
       }} />
-      
-      <Table
-        empty={(!hasAccounts || (!isLoading)) && t<string>("You don't have merchant accounts. Some features are currently hidden and will only become available once you have merchant accounts.")}
-        header={headerRef.current}
-        filter={
-          <Filtering
-            nameFilter={nameFilter}
-            setNameFilter={setNameFilter}
-            setWithCollateral={setToggle.withCollateral}
-            withCollateral={toggles.withCollateral}
-          />
-        }
-      >
-        {!isLoading && ownMerchants?.map(({ account, delegation, isFavorite }): React.ReactNode => (
-          <Merchant
-            account={account}
-            delegation={delegation}
-            filter={nameFilter}
-            isFavorite={isFavorite}
-            withCollateral={toggles.withCollateral}
-            key={account.address}
-            setBalance={_setBalance}
-            toggleFavorite={toggleFavorite}
-            reductionQuota={reductionQuota}
-            totalLockup={totalLockup}
-          />
-        ))}
-      </Table>
+
+      <div className='market-mine-data'>
+        <Table
+          empty={(!hasAccounts || (!isLoading)) && t<string>("You don't have merchant accounts. Some features are currently hidden and will only become available once you have merchant accounts.")}
+          header={headerRef.current}
+          filter={
+            <Filtering
+              nameFilter={nameFilter}
+              setNameFilter={setNameFilter}
+              setWithCollateral={setToggle.withCollateral}
+              withCollateral={toggles.withCollateral}
+            />
+          }
+        >
+          {!isLoading && ownMerchants?.map(({ account, delegation, isFavorite }): React.ReactNode => (
+            <Merchant
+              account={account}
+              delegation={delegation}
+              filter={nameFilter}
+              isFavorite={isFavorite}
+              withCollateral={toggles.withCollateral}
+              key={account.address}
+              setBalance={_setBalance}
+              toggleFavorite={toggleFavorite}
+              reductionQuota={reductionQuota}
+              totalLockup={totalLockup}
+            />
+          ))}
+        </Table>
+      </div>
     </div>
   );
 }

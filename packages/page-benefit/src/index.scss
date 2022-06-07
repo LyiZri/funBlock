@@ -1,0 +1,22 @@
+.need-bottom-inp {
+  //   display: none;
+  .ui--Labelled-content {
+    input {
+      margin-top: 1rem;
+    }
+  }
+}
+.ui.modal {
+  .content {
+    padding: 0 50px 0 40px !important;
+  }
+}
+.join-mine-warning {
+  margin-top: 2rem;
+  article.error {
+    font-size: 16px !important;
+  }
+  article.error::before {
+    background-color: #fdeddb;
+  }
+}

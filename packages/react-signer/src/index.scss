@@ -4,9 +4,19 @@
   }
 }
 .need-top-expander {
+  .ui--Button-Group {
+    padding: 0 2rem;
+    .signToggle {
+      left: 3rem;
+    }
+  }
   .ui--Labelled-content {
     border: 0 !important;
     margin-bottom: 0 !important;
+    .ui--CopyButton {
+      top: 2rem!important;
+      right: 2.5rem!important;
+    }
   }
   .mine-password {
     display: none;
@@ -24,7 +34,7 @@
     .isOverlay {
       z-index: 200;
       position: relative;
-      margin-top: 3rem;
+      margin-top: 3.5rem;
       margin-right: -1rem;
     }
   }
@@ -98,8 +108,6 @@
       .ui--Labelled {
         padding-left: 0;
       }
-    }
-    .ui--KeyPair {
     }
   }
   .mine-inp-balance {
