@@ -207,6 +207,7 @@ export default React.memo(styled(Query)`
     .ui--Param-text {
       overflow: hidden;
       text-overflow: ellipsis;
+      color:#fff;
     }
   }
 

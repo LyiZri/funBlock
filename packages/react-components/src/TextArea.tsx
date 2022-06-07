@@ -60,7 +60,7 @@ export default React.memo(styled(TextArea)`
       border-right: none;
       background: var(--bg-input);
       box-sizing: border-box;
-      color: var(--color-text);
+      color: var(--color-input-text);
       display: block;
       outline: none;
       padding: 4rem 3rem 0rem 1.5rem;

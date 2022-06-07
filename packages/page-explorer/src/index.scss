@@ -1,89 +1,107 @@
-.chain-info-page-switch {
-  height: 64px;
-  width: 495px;
-  margin: auto;
-  border-radius: 40px;
-  background-color: #E4E4FB;
-  background: url(../assets/chooseBarBack.png) 100%;
-  color: #fff;
-  text-align: center;
-  line-height: 64px;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
-  font-size: 28px;
+.explorer-page {
 
-  .switch-choose {
-    // background: linear-gradient( #C000FF 0%, #8400AF 27%, #3D0051 61%, #110016 84%, #000000 96%);
-    background: url(../assets/chooseBar.png) 100%;
-    color: #fff;
+  .chain-info-page-switch {
+    height: 64px;
+    width: 495px;
+    margin: auto;
     border-radius: 40px;
-    width: 50%;
-  }
+    background-color: #E4E4FB;
+    background: url(../assets/chooseBarBack.png) 100%;
+    color: #fff;
+    text-align: center;
+    line-height: 64px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    font-size: 28px;
 
-  .switch-unchoose {
-    width: 50%;
-  }
-}
+    .switch-choose {
+      // background: linear-gradient( #C000FF 0%, #8400AF 27%, #3D0051 61%, #110016 84%, #000000 96%);
+      background: url(../assets/chooseBar.png) 100%;
+      color: #fff;
+      border-radius: 40px;
+      width: 50%;
+    }
 
-.main-content-box {
-  border-radius: 20px;
-
-  .number {
-    font-size: 32px;
-  }
-
-  .overflow {
-    font-size: 16px;
-    width: 527px !important;
-    overflow: hidden;
-    display: inline-block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 50px;
-  }
-
-  table {
-    tr {
-      background: #000 !important;
-      
+    .switch-unchoose {
+      width: 50%;
     }
   }
 
-  .isAddress {
-    font-size: 24px;
-  }
-}
+  .main-content-box {
+    border-radius: 20px;
 
-.main-box {
-  .ui--FormatBalance-value {
-    font-size: 40px !important;
-  }
-}
-article{
-  label{
-    color: #7f7f8a;
-    font-size: 26px;
-  }
-}
-.forks-card{
-  background:url(../assets/forks_card_bg.png);
-  margin-right: 42px;
-}
-.Forks{
-  table{
-    tr{
+    .number {
+      font-size: 32px;
+    }
+
+    .overflow {
       font-size: 16px;
-      td{
+      width: 527px !important;
+      overflow: hidden;
+      display: inline-block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 50px;
+    }
 
-        .contents{
-          font-size: 16px;
-          .parent{
+    table {
+      tr {
+        background: #000 !important;
+
+      }
+    }
+
+    .isAddress {
+      font-size: 24px;
+    }
+  }
+
+  .main-box {
+    .ui--FormatBalance-value {
+      font-size: 40px !important;
+    }
+  }
+
+  article {
+    label {
+      color: #7f7f8a;
+      font-size: 26px;
+    }
+  }
+
+  .forks-card {
+    background: url(../assets/forks_card_bg.png);
+    margin-right: 42px;
+  }
+
+  .Forks {
+    table {
+      tr {
+        font-size: 16px;
+
+        td {
+
+          .contents {
             font-size: 16px;
-            line-height: 1.75rem;
+
+            .parent {
+              font-size: 16px;
+              line-height: 1.75rem;
+            }
           }
         }
       }
     }
+  }
+
+  .ui.input {
+    color: #fff;
+  }
+  .ui.selection.dropdown, .ui.input > input, .ui.selection.dropdown > input{
+    color: var(--color-modal-text);
+  }
+  .ui.selection.dropdown{
+    background: none;
   }
 }

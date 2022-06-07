@@ -9,6 +9,7 @@ import styled from "styled-components";
 
 import Queries from "./Queries";
 import Selection from "./Selection";
+import "./index.scss"
 
 function StorageApp({ basePath, className = "" }: Props): React.ReactElement<Props> {
   const [queue, setQueue] = useState<QueryTypes[]>([]);
@@ -62,6 +63,7 @@ export default React.memo(styled(StorageApp)`
     min-width: 0;
 
     .ui--output {
+      border:none;
       word-break: break-all;
     }
   }

@@ -16,6 +16,7 @@ import Main from "./Main";
 import NodeInfo from "./NodeInfo";
 import { useTranslation } from "./translate";
 import styled from "styled-components";
+import './index.scss'
 
 interface Props {
   basePath: string;
@@ -52,7 +53,7 @@ function ExplorerApp({ basePath, className }: Props): React.ReactElement<Props> 
     },
   ]);
   return (
-    <main className={className}>
+    <main className={`${className} explorer-page`}>
       {/* <Tabs
         basePath={basePath}
         hidden={api.query.babe ? undefined : HIDDESN_NOBABE}

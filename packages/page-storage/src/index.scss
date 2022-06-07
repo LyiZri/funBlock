@@ -1,0 +1,18 @@
+.storage-content-bg{
+    .ui.dropdown .menu{
+        background: #000;
+      }
+      .ui.selection.active.dropdown .menu{
+        border-color: #000;
+      }
+      .ui.dropdown > .text:not(.default) {
+        color: #fff !important;
+    }
+    .ui.selection.dropdown, .ui.input > input, .ui.selection.dropdown > input{
+        color: #fff;
+    }
+    .ui.selection.dropdown:focus, .ui.input > input:focus, .ui.selection.dropdown > input:focus{
+        color: #fff;
+
+    }
+}

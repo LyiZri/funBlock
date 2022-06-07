@@ -82,6 +82,7 @@ export default React.memo(styled(Labelled)`
         margin: 0;
         min-width: 0;
         padding-right: 0;
+        text-align:center;
       }
     }
 
@@ -125,6 +126,7 @@ export default React.memo(styled(Labelled)`
         background: #2C2B30;
         border-radius: 20px;
         border:1px dashed #3c3f49;
+        margin-bottom:10px;
         input {
           background: #2C2B30;
         }

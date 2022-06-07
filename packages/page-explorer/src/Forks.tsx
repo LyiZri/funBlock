@@ -392,7 +392,7 @@ export default React.memo(styled(Forks)`
     }
     p {
       width: 100%;
-      color: 100%;
+      color: #fff;
       text-align: center;
       font-size: 64px;
     }
@@ -409,7 +409,7 @@ export default React.memo(styled(Forks)`
     td {
       padding: 0.25rem 0.5rem;
       text-align: center;
-
+      color:#fff;
       .author,
       .contents {
         display: inline-block;

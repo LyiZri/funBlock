@@ -1,16 +1,14 @@
 // Copyright 2017-2021 @polkadot/react-components authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { ThemeDef } from "../types";
+import type { ThemeDef } from '../types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default (_theme: ThemeDef): string => `
   .ui.hidden.divider {
     margin: 0.5rem 0;
   }
-  .ui.action.input.ui--Input > .buttons .ui--SiDropdown.ui.button.compact.floating.selection.dropdown{
-    background:#000 !important;
-  }
+
   .ui.dropdown {
     display: block;
     min-width: 0;
@@ -41,7 +39,7 @@ export default (_theme: ThemeDef): string => `
 
   .ui.dropdown {
     &.disabled {
-      background: #000;
+      background: white;
       border-style: dashed;
       opacity: 1;
 
@@ -56,12 +54,12 @@ export default (_theme: ThemeDef): string => `
     }
 
     .menu {
-      background: #000;
+      background: var(--bg-input);
       color: var(--color-text);
-      border-color:#000 !important;
+
       > .item {
         border-color: transparent !important;
-        color: var(--color-text) !important;
+        color: var(--color-model-text) !important;
 
         &.header.disabled {
           margin: 1em 0 0 0;
@@ -79,13 +77,11 @@ export default (_theme: ThemeDef): string => `
       min-height: 1em;
 
       &:not(.default) {
-        color: var(--color-text) !important;
+        color: var(--color-model-text) !important;
       }
     }
   }
-  .ui.selection.dropdown{
-    background:#000;
-  }
+
   .ui.input {
     width: 100%;
 
@@ -128,7 +124,7 @@ export default (_theme: ThemeDef): string => `
   .ui.modal {
     background: #2C2B30;
     box-shadow: none;
-    color: var(--color-text);
+    color: var(--color-model-text);
     font: var(--font-sans);
     margin-top:3rem!important;
     border-radius:18px;

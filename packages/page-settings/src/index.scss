@@ -1,6 +1,17 @@
 .settings--App {
   padding: 20px 33px;
-
+  .ui.dropdown .menu{
+    background: #000;
+  }
+  .ui.selection.active.dropdown .menu{
+    border-color: #000;
+  }
+  .ui.dropdown > .text:not(.default){
+    color: #fff !important;
+  }
+ .ui.selection.dropdown > .text > .ui--Dropdown-item .ui--Dropdown-name{
+   color: #fff;
+ }
   .setting-contetn-bg {
     background-color: #000;
     padding: 46px 41px;
