@@ -1,11 +1,15 @@
-.content-view{
-    height: 100%;
-    flex:1;
-    margin-top: 2rem;
-    height: calc(100vh - 100px - 2rem);
-    // margin-right: 2rem;
-    // padding-right: 2rem;
+.content-view {
+  height: 100%;
+  flex: 1;
+  margin-top: 2rem;
+  height: calc(100vh - 100px - 2rem);
+  // margin-right: 2rem;
+  // padding-right: 2rem;
 }
-input:focus{
-    border-color: rgba(0,0,0,0)!important;
+input:focus {
+  border-color: rgba(0, 0, 0, 0) !important;
+}
+
+.ui--Labelled-content {
+  border: 0;
 }

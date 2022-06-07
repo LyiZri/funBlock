@@ -2,18 +2,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import type { SubmittableExtrinsic } from '@polkadot/api/promise/types';
-import type { DeriveBalancesAll } from '@polkadot/api-derive/types';
+// import type { DeriveBalancesAll } from '@polkadot/api-derive/types';
 import type { RuntimeDispatchInfo } from '@polkadot/types/interfaces';
 
 import BN from 'bn.js';
 import React, { useEffect, useState } from 'react';
-import { Trans } from 'react-i18next';
+// import { Trans } from 'react-i18next';
 
-import { Expander, MarkWarning } from '@polkadot/react-components';
+// import { Expander, MarkWarning } from '@polkadot/react-components';
 import { useApi, useCall, useIsMountedRef } from '@polkadot/react-hooks';
 import { formatBalance, isFunction } from '@polkadot/util';
 
-import { useTranslation } from './translate';
+// import { useTranslation } from './translate';
 
 interface Props {
   accountId?: string | null;
@@ -25,10 +25,10 @@ interface Props {
 }
 
 function PaymentInfoMine ({ accountId, className = '', extrinsic }: Props): React.ReactElement<Props> | null {
-  const { t } = useTranslation();
+//   const { t } = useTranslation();
   const { api } = useApi();
   const [dispatchInfo, setDispatchInfo] = useState<RuntimeDispatchInfo | null>(null);
-  const balances = useCall<DeriveBalancesAll>(api.derive.balances.all, [accountId]);
+//   const balances = useCall<DeriveBalancesAll>(api.derive.balances.all, [accountId]);
   const mountedRef = useIsMountedRef();
 
   useEffect((): void => {
