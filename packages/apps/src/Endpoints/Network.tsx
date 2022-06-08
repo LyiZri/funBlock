@@ -76,7 +76,7 @@ export default React.memo(styled(NetworkDisplay)`
 
   &.isSelected,
   &:hover {
-    background: var(--bg-table);
+    // background: var(--bg-table);
   }
 
   .endpointSection {

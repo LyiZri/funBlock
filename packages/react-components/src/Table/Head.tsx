@@ -127,8 +127,6 @@ export default React.memo(styled(Head)`
   }
 
   tr {
-    background: #151319;
-
     &:first-child {
       th {
         // border-top: 1px solid var(--border-table);

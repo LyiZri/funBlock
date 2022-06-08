@@ -44,6 +44,14 @@ function Filtering({
 
   return (
     <div className={`staking-filter-box ${className}`}>
+      <Input
+        autoFocus
+        isFull
+        onChange={_setNameFilter}
+        value={nameFilter}
+        placeholder={t<string>("filter by name, address or index")}
+        className={"staking-filter-input-box"}
+      />
       <div className="staking--optionsBar">
         {children}
         {api.query.identity && (
@@ -55,13 +63,7 @@ function Filtering({
           />
         )}
       </div>
-      <Input
-        autoFocus
-        isFull
-        label={t<string>("filter by name, address or index")}
-        onChange={_setNameFilter}
-        value={nameFilter}
-      />
+      
     </div>
   );
 }

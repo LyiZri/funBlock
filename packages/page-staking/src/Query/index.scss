@@ -6,9 +6,12 @@
       top: 4rem;
       left: 0.5rem;
     }
-  }
-
-.ui--Labelled:not(.isSmall)>.ui--Labelled-content .ui.input>input{
-    padding-bottom: 5rem;
+    
+    .ui--Labelled:not(.isSmall)>.ui--Labelled-content .ui.input>input {
+        padding-bottom: 5rem;
+        padding-top: 3.45rem;
+        padding-left: 2.45rem;
+        color: #fff;
+    }
   }
 }

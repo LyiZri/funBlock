@@ -21,6 +21,10 @@ input:focus {
     border-color: rgba(0, 0, 0, 0) !important;
   }
 }
+.contentItem{
+  display: flex;
+  align-items: center;
+}
 .box-shadow-box{
   width: 100%;
   text-align: right;

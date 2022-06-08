@@ -201,40 +201,14 @@ function CurrentList({
   );
 
   return isIntentions ? (
-    <Table
-      empty={!isLoading && waiting && nominatedBy && t<string>("No waiting guardians found")}
-      emptySpinner={
-        <>
-          {!waiting && <div>{t<string>("Retrieving guardians")}</div>}
-          {!infoMap && <div>{t<string>("Retrieving guardian info")}</div>}
-          {!nominatedBy && <div>{t<string>("Retrieving guarantors")}</div>}
-        </>
-      }
-      filter={
-        <Filtering
-          nameFilter={nameFilter}
-          setNameFilter={setNameFilter}
-          setWithIdentity={setToggle.withIdentity}
-          withIdentity={toggles.withIdentity}
-        />
-      }
-      header={headerWaitingRef.current}
-      legend={<Legend />}
-    >
-      {isLoading || !nominatedBy ? undefined : _renderRows(elected, false).concat(_renderRows(waiting, false))}
-    </Table>
-  ) : (
-    <div>
-      <div className="box-shadow-box">
-        <div className="box-shadow-purple"></div>
-      </div>
+    <div className='wait-mine-data'>
       <Table
-        empty={!isLoading && recentlyOnline && validators && infoMap && t<string>("No active guardians found")}
+        empty={!isLoading && waiting && nominatedBy && t<string>("No waiting guardians found")}
         emptySpinner={
           <>
-            {!validators && <div>{t<string>("Retrieving guardians")}</div>}
+            {!waiting && <div>{t<string>("Retrieving guardians")}</div>}
             {!infoMap && <div>{t<string>("Retrieving guardian info")}</div>}
-            {!recentlyOnline && <div>{t<string>("Retrieving online status")}</div>}
+            {!nominatedBy && <div>{t<string>("Retrieving guarantors")}</div>}
           </>
         }
         filter={
@@ -245,12 +219,44 @@ function CurrentList({
             withIdentity={toggles.withIdentity}
           />
         }
-        header={headerActiveRef.current}
+        header={headerWaitingRef.current}
         legend={<Legend />}
       >
-        {isLoading ? undefined : _renderRows(validators, true)}
+        {isLoading || !nominatedBy ? undefined : _renderRows(elected, false).concat(_renderRows(waiting, false))}
       </Table>
     </div>
+
+  ) : (
+    <div className='wait-mine-data'>
+      <div>
+        <div className="box-shadow-box">
+          <div className="box-shadow-purple"></div>
+        </div>
+        <Table
+          empty={!isLoading && recentlyOnline && validators && infoMap && t<string>("No active guardians found")}
+          emptySpinner={
+            <>
+              {!validators && <div>{t<string>("Retrieving guardians")}</div>}
+              {!infoMap && <div>{t<string>("Retrieving guardian info")}</div>}
+              {!recentlyOnline && <div>{t<string>("Retrieving online status")}</div>}
+            </>
+          }
+          filter={
+            <Filtering
+              nameFilter={nameFilter}
+              setNameFilter={setNameFilter}
+              setWithIdentity={setToggle.withIdentity}
+              withIdentity={toggles.withIdentity}
+            />
+          }
+          header={headerActiveRef.current}
+          legend={<Legend />}
+        >
+          {isLoading ? undefined : _renderRows(validators, true)}
+        </Table>
+      </div>
+    </div>
+
   );
 }
 

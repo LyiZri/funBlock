@@ -38,7 +38,11 @@ function Table ({ children, className = '', empty, emptySpinner, filter, footer,
   return (
     <div className={`ui--Table ${className}`}>
       {legend}
+      <div className="box-shadow-box">
+        <div className="box-shadow-purple"></div>
+      </div>
       <table className={`${(isFixed && !isEmpty) ? 'isFixed' : 'isNotFixed'} highlight--bg-faint`}>
+       
         <Head
           filter={filter}
           header={header}
@@ -65,6 +69,8 @@ export default React.memo(styled(Table)`
   width: 100%;
 
   table {
+    box-shadow: 0px 2px 30px 0 rgb(241 79 158 / 10%);
+
     border-spacing: 0;
     max-width: 100%;
     overflow: hidden;
@@ -73,6 +79,8 @@ export default React.memo(styled(Table)`
     z-index: 1;
     border:0!important;
     border-radius:20px;
+    background:#000 !important;
+    padding:2rem;
     &.isFixed {
       table-layout: fixed;
     }
