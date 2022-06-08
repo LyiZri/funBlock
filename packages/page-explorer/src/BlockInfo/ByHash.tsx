@@ -8,7 +8,7 @@ import type { EventRecord, SignedBlock } from '@polkadot/types/interfaces';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { AddressSmall, Columar, LinkExternal, Table } from '@polkadot/react-components';
+import { AddressSmall, LinkExternal, Table } from '@polkadot/react-components';
 import { useApi, useIsMountedRef } from '@polkadot/react-hooks';
 import { formatNumber } from '@polkadot/util';
 

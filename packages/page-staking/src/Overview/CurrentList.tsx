@@ -2,24 +2,24 @@
 // SPDX-License-Identifier: Apache-2.0
 
 /* eslint-disable */
-import type { DeriveHeartbeats, DeriveStakingOverview } from '@polkadot/api-derive/types';
-import type { Authors } from '@polkadot/react-query/BlockAuthors';
-import type { AccountId } from '@polkadot/types/interfaces';
-import type { SortedTargets, ValidatorInfo } from '../types';
+import type { DeriveHeartbeats, DeriveStakingOverview } from "@polkadot/api-derive/types";
+import type { Authors } from "@polkadot/react-query/BlockAuthors";
+import type { AccountId } from "@polkadot/types/interfaces";
+import type { SortedTargets, ValidatorInfo } from "../types";
 
-import BN from 'bn.js';
-import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import BN from "bn.js";
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 
-import { Table } from '@polkadot/react-components';
-import { useApi, useCall, useLoadingDelay, useSavedFlags } from '@polkadot/react-hooks';
-import { BlockAuthorsContext } from '@polkadot/react-query';
-import { BN_ZERO } from '@polkadot/util';
+import { Table } from "@polkadot/react-components";
+import { useApi, useCall, useLoadingDelay, useSavedFlags } from "@polkadot/react-hooks";
+import { BlockAuthorsContext } from "@polkadot/react-query";
+import { BN_ZERO } from "@polkadot/util";
 
-import Filtering from '../Filtering';
-import Legend from '../Legend';
-import { useTranslation } from '../translate';
-import useNominations from '../useNominations';
-import Address from './Address';
+import Filtering from "../Filtering";
+import Legend from "../Legend";
+import { useTranslation } from "../translate";
+import useNominations from "../useNominations";
+import Address from "./Address";
 
 interface Props {
   favorites: string[];
@@ -39,21 +39,23 @@ interface Filtered {
   waiting?: AccountExtend[];
 }
 
-const EmptyAuthorsContext: React.Context<Authors> = React.createContext<Authors>({ byAuthor: {}, eraPoints: {}, lastBlockAuthors: [], lastHeaders: [] });
+const EmptyAuthorsContext: React.Context<Authors> = React.createContext<Authors>({
+  byAuthor: {},
+  eraPoints: {},
+  lastBlockAuthors: [],
+  lastHeaders: [],
+});
 
-function filterAccounts(accounts: string[] = [], elected: string[], favorites: string[], without: string[]): AccountExtend[] {
+function filterAccounts(
+  accounts: string[] = [],
+  elected: string[],
+  favorites: string[],
+  without: string[]
+): AccountExtend[] {
   return accounts
     .filter((accountId) => !without.includes(accountId))
-    .map((accountId): AccountExtend => [
-      accountId,
-      elected.includes(accountId),
-      favorites.includes(accountId)
-    ])
-    .sort(([, , isFavA]: AccountExtend, [, , isFavB]: AccountExtend) =>
-      isFavA === isFavB
-        ? 0
-        : (isFavA ? -1 : 1)
-    );
+    .map((accountId): AccountExtend => [accountId, elected.includes(accountId), favorites.includes(accountId)])
+    .sort(([, , isFavA]: AccountExtend, [, , isFavB]: AccountExtend) => (isFavA === isFavB ? 0 : isFavA ? -1 : 1));
 }
 
 function accountsToString(accounts: AccountId[]): string[] {
@@ -70,38 +72,48 @@ function getFiltered(stakingOverview: DeriveStakingOverview, favorites: string[]
   return {
     elected,
     validators,
-    waiting
+    waiting,
   };
 }
 
-function CurrentList({ favorites, hasQueries, isIntentions, stakingOverview, targets, toggleFavorite }: Props): React.ReactElement<Props> | null {
+function CurrentList({
+  favorites,
+  hasQueries,
+  isIntentions,
+  stakingOverview,
+  targets,
+  toggleFavorite,
+}: Props): React.ReactElement<Props> | null {
   const { t } = useTranslation();
   const { api } = useApi();
   const { byAuthor, eraPoints } = useContext(isIntentions ? EmptyAuthorsContext : BlockAuthorsContext);
   const recentlyOnline = useCall<DeriveHeartbeats>(!isIntentions && api.derive.imOnline?.receivedHeartbeats);
   const nominatedBy = useNominations(isIntentions);
-  const [nameFilter, setNameFilter] = useState<string>('');
-  const [toggles, setToggle] = useSavedFlags('staking:overview', { withIdentity: false });
+  const [nameFilter, setNameFilter] = useState<string>("");
+  const [toggles, setToggle] = useSavedFlags("staking:overview", { withIdentity: false });
   const [validatorCount, setValidatorCount] = useState<number>(0);
   // const [totalReward, setTotalReward] = useState<BN>(BN_ZERO);
   const [totalReward] = useState<BN>(BN_ZERO);
   const [totalEffectiveStake, setTotalEffectiveStake] = useState<BN>(BN_ZERO);
-  const [eraIndex, setEraIndex] = useState((stakingOverview && stakingOverview.activeEra) ? (stakingOverview.activeEra.toNumber() - 1) : 0);
+  const [eraIndex, setEraIndex] = useState(
+    stakingOverview && stakingOverview.activeEra ? stakingOverview.activeEra.toNumber() - 1 : 0
+  );
 
   // we have a very large list, so we use a loading delay
   const isLoading = useLoadingDelay();
 
   const { elected, validators, waiting } = useMemo(
-    () => stakingOverview ? getFiltered(stakingOverview, favorites, targets.waitingIds) : {},
+    () => (stakingOverview ? getFiltered(stakingOverview, favorites, targets.waitingIds) : {}),
     [favorites, stakingOverview, targets]
   );
 
   const infoMap = useMemo(
-    () => targets.validators?.reduce((result: Record<string, ValidatorInfo>, info): Record<string, ValidatorInfo> => {
-      result[info.key] = info;
+    () =>
+      targets.validators?.reduce((result: Record<string, ValidatorInfo>, info): Record<string, ValidatorInfo> => {
+        result[info.key] = info;
 
-      return result;
-    }, {}),
+        return result;
+      }, {}),
     [targets]
   );
 
@@ -116,96 +128,113 @@ function CurrentList({ favorites, hasQueries, isIntentions, stakingOverview, tar
 
       //   setTotalReward(new BN(totalPayout));
       // });
-      setEraIndex(stakingOverview.activeEra.toNumber() - 1)
+      setEraIndex(stakingOverview.activeEra.toNumber() - 1);
     }
   }, [api, stakingOverview, targets]);
 
   const headerWaitingRef = useRef([
-    [t('intentions'), 'start', 2],
-    [t('APY of Guarantor')],
-    [t('guarantors'), 1],
-    [t('own effective stake')],
-    [t('stake limit')],
-    [t('total stakes')],
-    [t('guarantee fee')],
+    [t("intentions"), "start", 2],
+    [t("APY of Guarantor")],
+    [t("guarantors"), 1],
+    [t("own effective stake")],
+    [t("stake limit")],
+    [t("total stakes")],
+    [t("guarantee fee")],
     [],
-    [undefined, 'media--1200']
+    [undefined, "media--1200"],
   ]);
 
   const headerActiveRef = useRef([
-    [t('guardians'), 'start', 2],
-    [t('APY of Guarantor')],
-    [t('other effective stake')],
-    [t('own effective stake'), 'media--1100'],
-    [t('stake limit')],
-    [t('total stakes')],
-    [t('guarantee fee')],
-    [t('points')],
-    [t('last verified block #')],
+    [t("guardians"), "start", 2],
+    [t("APY of Guarantor")],
+    [t("other effective stake")],
+    [t("own effective stake"), "media--1100"],
+    [t("stake limit")],
+    [t("total stakes")],
+    [t("guarantee fee")],
+    [t("points")],
+    [t("last verified block #")],
     [],
-    [undefined, 'media--1200']
+    [undefined, "media--1200"],
   ]);
 
   const _renderRows = useCallback(
     (addresses?: AccountExtend[], isMain?: boolean): React.ReactNode[] =>
-      (addresses || []).map(([address, isElected, isFavorite]): React.ReactNode => (
-        <Address
-          address={address}
-          filterName={nameFilter}
-          hasQueries={hasQueries}
-          isElected={isElected}
-          isFavorite={isFavorite}
-          isMain={isMain}
-          key={address}
-          lastBlock={byAuthor[address]}
-          nominatedBy={nominatedBy ? (nominatedBy[address] || []) : undefined}
-          points={eraPoints[address]}
-          recentlyOnline={recentlyOnline?.[address]}
-          toggleFavorite={toggleFavorite}
-          totalEffectiveStake={totalEffectiveStake}
-          totalReward={totalReward}
-          validatorCount={validatorCount}
-          validatorInfo={infoMap?.[address]}
-          eraIndex={eraIndex}
-          withIdentity={toggles.withIdentity}
-        />
-      )),
-    [byAuthor, eraPoints, hasQueries, infoMap, nameFilter, nominatedBy, recentlyOnline, toggleFavorite, toggles, totalEffectiveStake, totalReward, validatorCount]
-  );
-
-  return isIntentions
-    ? (
-      <Table
-        empty={!isLoading && waiting && nominatedBy && t<string>('No waiting guardians found')}
-        emptySpinner={
-          <>
-            {!waiting && <div>{t<string>('Retrieving guardians')}</div>}
-            {!infoMap && <div>{t<string>('Retrieving guardian info')}</div>}
-            {!nominatedBy && <div>{t<string>('Retrieving guarantors')}</div>}
-          </>
-        }
-        filter={
-          <Filtering
-            nameFilter={nameFilter}
-            setNameFilter={setNameFilter}
-            setWithIdentity={setToggle.withIdentity}
+      (addresses || []).map(
+        ([address, isElected, isFavorite]): React.ReactNode => (
+          <Address
+            address={address}
+            filterName={nameFilter}
+            hasQueries={hasQueries}
+            isElected={isElected}
+            isFavorite={isFavorite}
+            isMain={isMain}
+            key={address}
+            lastBlock={byAuthor[address]}
+            nominatedBy={nominatedBy ? nominatedBy[address] || [] : undefined}
+            points={eraPoints[address]}
+            recentlyOnline={recentlyOnline?.[address]}
+            toggleFavorite={toggleFavorite}
+            totalEffectiveStake={totalEffectiveStake}
+            totalReward={totalReward}
+            validatorCount={validatorCount}
+            validatorInfo={infoMap?.[address]}
+            eraIndex={eraIndex}
             withIdentity={toggles.withIdentity}
           />
-        }
-        header={headerWaitingRef.current}
-        legend={<Legend />}
-      >
-        {(isLoading || !nominatedBy) ? undefined : _renderRows(elected, false).concat(_renderRows(waiting, false))}
-      </Table>
-    )
-    : (
+        )
+      ),
+    [
+      byAuthor,
+      eraPoints,
+      hasQueries,
+      infoMap,
+      nameFilter,
+      nominatedBy,
+      recentlyOnline,
+      toggleFavorite,
+      toggles,
+      totalEffectiveStake,
+      totalReward,
+      validatorCount,
+    ]
+  );
+
+  return isIntentions ? (
+    <Table
+      empty={!isLoading && waiting && nominatedBy && t<string>("No waiting guardians found")}
+      emptySpinner={
+        <>
+          {!waiting && <div>{t<string>("Retrieving guardians")}</div>}
+          {!infoMap && <div>{t<string>("Retrieving guardian info")}</div>}
+          {!nominatedBy && <div>{t<string>("Retrieving guarantors")}</div>}
+        </>
+      }
+      filter={
+        <Filtering
+          nameFilter={nameFilter}
+          setNameFilter={setNameFilter}
+          setWithIdentity={setToggle.withIdentity}
+          withIdentity={toggles.withIdentity}
+        />
+      }
+      header={headerWaitingRef.current}
+      legend={<Legend />}
+    >
+      {isLoading || !nominatedBy ? undefined : _renderRows(elected, false).concat(_renderRows(waiting, false))}
+    </Table>
+  ) : (
+    <div>
+      <div className="box-shadow-box">
+        <div className="box-shadow-purple"></div>
+      </div>
       <Table
-        empty={!isLoading && recentlyOnline && validators && infoMap && t<string>('No active guardians found')}
+        empty={!isLoading && recentlyOnline && validators && infoMap && t<string>("No active guardians found")}
         emptySpinner={
           <>
-            {!validators && <div>{t<string>('Retrieving guardians')}</div>}
-            {!infoMap && <div>{t<string>('Retrieving guardian info')}</div>}
-            {!recentlyOnline && <div>{t<string>('Retrieving online status')}</div>}
+            {!validators && <div>{t<string>("Retrieving guardians")}</div>}
+            {!infoMap && <div>{t<string>("Retrieving guardian info")}</div>}
+            {!recentlyOnline && <div>{t<string>("Retrieving online status")}</div>}
           </>
         }
         filter={
@@ -221,7 +250,8 @@ function CurrentList({ favorites, hasQueries, isIntentions, stakingOverview, tar
       >
         {isLoading ? undefined : _renderRows(validators, true)}
       </Table>
-    );
+    </div>
+  );
 }
 
 export default React.memo(CurrentList);

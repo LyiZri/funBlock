@@ -9,7 +9,6 @@ import styled from 'styled-components';
 
 import CurrentSection from './CurrentSection';
 import Tab from './Tab';
-import TabsSectionDelimiter from './TabsSectionDelimiter';
 
 export const SectionContext = React.createContext<SectionType>({});
 

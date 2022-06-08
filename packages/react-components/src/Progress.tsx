@@ -17,20 +17,9 @@ interface Props {
   isDouble?: boolean;
 }
 
-interface RotateProps {
-  angle: string;
-  type: "first" | "second";
-}
 
-function DivClip({ angle, type }: RotateProps): React.ReactElement<RotateProps> {
-  return (
-    <div className={`clip1 ${type}`}>
-      <div className="highlight--bg" style={{ transform: `rotate(${angle}deg)` }} />
-    </div>
-  );
-}
 
-const Clip = React.memo(DivClip);
+
 
 function Progress({
   className = "",

@@ -3,7 +3,7 @@
 
 import type { DateState } from './types';
 
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 // import { Tabs } from '@polkadot/react-components';

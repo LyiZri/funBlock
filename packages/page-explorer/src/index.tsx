@@ -3,18 +3,15 @@
 
 import type { KeyedEvent } from "@polkadot/react-query/types";
 
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import { Route, Switch } from "react-router";
 
-import Tabs from "@polkadot/react-components/Tabs";
-import { useApi } from "@polkadot/react-hooks";
 import { BlockAuthorsContext, EventsContext } from "@polkadot/react-query";
 
 import BlockInfo from "./BlockInfo";
 import Forks from "./Forks";
 import Main from "./Main";
 import NodeInfo from "./NodeInfo";
-import { useTranslation } from "./translate";
 import styled from "styled-components";
 import './index.scss'
 
@@ -24,34 +21,11 @@ interface Props {
   newEvents?: KeyedEvent[];
 }
 
-const HIDDESN_NOBABE = ["forks"];
 
 function ExplorerApp({ basePath, className }: Props): React.ReactElement<Props> {
-  const { t } = useTranslation();
-  const { api } = useApi();
   const { lastHeaders } = useContext(BlockAuthorsContext);
   const events = useContext(EventsContext);
 
-  const itemsRef = useRef([
-    {
-      isRoot: true,
-      name: "chain",
-      text: t<string>("Chain info"),
-    },
-    {
-      hasParams: true,
-      name: "query",
-      text: t<string>("Block details"),
-    },
-    {
-      name: "forks",
-      text: t<string>("Forks"),
-    },
-    {
-      name: "node",
-      text: t<string>("Node info"),
-    },
-  ]);
   return (
     <main className={`${className} explorer-page`}>
       {/* <Tabs

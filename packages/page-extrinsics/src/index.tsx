@@ -3,13 +3,12 @@
 
 import type { AppProps as Props } from '@polkadot/react-components/types';
 
-import React, { useRef } from 'react';
+import React from 'react';
 
 // import { Tabs } from '@polkadot/react-components';
 import './index.scss'
 
 import Selection from './Selection';
-import { useTranslation } from './translate';
 
 function ExtrinsicsApp ({ basePath }: Props): React.ReactElement<Props> {
   // const { t } = useTranslation();

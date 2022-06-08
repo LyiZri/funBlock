@@ -10,7 +10,6 @@ import { Columar } from "@polkadot/react-components";
 
 import BlockHeaders from "./BlockHeaders";
 import Events from "./Events";
-import Query from "./Query";
 import Summary from "./Summary";
 import "./index.scss";
 
@@ -25,6 +24,9 @@ function Main({ events, headers }: Props): React.ReactElement<Props> {
     <div className="main-box">
       {/* <Query /> */}
       <Summary />
+        <div className="box-shadow-box">
+          <div className="box-shadow-purple"></div>
+        </div>
       <Columar>
         <div className="main-content-box">
           <div className="chain-info-page-switch">

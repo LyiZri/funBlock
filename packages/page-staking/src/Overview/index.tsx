@@ -5,7 +5,7 @@ import type { DeriveStakingOverview } from '@polkadot/api-derive/types';
 import type { SortedTargets } from '../types';
 
 import React, { useEffect } from 'react';
-
+import './index.scss'
 import CurrentList from './CurrentList';
 
 interface Props {
@@ -25,7 +25,7 @@ function Overview ({ className = '', favorites, hasQueries, isIntentions, stakin
   }, [toggleLedger]);
 
   return (
-    <div className={`staking--Overview ${className}`}>
+    <div className={`staking--Overview  ${className}`}>
       <CurrentList
         favorites={favorites}
         hasQueries={hasQueries}

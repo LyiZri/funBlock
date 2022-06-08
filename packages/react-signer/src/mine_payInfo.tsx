@@ -10,7 +10,7 @@ import React, { useEffect, useState } from 'react';
 // import { Trans } from 'react-i18next';
 
 // import { Expander, MarkWarning } from '@polkadot/react-components';
-import { useApi, useCall, useIsMountedRef } from '@polkadot/react-hooks';
+import { useApi, useIsMountedRef } from '@polkadot/react-hooks';
 import { formatBalance, isFunction } from '@polkadot/util';
 
 // import { useTranslation } from './translate';

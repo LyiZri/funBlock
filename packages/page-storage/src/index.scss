@@ -1,20 +1,68 @@
-.storage-content-bg{
-    .ui.dropdown .menu{
-        background: #000;
-      }
-      .ui.selection.active.dropdown .menu{
-        border-color: #000;
-      }
-      .ui.dropdown > .text:not(.default) {
-        color: #fff !important;
+.storage-content-bg {
+  .ui.dropdown .menu {
+    background: #000;
+  }
+
+  .ui.selection.active.dropdown .menu {
+    border-color: #000;
+  }
+
+  .ui.dropdown>.text:not(.default) {
+    color: #A3A4A7 !important;
+  }
+
+  .ui.selection.dropdown,
+  .ui.input>input,
+  .ui.selection.dropdown>input {
+    color: #A3A4A7;
+  }
+
+  .ui.selection.dropdown:focus,
+  .ui.input>input:focus,
+  .ui.selection.dropdown>input:focus {
+    color: #A3A4A7;
+  }
+
+  .ui.dropdown .menu>.item {
+    color: #707383 !important;
+  }
+
+  .ui--Labelled:not(.isSmall)>.ui--Labelled-content .ui.selection.dropdown:not(.floating) {
+    padding-top: 4.75rem !important;
+    padding-bottom: 1rem;
+  }
+
+  .ui--Labelled:not(.isSmall)>.ui--Labelled-content .ui.selection.dropdown>.dropdown.icon {
+    top: 4.8rem !important;
+  }
+
+  .storage--Queries {
+    .ui--Labelled:not(.isSmall)>.ui--Labelled-content .ui--output {
+      padding-top: 4.75rem;
+      padding-bottom: 1rem;
     }
-    .ui.selection.dropdown, .ui.input > input, .ui.selection.dropdown > input{
-        color: #fff;
+  }
+
+  label {
+    color: #fff !important;
+    font-size: 24px;
+  }
+
+  .storage--actionrow-buttons {
+    margin-top: 2.2rem !important;
+  }
+
+  .ui--Labelled-content {
+
+    pre .ui--Param-text {
+      color: #A3A4A7;
     }
-    .ui.selection.dropdown:focus, .ui.input > input:focus, .ui.selection.dropdown > input:focus{
-        color: #fff;
-    }
-    .ui.dropdown .menu > .item{
-        color: #fff !important;
+  }
+  .storage--actionrow-value{
+      .ui--Labelled:not(.isSmall) > .ui--Labelled-content .ui.input > input{
+          padding-top: 4.75rem;
+          padding-bottom: 1rem;
+        }
+        
     }
 }
