@@ -7,6 +7,7 @@ import type { SortedTargets } from '../types';
 import React, { useEffect } from 'react';
 
 import CurrentList from './CurrentList';
+import './index.scss'
 
 interface Props {
   className?: string;

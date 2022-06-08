@@ -10,12 +10,12 @@ import { Route, Switch } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { HelpOverlay } from '@polkadot/react-components';
-import Tabs from '@polkadot/react-components/Tabs';
+// import { HelpOverlay } from '@polkadot/react-components';
+// import Tabs from '@polkadot/react-components/Tabs';
 import { useAccounts, useApi, useAvailableSlashes, useCall, useFavorites, useOwnStashInfos } from '@polkadot/react-hooks';
-import { isFunction } from '@polkadot/util';
+// import { isFunction } from '@polkadot/util';
 
-import basicMd from './md/basic.md';
+// import basicMd from './md/basic.md';
 import Summary from './Overview/Summary';
 import Actions from './Actions';
 import ActionsBanner from './ActionsBanner';
@@ -27,8 +27,9 @@ import Slashes from './Slashes';
 import Targets from './Targets';
 import { useTranslation } from './translate';
 import useSortedTargets from './useSortedTargets';
+import './index.scss'
 
-const HIDDEN_ACC = ['actions', 'payout'];
+// const HIDDEN_ACC = ['actions', 'payout'];
 
 const transformElection = {
   transform: (status: ElectionStatus) => status.isOpen
@@ -64,40 +65,40 @@ function StakingApp({ basePath, className = '' }: Props): React.ReactElement<Pro
     []
   );
 
-  const items = useMemo(() => [
-    {
-      isRoot: true,
-      name: 'overview',
-      text: t<string>('Overview')
-    },
-    {
-      name: 'waiting',
-      text: t<string>('Waiting')
-    },
-    {
-      name: 'actions',
-      text: t<string>('Account actions')
-    },
-    {
-      alias: 'returns',
-      name: 'targets',
-      text: t<string>('Targets')
-    },
-    isFunction(api.query.staking.activeEra) && {
-      name: 'payout',
-      text: t<string>('Payouts')
-    },
-    {
-      count: slashes.reduce((count, [, unapplied]) => count + unapplied.length, 0),
-      name: 'slashes',
-      text: t<string>('Slashes')
-    },
-    {
-      hasParams: true,
-      name: 'query',
-      text: t<string>('Guardian stats')
-    }
-  ].filter((q): q is { name: string; text: string } => !!q), [api, slashes, t]);
+  // const items = useMemo(() => [
+  //   {
+  //     isRoot: true,
+  //     name: 'overview',
+  //     text: t<string>('Overview')
+  //   },
+  //   {
+  //     name: 'waiting',
+  //     text: t<string>('Waiting')
+  //   },
+  //   {
+  //     name: 'actions',
+  //     text: t<string>('Account actions')
+  //   },
+  //   {
+  //     alias: 'returns',
+  //     name: 'targets',
+  //     text: t<string>('Targets')
+  //   },
+  //   isFunction(api.query.staking.activeEra) && {
+  //     name: 'payout',
+  //     text: t<string>('Payouts')
+  //   },
+  //   {
+  //     count: slashes.reduce((count, [, unapplied]) => count + unapplied.length, 0),
+  //     name: 'slashes',
+  //     text: t<string>('Slashes')
+  //   },
+  //   {
+  //     hasParams: true,
+  //     name: 'query',
+  //     text: t<string>('Guardian stats')
+  //   }
+  // ].filter((q): q is { name: string; text: string } => !!q), [api, slashes, t]);
 
   return (
     <main className={`staking--App ${className}`}>

@@ -22,6 +22,7 @@ import PayButton from './PayButton';
 import Stash from './Stash';
 import useStakerPayouts from './useStakerPayouts';
 import Validator from './Validator';
+import './index.scss'
 
 interface Props {
   className?: string;
@@ -42,7 +43,7 @@ interface EraSelection {
 
 const DAY_SECS = new BN(1000 * 60 * 60 * 24);
 
-function groupByValidator (allRewards: Record<string, DeriveStakerReward[]>, stakerPayoutsAfter: BN): PayoutValidator[] {
+function groupByValidator(allRewards: Record<string, DeriveStakerReward[]>, stakerPayoutsAfter: BN): PayoutValidator[] {
   return Object
     .entries(allRewards)
     .reduce((grouped: PayoutValidator[], [stashId, rewards]): PayoutValidator[] => {
@@ -85,7 +86,7 @@ function groupByValidator (allRewards: Record<string, DeriveStakerReward[]>, sta
     .sort((a, b) => b.available.cmp(a.available));
 }
 
-function extractStashes (allRewards: Record<string, DeriveStakerReward[]>): PayoutStash[] {
+function extractStashes(allRewards: Record<string, DeriveStakerReward[]>): PayoutStash[] {
   return Object
     .entries(allRewards)
     .map(([stashId, rewards]): PayoutStash => ({
@@ -100,7 +101,7 @@ function extractStashes (allRewards: Record<string, DeriveStakerReward[]>): Payo
     .sort((a, b) => b.available.cmp(a.available));
 }
 
-function getAvailable (allRewards: Record<string, DeriveStakerReward[]> | null | undefined, stakerPayoutsAfter: BN): Available {
+function getAvailable(allRewards: Record<string, DeriveStakerReward[]> | null | undefined, stakerPayoutsAfter: BN): Available {
   if (allRewards) {
     const stashes = extractStashes(allRewards);
     const stashTotal = stashes.length
@@ -117,7 +118,7 @@ function getAvailable (allRewards: Record<string, DeriveStakerReward[]> | null |
   return {};
 }
 
-function getOptions (api: ApiPromise, eraLength: BN | undefined, historyDepth: BN | undefined, t: TFunction): EraSelection[] {
+function getOptions(api: ApiPromise, eraLength: BN | undefined, historyDepth: BN | undefined, t: TFunction): EraSelection[] {
   if (eraLength && historyDepth) {
     const blocksPerDay = DAY_SECS.div(api.consts.babe?.expectedBlockTime || api.consts.timestamp?.minimumPeriod.muln(2) || new BN(6000));
     const maxBlocks = eraLength.mul(historyDepth);
@@ -150,7 +151,7 @@ function getOptions (api: ApiPromise, eraLength: BN | undefined, historyDepth: B
   return [{ text: '', value: 0 }];
 }
 
-function Payouts ({ className = '', isInElection, ownValidators }: Props): React.ReactElement<Props> {
+function Payouts({ className = '', isInElection, ownValidators }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api } = useApi();
   const [hasOwnValidators] = useState(() => ownValidators.length !== 0);
@@ -234,36 +235,38 @@ function Payouts ({ className = '', isInElection, ownValidators }: Props): React
           <p>{t('If you have not claimed rewards straight after the end of the era, the guardian is in the active set and you are seeing no rewards, this would mean that the reward payout transaction was made by another account on your behalf. Always check your favorite explorer to see any historic payouts made to your accounts.')}</p>
         </article>
       )}
-      <Table
-        empty={!isLoadingRewards && stashes && t<string>('No pending payouts for your stashes')}
-        emptySpinner={t<string>('Retrieving info for the selected eras, this will take some time')}
-        footer={footer}
-        header={headerStashes}
-        isFixed
-      >
-        {!isLoadingRewards && stashes?.map((payout): React.ReactNode => (
-          <Stash
-            isDisabled={isDisabled}
-            key={payout.stashId}
-            payout={payout}
-            stakerPayoutsAfter={stakerPayoutsAfter}
-          />
-        ))}
-      </Table>
-      {hasPayouts && (myStashesIndex === 1) && !isLoadingRewards && validators && (validators.length !== 0) && (
+      <div className='payout-mine-data'>
         <Table
-          header={headerValidatorsRef.current}
+          empty={!isLoadingRewards && stashes && t<string>('No pending payouts for your stashes')}
+          emptySpinner={t<string>('Retrieving info for the selected eras, this will take some time')}
+          footer={footer}
+          header={headerStashes}
           isFixed
         >
-          {!isLoadingRewards && validators.map((payout): React.ReactNode => (
-            <Validator
+          {!isLoadingRewards && stashes?.map((payout): React.ReactNode => (
+            <Stash
               isDisabled={isDisabled}
-              key={payout.validatorId}
+              key={payout.stashId}
               payout={payout}
+              stakerPayoutsAfter={stakerPayoutsAfter}
             />
           ))}
         </Table>
-      )}
+        {hasPayouts && (myStashesIndex === 1) && !isLoadingRewards && validators && (validators.length !== 0) && (
+          <Table
+            header={headerValidatorsRef.current}
+            isFixed
+          >
+            {!isLoadingRewards && validators.map((payout): React.ReactNode => (
+              <Validator
+                isDisabled={isDisabled}
+                key={payout.validatorId}
+                payout={payout}
+              />
+            ))}
+          </Table>
+        )}
+      </div>
     </div>
   );
 }

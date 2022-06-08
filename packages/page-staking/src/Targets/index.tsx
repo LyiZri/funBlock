@@ -64,7 +64,7 @@ const MAX_COMM_PERCENT = 20; // -1 for median
 const MAX_DAYS = 7;
 const SORT_KEYS = ['apy', 'rankOverall'];
 
-function applyFilter (validators: ValidatorInfo[], medianComm: number, allIdentity: Record<string, DeriveHasIdentity>, { daysPayout, isBabe, maxPaid, withElected, withGroup, withIdentity, withPayout, withoutComm, withoutOver }: Flags, nominatedBy?: Record<string, NominatedBy[]>): ValidatorInfo[] {
+function applyFilter(validators: ValidatorInfo[], medianComm: number, allIdentity: Record<string, DeriveHasIdentity>, { daysPayout, isBabe, maxPaid, withElected, withGroup, withIdentity, withPayout, withoutComm, withoutOver }: Flags, nominatedBy?: Record<string, NominatedBy[]>): ValidatorInfo[] {
   const displays: (string[])[] = [];
   const parentIds: string[] = [];
 
@@ -123,7 +123,7 @@ function applyFilter (validators: ValidatorInfo[], medianComm: number, allIdenti
   });
 }
 
-function sort (sortBy: TargetSortBy, sortFromMax: boolean, validators: ValidatorInfo[]): ValidatorInfo[] {
+function sort(sortBy: TargetSortBy, sortFromMax: boolean, validators: ValidatorInfo[]): ValidatorInfo[] {
   return validators
     .sort((a, b) => sortFromMax
       ? a[sortBy] - b[sortBy]
@@ -135,7 +135,7 @@ function sort (sortBy: TargetSortBy, sortFromMax: boolean, validators: Validator
     );
 }
 
-function extractNominees (ownNominators: StakerState[] = []): string[] {
+function extractNominees(ownNominators: StakerState[] = []): string[] {
   const myNominees: string[] = [];
 
   ownNominators.forEach(({ nominating = [] }: StakerState): void => {
@@ -148,7 +148,7 @@ function extractNominees (ownNominators: StakerState[] = []): string[] {
   return myNominees;
 }
 
-function Targets ({ className = '', isInElection, ownStashes, targets: { avgStaked, inflation: { stakedReturn }, lowStaked, medianComm, minNominated, nominators, totalIssuance, totalStaked, validatorIds, validators }, toggleFavorite, toggleLedger }: Props): React.ReactElement<Props> {
+function Targets({ className = '', isInElection, ownStashes, targets: { avgStaked, inflation: { stakedReturn }, lowStaked, medianComm, minNominated, nominators, totalIssuance, totalStaked, validatorIds, validators }, toggleFavorite, toggleLedger }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api } = useApi();
   const allSlashes = useAvailableSlashes();
@@ -315,33 +315,35 @@ function Targets ({ className = '', isInElection, ownStashes, targets: { avgStak
         />
       </Button.Group>
       <ElectionBanner isInElection={isInElection} />
-      <Table
-        empty={sorted && t<string>('No active guardians to check')}
-        emptySpinner={
-          <>
-            {!(validators && allIdentity) && <div>{t('Retrieving guardians')}</div>}
-            {!nominatedBy && <div>{t('Retrieving guarantors')}</div>}
-          </>
-        }
-        filter={filter}
-        header={header}
-        legend={<Legend />}
-      >
-        {displayList?.map((info): React.ReactNode =>
-          <Validator
-            allSlashes={allSlashes}
-            canSelect={selected.length < MAX_NOMINATIONS}
-            filterName={nameFilter}
-            info={info}
-            isNominated={myNominees.includes(info.key)}
-            isSelected={selected.includes(info.key)}
-            key={info.key}
-            nominatedBy={nominatedBy?.[info.key]}
-            toggleFavorite={toggleFavorite}
-            toggleSelected={_toggleSelected}
-          />
-        )}
-      </Table>
+      <div className='target-mine-data'>
+        <Table
+          empty={sorted && t<string>('No active guardians to check')}
+          emptySpinner={
+            <>
+              {!(validators && allIdentity) && <div>{t('Retrieving guardians')}</div>}
+              {!nominatedBy && <div>{t('Retrieving guarantors')}</div>}
+            </>
+          }
+          filter={filter}
+          header={header}
+          legend={<Legend />}
+        >
+          {displayList?.map((info): React.ReactNode =>
+            <Validator
+              allSlashes={allSlashes}
+              canSelect={selected.length < MAX_NOMINATIONS}
+              filterName={nameFilter}
+              info={info}
+              isNominated={myNominees.includes(info.key)}
+              isSelected={selected.includes(info.key)}
+              key={info.key}
+              nominatedBy={nominatedBy?.[info.key]}
+              toggleFavorite={toggleFavorite}
+              toggleSelected={_toggleSelected}
+            />
+          )}
+        </Table>
+      </div>
     </div>
   );
 }

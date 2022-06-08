@@ -71,7 +71,7 @@ export default React.memo(styled(ToggleGroup)`
 
   .ui--Button {
     margin: 0;
-
+    color:black;
     &:not(:first-child) {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;

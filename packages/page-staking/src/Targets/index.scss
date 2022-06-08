@@ -1,8 +1,8 @@
 .double-progress-box {
   display: flex;
-.progress-content-box{
+  .progress-content-box {
     margin-top: 50px;
-}
+  }
   .progress-label-box {
     display: flex;
     margin-bottom: 20px;
@@ -30,17 +30,27 @@
     }
 
     .first {
-      background: linear-gradient(90deg, #203AFF 0%, #c000ff 100%);
+      background: linear-gradient(90deg, #203aff 0%, #c000ff 100%);
     }
 
     .second {
-      background: linear-gradient(90deg, #ff006a 0%, #FF0040 100%);
+      background: linear-gradient(90deg, #ff006a 0%, #ff0040 100%);
     }
-    .third{
-        background: linear-gradient(90deg, #FFA400 0%, #FF230E 100%);
+    .third {
+      background: linear-gradient(90deg, #ffa400 0%, #ff230e 100%);
     }
-    .fouth{
-        background: linear-gradient(90deg, #1F71E2 0%, #18FFFB 100%);
+    .fouth {
+      background: linear-gradient(90deg, #1f71e2 0%, #18fffb 100%);
     }
+  }
+}
+.target-mine-data {
+  .ui--Labelled-content {
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
+  input {
+    padding-bottom: 0.5rem !important;
+    padding-top: 3.5rem !important;
+    color: white !important;
   }
 }

@@ -51,7 +51,6 @@ function BenifitApp ({ basePath, onStatusChange }: Props): React.ReactElement<Pr
           onStatusChange={onStatusChange}>
           <WorkReport />
         </Route>
-
       </Switch>
     </main>
   );
