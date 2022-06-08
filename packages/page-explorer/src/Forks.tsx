@@ -7,11 +7,10 @@ import type { Header } from "@polkadot/types/interfaces";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-import { CardSummary, IdentityIcon, SummaryBox } from "@polkadot/react-components";
+import { IdentityIcon, SummaryBox } from "@polkadot/react-components";
 import { useApi } from "@polkadot/react-hooks";
 import { formatNumber } from "@polkadot/util";
-import './index.scss'
-import { useTranslation } from "./translate";
+import "./index.scss";
 
 interface LinkHeader {
   author: string | null;
@@ -189,7 +188,6 @@ function renderRows(rows: Row[]): React.ReactNode[] {
 }
 
 function Forks({ className }: Props): React.ReactElement<Props> | null {
-  const { t } = useTranslation();
   const { api } = useApi();
   const [tree, setTree] = useState<Link | null>(null);
   const childrenRef = useRef<Map<string, string[]>>(new Map([["root", []]]));
@@ -380,6 +378,7 @@ export default React.memo(styled(Forks)`
   margin-bottom: 1.5rem;
   border-radius: 20px;
   padding: 35px 40px;
+
   .forks-card {
     width: 407px;
     height: 190px;
@@ -387,7 +386,7 @@ export default React.memo(styled(Forks)`
     header {
       color: #a3a4a7;
       width: 100%;
-      font-size:30px;
+      font-size: 30px;
       text-align: left;
     }
     p {
@@ -405,11 +404,11 @@ export default React.memo(styled(Forks)`
     border-radius: 20px;
     background-color: #000 !important;
     font: var(--font-mono);
-
+    box-shadow: 0px 2px 30px 0 rgb(241 79 158 / 10%);
     td {
       padding: 0.25rem 0.5rem;
       text-align: center;
-      color:#fff;
+      color: #fff;
       .author,
       .contents {
         display: inline-block;

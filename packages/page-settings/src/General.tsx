@@ -44,13 +44,6 @@ function General({ className = "" }: Props): React.ReactElement<Props> {
     [t]
   );
 
-  const themeOptions = useMemo(
-    () => [
-      { text: t("Light theme (default)"), value: "light" },
-      { text: t("Dark theme (experimental, work-in-progress)"), value: "dark" },
-    ],
-    [t]
-  );
 
   const translateLanguages = useMemo(() => createLanguages(t), [t]);
 
@@ -76,7 +69,7 @@ function General({ className = "" }: Props): React.ReactElement<Props> {
     setChanged(null);
   }, [state]);
 
-  const { i18nLang, icon, ledgerConn, prefix, uiTheme } = state;
+  const { i18nLang, icon, ledgerConn, prefix } = state;
 
   return (
     <div className={`${className} ui--row--content--box`}>

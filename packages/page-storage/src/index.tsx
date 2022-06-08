@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 import Queries from "./Queries";
 import Selection from "./Selection";
-import "./index.scss"
+import "./index.scss";
 
 function StorageApp({ basePath, className = "" }: Props): React.ReactElement<Props> {
   const [queue, setQueue] = useState<QueryTypes[]>([]);
@@ -23,6 +23,9 @@ function StorageApp({ basePath, className = "" }: Props): React.ReactElement<Pro
 
   return (
     <main className={`storage--App ${className}`}>
+      <div className="box-shadow-box">
+        <div className="box-shadow-purple"></div>
+      </div>
       <div className="storage-content-bg">
         <Selection basePath={basePath} onAdd={_onAdd} />
         <Queries onRemove={_onRemove} value={queue} />
@@ -35,13 +38,17 @@ export default React.memo(styled(StorageApp)`
   padding-top: 2rem;
   padding: 29px 38px;
   .storage-content-bg {
-    padding: 59px 44px;
+    padding: 46px 0px;
     background: #000;
     border-radius: 20px;
+    box-shadow: 0px 2px 30px 0 rgb(241 79 158 / 10%);
+  }
+  .box-shadow-purple {
+    top: 20px;
   }
   .ui.selection.dropdown {
     background: none;
-    border:none;
+    border: none;
   }
   .storage--actionrow {
     align-items: flex-start;
@@ -63,7 +70,7 @@ export default React.memo(styled(StorageApp)`
     min-width: 0;
 
     .ui--output {
-      border:none;
+      border: none;
       word-break: break-all;
     }
   }

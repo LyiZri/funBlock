@@ -7,7 +7,6 @@ import BN from "bn.js";
 import React, { useEffect, useState } from "react";
 
 import { useApi, useCall } from "@polkadot/react-hooks";
-import { Progress } from "antd";
 import Elapsed from "./Elapsed";
 import './index.scss'
 interface Props {

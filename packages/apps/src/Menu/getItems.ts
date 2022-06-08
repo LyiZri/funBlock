@@ -8,9 +8,6 @@ interface IItems {
   text: string;
   count?: number;
 }
-interface IProps {
-  bathPath: string;
-}
 export function getItems(bathPath: string): IItems[] {
   const { t } = useTranslation();
   switch (bathPath) {

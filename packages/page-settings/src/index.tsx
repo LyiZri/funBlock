@@ -3,13 +3,11 @@
 
 import type { AppProps as Props } from '@polkadot/react-components/types';
 
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router';
 
-import { HelpOverlay, Tabs } from '@polkadot/react-components';
 // import { useApi } from '@polkadot/react-hooks';
 
-import md from './md/basics.md';
 // import Developer from './Developer';
 import General from './General';
 // import I18n from './I18n';
@@ -24,9 +22,11 @@ function SettingsApp ({ basePath, onStatusChange }: Props): React.ReactElement<P
 
   return (
     <main className='settings--App'>
+       <div className="box-shadow-box">
+          <div className="box-shadow-purple"></div>
+        </div>
       <div className='setting-contetn-bg'>
-
-      <HelpOverlay md={md as string} />
+      {/* <HelpOverlay md={md as string} /> */}
       <Switch>
         <Route>
           <General />

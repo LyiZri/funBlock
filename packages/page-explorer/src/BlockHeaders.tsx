@@ -3,7 +3,7 @@
 
 import type { HeaderExtended } from '@polkadot/api-derive/types';
 
-import React, { useRef } from 'react';
+import React  from 'react';
 
 import { Table } from '@polkadot/react-components';
 
@@ -17,9 +17,6 @@ interface Props {
 function BlockHeaders ({ headers }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
 
-  const headerRef = useRef([
-    [t('recent blocks'), 'start', 3]
-  ]);
 
   return (
     <Table

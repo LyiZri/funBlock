@@ -2,10 +2,11 @@
   padding: 35px 39px;
   background-color: none;
   border-radius: 20px;
-    .start,.address{
-      font-size: 24px;
-    }
+  .start,.address{
+    font-size: 24px;
+  }
   table {
+    box-shadow: 0px 2px 30px 0 rgb(241 79 158 / 10%);
     border-radius: 20px;
     padding: 36px;
     background-color:#000 !important;
@@ -20,6 +21,7 @@
     }
     tr{
       background: #000 !important;
+      margin-bottom:10px;
       .ui--Labelled:not(.isSmall) >  .ui--Labelled-content{
         background: #000;
       }

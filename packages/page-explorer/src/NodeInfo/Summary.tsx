@@ -5,7 +5,7 @@ import type { Info } from "./types";
 
 import React, { useEffect, useState } from "react";
 
-import { CardSummary, SummaryBox } from "@polkadot/react-components";
+import { SummaryBox } from "@polkadot/react-components";
 import { BestNumber, Elapsed } from "@polkadot/react-query";
 import { BN_ZERO, formatNumber } from "@polkadot/util";
 import './index.scss'

@@ -64,9 +64,9 @@ function Legend ({ className }: Props): React.ReactElement<Props> {
 }
 
 export default React.memo(styled(Legend)`
-  font-size: 0.85rem;
+  font-size: 16px;
   padding: 1rem 0.5rem;
-  text-align: center;
+  text-align: left;
 
   .ui--Badge {
     margin-right: 0.5rem;
