@@ -63,9 +63,9 @@ function StakingApp({ basePath, className = "" }: Props): React.ReactElement<Pro
 
   return (
     <div>
-      <div className="box-shadow-box">
+      {/* <div className="box-shadow-box">
         <div className="box-shadow-purple"></div>
-      </div>
+      </div> */}
       <main className={`staking--App ${className}`}>
         {/* <HelpOverlay md={basicMd as string} /> */}
         {/* <Tabs
