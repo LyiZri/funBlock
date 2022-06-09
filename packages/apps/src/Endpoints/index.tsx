@@ -282,7 +282,7 @@ function Endpoints ({ className = '', offset, onClose }: Props): React.ReactElem
 }
 
 export default React.memo(styled(Endpoints)`
-  color: var(--color-text);
+  color: #fff;
   padding-top: 3.5rem;
 
   .customButton {
@@ -299,5 +299,8 @@ export default React.memo(styled(Endpoints)`
 
   .endpointCustomWrapper {
     position: relative;
+    .ui.input>input{
+      color:#fff;
+    }
   }
 `);

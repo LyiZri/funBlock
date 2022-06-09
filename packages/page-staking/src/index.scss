@@ -9,3 +9,11 @@
     }
   }
 }
+.staking-filter-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .staking-filter-input-box{
+        width: 70%;
+    }
+}

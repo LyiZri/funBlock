@@ -357,7 +357,4 @@ export default React.memo(styled(Targets)`
     }
   }
 
-  .ui--Table {
-    overflow-x: auto;
-  }
 `);

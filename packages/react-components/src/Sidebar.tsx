@@ -30,7 +30,7 @@ function Sidebar({ button, children, className = "", onClose }: Props): React.Re
 export default React.memo(
   styled(Sidebar)(
     ({ offset = 0, position }: Props) => `
-  background: var(--bg-page);
+  background: #000;
   bottom: 0;
   box-shadow: ${position === "right" ? "-6px" : "6px"} 0px 20px 0px rgba(0, 0, 0, 0.3);
   margin-left: -0.125rem;

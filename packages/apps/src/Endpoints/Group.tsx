@@ -67,7 +67,7 @@ export default React.memo(styled(GroupDisplay)`
     text-transform: uppercase;
 
     &:hover {
-      background: var(--bg-table);
+      // background: var(--bg-table);
     }
 
     .ui--Icon {
