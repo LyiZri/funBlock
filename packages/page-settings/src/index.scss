@@ -1,20 +1,20 @@
 .settings--App {
   padding: 20px 33px;
-  .ui.dropdown .menu{
+  .ui.dropdown .menu {
     background: #000;
   }
-  .ui.selection.active.dropdown .menu{
+  .ui.selection.active.dropdown .menu {
     border-color: #000;
   }
-  .ui.dropdown > .text:not(.default){
+  .ui.dropdown > .text:not(.default) {
     color: #fff !important;
   }
- .ui.selection.dropdown > .text > .ui--Dropdown-item .ui--Dropdown-name{
-   color: #fff;
- }
+  .ui.selection.dropdown > .text > .ui--Dropdown-item .ui--Dropdown-name {
+    color: #fff;
+  }
   .setting-contetn-bg {
     background-color: #000;
-    padding: 46px 41px;
+    padding: 20px 30px;
     border-radius: 20px;
     box-shadow: 0px 2px 30px 0 rgb(241 79 158 / 10%);
 
@@ -24,6 +24,24 @@
 
     .ui--Labelled-content {
       padding: 18px 8px;
+      .dropdown.icon {
+        color: white;
+        font-size: 18px;
+      }
+      .transition {
+        background-color: #1e1d1f;
+        box-shadow: 0 20px 30px -15px rgba(0,0,0,1)!important;
+        width: 101% !important;
+        margin-left: -0.5% !important;
+        padding-left: 1rem;
+      }
+      .transition::before {
+        position: absolute;
+        background-color: white;
+        left: 0;
+        top: 0;
+        content: "";
+      }
     }
 
     .ui.selection.dropdown {
@@ -53,20 +71,19 @@
         margin-left: 35px !important;
         font-size: 24px;
       }
-      .ui--Dropdown-icon{
+      .ui--Dropdown-icon {
         width: 48px;
         height: 48px;
       }
     }
-    .ui--Labelled-content{
-      .text{
+    .ui--Labelled-content {
+      .text {
         font-size: 24px;
         color: #fff;
       }
     }
   }
-  .ui--Button{
+  .ui--Button {
     font-size: 24px;
   }
 }
-
