@@ -1,9 +1,9 @@
 .accounts-parent-box {
   background-color: #151319;
-  padding: 52px 36px;
+  // padding: 52px 36px;
   border-radius: 20px;
   position: relative;
-  box-shadow:0px 2px 30px 0 rgba(241,79,158,0.1);
+  box-shadow: 0px 2px 30px 0 rgba(241, 79, 158, 0.1);
   margin-bottom: 30px;
   .icon-mine-search {
     position: absolute;
@@ -16,8 +16,25 @@
   }
   .ui--Table {
     margin-bottom: 0;
+    table {
+      .filter{
+        th{
+          background-color: #151319!important;
+        }
+      }
+      tr{
+        background-color: #2C2B30 !important;
+      }
+    }
+    table::before{
+      background-color: rgba(0,0,0,0);
+    }
     .filter--tags {
-      background-color: #151319;
+      background-color: blue!important;
+      margin-bottom: 2rem;
+      .ui.input{
+        background-color: #151319;
+      }
       .ui--Input {
         margin-bottom: 0;
         input {
@@ -27,6 +44,7 @@
           padding: 1rem !important;
           padding-left: 3.2rem !important;
           font-size: 18px;
+          color: white;
         }
       }
     }
@@ -62,9 +80,9 @@
     background-color: #fdeddb;
   }
 }
-.columnsHint{
-  color:#A3A4A7;
+.columnsHint {
+  color: #a3a4a7;
 }
-label{
-  color: #A3A4A7!important;
+label {
+  color: #a3a4a7 !important;
 }

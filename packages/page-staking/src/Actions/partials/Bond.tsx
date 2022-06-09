@@ -96,7 +96,7 @@ function Bond({ className = '', isNominating, minNomination, onChange }: Props):
   const isAccount = destination === 'Account';
 
   return (
-    <div className={className}>
+    <div className={`${className} mine-bond-style`}>
       <Modal.Columns hint={
         <>
           <p>{t<string>('Think of the stash as your cold wallet and the controller as your hot wallet. Funding operations are controlled by the stash, any other non-funding actions by the controller itself.')}</p>
@@ -129,20 +129,22 @@ function Bond({ className = '', isNominating, minNomination, onChange }: Props):
             <p>{t<string>('Once bonded, it wil need to be unlocked/withdrawn and will be locked for at least the bonding duration.')}</p>
           </>
         }>
-          <InputBalance
-            autoFocus
-            defaultValue={startBalance}
-            help={t<string>('The total amount of the stash balance that will be at stake in any forthcoming rounds (should be less than the free amount available)')}
-            isError={!hasValue || !!amountError?.error}
-            label={t<string>('value bonded')}
-            labelExtra={
-              <BalanceFree
-                label={<span className='label'>{t<string>('balance')}</span>}
-                params={stashId}
-              />
-            }
-            onChange={setAmount}
-          />
+          <div className='need-white'>
+            <InputBalance
+              autoFocus
+              defaultValue={startBalance}
+              help={t<string>('The total amount of the stash balance that will be at stake in any forthcoming rounds (should be less than the free amount available)')}
+              isError={!hasValue || !!amountError?.error}
+              label={t<string>('value bonded')}
+              labelExtra={
+                <BalanceFree
+                  label={<span className='label'>{t<string>('balance')}</span>}
+                  params={stashId}
+                />
+              }
+              onChange={setAmount}
+            />
+          </div>
           <InputValidateAmount
             controllerId={controllerId}
             isNominating={isNominating}

@@ -78,9 +78,9 @@ function ValidateAmount ({ currentAmount, isNominating, minNomination, onError, 
   }, [api, currentAmount, isNominating, minNomination, onError, stashBalance, t, value]);
 
   if (error) {
-    return <MarkError content={error} />;
+    return <div className='actions-mine-error'><MarkError content={error} /></div>;
   } else if (warning) {
-    return <MarkWarning content={warning} />;
+    return <div className='actions-mine-error'><MarkWarning content={warning} /></div>;
   }
 
   return null;

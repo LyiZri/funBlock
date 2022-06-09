@@ -22,7 +22,7 @@ interface Props {
 const EMPTY_NOMS: string[] = [];
 const NUM_STEPS = 2;
 
-function NewNominator ({ isInElection, targets }: Props): React.ReactElement<Props> {
+function NewNominator({ isInElection, targets }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api } = useApi();
   const [isVisible, toggleVisible] = useToggle();
