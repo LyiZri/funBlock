@@ -59,29 +59,32 @@ function Overview({ className = "", onStatusChange }: Props): React.ReactElement
         <Button icon="plus" label={t<string>("Add contact")} onClick={toggleCreate} />
       </Button.Group>
       {isCreateOpen && <CreateModal onClose={toggleCreate} onStatusChange={onStatusChange} />}
-      <div className="contract-mine-box">
+      <div>
         <div className="box-shadow-box">
           <div className="box-shadow-purple"></div>
         </div>
-        <Table
-          empty={!isLoading && sortedAddresses && t<string>("no addresses saved yet, add any existing address")}
-          filter={filter}
-          header={headerRef.current}
-        >
-          {!isLoading &&
-            sortedAddresses?.map(
-              ({ address, isFavorite }): React.ReactNode => (
-                <Address
-                  address={address}
-                  filter={filterOn}
-                  isFavorite={isFavorite}
-                  key={address}
-                  toggleFavorite={toggleFavorite}
-                />
-              )
-            )}
-        </Table>
+        <div className="contract-mine-box">
+          <Table
+            empty={!isLoading && sortedAddresses && t<string>("no addresses saved yet, add any existing address")}
+            filter={filter}
+            header={headerRef.current}
+          >
+            {!isLoading &&
+              sortedAddresses?.map(
+                ({ address, isFavorite }): React.ReactNode => (
+                  <Address
+                    address={address}
+                    filter={filterOn}
+                    isFavorite={isFavorite}
+                    key={address}
+                    toggleFavorite={toggleFavorite}
+                  />
+                )
+              )}
+          </Table>
+        </div>
       </div>
+
     </div>
   );
 }
