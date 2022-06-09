@@ -18,6 +18,7 @@ import generatorSort from '@polkadot/vanitygen/sort';
 import CreateModal from '../modals/Create';
 import { useTranslation } from '../translate';
 import Match from './Match';
+import './index.scss'
 
 interface Props {
   className?: string;

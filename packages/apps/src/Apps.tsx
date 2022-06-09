@@ -3,7 +3,7 @@
 
 import type { BareProps as Props, ThemeDef } from '@polkadot/react-components/types';
 
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useEffect } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import AppBg from './assets/images/app_bg.png';
 
@@ -24,6 +24,15 @@ import './app.scss'
 export const PORTAL_ID = 'portals';
 
 function Apps({ className = '' }: Props): React.ReactElement<Props> {
+  useEffect((): void => {
+    let t = window.devicePixelRatio;
+    if (t == 1) {
+      // console.log('现在是100%');
+      // console.log(document.body.style);
+      // const zoom: any = document.body.style;
+      // zoom.transform = 'scale(0.75)';
+    }
+  }, [])
   const { theme } = useContext<ThemeDef>(ThemeContext);
   const { systemChain, systemName } = useApi();
 
@@ -36,17 +45,19 @@ function Apps({ className = '' }: Props): React.ReactElement<Props> {
     <>
       <GlobalStyle uiHighlight={uiHighlight} />
       <div className={`apps--Wrapper theme--${theme} ${className}`}>
-        <Menu />
-        <div className='pageContent'>
-          <LeftMenu />
-          <div className='content-view'>
-            <AccountSidebar>
-              <Signer>
-                <Content />
-              </Signer>
-              <ConnectingOverlay />
-              <div id={PORTAL_ID} />
-            </AccountSidebar>
+        <div style={{zoom:'0.9'}}>
+          <Menu />
+          <div className='pageContent'>
+            <LeftMenu />
+            <div className='content-view'>
+              <AccountSidebar>
+                <Signer>
+                  <Content />
+                </Signer>
+                <ConnectingOverlay />
+                <div id={PORTAL_ID} />
+              </AccountSidebar>
+            </div>
           </div>
         </div>
       </div>

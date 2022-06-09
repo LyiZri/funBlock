@@ -18,6 +18,7 @@ import Account from './Account';
 import NewNominator from './NewNominator';
 import NewStash from './NewStash';
 import NewValidator from './NewValidator';
+import './index.scss'
 
 interface Props {
   className?: string;

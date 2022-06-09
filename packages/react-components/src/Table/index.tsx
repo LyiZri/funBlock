@@ -78,7 +78,7 @@ export default React.memo(styled(Table)`
     z-index: 1;
     border:0!important;
     border-radius:20px;
-    background:#000 !important;
+    background:#151319 !important;
     padding:2rem;
     &.isFixed {
       table-layout: fixed;

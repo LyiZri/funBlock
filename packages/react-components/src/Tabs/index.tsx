@@ -84,7 +84,6 @@ export default React.memo(styled(Tabs)`
     display: flex;
     align-items: center;
     width: 100%;
-    margin: 0 auto;
     max-width: var(--width-full);
     padding: 0 1.5rem 0 0;
     height: 3.286rem;

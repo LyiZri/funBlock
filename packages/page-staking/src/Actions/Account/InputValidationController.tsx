@@ -77,8 +77,8 @@ function ValidateController ({ accountId, controllerId, defaultController, onErr
 
   return (
     isFatal
-      ? <MarkError content={error} />
-      : <MarkWarning content={error} />
+      ? <div className='actions-mine-error'><MarkError content={error} /></div>
+      : <div className='actions-mine-error'><MarkWarning content={error} /></div>
   );
 }
 

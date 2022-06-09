@@ -27,7 +27,7 @@ interface Props {
   withSenders?: boolean;
 }
 
-function Nominate ({ className = '', controllerId, onChange, stashId, targets: { nominateIds = [] }, withSenders }: Props): React.ReactElement<Props> {
+function Nominate({ className = '', controllerId, onChange, stashId, targets: { nominateIds = [] }, withSenders }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api } = useApi();
   const [favorites] = useFavorites(STORE_FAVS_BASE);
@@ -72,7 +72,7 @@ function Nominate ({ className = '', controllerId, onChange, stashId, targets: {
   }, [api, onChange, selected, amount]);
 
   return (
-    <div className={className}>
+    <div className={`${className} mine-bond-style`}>
       {withSenders && (
         <Modal.Content>
           <Modal.Columns hint={t<string>('The stash that is to be affected. The transaction will be sent from the associated controller account.')}>
@@ -104,21 +104,23 @@ function Nominate ({ className = '', controllerId, onChange, stashId, targets: {
         </Modal.Columns>
       </Modal.Content>
       <Modal.Columns>
-        <InputBalance
-          autoFocus
-          help={t<string>('Type the amount you want to transfer. Note that you can select the unit on the right e.g sending 1 milli is equivalent to sending 0.001.')}
-          isZeroable
-          label={t<string>('amount')}
-          labelExtra={
-            selected[0] &&
-            <Guaranteeable
-              label={guaranteeable}
-              params={selected[0]}
-            />
-          }
-          onChange={setAmount}
-          withMax
-        />
+        <div className='need-white' style={{marginTop:'2rem'}}>
+          <InputBalance
+            autoFocus
+            help={t<string>('Type the amount you want to transfer. Note that you can select the unit on the right e.g sending 1 milli is equivalent to sending 0.001.')}
+            isZeroable
+            label={t<string>('amount')}
+            labelExtra={
+              selected[0] &&
+              <Guaranteeable
+                label={guaranteeable}
+                params={selected[0]}
+              />
+            }
+            onChange={setAmount}
+            withMax
+          />
+        </div>
       </Modal.Columns>
       <Modal.Content>
         <Modal.Columns>
