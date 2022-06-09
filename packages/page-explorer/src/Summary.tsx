@@ -28,25 +28,29 @@ function Summary(): React.ReactElement {
         </CardSummary>
       </section>
       <section className="second-section">
-        {api.query.balances && (
-          <CardSummary className="media--800" label={t<string>("total issuance")}>
-            <TotalIssuance />
-          </CardSummary>
-        )}
-        {api.query.grandpa && (
-          <CardSummary label={t<string>("finalized")}>
-            <BestFinalized />
-          </CardSummary>
-        )}
-        {!isMaxwell && (
-          <CardSummary className="media--800" label={t<string>("claim pot")}>
-            <ClaimPot />
-          </CardSummary>
-        )}
+        <div>
+          {api.query.balances && (
+            <CardSummary className="media--800" label={t<string>("total issuance")}>
+              <TotalIssuance />
+            </CardSummary>
+          )}
+          {api.query.grandpa && (
+            <CardSummary label={t<string>("finalized")}>
+              <BestFinalized />
+            </CardSummary>
+          )}
+        </div>
+        <div>
+          {!isMaxwell && (
+            <CardSummary className="media--800" label={t<string>("claim pot")}>
+              <ClaimPot />
+            </CardSummary>
+          )}
 
-        <CardSummary label={t<string>("best")}>
-          <BestNumber />
-        </CardSummary>
+          <CardSummary label={t<string>("best")}>
+            <BestNumber />
+          </CardSummary>
+        </div>
       </section>
       <section className="third-section">
         {api.query.storage && (
@@ -63,8 +67,8 @@ function Summary(): React.ReactElement {
 export default React.memo(styled(Summary)`
   .total-storage-card {
     padding: 0px;
-    .epoch-flex .childrenIsNotTop{
-      margin-top:21px;
+    .epoch-flex .childrenIsNotTop {
+      margin-top: 21px;
     }
   }
   .no-back {

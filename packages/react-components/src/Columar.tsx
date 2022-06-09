@@ -42,6 +42,7 @@ const ColumarStyled = React.memo(styled(Columar)`
   background:#000;
   border-radius:20px;
   padding:25px 40px;
+  min-width:1051px;
   box-shadow:0px 2px 30px 0 rgb(241 79 158 / 10%);
   &.is60 {
     .ui--Column:first-child {

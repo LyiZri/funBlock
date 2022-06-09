@@ -85,6 +85,7 @@ export default React.memo(styled(HelpOverlay)`
     &.open {
       right: 0;
       background:#000;
+      color:#fff;
     }
   }
 `);

@@ -60,9 +60,9 @@ function Overview({ className = "", onStatusChange }: Props): React.ReactElement
       </Button.Group>
       {isCreateOpen && <CreateModal onClose={toggleCreate} onStatusChange={onStatusChange} />}
       <div className="contract-mine-box">
-        <div className="box-shadow-box">
+        {/* <div className="box-shadow-box">
           <div className="box-shadow-purple"></div>
-        </div>
+        </div> */}
         <Table
           empty={!isLoading && sortedAddresses && t<string>("no addresses saved yet, add any existing address")}
           filter={filter}

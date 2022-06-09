@@ -67,7 +67,7 @@ export default React.memo(styled(Legend)`
   font-size: 16px;
   padding: 1rem 0.5rem;
   text-align: left;
-
+  color:#fff;
   .ui--Badge {
     margin-right: 0.5rem;
   }

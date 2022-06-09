@@ -51,7 +51,9 @@
 
       }
     }
-
+    .isNotFixed{
+      background: none !important;
+    }
     .isAddress {
       font-size: 24px;
     }
@@ -122,6 +124,9 @@
       margin-top:21px;
     }
   }
+}
+.second-section{
+  display: flex;
 }
 .third-section{
   margin-bottom: 20px;
