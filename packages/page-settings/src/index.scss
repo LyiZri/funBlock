@@ -35,13 +35,6 @@
         margin-left: -0.5% !important;
         padding-left: 1rem;
       }
-      .transition::before {
-        position: absolute;
-        background-color: white;
-        left: 0;
-        top: 0;
-        content: "";
-      }
     }
 
     .ui.selection.dropdown {

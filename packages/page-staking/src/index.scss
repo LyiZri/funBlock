@@ -2,18 +2,19 @@
   margin-top: 1rem;
   article {
     border-radius: 16px;
-    padding: 24px!important;
-    font-size: 17px!important;
-    svg{
-        color: red!important;
+    padding: 24px !important;
+    color: white;
+    font-size: 17px !important;
+    svg {
+      color: red !important;
     }
   }
 }
-.staking-filter-box{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    .staking-filter-input-box{
-        width: 70%;
-    }
+.staking-filter-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .staking-filter-input-box {
+    width: 70%;
+  }
 }
