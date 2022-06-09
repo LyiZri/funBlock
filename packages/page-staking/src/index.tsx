@@ -22,7 +22,7 @@ import Query from './Query';
 import Slashes from './Slashes';
 import Targets from './Targets';
 import useSortedTargets from './useSortedTargets';
-import './index.scss'
+import './index.scss';
 
 
 const transformElection = {
