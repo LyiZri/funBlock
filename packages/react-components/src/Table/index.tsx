@@ -38,9 +38,9 @@ function Table ({ children, className = '', empty, emptySpinner, filter, footer,
   return (
     <div className={`ui--Table ${className}`}>
       {legend}
-      <div className="box-shadow-box">
+      {/* <div className="box-shadow-box">
         <div className="box-shadow-purple"></div>
-      </div>
+      </div> */}
       <table className={`${(isFixed && !isEmpty) ? 'isFixed' : 'isNotFixed'} highlight--bg-faint`}>
        
         <Head
@@ -70,7 +70,6 @@ export default React.memo(styled(Table)`
 
   table {
     box-shadow: 0px 2px 30px 0 rgb(241 79 158 / 10%);
-
     border-spacing: 0;
     max-width: 100%;
     overflow: hidden;

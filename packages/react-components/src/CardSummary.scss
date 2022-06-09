@@ -8,6 +8,7 @@
   article {
     max-height: 250px;
     max-width: 270px;
+    padding: 1.25rem;
     .iconBox {
       margin-bottom: 36px;
     }
@@ -17,9 +18,9 @@
 .second-section {
   flex-wrap: wrap;
   justify-content: space-evenly;
-
+  width: 60%;
   article {
-    min-width: 271px;
+    // min-width: 271px;
     max-height: 112px;
     background: none;
 

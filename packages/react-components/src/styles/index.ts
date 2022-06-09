@@ -275,12 +275,10 @@ export default createGlobalStyle<Props & ThemeProps>(({ theme, uiHighlight }: Pr
       }
     }
   }
-  .content{
-    color:#000;
-  }
+
   #root {
     background: var(--bg-page);
-    color: #fff;
+    color: var(--color-text);
     font: var(--font-sans);
     height: 100%;
   }

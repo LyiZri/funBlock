@@ -96,7 +96,6 @@ export default React.memo(styled(CardSummary)`
   align-items: center;
   background: none;
   border: none !important;
-  border-radius: 1rem;
   box-shadow: none !important;
   color: var(--color-summary);
   flex: 0 1 auto;

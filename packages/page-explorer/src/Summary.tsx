@@ -63,6 +63,9 @@ function Summary(): React.ReactElement {
 export default React.memo(styled(Summary)`
   .total-storage-card {
     padding: 0px;
+    .epoch-flex .childrenIsNotTop{
+      margin-top:21px;
+    }
   }
   .no-back {
     padding: 0 !important;

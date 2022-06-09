@@ -1,6 +1,8 @@
 .staking--App {
   position: relative;
-
+    article{
+        min-width: 200px;
+    }
   .staking--queryInput {
     .ui--InputAddressSimpleIcon {
       top: 4rem;

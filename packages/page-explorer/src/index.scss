@@ -98,17 +98,49 @@
   .ui.input {
     color: #fff;
   }
-  .ui.selection.dropdown, .ui.input > input, .ui.selection.dropdown > input{
+
+  .ui.selection.dropdown,
+  .ui.input>input,
+  .ui.selection.dropdown>input {
     color: var(--color-modal-text);
   }
-  .ui.selection.dropdown{
+
+  .ui.selection.dropdown {
     background: none;
   }
-  .ui.dropdown > .text:not(.default){
+
+  .ui.dropdown>.text:not(.default) {
     color: #fff !important;
   }
-.box-shadow-purple{
-  box-shadow: 34px -10px 53px 47px #391f3f;
-}
 
+  .box-shadow-purple {
+    box-shadow: 34px -10px 53px 47px #391f3f;
+  }
+  .total-storage-card {
+    padding: 0px;
+    .epoch-flex .childrenIsNotTop{
+      margin-top:21px;
+    }
+  }
+}
+.third-section{
+  margin-bottom: 20px;
+  .programBox{
+    border-radius: 40px;
+  }
+  .programBox:first-child{
+    margin-right: 0 !important;
+  }
+}
+@media only screen and (min-width:1489px) {
+  .third-section{
+    width: 100%;
+    justify-content: left;
+  }
+}
+@media only screen and (max-width:1488px) {
+  .third-section{
+    justify-content: center;
+  }
+  
 }
