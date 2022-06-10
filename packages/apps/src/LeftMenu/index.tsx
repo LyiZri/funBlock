@@ -5,7 +5,7 @@ import type { TFunction } from "i18next";
 import type { Route, Routes } from "@polkadot/apps-routing/types";
 import type { ApiProps } from "@polkadot/react-api/types";
 import type { AccountId } from "@polkadot/types/interfaces";
-import type { Group, Groups, ItemRoute } from "./types";
+import type {  GroupIcon, Groups, ItemRoute } from "./types";
 
 import React, { useMemo, useRef } from "react";
 import { useLocation } from "react-router-dom";
@@ -19,11 +19,17 @@ import Grouping from "./Grouping";
 import Item from "./Item";
 import NodeInfo from "./NodeInfo";
 import "./index.scss";
+// import itemOption from "@polkadot/app-settings/Metadata/iconOption";
 
 interface Props {
   className?: string;
 }
 
+interface GroupName {
+  name: string;
+  icon?: string;
+}
+type GroupObject = Record<string, GroupName>;
 const disabledLog = new Map<string, string>();
 
 function createExternals(t: TFunction): ItemRoute[] {
@@ -84,24 +90,37 @@ function checkVisible(
 
 function extractGroups(
   routing: Routes,
-  groupNames: Record<string, string>,
+  groupNames: GroupObject,
+  // groupNames: Record<string,string>,
   apiProps: ApiProps,
   hasAccounts: boolean,
   hasSudo: boolean
-): Group[] {
+): GroupIcon[] {
   return Object.values(
     routing.reduce((all: Groups, route): Groups => {
       if (!all[route.group]) {
-        all[route.group] = { name: groupNames[route.group], routes: [route] };
+
+        all[route.group] = {
+          name: typeof groupNames[route.group] != "undefined" ? groupNames[route.group].name : "",
+          icon: typeof groupNames[route.group] != "undefined" ? groupNames[route.group].icon : "",
+          routes: [route],
+        };
+        // groupNames.forEach((item,index)=>{
+        //     if(route.group == item.name){
+        //       all[route.group] = { name: item.name, icon:item.icon,routes: [route] };
+        //     }
+        // })
       } else {
         all[route.group].routes.push(route);
       }
+
       return all;
     }, {})
   )
     .map(
-      ({ name, routes }): Group => ({
+      ({ name, icon, routes }): GroupIcon => ({
         name,
+        icon,
         routes: routes.filter(({ display, name }) => checkVisible(name, apiProps, hasAccounts, hasSudo, display)),
       })
     )
@@ -117,14 +136,38 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
 
   const externalRef = useRef(createExternals(t));
   const groupRef = useRef({
-    accounts: t("Accounts"),
-    developer: t("Developer"),
+    accounts: {
+      name: t("Accounts"),
+      icon: "account-icon",
+    },
+    developer: {
+      name: t("Developer"),
+      icon: "developer-icon",
+    },
     // governance: t("Governance"),
-    network: t("Network"),
-    applications: t("Applications"),
-    settings: t("Settings"),
+    network: {
+      name: t("Network"),
+      icon: "network-icon",
+    },
+    applications: {
+      name: t("Applications"),
+      icon: "applications-icon",
+    },
+    settings: {
+      name: t("Settings"),
+      icon: "setting-icon",
+    },
     // storage: t("Storage"),
-    csmStaking: t("Profit Data"),
+    csmStaking: {
+      name: t("Profit Data"),
+      icon: "csmStaking-icon",
+    },
+    // accounts:t("Accounts"),
+    // developer: t("Developer"),
+    // network: t("Network"),
+    // applications: t("Applications"),
+    // settings: t("Settings"),
+    // csmStaking: t("Profit Data"),
   });
 
   const routeRef = useRef(createRoutes(t));
@@ -148,16 +191,17 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
   return (
     <div className={`${className}${isLoading ? " isLoading" : ""} left-menu-parent`}>
       <div className="menuContainer">
-        <div style={{marginBottom:'2rem'}}>
+        <div style={{ marginBottom: "2rem" }}>
           <div className="menuSection">
             <ul className="menuItems">
               {visibleGroups.map(
-                ({ name, routes }): React.ReactNode =>
+                ({ name,icon, routes }): React.ReactNode =>
                   name && (
                     <Grouping
                       isActive={activeRoute && activeRoute.group === name.toLowerCase()}
                       key={name}
                       name={name}
+                      icon={icon}
                       routes={routes}
                     />
                   )

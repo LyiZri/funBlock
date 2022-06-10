@@ -1,7 +1,7 @@
 // Copyright 2017-2021 @polkadot/apps authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { Group } from './types';
+import type { GroupIcon } from './types';
 
 import React from 'react';
 import styled from 'styled-components';
@@ -11,11 +11,13 @@ import styled from 'styled-components';
 import Item from './Item';
 import IconFont from '../../../components/icon_font';
 
-interface Props extends Group {
+interface Props extends GroupIcon {
   className?: string;
   isActive: boolean;
 }
-function Grouping({ className = '', isActive, name, routes }: Props): React.ReactElement<Props> {
+function Grouping({ className = '', isActive, icon,name, routes }: Props): React.ReactElement<Props> {
+  console.log({name,icon,routes});
+  
   if (routes.length === 1) {
     return (
       <Item

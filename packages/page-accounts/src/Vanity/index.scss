@@ -8,7 +8,9 @@
   }
 }
 table {
-  tr:hover {
-    background-color: #2C2B30!important;
+  tbody {
+    tr:hover {
+      background-color: #2c2b30 !important;
+    }
   }
 }

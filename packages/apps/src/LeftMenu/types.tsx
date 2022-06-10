@@ -21,4 +21,8 @@ export interface Group {
   routes: Routes;
 }
 
-export type Groups = Record<string, Group>;
+export interface GroupIcon extends Group{
+  icon ?:string
+}
+
+export type Groups = Record<string, GroupIcon>;
