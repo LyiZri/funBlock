@@ -1,11 +1,10 @@
 .explorer-page {
-
   .chain-info-page-switch {
     height: 64px;
     width: 495px;
     margin: auto;
     border-radius: 40px;
-    background-color: #E4E4FB;
+    background-color: #e4e4fb;
     background: url(../assets/chooseBarBack.png) 100%;
     color: #fff;
     text-align: center;
@@ -48,10 +47,9 @@
     table {
       tr {
         background: #000 !important;
-
       }
     }
-    .isNotFixed{
+    .isNotFixed {
       background: none !important;
     }
     .isAddress {
@@ -83,7 +81,6 @@
         font-size: 16px;
 
         td {
-
           .contents {
             font-size: 16px;
 
@@ -102,8 +99,8 @@
   }
 
   .ui.selection.dropdown,
-  .ui.input>input,
-  .ui.selection.dropdown>input {
+  .ui.input > input,
+  .ui.selection.dropdown > input {
     color: var(--color-modal-text);
   }
 
@@ -111,7 +108,7 @@
     background: none;
   }
 
-  .ui.dropdown>.text:not(.default) {
+  .ui.dropdown > .text:not(.default) {
     color: #fff !important;
   }
 
@@ -120,32 +117,37 @@
   }
   .total-storage-card {
     padding: 0px;
-    .epoch-flex .childrenIsNotTop{
-      margin-top:21px;
+    .epoch-flex .childrenIsNotTop {
+      margin-top: 21px;
     }
   }
 }
-.second-section{
+.second-section {
   display: flex;
 }
-.third-section{
+.third-section {
   margin-bottom: 20px;
-  .programBox{
+  .programBox {
     border-radius: 40px;
   }
-  .programBox:first-child{
+  .programBox:first-child {
     margin-right: 0 !important;
   }
 }
-@media only screen and (min-width:1489px) {
-  .third-section{
+@media only screen and (min-width: 1489px) {
+  .third-section {
     width: 100%;
     justify-content: left;
   }
 }
-@media only screen and (max-width:1488px) {
-  .third-section{
+@media only screen and (max-width: 1488px) {
+  .third-section {
     justify-content: center;
   }
-  
+}
+.ui--FilterOverlay{
+  top:2rem!important;
+  .ui--Button{
+    margin-left: 1rem;
+  }
 }
