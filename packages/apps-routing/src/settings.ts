@@ -3,6 +3,7 @@
 
 import type { TFunction } from 'i18next';
 import type { Route } from './types';
+import SettingsIcon from '../../apps/src/LeftMenu/icon/settings_icon.svg';
 
 import Component, { useCounter } from '@polkadot/app-settings';
 
@@ -11,7 +12,7 @@ export default function create (t: TFunction): Route {
     Component,
     display: {},
     group: 'settings',
-    icon: 'cogs',
+    icon: SettingsIcon,
     name: 'settings',
     text: t('nav.settings', 'Settings', { ns: 'apps-routing' }),
     useCounter

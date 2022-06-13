@@ -43,7 +43,8 @@ function Item({
         {/* {icon && <Icon icon={icon}/>}
         {logo && <img src={logo as string}/>} */}
         {isToplevel === true && <div className="groupHdr">
-          <IconFont className='iconfont' type="icon-jijidongtai_positive-dynamics" />
+          {/* <IconFont className='iconfont' type="icon-jijidongtai_positive-dynamics" /> */}
+          <img src={icon} alt="" />
           <div className='active-mask-shadow'></div>
         </div>}
         {text}
@@ -106,10 +107,10 @@ export default React.memo(styled(Item)`
       justify-content:center;
       align-items:center; 
       margin-bottom:.5rem!important;
-      > .iconfont {
-        font-size:3rem;
+      > img {
         color:#666;
-        z-index:200;
+        width:36px;
+        height:36px;
       }
       > .active-mask-shadow{
         position:absolute;

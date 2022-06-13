@@ -31,7 +31,7 @@ export interface Route {
   };
   href?: string;
   group: RouteGroup;
-  icon?: IconName | 'ipfs';
+  icon?: IconName | 'ipfs' | any;
   logo?: unknown;
   isIgnored?: boolean;
   name: string;

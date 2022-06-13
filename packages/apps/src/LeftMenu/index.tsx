@@ -5,7 +5,7 @@ import type { TFunction } from "i18next";
 import type { Route, Routes } from "@polkadot/apps-routing/types";
 import type { ApiProps } from "@polkadot/react-api/types";
 import type { AccountId } from "@polkadot/types/interfaces";
-import type { Group, Groups, ItemRoute } from "./types";
+import type {  GroupIcon, Groups, ItemRoute } from "./types";
 
 import React, { useMemo, useRef } from "react";
 import { useLocation } from "react-router-dom";
@@ -19,24 +19,36 @@ import Grouping from "./Grouping";
 import Item from "./Item";
 import NodeInfo from "./NodeInfo";
 import "./index.scss";
+import AccountIcon from './icon/account_icon.svg'
+import NetworkIcon from './icon/network_iocn.svg'
+import DeveloperIcon from './icon/developer_icon.svg'
+import SettingsIcon from './icon/settings_icon.svg'
+import GithubIcon from './icon/github_icon.svg'
+import WikiIcon from './icon/wiki_icon.svg'
+// import itemOption from "@polkadot/app-settings/Metadata/iconOption";
 
 interface Props {
   className?: string;
 }
 
+interface GroupName {
+  name: string;
+  icon?: any;
+}
+type GroupObject = Record<string, GroupName>;
 const disabledLog = new Map<string, string>();
 
 function createExternals(t: TFunction): ItemRoute[] {
   return [
     {
       href: "https://github.com/mannheim-network",
-      icon: "code-branch",
+      icon: GithubIcon,
       name: "github",
       text: t<string>("nav.github", "GitHub", { ns: "apps-routing" }),
     },
     {
       href: "https://github.com/mannheim-network/wiki",
-      icon: "book",
+      icon: WikiIcon,
       name: "wiki",
       text: t<string>("nav.wiki", "Wiki", { ns: "apps-routing" }),
     },
@@ -84,24 +96,37 @@ function checkVisible(
 
 function extractGroups(
   routing: Routes,
-  groupNames: Record<string, string>,
+  groupNames: GroupObject,
+  // groupNames: Record<string,string>,
   apiProps: ApiProps,
   hasAccounts: boolean,
   hasSudo: boolean
-): Group[] {
+): GroupIcon[] {
   return Object.values(
     routing.reduce((all: Groups, route): Groups => {
       if (!all[route.group]) {
-        all[route.group] = { name: groupNames[route.group], routes: [route] };
+
+        all[route.group] = {
+          name: typeof groupNames[route.group] != "undefined" ? groupNames[route.group].name : "",
+          icon: typeof groupNames[route.group] != "undefined" ? groupNames[route.group].icon : "",
+          routes: [route],
+        };
+        // groupNames.forEach((item,index)=>{
+        //     if(route.group == item.name){
+        //       all[route.group] = { name: item.name, icon:item.icon,routes: [route] };
+        //     }
+        // })
       } else {
         all[route.group].routes.push(route);
       }
+
       return all;
     }, {})
   )
     .map(
-      ({ name, routes }): Group => ({
+      ({ name, icon, routes }): GroupIcon => ({
         name,
+        icon,
         routes: routes.filter(({ display, name }) => checkVisible(name, apiProps, hasAccounts, hasSudo, display)),
       })
     )
@@ -117,14 +142,38 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
 
   const externalRef = useRef(createExternals(t));
   const groupRef = useRef({
-    accounts: t("Accounts"),
-    developer: t("Developer"),
+    accounts: {
+      name: t("Accounts"),
+      icon: AccountIcon,
+    },
+    developer: {
+      name: t("Developer"),
+      icon: DeveloperIcon,
+    },
     // governance: t("Governance"),
-    network: t("Network"),
-    applications: t("Applications"),
-    settings: t("Settings"),
+    network: {
+      name: t("Network"),
+      icon: NetworkIcon,
+    },
+    applications: {
+      name: t("Applications"),
+      icon: "applications-icon",
+    },
+    settings: {
+      name: t("Settings"),
+      icon: SettingsIcon,
+    },
     // storage: t("Storage"),
-    csmStaking: t("Profit Data"),
+    csmStaking: {
+      name: t("Profit Data"),
+      icon: "csmStaking-icon",
+    },
+    // accounts:t("Accounts"),
+    // developer: t("Developer"),
+    // network: t("Network"),
+    // applications: t("Applications"),
+    // settings: t("Settings"),
+    // csmStaking: t("Profit Data"),
   });
 
   const routeRef = useRef(createRoutes(t));
@@ -149,16 +198,17 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
   return (
     <div className={`${className}${isLoading ? " isLoading" : ""} left-menu-parent`}>
       <div className="menuContainer">
-        <div style={{ marginBottom: '2rem' }}>
+        <div style={{ marginBottom: "2rem" }}>
           <div className="menuSection">
             <ul className="menuItems">
               {visibleGroups.map(
-                ({ name, routes }): React.ReactNode =>
+                ({ name,icon, routes }): React.ReactNode =>
                   name && (
                     <Grouping
                       isActive={activeRoute && activeRoute.group === name.toLowerCase()}
                       key={name}
                       name={name}
+                      icon={icon}
                       routes={routes}
                     />
                   )

@@ -1,7 +1,7 @@
 // Copyright 2017-2021 @polkadot/apps authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { Group } from './types';
+import type { GroupIcon } from './types';
 
 import React from 'react';
 import styled from 'styled-components';
@@ -9,13 +9,15 @@ import styled from 'styled-components';
 // import { Icon } from '@polkadot/react-components';
 
 import Item from './Item';
-import IconFont from '../../../components/icon_font';
+// import IconFont from '../../../components/icon_font';
 
-interface Props extends Group {
+interface Props extends GroupIcon {
   className?: string;
   isActive: boolean;
 }
-function Grouping({ className = '', isActive, name, routes }: Props): React.ReactElement<Props> {
+function Grouping({ className = '', isActive, icon, name, routes }: Props): React.ReactElement<Props> {
+  console.log({ name, icon, routes });
+
   if (routes.length === 1) {
     return (
       <Item
@@ -30,7 +32,8 @@ function Grouping({ className = '', isActive, name, routes }: Props): React.Reac
     <li className={`${className} ${isActive ? 'isActive' : ''}`}>
       <div className={`groupHdr ${!isActive ? 'highlight--color-contrast' : ''}`}>
         {/* <Icon icon='caret-down' /> */}
-        <IconFont className='iconfont' type="icon-jijidongtai_positive-dynamics" />
+        {/* <IconFont className='iconfont' type="icon-jijidongtai_positive-dynamics" /> */}
+        <img src={icon} alt="" />
         <div className='active-mask-shadow'></div>
       </div>
       <div>{name}</div>
@@ -74,6 +77,11 @@ export default React.memo(styled(Grouping)`
       color:#666;
       z-index:200;
     }
+    > img{
+      color:#666;
+      width:36px;
+      height:36px;
+    }
     > .active-mask-shadow{
       position:absolute;
       top:50%;
@@ -95,7 +103,7 @@ export default React.memo(styled(Grouping)`
     >.active-mask-shadow{
       display:block;
     }
-    >.iconfont{
+    > img{
       color:#925CFF;
     }
   }

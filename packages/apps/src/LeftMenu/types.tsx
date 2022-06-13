@@ -9,7 +9,7 @@ import React from 'react';
 export interface ItemRoute {
   Modal?: React.ComponentType<any>;
   href?: string;
-  icon?: IconName;
+  icon?: any;
   logo?: unknown;
   name: string;
   text: string;
@@ -21,4 +21,8 @@ export interface Group {
   routes: Routes;
 }
 
-export type Groups = Record<string, Group>;
+export interface GroupIcon extends Group{
+  icon ?:any
+}
+
+export type Groups = Record<string, GroupIcon>;
