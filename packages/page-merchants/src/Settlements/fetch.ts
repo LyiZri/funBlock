@@ -19,7 +19,7 @@ export function fetchFileTobeClaimed<ISettlement> (): Promise<ISettlement[]> {
   return fetch('https://splorer-api.rubik.network/api/filesToBeClaimed', requestOptions)
     .then((res) => res.json())
     .then((r: IRes<ISettlement>) => {
-      console.log(r);
+      // console.log(r);
 
       if (r.message === 'success') {
         return r.data;

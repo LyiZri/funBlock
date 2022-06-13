@@ -249,7 +249,7 @@ function TxSigned({ className, currentItem, requestAddress }: Props): React.Reac
             const ledger = getLedger();
             const { address } = await ledger.getAddress(false, flags.accountOffset, flags.addressOffset);
 
-            console.log(`Signing with Ledger address ${address}`);
+            // console.log(`Signing with Ledger address ${address}`);
           } catch (error) {
             console.error(error);
 
@@ -407,7 +407,7 @@ function TxSigned({ className, currentItem, requestAddress }: Props): React.Reac
                     <p className='mine-expander-remark'>The call hash as calculated for this transaction</p>
                     <br />
                     <br />
-                    
+
                   </Modal.Columns>
                 )}
               </>

@@ -31,7 +31,7 @@ const Settlements: React.FC = () => {
       });
       setSettlements(res as ISettlementItem[]);
     }).catch((e) => {
-      console.log(e);
+      // console.log(e);
     }).finally(() => {
       toggleLoading(false);
     });

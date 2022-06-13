@@ -78,7 +78,7 @@ function Web3Provider ({ children }: Props): React.ReactElement<Props> | null {
       setReadystate('idle');
     });
     provider?.on?.('connect', (info: { chainId: number }) => {
-      console.log(info);
+      // console.log(info);
     });
   }, [provider]);
 

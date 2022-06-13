@@ -110,7 +110,7 @@ function getURLFromAddress (name, config) {
 
     return url;
   } catch (error) {
-    console.log(`Failed to get url from config at Addresses.${name}`, error);
+    // console.log(`Failed to get url from config at Addresses.${name}`, error);
 
     return null;
   }

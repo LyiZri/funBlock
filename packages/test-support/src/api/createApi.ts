@@ -18,7 +18,7 @@ export async function createApi (port: number = SUBSTRATE_PORT): Promise<ApiProm
     api.rpc.system.version()
   ]);
 
-  console.log(`You are connected to chain ${chain.toString()} using ${nodeName.toString()} v${nodeVersion.toString()}`);
+  // console.log(`You are connected to chain ${chain.toString()} using ${nodeName.toString()} v${nodeVersion.toString()}`);
 
   return api;
 }

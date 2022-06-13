@@ -58,7 +58,7 @@ async function pin () {
   writeFiles('pin.json', JSON.stringify(result));
   updateGh(result.IpfsHash);
 
-  console.log(`Pinned ${result.IpfsHash}`);
+  // console.log(`Pinned ${result.IpfsHash}`);
 
   return result.IpfsHash;
 }
@@ -107,7 +107,7 @@ async function dnslink (hash) {
     )
   ));
 
-  console.log(`Dnslink ${hash} for ${records.join(', ')}`);
+  // console.log(`Dnslink ${hash} for ${records.join(', ')}`);
 }
 
 async function main () {

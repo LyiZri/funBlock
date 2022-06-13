@@ -336,7 +336,7 @@ export class Channel {
 export const ensureMFS = (store) => {
   const info = store.selectFilesPathInfo();
 
-  console.log(info);
+  // console.log(info);
 
   if (!info) {
     throw new Error('Unable to perform task if not in MFS');

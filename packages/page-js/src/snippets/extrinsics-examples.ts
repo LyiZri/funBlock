@@ -24,13 +24,13 @@ const transfer = api.tx.balances.transfer(BOB, randomAmount);
 // Sign and Send the transaction
 await transfer.signAndSend(ALICE, ({ events = [], status }) => {
   if (status.isInBlock) {
-    console.log('Successful transfer of ' + randomAmount + ' with hash ' + status.asInBlock.toHex());
+    // console.log('Successful transfer of ' + randomAmount + ' with hash ' + status.asInBlock.toHex());
   } else {
-    console.log('Status of transfer: ' + status.type);
+    // console.log('Status of transfer: ' + status.type);
   }
 
   events.forEach(({ phase, event: { data, method, section } }) => {
-    console.log(phase.toString() + ' : ' + section + '.' + method + ' ' + data.toString());
+    // console.log(phase.toString() + ' : ' + section + '.' + method + ' ' + data.toString());
   });
 });`
 };

@@ -19,20 +19,20 @@ const [now, minimumValidatorCount, validators] = await Promise.all([
   api.query.session.validators()
 ]);
 
-console.log('The current date is: ' + now);
-console.log('The minimum guardian count: ' + minimumValidatorCount);
+// console.log('The current date is: ' + now);
+// console.log('The minimum guardian count: ' + minimumValidatorCount);
 
 if (validators && validators.length > 0) {
   // Retrieve the balances for all validators
-  console.log('Validators');
+  // console.log('Validators');
 
   const validatorBalances = await Promise.all(
     validators.map((authorityId) => api.query.system.account(authorityId))
   );
 
   validators.forEach((authorityId, index) => {
-    console.log('Validator: ' + authorityId.toString() )
-    console.log('AccountData: ' + validatorBalances[index].toHuman() );
+    // console.log('Validator: ' + authorityId.toString() )
+    // console.log('AccountData: ' + validatorBalances[index].toHuman() );
   });
 }
 `,
@@ -44,18 +44,18 @@ if (validators && validators.length > 0) {
 export const storageSystemEvents: Snippet = {
   code: `// Subscribe to system events via storage
 api.query.system.events((events) => {
-  console.log('----- Received ' + events.length + ' event(s): -----');
+  // console.log('----- Received ' + events.length + ' event(s): -----');
   // loop through the Vec<EventRecord>
   events.forEach((record) => {
   // extract the phase, event and the event types
     const { event, phase } = record;
     const types = event.typeDef;
     // show what we are busy with
-    console.log(event.section + ':' + event.method + '::' + 'phase=' + phase.toString());
-    console.log(event.meta.documentation.toString());
+    // console.log(event.section + ':' + event.method + '::' + 'phase=' + phase.toString());
+    // console.log(event.meta.documentation.toString());
     // loop through each of the parameters, displaying the type and data
     event.data.forEach((data, index) => {
-      console.log(types[index].type + ';' + data.toString());
+      // console.log(types[index].type + ';' + data.toString());
     });
   });
 });`,
@@ -72,7 +72,7 @@ const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
 // Retrieve the initial data
 let [, { free: previous }] = await api.query.system.account(ALICE);
 
-console.log('ALICE has a balance of ' + previous);
+// console.log('ALICE has a balance of ' + previous);
 
 // Subscribe and listen to balance changes
 api.query.system.account(ALICE, ([, { free }]) => {
@@ -82,7 +82,7 @@ api.query.system.account(ALICE, ([, { free }]) => {
   // the initial balance change will also be zero)
   if (!change.isZero()) {
     previous = free;
-    console.log('New transaction of: '+ change);
+    // console.log('New transaction of: '+ change);
   }
 });`,
   label,
@@ -96,11 +96,11 @@ export const storageListenToMultipleBalancesChange: Snippet = {
 const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
 const BOB = '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty';
 
-console.log('Tracking balances for:', [ALICE, BOB])
+// console.log('Tracking balances for:', [ALICE, BOB])
 
 // Subscribe and listen to several balance changes
 api.query.system.account.multi([ALICE, BOB], (info) => {
-  console.log('Change detected, new balances: ', info)
+  // console.log('Change detected, new balances: ', info)
 });`,
   label,
   text: 'Listen to multiple balances changes',
@@ -114,11 +114,11 @@ const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
 // retrieve the balance, once-off at the latest block
 const { data: { free } } = await api.query.system.account(ALICE);
 
-console.log('Alice has a current balance of', free.toHuman());
+// console.log('Alice has a current balance of', free.toHuman());
 
 // retrieve balance updates with an optional value callback
 const balanceUnsub = await api.query.system.account(ALICE, ({ data: { free } }) => {
-  console.log('Alice has an updated balance of', free.toHuman());
+  // console.log('Alice has an updated balance of', free.toHuman());
 });
 
 // retrieve the balance at a block hash in the past
@@ -126,13 +126,14 @@ const header = await api.rpc.chain.getHeader();
 const prevHash = await api.rpc.chain.getBlockHash(header.number.unwrap().subn(42));
 const { data: { free: prev } } = await api.query.system.account.at(prevHash, ALICE);
 
-console.log('Alice had a balance of', prev.toHuman(), '(42 blocks ago)');
+// console.log('Alice had a balance of', prev.toHuman(), '(42 blocks ago)');
 
 // useful in some situations - the value hash and storage entry size
 const currHash = await api.query.system.account.hash(ALICE);
 const currSize = await api.query.system.account.size(ALICE);
 
-console.log('Alice account entry has a value hash of', currHash, 'with a size of', currSize);`,
+// console.log('Alice account entry has a value hash of', currHash, 'with a size of', currSize);
+`,
   label,
   text: 'Retrieve historic query data',
   value: 'storageRetrieveInfoOnQueryKeys'
@@ -144,19 +145,19 @@ export const storageKeys: Snippet = {
 const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
 
 // show the key for an entry without arguments
-console.log(api.query.timestamp.now.key());
+// console.log(api.query.timestamp.now.key());
 
 // show the key for a map entry (single argument)
-console.log(api.query.system.account.key(ALICE));
+// console.log(api.query.system.account.key(ALICE));
 
 // show the key prefix for a map
-console.log(api.query.system.account.keyPrefix());
+// console.log(api.query.system.account.keyPrefix());
 
 // show the key for a double map
-console.log(api.query.staking.erasStakers.key(0, ALICE));
+// console.log(api.query.staking.erasStakers.key(0, ALICE));
 
 // show the key prefix for a doublemap
-console.log(api.query.staking.erasStakers.keyPrefix());
+// console.log(api.query.staking.erasStakers.keyPrefix());
 `,
   label,
   text: 'Get underlying storage key hex values',

@@ -34,7 +34,7 @@ const OrderList = () => {
   };
 
   const onSearch = () => {
-    console.log(path);
+    // console.log(path);
   };
 
   return <div className='sans-serif black-80 flex'>

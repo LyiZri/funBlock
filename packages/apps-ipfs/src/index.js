@@ -22,7 +22,7 @@ import { useThemeClass } from './theme';
 const appVersion = process.env.REACT_APP_VERSION;
 const gitRevision = process.env.REACT_APP_GIT_REV;
 
-console.log(`IPFS Web UI - v${appVersion} - https://github.com/ipfs-shipyard/ipfs-webui/commit/${gitRevision}`);
+// console.log(`IPFS Web UI - v${appVersion} - https://github.com/ipfs-shipyard/ipfs-webui/commit/${gitRevision}`);
 
 function IpfsApp () {
   const [store, setStore] = useState(null);
@@ -34,19 +34,19 @@ function IpfsApp () {
       if (store !== null) return
       bundleCache.getAll().then((initialData) => {
         if (initialData && process.env.NODE_ENV !== 'production') {
-          console.log('intialising store with data from cache', initialData);
+          // console.log('intialising store with data from cache', initialData);
         }
 
-        console.log(initialData, 'initialData');
+        // console.log(initialData, 'initialData');
         const s = getStore(initialData);
 
         setStore(s);
       }).catch((e) => {
         history.go(0);
-        console.log(e);
+        // console.log(e);
       });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }, [store]);
 

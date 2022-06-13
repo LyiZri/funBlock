@@ -322,7 +322,7 @@ class FilesPage extends React.Component {
         {
           this.state.orderModal.show && <OrderModal file={this.state.orderModal.file}
             onChange={() => {
-              console.log('change');
+              // console.log('change');
             }}
             onClose={() => {
               this.closeOrderModal();

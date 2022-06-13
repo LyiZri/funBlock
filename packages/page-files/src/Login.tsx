@@ -170,7 +170,7 @@ function Login ({ className, user }: Props) {
         }
       })
       .catch((err) => {
-        console.warn(err);
+        // console.warn(err);
       });
   }, [user, queueAction, t]);
 

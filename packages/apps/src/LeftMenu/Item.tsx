@@ -27,7 +27,7 @@ function Item({
 }: Props): React.ReactElement<Props> {
   const [isModalVisible, toggleModal] = useToggle();
   // const count = useCounter();
-  console.log({ isToplevel, isLink, className });
+  // console.log({ isToplevel, isLink, className });
 
   return (
     <li

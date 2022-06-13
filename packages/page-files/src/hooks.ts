@@ -376,7 +376,7 @@ export function useLoginUser (key: KEYS = 'files:login'): WrapLoginUser {
         await fcl.unauthenticate();
       }
     } else if (account.wallet === 'solana') {
-      console.log('logout', window.solana);
+      // console.log('logout', window.solana);
 
       // eslint-disable-next-line
       if (window.solana && window.solana.isConnected) {

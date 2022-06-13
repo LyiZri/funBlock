@@ -51,7 +51,7 @@ const actions = {
    */
   doSaveConfig: (configStr) => async ({ store }) => {
     if (store.selectConfigIsSaving()) {
-      console.log('doSaveConfig skipped, config save already in progress');
+      // console.log('doSaveConfig skipped, config save already in progress');
     } else {
       await store.doPerformSaveConfig(configStr);
     }

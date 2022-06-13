@@ -298,7 +298,7 @@ function Create({ className = 'createModal', onClose, onStatusChange, seed: prop
     },
     [api, derivePath, isDevelopment, isValid, name, onClose, onStatusChange, pairType, password, seed, t]
   );
-  console.log('classname=========', className);
+  // console.log('classname=========', className);
 
   return (
     <Modal

@@ -304,7 +304,7 @@ function Forks({ className }: Props): React.ReactElement<Props> | null {
         if (!headersRef.current.has(parent)) {
           // just make sure we are not first in the list, we don't want to full chain
           if (firstNumRef.current !== bn) {
-            console.warn(`Retrieving missing header ${header.parentHash.toHex()}`);
+            // console.warn(`Retrieving missing header ${header.parentHash.toHex()}`);
 
             api.rpc.chain.getHeader(header.parentHash).then(_newHeader).catch(console.error);
 

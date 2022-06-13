@@ -145,7 +145,7 @@ const makeBundle = function makeBundle () {
               case 30:
                 _context.prev = 30;
                 _context.t0 = _context.catch(8);
-                console.warn('Failed to resolve path', path, _context.t0);
+                // console.warn('Failed to resolve path', path, _context.t0);
 
                 return _context.abrupt('return', {
                   path: path,

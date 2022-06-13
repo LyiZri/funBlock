@@ -19,14 +19,14 @@ export function useElrond (): ElrondM {
         if (initialised) {
           setElornd({ isInstalled: true, isLoad: false, provider });
         } else {
-          console.warn(
-            'Something went wrong trying to redirect to wallet login..'
-          );
+          // console.warn(
+          //   'Something went wrong trying to redirect to wallet login..'
+          // );
           setElornd({ isInstalled: false, isLoad: false });
         }
       })
       .catch((err) => {
-        console.warn(err);
+        // console.warn(err);
         setElornd({ isInstalled: false, isLoad: false });
       });
   }, []);

@@ -71,7 +71,7 @@ const MainnetSettlements: React.FC = () => {
         setSettlements(res.list as ISettlementItem[]);
         // setTotalOrderCount(res.total);
       }).catch((e) => {
-        console.log(e);
+        // console.log(e);
       }).finally(() => {
         // setSettlements([]);
         toggleLoading(false);

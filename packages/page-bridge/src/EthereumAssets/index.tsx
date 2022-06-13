@@ -77,7 +77,7 @@ function EthereumAssets ({ className = '' }: Props): React.ReactElement<Props> {
       );
       const response = await submitDeposit?.(erc20Amount, recipient);
       setTransferrable(true);
-      console.log('response', response);
+      // console.log('response', response);
     } catch (error) {
       console.error(error);
     }
@@ -102,7 +102,7 @@ function EthereumAssets ({ className = '' }: Props): React.ReactElement<Props> {
         ethers.utils.parseUnits(amount?.toString() || '0', 18)
       );
 
-      console.log('approveResult', approveResult);
+      // console.log('approveResult', approveResult);
       setTransferrable(false);
     } catch (e) {
       console.error(e);

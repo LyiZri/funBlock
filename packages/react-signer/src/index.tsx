@@ -36,7 +36,7 @@ async function submitRpc(api: ApiPromise, { method, section }: DefinitionRpcExt,
 
     const result = await rpc[section][method](...values);
 
-    console.log('submitRpc: result ::', loggerFormat(result));
+    // console.log('submitRpc: result ::', loggerFormat(result));
 
     return {
       result,

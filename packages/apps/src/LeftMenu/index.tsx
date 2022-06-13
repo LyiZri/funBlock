@@ -48,7 +48,7 @@ function logDisabled(route: string, message: string): void {
   if (!disabledLog.get(route)) {
     disabledLog.set(route, message);
 
-    console.warn(`Disabling ${route}: ${message}`);
+    // console.warn(`Disabling ${route}: ${message}`);
   }
 }
 
@@ -138,6 +138,7 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
     () => extractGroups(routeRef.current, groupRef.current, apiProps, hasAccounts, hasSudo),
     [apiProps, hasAccounts, hasSudo]
   );
+  console.log(visibleGroups)
   const activeRoute = useMemo(
     () => routeRef.current.find((route) => location.pathname.startsWith(`/${route.name}`)) || null,
     [location]
@@ -148,7 +149,7 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
   return (
     <div className={`${className}${isLoading ? " isLoading" : ""} left-menu-parent`}>
       <div className="menuContainer">
-        <div style={{marginBottom:'2rem'}}>
+        <div style={{ marginBottom: '2rem' }}>
           <div className="menuSection">
             <ul className="menuItems">
               {visibleGroups.map(
