@@ -14,3 +14,13 @@
     box-shadow: 0px 68px 53px 74px #391f3f;
   }
 }
+.ui--Labelled-content{
+    input{
+        border-radius: 16px!important;
+    }
+}
+tr.filter{
+    .ui.input{
+        background-color: rgba(0,0,0,0)!important;
+    }
+}

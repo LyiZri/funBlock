@@ -19,6 +19,7 @@ input:focus {
     border: 0!important;
     margin: 0;
     width: 100%;
+    min-width: auto;
     border-color: rgba(0, 0, 0, 0) !important;
   }
 }
