@@ -5,7 +5,7 @@ import type { TFunction } from "i18next";
 import type { Route, Routes } from "@polkadot/apps-routing/types";
 import type { ApiProps } from "@polkadot/react-api/types";
 import type { AccountId } from "@polkadot/types/interfaces";
-import type {  GroupIcon, Groups, ItemRoute } from "./types";
+import type { GroupIcon, Groups, ItemRoute } from "./types";
 
 import React, { useMemo, useRef } from "react";
 import { useLocation } from "react-router-dom";
@@ -19,12 +19,12 @@ import Grouping from "./Grouping";
 import Item from "./Item";
 import NodeInfo from "./NodeInfo";
 import "./index.scss";
-import AccountIcon from './icon/account_icon.svg'
-import NetworkIcon from './icon/network_iocn.svg'
-import DeveloperIcon from './icon/developer_icon.svg'
-import SettingsIcon from './icon/settings_icon.svg'
-import GithubIcon from './icon/github_icon.svg'
-import WikiIcon from './icon/wiki_icon.svg'
+import AccountIcon from "./icon/account_icon.svg";
+import NetworkIcon from "./icon/network_iocn.svg";
+import DeveloperIcon from "./icon/developer_icon.svg";
+import SettingsIcon from "./icon/settings_icon.svg";
+import GithubIcon from "./icon/github_icon.svg";
+import WikiIcon from "./icon/wiki_icon.svg";
 // import itemOption from "@polkadot/app-settings/Metadata/iconOption";
 
 interface Props {
@@ -105,7 +105,6 @@ function extractGroups(
   return Object.values(
     routing.reduce((all: Groups, route): Groups => {
       if (!all[route.group]) {
-
         all[route.group] = {
           name: typeof groupNames[route.group] != "undefined" ? groupNames[route.group].name : "",
           icon: typeof groupNames[route.group] != "undefined" ? groupNames[route.group].icon : "",
@@ -168,12 +167,6 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
       name: t("Profit Data"),
       icon: "csmStaking-icon",
     },
-    // accounts:t("Accounts"),
-    // developer: t("Developer"),
-    // network: t("Network"),
-    // applications: t("Applications"),
-    // settings: t("Settings"),
-    // csmStaking: t("Profit Data"),
   });
 
   const routeRef = useRef(createRoutes(t));
@@ -187,7 +180,7 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
     () => extractGroups(routeRef.current, groupRef.current, apiProps, hasAccounts, hasSudo),
     [apiProps, hasAccounts, hasSudo]
   );
-  console.log(visibleGroups)
+  console.log('visible',{visibleGroups,groupRef,routeRef});
   const activeRoute = useMemo(
     () => routeRef.current.find((route) => location.pathname.startsWith(`/${route.name}`)) || null,
     [location]
@@ -202,7 +195,7 @@ function Menu({ className = "" }: Props): React.ReactElement<Props> {
           <div className="menuSection">
             <ul className="menuItems">
               {visibleGroups.map(
-                ({ name,icon, routes }): React.ReactNode =>
+                ({ name, icon, routes }): React.ReactNode =>
                   name && (
                     <Grouping
                       isActive={activeRoute && activeRoute.group === name.toLowerCase()}

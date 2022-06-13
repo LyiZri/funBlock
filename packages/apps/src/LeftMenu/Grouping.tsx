@@ -16,17 +16,16 @@ interface Props extends GroupIcon {
   isActive: boolean;
 }
 function Grouping({ className = '', isActive, icon, name, routes }: Props): React.ReactElement<Props> {
-  console.log({ name, icon, routes });
 
-  if (routes.length === 1) {
-    return (
-      <Item
-        className={isActive ? 'isActive' : ''}
-        isToplevel
-        route={routes[0]}
-      />
-    );
-  }
+  // if (routes.length === 1) {
+  //   return (
+  //     <Item
+  //       className={isActive ? 'isActive' : ''}
+  //       isToplevel
+  //       route={routes[0]}
+  //     />
+  //   );
+  // }
 
   return (
     <li className={`${className} ${isActive ? 'isActive' : ''}`}>
