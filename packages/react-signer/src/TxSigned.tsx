@@ -246,8 +246,6 @@ function TxSigned({ className, currentItem, requestAddress }: Props): React.Reac
           passwordError = unlockAccount(senderInfo);
         } else if (flags.isHardware) {
           try {
-            const ledger = getLedger();
-            const { address } = await ledger.getAddress(false, flags.accountOffset, flags.addressOffset);
 
             // console.log(`Signing with Ledger address ${address}`);
           } catch (error) {

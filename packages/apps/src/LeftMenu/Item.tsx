@@ -8,7 +8,6 @@ import styled from "styled-components";
 
 // import { Badge, Icon } from "@polkadot/react-components";
 import { useToggle } from "@polkadot/react-hooks";
-import IconFont from '../../../components/icon_font';
 
 interface Props {
   className?: string;

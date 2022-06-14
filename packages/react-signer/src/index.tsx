@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { ApiPromise } from '@polkadot/api';
 import { Modal, StatusContext } from '@polkadot/react-components';
 import { useApi } from '@polkadot/react-hooks';
-import { assert, isFunction, loggerFormat } from '@polkadot/util';
+import { assert, isFunction } from '@polkadot/util';
 
 import { useTranslation } from './translate';
 import TxSigned from './TxSigned';

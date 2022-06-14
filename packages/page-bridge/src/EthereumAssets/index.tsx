@@ -2,19 +2,15 @@
 // SPDX-License-Identifier: Apache-2.0
 
 /* eslint-disable */
-import { ethers } from 'ethers';
 import React, { useEffect, useMemo, useState } from 'react';
 
 import Banner from '@polkadot/app-accounts/Accounts/Banner';
 import { useTranslation } from '@polkadot/apps/translate';
 import { ethereums } from '@polkadot/react-api/config';
 import { useErc20Contract } from '@polkadot/react-api/hoc/useErc20Contract';
-import { useErc20Deposit } from '@polkadot/react-api/hoc/useErc20Deposit';
 import { useEtherAccounts } from '@polkadot/react-api/useEtherAccounts';
 import { useEthers } from '@polkadot/react-api/useEthers';
 import { Available, Button, Card, Columar, Dropdown, Input, InputAddress, Modal } from '@polkadot/react-components';
-import { u8aToHex } from '@polkadot/util';
-import { decodeAddress } from '@polkadot/util-crypto';
 
 import { createAccountsOpt } from './EthereumAccounts';
 import ethereumLogo from '../images/Ethereum_logo_2014.svg';
@@ -33,7 +29,6 @@ function EthereumAssets ({ className = '' }: Props): React.ReactElement<Props> {
   const [isAmountError, setIsAmountError] = useState<boolean>(true);
   const { provider, signer } = useEthers();
   const { contract } = useErc20Contract();
-  const submitDeposit = useErc20Deposit(ethereumAddress || undefined);
   const [receiveId, setReceiveId] = useState<string | null>('' || null);
   const [transferrable, setTransferrable] = useState<boolean>(true);
   const { systemChain: substrateName } = useApi();
@@ -68,14 +63,8 @@ function EthereumAssets ({ className = '' }: Props): React.ReactElement<Props> {
   }
 
   const submit = async () => {
-    const recipient = u8aToHex(decodeAddress(receiveId || ''));
 
     try {
-      const erc20Amount = ethers.utils.parseUnits(
-        amount?.toString() || '0',
-        18
-      );
-      const response = await submitDeposit?.(erc20Amount, recipient);
       setTransferrable(true);
       // console.log('response', response);
     } catch (error) {
@@ -95,12 +84,6 @@ function EthereumAssets ({ className = '' }: Props): React.ReactElement<Props> {
         return;
       }
 
-      const contractSigned = contract.connect(signer);
-
-      const approveResult = await contractSigned.functions.approve?.(
-        network.erc20AssetHandler,
-        ethers.utils.parseUnits(amount?.toString() || '0', 18)
-      );
 
       // console.log('approveResult', approveResult);
       setTransferrable(false);
