@@ -55,10 +55,13 @@ function Query ({ className = '', value: propsValue }: Props): React.ReactElemen
         placeholder={t<string>('block hash or number to query')}
         withLabel={false}
       >
-        <Button
+        {/* <Button
           icon='play'
           onClick={_onQuery}
-        />
+        /> */}
+        <div className='onQueryButton' onClick={_onQuery}>
+          Search
+        </div>
       </Input>
     </FilterOverlay>
   );
@@ -68,5 +71,13 @@ export default React.memo(styled(Query)`
   .explorer--query {
     width: 20em;
     z-index:2;
+  }
+  .onQueryButton{
+    background:#925CFF;
+    padding:5px 20px;
+    line-height:25px;
+    border-radius:25px;
+    color:#fff;
+    cursor:pointer;
   }
 `);

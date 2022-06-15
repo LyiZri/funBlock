@@ -29,6 +29,15 @@ export default React.memo(styled(FilterOverlay)`
 
   && .ui--Input {
     margin: 0.29rem 0;
+    border:1px solid #fff;
+    border-radius:25px;
+    input{
+      background:none;
+    }
+    input:focus{
+      color:#fff;
+      background:none;
+    }
   }
 
   ${media.DESKTOP`
