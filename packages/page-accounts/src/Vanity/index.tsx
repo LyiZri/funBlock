@@ -186,7 +186,7 @@ function VanityApp({ className = '', onStatusChange }: Props): React.ReactElemen
   return (
     <div className={className}>
       <div className='ui--row'>
-        <div className='need-white-mine'>
+        <div className='need-white-mine van-radius'>
           <Input
             autoFocus
             className='medium'

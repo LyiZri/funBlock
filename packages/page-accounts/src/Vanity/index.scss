@@ -14,3 +14,10 @@ table {
     }
   }
 }
+.van-radius {
+  .ui--Input {
+    input {
+      border-radius: 0.28rem !important;
+    }
+  }
+}
