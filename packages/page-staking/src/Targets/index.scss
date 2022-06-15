@@ -56,3 +56,19 @@
     color: white !important;
   }
 }
+.other-set{
+  display: flex;
+  align-items: center;
+  .epoch-flex{
+    .ui--Labelled{
+      margin-bottom: 10px;
+      label{
+        font-size: 20px;
+        color: #7f7f8a !important;
+      }
+    }
+    .childrenIsNotTop{
+      font-size: 32px;
+    }
+  }
+}

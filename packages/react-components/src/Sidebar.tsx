@@ -5,6 +5,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Button from "./Button";
+import './sidebar.scss'
 
 interface Props {
   button?: React.ReactNode;

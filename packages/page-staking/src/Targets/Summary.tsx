@@ -53,10 +53,10 @@ function Summary({
     () =>
       totalIssuance && totalStaked && totalStaked.gtn(0)
         ? {
-            hideValue: true,
-            total: totalIssuance,
-            value: totalStaked,
-          }
+          hideValue: true,
+          total: totalIssuance,
+          value: totalStaked,
+        }
         : undefined,
     [totalIssuance, totalStaked]
   );
@@ -65,10 +65,10 @@ function Summary({
     () =>
       avgStaked && lowStaked && avgStaked.gtn(0)
         ? {
-            hideValue: true,
-            total: avgStaked,
-            value: lowStaked,
-          }
+          hideValue: true,
+          total: avgStaked,
+          value: lowStaked,
+        }
         : undefined,
     [avgStaked, lowStaked]
   );
@@ -151,9 +151,11 @@ function Summary({
         )}
       </section>
       {numValidators && numNominators && (
-        <CardSummary className="media--1600" label={`${t<string>("guarantors")} / ${t<string>("guardians")}`}>
-          {numNominators}&nbsp;/&nbsp;{numValidators}
-        </CardSummary>
+        <div className="other-set">
+          <CardSummary className="media--1600" label={`${t<string>("guarantors")} / ${t<string>("guardians")}`}>
+            {numNominators}&nbsp;/&nbsp;{numValidators}
+          </CardSummary>
+        </div>
       )}
       <section className="media--1600">
         {minNominated?.gt(BN_ZERO) && (

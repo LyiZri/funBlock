@@ -144,9 +144,31 @@
   .third-section {
     justify-content: center;
   }
-  .summary-box{
-    justify-content: center !important;
+  
+}
+.summary-box{
+  justify-content: center!important;
+  section{
+    article{
+      .epoch-flex{
+        text-align: center;
+        .ui--Labelled{
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+        .childrenIsNotTop{
+          font-size: 32px!important;
+          .ui--FormatBalance-value{
+            font-size: 32px;
+          }
+        }
+      }
+    }
   }
+  .validator--Summary-authors{
+    min-width: 250px;
+  }
+
 }
 .ui--FilterOverlay{
   top:2rem!important;
