@@ -19,7 +19,7 @@ export default React.memo(styled(SummaryBox)`
   border-radius: 0.25rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   margin: 1.5rem 0;
 
   > section {
