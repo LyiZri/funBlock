@@ -1,13 +1,17 @@
 .staking-mine-warning {
-  margin-top: 1rem;
+  transform: translateY(1rem);
   article {
     border-radius: 16px;
     padding: 24px !important;
-    color: white;
+    color: #707383;
     font-size: 17px !important;
     svg {
-      color: red !important;
+      color: #FCA120 !important;
     }
+  }
+  article::before{
+    background-color: #FDEDDB!important;
+
   }
 }
 .staking-filter-box {
@@ -15,6 +19,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   .staking-filter-input-box {
-    width: 70%;
+    flex: 1;
+    margin-right: 3rem;
   }
 }

@@ -92,6 +92,8 @@ export { default as Table } from './Table';
 export { default as Tabs, SectionContext } from './Tabs';
 export { default as Tag } from './Tag';
 export { default as Tags } from './Tags';
+export { default as ToggleStaking } from './Taggle_staking';
+// ToggleStaking
 export { default as Toggle } from './Toggle';
 export { default as ToggleGroup } from './ToggleGroup';
 export { default as Tooltip } from './Tooltip';
