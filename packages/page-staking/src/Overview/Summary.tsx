@@ -26,7 +26,7 @@ interface Props {
   targets: SortedTargets;
 }
 
-function Summary ({ className = '', isVisible, stakingOverview, targets: { inflation: { inflation }, nominators, waitingIds, totalStaked } }: Props): React.ReactElement<Props> {
+function Summary({ className = '', isVisible, stakingOverview, targets: { inflation: { inflation }, nominators, waitingIds, totalStaked } }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { lastBlockAuthors, lastBlockNumber } = useContext(BlockAuthorsContext);
   const { systemChain } = useApi();
@@ -75,12 +75,14 @@ function Summary ({ className = '', isVisible, stakingOverview, targets: { infla
           >
             <StakingRewardPot />
           </CardSummary>
-        ) : (<CardSummary
-          className='media--1100'
-          label={t<string>('current era rewards')}
-        >
-          <MainnetRewards />
-        </CardSummary>)}
+        ) : (<div className='need-move-icon'>
+          <CardSummary
+            className='media--1100'
+            label={t<string>('current era rewards')}
+          >
+            <MainnetRewards />
+          </CardSummary>
+        </div>)}
       </section>
       <section>
         <CardSummary

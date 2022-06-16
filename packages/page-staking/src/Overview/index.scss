@@ -24,3 +24,14 @@ tr.filter{
         background-color: rgba(0,0,0,0)!important;
     }
 }
+.need-move-icon{
+  display: flex;
+  align-items: center;
+  .ui--FormatBalance{
+    display: flex;
+    align-items: center;
+  }
+  .ui--Icon{
+    font-size: 16px;
+  }
+}
