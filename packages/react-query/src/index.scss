@@ -1,69 +1,83 @@
-.time-circle{
-        width: 310px;
-        height: 300px;
-        position: absolute;
-        top: -46px;
-        right: -37px;
-    background: url(../assets/circle1.gif);
-    // animation: timeCircleRotate  2s linear infinite;
-   
+.time-circle {
+  width: 517px;
+  height: 517px;
+  position: absolute;
+  top: 38px;
+  right: 16px;
+  zoom: 0.4;
+  background: url(../assets/circle1.gif);
+  // animation: timeCircleRotate  2s linear infinite;
+
 }
-@keyframes timeCircleRotate{
-    from{
-        transform:rotate(0deg);
-    }
-    to{
-        transform:rotate(360deg);
-    }
+
+@keyframes timeCircleRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
-.block-time-circle{
-    width: 258px;
-    height: 202px;
-    background: url(../assets/circle2.png);
-    position: relative;
-    left: 50px;
+
+.block-time-circle {
+  width: 258px;
+  height: 202px;
+  background: url(../assets/circle2.png);
+  position: relative;
+  left: 50px;
+  text-align: center;
+
+  .block-time-content {
     text-align: center;
-    .block-time-content{
-        text-align: center;
-        position: absolute;
-        top: 50px;
-        left:67px;
-    }
-    .block-time-lable{
-        display: block;
-        color: #7f7f8a;
-        font-size: 22px;
-    }
-    span{
-        font-size: 62px;
-    }
-    .timeUnits{
-        font-size: 62px !important;
-    }
-    span + span{
-        padding: 0 !important;
-    }
+    position: absolute;
+    top: 50px;
+    left: 67px;
+  }
+
+  .block-time-lable {
+    display: block;
+    color: #7f7f8a;
+    font-size: 22px;
+  }
+
+  span {
+    font-size: 62px;
+  }
+
+  .timeUnits {
+    font-size: 62px !important;
+  }
+
+  span+span {
+    padding: 0 !important;
+  }
 }
-.totalStorage-background{
-    background:url(../assets/total_storage.png);
-    width: 600px;
-    height: 275px;
-    border-radius: 40px;
-    text-align: left;
-    padding: 33px 83px;
-    .totalStorage-title{
-        display: block;
-        font-size: 32px;
-        color: #7f7f8a;
-    }
-    .ui--FormatBalance-postfix{
-        font-size: 64px !important;
-    }
-    .ui--FormatBalance-unit{
-        font-size: 64px !important;
-    }
-    .ui--FormatBalance-value{
-        display: block;
-        margin-top: 32px;
-    }
+
+.totalStorage-background {
+  background: url(../assets/total_storage.png);
+  width: 600px;
+  height: 275px;
+  border-radius: 40px;
+  text-align: left;
+  padding: 33px 83px;
+
+  .totalStorage-title {
+    display: block;
+    font-size: 32px;
+    color: #7f7f8a;
+  }
+
+  .ui--FormatBalance-postfix {
+    font-size: 64px !important;
+  }
+
+  .ui--FormatBalance-unit {
+    font-size: 64px !important;
+  }
+
+  .ui--FormatBalance-value {
+    display: block;
+    margin-top: 32px;
+  }
 }

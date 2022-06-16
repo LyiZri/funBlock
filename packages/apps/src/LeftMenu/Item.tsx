@@ -30,8 +30,9 @@ function Item({
 
   return (
     <li
-      className={`ui--MenuItem ${className} ${isLink ? "isLink" : ""} ${isToplevel ? "topLevel  highlight--color-contrast" : ""
-        }`}
+      className={`ui--MenuItem ${className} ${isLink ? "isLink" : ""} ${
+        isToplevel ? "topLevel  highlight--color-contrast" : ""
+      }`}
     >
       <a
         href={Modal ? undefined : href || `#/${name}`}
@@ -41,11 +42,13 @@ function Item({
       >
         {/* {icon && <Icon icon={icon}/>}
         {logo && <img src={logo as string}/>} */}
-        {isToplevel === true && <div className="groupHdr">
-          {/* <IconFont className='iconfont' type="icon-jijidongtai_positive-dynamics" /> */}
-          <img src={icon} alt="" />
-          <div className='active-mask-shadow'></div>
-        </div>}
+        {isToplevel === true && (
+          <div className="groupHdr">
+            {/* <IconFont className='iconfont' type="icon-jijidongtai_positive-dynamics" /> */}
+            <img src={icon} alt="" />
+            <div className="active-mask-shadow"></div>
+          </div>
+        )}
         {text}
         {/* {!!count && <Badge color={"white"} info={count} />} */}
       </a>
@@ -58,9 +61,9 @@ export default React.memo(styled(Item)`
   cursor: pointer;
   position: relative;
   white-space: nowrap;
-  &.topLevel:hover{
-    a{
-      color:white!important;
+  &.topLevel:hover {
+    a {
+      color: white !important;
     }
   }
   &.topLevel {
@@ -68,12 +71,12 @@ export default React.memo(styled(Item)`
     font-weight: 400;
     line-height: 1.214rem;
     border-radius: 0.15rem;
-    text-align:center;
+    text-align: center;
     a {
       line-height: 1.214rem;
       border-radius: 0.25rem;
-      color:#9A9ABE!important;
-      font-size:16px;
+      color: #9a9abe !important;
+      font-size: 20px;
     }
     &.isActive.highlight--color-contrast {
       font-size: 1.15rem;
@@ -85,7 +88,7 @@ export default React.memo(styled(Item)`
 
       a {
         cursor: default;
-        color:white!important;
+        color: white !important;
       }
 
       &&.withCounter a {
@@ -98,31 +101,30 @@ export default React.memo(styled(Item)`
       font-weight: 400;
       line-height: 1.214rem;
       width: 4rem;
-      height:4rem;
+      height: 4rem;
       margin: 0 auto;
       margin-top: 1.5rem;
       // background-color: var(--bg-tabs);
-      display:flex;
-      justify-content:center;
-      align-items:center; 
-      margin-bottom:.5rem!important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.5rem !important;
       > img {
-        color:#666;
-        width:36px;
-        height:36px;
+        color: #666;
+        width: 36px;
+        height: 36px;
       }
-      > .active-mask-shadow{
-        position:absolute;
-        top:50%;
-        left:50%;
-        width:4px;
-        height:4px;
-        background:rgba(146,92,255,0.5);
-        box-shadow:0px 10px 60px 30px #925CFF;
-        z-index:100;
-        display:none;
+      > .active-mask-shadow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 4px;
+        height: 4px;
+        background: rgba(146, 92, 255, 0.5);
+        box-shadow: 0px 10px 60px 30px #925cff;
+        z-index: 100;
+        display: none;
       }
-
     }
 
     &.isActive .groupHdr {
@@ -130,11 +132,11 @@ export default React.memo(styled(Item)`
       font-size: 1rem;
       font-weight: 400;
       margin-bottom: 0.5rem;
-      >.active-mask-shadow{
-        display:block;
+      > .active-mask-shadow {
+        display: block;
       }
-      >.iconfont{
-        color:#925CFF;
+      > .iconfont {
+        color: #925cff;
       }
     }
     .ui--Badge {
@@ -151,7 +153,7 @@ export default React.memo(styled(Item)`
     display: block;
     text-decoration: none;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 20px;
     line-height: 1.5rem;
   }
 
