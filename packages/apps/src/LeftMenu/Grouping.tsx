@@ -51,7 +51,7 @@ function Grouping({ className = '', isActive, icon, name, routes }: Props): Reac
 export default React.memo(styled(Grouping)`
   cursor: pointer;
   position: relative;
-  font-size:16px;
+  font-size:20px;
   color:#9A9ABE;
   margin-bottom:.5rem;
   &.isActive{
