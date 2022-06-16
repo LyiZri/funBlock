@@ -4,7 +4,7 @@
 import queryString from "query-string";
 import React, { useCallback, useEffect } from "react";
 
-import { Input, Toggle } from "@polkadot/react-components";
+import { Input, ToggleStaking } from "@polkadot/react-components";
 import { useApi } from "@polkadot/react-hooks";
 import { isString } from "@polkadot/util";
 import "./index.scss";
@@ -55,7 +55,7 @@ function Filtering({
       <div className="staking--optionsBar">
         {children}
         {api.query.identity && (
-          <Toggle
+          <ToggleStaking
             className="staking--buttonToggle"
             label={t<string>("only with an identity")}
             onChange={setWithIdentity}

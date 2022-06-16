@@ -11,7 +11,7 @@ import Tooltip from './Tooltip';
 
 interface Props {
   className?: string;
-  color: 'blue' | 'gray' | 'green' | 'highlight' | 'normal' | 'orange' | 'purple' | 'red' | 'transparent' | 'white';
+  color: 'mineTheme' | 'blue' | 'gray' | 'green' | 'highlight' | 'normal' | 'orange' | 'purple' | 'red' | 'transparent' | 'white';
   hover?: React.ReactNode;
   icon?: IconName;
   info?: React.ReactNode;
@@ -89,6 +89,9 @@ export default React.memo(styled(Badge)`
     }
   }
 
+  &.mineThemeColor{
+    background:#925CFF;
+  }
   &.blueColor {
     background: steelblue;
   }
@@ -104,11 +107,11 @@ export default React.memo(styled(Badge)`
   }
 
   &.redColor {
-    background: darkred;
+    background: #E60012;
   }
 
   &.greenColor {
-    background: green;
+    background: #5FF486;
   }
 
   &.orangeColor {

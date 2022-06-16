@@ -19,7 +19,7 @@ function Legend ({ className }: Props): React.ReactElement<Props> {
     <div className={className}>
       <span>
         <Badge
-          color='blue'
+          color='mineTheme'
           icon='chevron-right'
         />
         {t('Next session')}
@@ -70,9 +70,13 @@ export default React.memo(styled(Legend)`
   color:#fff;
   .ui--Badge {
     margin-right: 0.5rem;
+    transform:translateY(-1px);
   }
-
+  span{
+    margin-right:1rem;
+  }
   span+span {
     margin-left: 1rem;
+
   }
 `);
