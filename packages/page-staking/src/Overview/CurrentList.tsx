@@ -201,7 +201,7 @@ function CurrentList({
   );
 
   return isIntentions ? (
-    <div className='wait-mine-data'>
+    <div className='wait-mine-data other-wait-data'>
       <Table
         empty={!isLoading && waiting && nominatedBy && t<string>("No waiting guardians found")}
         emptySpinner={

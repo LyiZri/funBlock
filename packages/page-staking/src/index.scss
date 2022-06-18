@@ -6,12 +6,11 @@
     color: #707383;
     font-size: 17px !important;
     svg {
-      color: #FCA120 !important;
+      color: #fca120 !important;
     }
   }
-  article::before{
-    background-color: #FDEDDB!important;
-
+  article::before {
+    background-color: #fdeddb !important;
   }
 }
 .staking-filter-box {
@@ -21,5 +20,29 @@
   .staking-filter-input-box {
     flex: 1;
     margin-right: 3rem;
+  }
+}
+.other-wait-data {
+  table {
+    tr {
+      td {
+        font-size: 14px;
+        .ui--FormatBalance {
+          width: 50px;
+          text-align: right;
+          white-space: pre-wrap;
+        }
+        .ui--FormatBalance-value {
+          font-size: 14px !important;
+          .ui--FormatBalance-unit {
+            font-size: 13px;
+            text-align: right;
+            display: inline-block;
+            margin-top: 2px;
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }

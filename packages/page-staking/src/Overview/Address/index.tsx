@@ -228,14 +228,14 @@ function Address({ address, className = '', filterName, hasQueries, isElected, i
       <td className='number'>
         {stakeLimit && (
           <div style={{ display: "flex", "alignItems": "center" }}>
-            <Icon
-              icon='info-circle'
-              tooltip={`summary-locks-trigger-set-fee-pool-${address}`}
-            />
             <Tooltip
               text={(<ApyInfo apy={validatorApy[address]} />)}
               trigger={`summary-locks-trigger-set-fee-pool-${address}`}
-            ></Tooltip> &nbsp;&nbsp; {(guarantorApy * 100).toFixed(2) + '%'}
+            ></Tooltip>{(guarantorApy * 100).toFixed(2) + '%'}
+            &nbsp;&nbsp;<Icon
+              icon='info-circle'
+              tooltip={`summary-locks-trigger-set-fee-pool-${address}`}
+            />
           </div>
         )}
       </td>
