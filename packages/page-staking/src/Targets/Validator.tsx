@@ -32,15 +32,15 @@ interface Props {
   toggleSelected: (accountId: string) => void;
 }
 
-function queryAddress (address: string): void {
+function queryAddress(address: string): void {
   window.location.hash = `/staking/query/${address}`;
 }
 
-function Validator ({ allSlashes, canSelect, filterName, info, isNominated, isSelected, nominatedBy = [], toggleFavorite, toggleSelected }: Props): React.ReactElement<Props> | null {
+function Validator({ allSlashes, canSelect, filterName, info, isNominated, isSelected, nominatedBy = [], toggleFavorite, toggleSelected }: Props): React.ReactElement<Props> | null {
   const { t } = useTranslation();
   const { api } = useApi();
   const accountInfo = useCall<DeriveAccountInfo>(api.derive.accounts.info, [info.accountId]);
-  const [,, time] = useBlockTime(info.lastPayout);
+  const [, , time] = useBlockTime(info.lastPayout);
   const [guarantorApy, setGuarantorApy] = useState<number>(0);
 
   const isOverStakelimit = info.totalStaked.gt(new BN(Number(info.stakeLimit)?.toString()));
@@ -147,21 +147,22 @@ function Validator ({ allSlashes, canSelect, filterName, info, isNominated, isSe
             : formatNumber(lastPayout)
         )}
       </td>
-      
+
       <td className='number media--1200 no-pad-right'>{numNominators || ''}</td>
       <td className='number media--1200 no-pad-left'>{nominatedBy.length || ''}</td>
       <td className='number media--1100'>{commissionPer.toFixed(2)}%</td>
       <td className='number'>
         {info && (
-          <div style={{ display: "flex", "alignItems": "center" }}>
+          <div style={{ display: "flex", "alignItems": "center" ,'justifyContent':'flex-end'}}>
+            <Tooltip
+              text={(<ApyInfo apy={info.apy} />)}
+              trigger={`summary-locks-trigger-set-fee-pool-${info.accountId}`}
+            ></Tooltip> {(guarantorApy * 100).toFixed(2) + '%'}
+            &nbsp;&nbsp;
             <Icon
               icon='info-circle'
               tooltip={`summary-locks-trigger-set-fee-pool-${info.accountId}`}
             />
-            <Tooltip
-                text={(<ApyInfo apy={info.apy} />)}
-                trigger={`summary-locks-trigger-set-fee-pool-${info.accountId}`}
-            ></Tooltip> &nbsp;&nbsp; {(guarantorApy * 100).toFixed(2) + '%'}
           </div>
         )}
       </td>

@@ -1,6 +1,9 @@
 .nodeinfo-box-bg {
   padding: 36px;
   border-radius: 20px;
+  .summary-box{
+    justify-content: flex-start!important;
+  }
   .ui--Table{
       box-shadow: 0px 2px 30px 0 rgb(241 79 158 / 10%);
   }

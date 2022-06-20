@@ -3,7 +3,7 @@
   height: 517px;
   position: absolute;
   top: 38px;
-  right: 16px;
+  right: 0px;
   zoom: 0.4;
   background: url(../assets/circle1.gif);
   // animation: timeCircleRotate  2s linear infinite;
@@ -25,7 +25,7 @@
   height: 202px;
   background: url(../assets/circle2.png);
   position: relative;
-  left: 50px;
+  left: 60px;
   text-align: center;
 
   .block-time-content {
@@ -61,7 +61,7 @@
   border-radius: 40px;
   text-align: left;
   padding: 33px 83px;
-
+  margin-right: 2rem;
   .totalStorage-title {
     display: block;
     font-size: 32px;

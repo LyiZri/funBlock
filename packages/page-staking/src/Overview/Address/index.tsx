@@ -227,7 +227,7 @@ function Address({ address, className = '', filterName, hasQueries, isElected, i
       </td>
       <td className='number'>
         {stakeLimit && (
-          <div style={{ display: "flex", "alignItems": "center" }}>
+          <div style={{ display: "flex", "alignItems": "center",'justifyContent':'flex-end' }}>
             <Tooltip
               text={(<ApyInfo apy={validatorApy[address]} />)}
               trigger={`summary-locks-trigger-set-fee-pool-${address}`}

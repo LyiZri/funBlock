@@ -124,6 +124,9 @@
 }
 .second-section {
   display: flex;
+  article {
+    justify-content: center;
+  }
 }
 .third-section {
   margin-bottom: 20px;
@@ -144,35 +147,38 @@
   .third-section {
     justify-content: center;
   }
-  
 }
-.summary-box{
-  justify-content: center!important;
-  section{
-    article{
-      .epoch-flex{
+.summary-box {
+  justify-content: center !important;
+  section {
+    article {
+      .epoch-flex {
         text-align: center;
-        .ui--Labelled{
+        .ui--Labelled {
           font-size: 20px;
           margin-bottom: 10px;
         }
-        .childrenIsNotTop{
-          font-size: 32px!important;
-          .ui--FormatBalance-value{
+        .childrenIsNotTop {
+          font-size: 32px !important;
+          .ui--FormatBalance-value {
             font-size: 32px;
           }
         }
       }
     }
   }
-  .validator--Summary-authors{
+  .validator--Summary-authors {
     min-width: 250px;
   }
-
 }
-.ui--FilterOverlay{
-  top:2rem!important;
-  .ui--Button{
+.ui--FilterOverlay {
+  top: 2rem !important;
+  .ui--Button {
     margin-left: 1rem;
+  }
+}
+.Forks {
+  .summary-box {
+    justify-content: flex-start !important;
   }
 }

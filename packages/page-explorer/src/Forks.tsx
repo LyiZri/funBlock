@@ -24,7 +24,7 @@ interface LinkHeader {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface,no-use-before-define
-interface LinkArray extends Array<Link> {}
+interface LinkArray extends Array<Link> { }
 
 interface Link {
   arr: LinkArray;
@@ -224,8 +224,8 @@ function Forks({ className }: Props): React.ReactElement<Props> | null {
       a.hdr.width > b.hdr.width || a.hdr.height > b.hdr.height || a.hdr.isFinalized
         ? -1
         : a.hdr.width < b.hdr.width || a.hdr.height < b.hdr.height || b.hdr.isFinalized
-        ? 1
-        : 0
+          ? 1
+          : 0
     );
 
     return children;
@@ -398,13 +398,19 @@ export default React.memo(styled(Forks)`
   }
   table {
     border-collapse: separate;
-    border-spacing: 0.25rem;
+    border-spacing: 0.6rem;
     border: 0;
     padding: 36px;
     border-radius: 20px;
     background-color: #000 !important;
     font: var(--font-mono);
     box-shadow: 0px 2px 30px 0 rgb(241 79 158 / 10%);
+    tr{
+      // margin-top:10px;
+      pointer-events:none;
+      // display:block;
+    }
+
     td {
       padding: 0.25rem 0.5rem;
       text-align: center;
@@ -442,8 +448,8 @@ export default React.memo(styled(Forks)`
       }
 
       &.header {
-        background: #f4f4fb;
-        border: 1px solid #e6e6e6;
+        background: rgba(244,244,251,.1);
+        // border: 1px solid #e6e6e6;
         border-radius: 0.25rem;
 
         &.isEmpty {
@@ -452,7 +458,7 @@ export default React.memo(styled(Forks)`
         }
 
         &.isFinalized {
-          background: #dbdbfd;
+          background: rgba(219,219,253,.2);
         }
 
         &.isLink {
