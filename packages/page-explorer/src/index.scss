@@ -182,3 +182,53 @@
     justify-content: flex-start !important;
   }
 }
+.blockinfo-content {
+  .ui--Table {
+    table::before {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    table {
+      thead {
+        tr {
+          th {
+            background-color: #151319;
+          }
+        }
+      }
+      tbody{
+        .ui--Expander-summary-header{
+          font-size: 20px;
+          .ui--Expander-summary-header-sub{
+            margin-top: 8px;
+            font-size: 20px;
+            span{
+              font-size: 20px;
+            }
+          }
+        }
+        .name.isAddress{
+          font-size: 16px;
+          color: #a3a4a7;
+        }
+        .hash{
+          // color: ;
+          a{
+            color: #a3a4a7;
+          }
+        }
+        .empty{
+          font-size: 18px;
+        }
+        .is-need-trans{
+          transform: translateY(7px);
+          div{
+            color: white;
+          }
+        }
+      }
+      tr {
+        background-color: #151319 !important;
+      }
+    }
+  }
+}

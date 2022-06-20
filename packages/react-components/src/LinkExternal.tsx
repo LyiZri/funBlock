@@ -67,7 +67,7 @@ function LinkExternal ({ className = '', data, hash, isLogo, isSmall, type }: Pr
   }
 
   return (
-    <div className={`${className}${isLogo ? ' isLogo' : ''}${isSmall ? ' isSmall' : ''}`}>
+    <div className={`${className}${isLogo ? ' isLogo' : ''}${isSmall ? ' isSmall' : ''} is-need-trans`}>
       {!(isLogo || isSmall) && <div>{t<string>('View this externally')}</div>}
       <div className='links'>{links.map((link, index) => <span key={index}>{link}</span>)}</div>
     </div>
