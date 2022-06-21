@@ -26,12 +26,6 @@ export default `
     }
   }
 
-  .media--1600 {
-    @media only screen and (max-width: 1600px) {
-      display: none !important;
-    }
-  }
-
   .media--1500 {
     @media only screen and (max-width: 1500px) {
       display: none !important;
