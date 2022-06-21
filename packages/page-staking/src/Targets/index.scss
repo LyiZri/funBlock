@@ -72,3 +72,26 @@
     }
   }
 }
+.need-black-bg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  article{
+    background-color: #151319;
+    border-radius: 16px;
+    min-width: 238px;
+    min-height: 150px!important;
+    justify-content: center;
+  }
+}
+.other-toggle-mine{
+  display: flex;
+  margin-bottom: 1.5rem;
+  .ui--Toggle{
+    margin-right: 1rem;
+    label{
+      color: white!important;
+      font-size: 17px;
+    }
+  }
+}

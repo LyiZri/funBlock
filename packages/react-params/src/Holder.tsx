@@ -52,7 +52,7 @@ export default React.memo(styled(Holder)`
 
   .ui--Params-Content {
     box-sizing: border-box;
-    margin-top: 14px;
+    margin-top: 20px;
   }
 
   .ui--Param-text {

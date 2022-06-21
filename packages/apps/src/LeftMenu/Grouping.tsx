@@ -123,7 +123,7 @@ export default React.memo(styled(Grouping)`
       z-index: 1;
       list-style:none;
       display:inline-block;
-      margin-bottom:.5rem;
+      margin-bottom:1rem;
       > a {
         color:#9A9ABE!important;
         width:100%;

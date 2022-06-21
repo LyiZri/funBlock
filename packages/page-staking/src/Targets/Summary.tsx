@@ -151,7 +151,7 @@ function Summary({
         )}
       </section>
       {numValidators && numNominators && (
-        <div className="other-set">
+        <div className="other-set need-black-bg">
           <CardSummary className="media--1600" label={`${t<string>("guarantors")} / ${t<string>("guardians")}`}>
             {numNominators}&nbsp;/&nbsp;{numValidators}
           </CardSummary>
@@ -159,9 +159,11 @@ function Summary({
       )}
       <section className="media--1600">
         {minNominated?.gt(BN_ZERO) && (
-          <CardSummary className="media--1600" label={t<string>("min guaranteed")}>
-            <FormatBalance value={minNominated} withSi />
-          </CardSummary>
+          <div className="need-black-bg">
+            <CardSummary className="media--1600" label={t<string>("min guaranteed")}>
+              <FormatBalance value={minNominated} withSi />
+            </CardSummary>
+          </div>
         )}
       </section>
       <section>

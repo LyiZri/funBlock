@@ -2,17 +2,19 @@
   background-color: #151319;
   width: 150px;
   min-width: 150px;
-  height: calc(110vh - 100px - 2rem);
+  height: calc(122vh - 100px - 2rem);
   margin-top: 2rem;
   border-radius: 0 20px 20px 0;
-
   //   overflow: auto;
   .menuContainer {
     display: flex;
     height: 100%;
+    max-height: 100%;
+    // overflow: auto;
     flex-direction: column;
     padding-bottom: 1rem;
     justify-content: space-between;
+    // position: relative;
   }
 
   ul {
