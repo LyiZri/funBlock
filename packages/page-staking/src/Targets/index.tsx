@@ -250,12 +250,7 @@ function Targets({ className = '', isInElection, ownStashes, targets: { avgStake
 
   const filter = useMemo(() => (
     <div>
-      <Filtering
-        nameFilter={nameFilter}
-        setNameFilter={_setNameFilter}
-        setWithIdentity={setToggle.withIdentity}
-        withIdentity={toggles.withIdentity}
-      >
+      <div className='other-toggle-mine'>
         <Toggle
           className='staking--buttonToggle'
           label={
@@ -281,6 +276,13 @@ function Targets({ className = '', isInElection, ownStashes, targets: { avgStake
           onChange={setToggle.withElected}
           value={toggles.withElected}
         />
+      </div>
+      <Filtering
+        nameFilter={nameFilter}
+        setNameFilter={_setNameFilter}
+        setWithIdentity={setToggle.withIdentity}
+        withIdentity={toggles.withIdentity}
+      >
       </Filtering>
     </div>
   ), [api, nameFilter, _setNameFilter, setToggle, t, toggles]);

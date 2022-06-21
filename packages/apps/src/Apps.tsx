@@ -45,7 +45,7 @@ function Apps({ className = '' }: Props): React.ReactElement<Props> {
     <>
       <GlobalStyle uiHighlight={uiHighlight} />
       <div className={`apps--Wrapper theme--${theme} ${className}`}>
-        <div style={{zoom:'0.9'}}>
+        <div style={{zoom:'0.8'}}>
           <Menu />
           <div className='pageContent'>
             <LeftMenu />
